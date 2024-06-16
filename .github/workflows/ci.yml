@@ -1,0 +1,75 @@
+name: CI/CD for React and Laravel
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-frontend:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3  # Mise à jour de l'action checkout
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3  # Mise à jour de l'action setup-node
+      with:
+        node-version: '20'  # Utilisation de Node.js 20
+
+    - name: Install dependencies
+      run: npm install
+      working-directory: ./client
+
+    - name: Run tests
+      run: npm test
+      working-directory: ./client
+
+  build-backend:
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: test
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping --silent"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=3
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3  # Mise à jour de l'action checkout
+
+    - name: Set up PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.2'  # Utilisation de PHP 8.2
+
+    - name: Install Composer dependencies
+      run: composer install
+      working-directory: ./server
+
+    - name: Set up .env file
+      run: cp .env.example .env
+      working-directory: ./server
+
+    - name: Generate application key
+      run: php artisan key:generate
+      working-directory: ./server
+
+    - name: Run migrations
+      run: php artisan migrate
+      working-directory: ./server
+
+    - name: Run tests
+      run: php artisan test
+      working-directory: ./server
