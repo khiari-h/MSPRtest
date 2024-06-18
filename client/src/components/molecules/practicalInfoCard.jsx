@@ -5,7 +5,7 @@ import Text from '../atoms/text';
 
 const PracticalInfoCard = ({ title, content }) => {
   return (
-    <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300 p-6">
+    <div className="practical-info-card">
       <Text content={title} type="h3" className="text-xl font-semibold mb-2" />
       <div className="text-gray-700">{content}</div>
     </div>

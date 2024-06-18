@@ -1,5 +1,6 @@
-// src/components/organisms/Footer.js
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFacebookF, faTwitter, faInstagram, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import Text from '../atoms/text';
 import NavItem from '../molecules/NavItem';
 
@@ -7,10 +8,10 @@ const Footer = () => {
   return (
     <footer className="bg-gray-800 text-white py-8">
       <div className="container mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-8">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 mb-8">
           <div>
-            <h3 className="text-lg font-bold mb-2">Nation Sounds</h3>
-            <Text content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sed eros tincidunt, porttitor ipsum id, tincidunt tellus. Pellentesque non vehicula urna, non tincidunt ligula." type="p" className="text-white" />
+            <h3 className="text-lg font-bold mb-2">À Propos de Nation Sounds</h3>
+            <Text content="Nation Sounds est un festival de musique qui célèbre la diversité et la créativité musicale. Rejoignez-nous pour une expérience inoubliable." type="p" className="text-white" />
           </div>
           <div>
             <h3 className="text-lg font-bold mb-2">Contact</h3>
@@ -20,30 +21,35 @@ const Footer = () => {
           </div>
           <div>
             <h3 className="text-lg font-bold mb-2">Newsletter</h3>
-            <form>
-              <input type="email" placeholder="Votre email" className="p-2 rounded w-full text-black" />
+            <form className="max-w-sm mx-auto">
+              <input type="email" placeholder="Votre email" className="p-2 rounded text-black input-small w-full" />
               <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2">S'inscrire</button>
             </form>
           </div>
           <div>
             <h3 className="text-lg font-bold mb-2">Informations légales</h3>
-            <NavItem label="Mentions légales" href="/legal" className="text-white hover:text-gray-400" />
-            <NavItem label="Politique de confidentialité" href="/privacy" className="text-white hover:text-gray-400" />
+            <ul>
+              <li><NavItem label="Mentions légales" href="/legal" className="text-white hover:text-gray-400" /></li>
+              <li><NavItem label="Politique de confidentialité" href="/privacy" className="text-white hover:text-gray-400" /></li>
+              <li><NavItem label="Conditions générales de vente" href="/cgv" className="text-white hover:text-gray-400" /></li>
+              <li><NavItem label="Politique de cookies" href="/cookies" className="text-white hover:text-gray-400" /></li>
+              <li><NavItem label="RGPD" href="/rgpd" className="text-white hover:text-gray-400" /></li>
+            </ul>
           </div>
           <div>
             <h3 className="text-lg font-bold mb-2">Réseaux sociaux</h3>
             <div className="flex space-x-4">
               <a href="https://facebook.com" className="text-white hover:text-gray-400">
-                <i className="fab fa-facebook-f"></i>
+                <FontAwesomeIcon icon={faFacebookF} />
               </a>
               <a href="https://twitter.com" className="text-white hover:text-gray-400">
-                <i className="fab fa-twitter"></i>
+                <FontAwesomeIcon icon={faTwitter} />
               </a>
               <a href="https://instagram.com" className="text-white hover:text-gray-400">
-                <i className="fab fa-instagram"></i>
+                <FontAwesomeIcon icon={faInstagram} />
               </a>
               <a href="https://linkedin.com" className="text-white hover:text-gray-400">
-                <i className="fab fa-linkedin"></i>
+                <FontAwesomeIcon icon={faLinkedin} />
               </a>
             </div>
           </div>

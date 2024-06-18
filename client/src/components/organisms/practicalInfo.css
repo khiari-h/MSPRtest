@@ -1,34 +1,66 @@
-/* src/components/organisms/PracticalInfo.css */
 .practical-info-card {
-  background-color: #fff;
+  background: white;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 16px;
-  transition: box-shadow 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  color: black;
 }
 
 .practical-info-card:hover {
+  transform: translateY(-10px);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .practical-info-card h3 {
-  font-size: 1.25rem;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
 }
 
 .practical-info-card p,
 .practical-info-card ul {
-  color: #4a4a4a;
-  margin-bottom: 0.75rem;
+  margin-bottom: 1rem;
 }
 
 .practical-info-card a {
   color: #1e90ff;
-  font-weight: 500;
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 .practical-info-card a:hover {
-  text-decoration: underline;
+  color: #feb47b;
+}
+
+.practical-info-section {
+  background: #f9f9f9;
+  padding: 2rem 1rem;
+}
+
+.accordion-item {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.accordion-title {
+  background: #f7f7f7;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 1.25rem;
+  font-weight: bold;
+  border: none;
+  width: 100%;
+  text-align: left;
+}
+
+.accordion-content {
+  padding: 10px;
+  background: #fff;
+}
+
+.map-container {
+  margin: 15px 0;
+  width: 100%;
+  height: 300px;
 }

@@ -1,3 +1,4 @@
+// src/components/organisms/ContactForm.js
 import React, { useState } from 'react';
 import Text from '../atoms/text';
 import Button from '../atoms/button';
@@ -40,26 +41,26 @@ const ContactForm = () => {
 
   return (
     <section className="container mx-auto py-8">
-      <Text content="On veut vous entendre !" type="h2" className="text-2xl font-bold mb-6 text-center" />
+      <Text content="Restons en Contact!" type="h2" className="text-3xl font-bold mb-6 text-center" />
       <form className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-white p-6 rounded-lg shadow-lg" onSubmit={handleSubmit}>
         <div className="flex flex-col">
           <label htmlFor="name" className="block text-gray-700 font-bold mb-2">Nom</label>
-          <input type="text" id="name" className="input-field" value={formData.name} onChange={handleChange} />
+          <input type="text" id="name" className="input-field" placeholder="Entrez votre nom" value={formData.name} onChange={handleChange} />
           {errors.name && <span className="text-red-500 text-sm">{errors.name}</span>}
         </div>
         <div className="flex flex-col">
           <label htmlFor="email" className="block text-gray-700 font-bold mb-2">Email</label>
-          <input type="email" id="email" className="input-field" value={formData.email} onChange={handleChange} />
+          <input type="email" id="email" className="input-field" placeholder="Entrez votre email" value={formData.email} onChange={handleChange} />
           {errors.email && <span className="text-red-500 text-sm">{errors.email}</span>}
         </div>
         <div className="flex flex-col md:col-span-2">
           <label htmlFor="subject" className="block text-gray-700 font-bold mb-2">Sujet</label>
-          <input type="text" id="subject" className="input-field" value={formData.subject} onChange={handleChange} />
+          <input type="text" id="subject" className="input-field" placeholder="Sujet de votre message" value={formData.subject} onChange={handleChange} />
           {errors.subject && <span className="text-red-500 text-sm">{errors.subject}</span>}
         </div>
         <div className="flex flex-col md:col-span-2">
           <label htmlFor="message" className="block text-gray-700 font-bold mb-2">Message</label>
-          <textarea id="message" className="input-field h-32" value={formData.message} onChange={handleChange}></textarea>
+          <textarea id="message" className="input-field h-32" placeholder="Votre message" value={formData.message} onChange={handleChange}></textarea>
           {errors.message && <span className="text-red-500 text-sm">{errors.message}</span>}
         </div>
         <div className="flex justify-center md:col-span-2">
@@ -71,3 +72,4 @@ const ContactForm = () => {
 };
 
 export default ContactForm;
+

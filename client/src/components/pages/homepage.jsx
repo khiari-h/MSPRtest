@@ -6,9 +6,10 @@ import ConcertProgram from '../organisms/ConcertProgram';
 import ConcertSchedule from '../organisms/ConcertSchedule';
 import TicketLink from '../organisms/TicketLink';
 import PracticalInfo from '../organisms/practicalInfo';
-import PartnersList from '../organisms/partnersList';
 import ContactForm from '../organisms/contactForm';
 import Footer from '../organisms/footer';
+import Text from '../atoms/text';
+
 
 const HomePage = () => {
   const handleFormSubmit = () => {
@@ -25,17 +26,6 @@ const HomePage = () => {
     { title: 'Event 2', description: 'Details 2', image: 'event2.jpg' },
   ];
 
-  const partners = [
-    { name: 'Partner 1', logo: 'partner1.png' },
-    { name: 'Partner 2', logo: 'partner2.png' },
-  ];
-
-  const formFields = [
-    { label: 'Name', type: 'text', name: 'name', placeholder: 'Enter your name', value: '', onChange: () => {} },
-    { label: 'Email', type: 'email', name: 'email', placeholder: 'Enter your email', value: '', onChange: () => {} },
-    { label: 'Message', type: 'textarea', name: 'message', placeholder: 'Enter your message', value: '', onChange: () => {} },
-  ];
-
   return (
     <div>
       <Header />
@@ -44,8 +34,12 @@ const HomePage = () => {
       <ConcertSchedule schedule={schedule} />
       <TicketLink />
       <PracticalInfo />
-      <PartnersList partners={partners} />
-      <ContactForm fields={formFields} onSubmit={handleFormSubmit} />
+      <section className="cta-section text-center py-8">
+        <a href="/partenaires" className="cta-button bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full text-lg mt-4 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-xl">
+          Nos Partenaires
+        </a>
+      </section>
+      <ContactForm onSubmit={handleFormSubmit} />
       <Footer />
     </div>
   );
