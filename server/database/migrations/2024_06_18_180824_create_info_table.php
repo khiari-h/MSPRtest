@@ -8,7 +8,7 @@ class CreateInfoTable extends Migration
 {
     public function up()
     {
-        Schema::create('info', function (Blueprint $table) {
+        Schema::create('infos', function (Blueprint $table) {
             $table->increments('id'); 
             $table->string('title', 191);
             $table->text('content');
@@ -22,6 +22,6 @@ class CreateInfoTable extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('info');
+        Schema::dropIfExists('infos');
     }
 }
