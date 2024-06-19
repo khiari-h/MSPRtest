@@ -14,6 +14,9 @@ class CreateInfoTable extends Migration
             $table->text('content');
             $table->json('faq')->nullable();
             $table->timestamps();
+            
+             // Changer le moteur de stockage
+             $table->engine = 'InnoDB'; 
         });
     }
 

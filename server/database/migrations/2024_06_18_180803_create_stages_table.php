@@ -13,6 +13,9 @@ class CreateStagesTable extends Migration
             $table->string('name', 191);
             $table->string('location', 191);
             $table->timestamps();
+            
+             // Changer le moteur de stockage
+             $table->engine = 'InnoDB'; 
         });
     }
 

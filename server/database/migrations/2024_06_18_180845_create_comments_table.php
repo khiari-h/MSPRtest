@@ -18,6 +18,9 @@ class CreateCommentsTable extends Migration
             // Définition de la clé étrangère
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->index('user_id');  // Ajout d'un index
+
+             // Changer le moteur de stockage
+             $table->engine = 'InnoDB'; 
         });
     }
 

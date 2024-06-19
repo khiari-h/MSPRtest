@@ -15,12 +15,16 @@ return new class extends Migration
             $table->string('key')->primary();
             $table->mediumText('value');
             $table->integer('expiration');
+            $table->engine = 'InnoDB'; // Changer le moteur de stockage
         });
 
         Schema::create('cache_locks', function (Blueprint $table) {
             $table->string('key')->primary();
             $table->string('owner');
             $table->integer('expiration');
+            
+            // Changer le moteur de stockage
+            $table->engine = 'InnoDB'; 
         });
     }
 
@@ -33,3 +37,4 @@ return new class extends Migration
         Schema::dropIfExists('cache_locks');
     }
 };
+

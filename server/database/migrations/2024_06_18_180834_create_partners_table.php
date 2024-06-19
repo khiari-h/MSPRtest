@@ -14,6 +14,9 @@ class CreatePartnersTable extends Migration
             $table->string('category', 191);
             $table->string('logo', 191)->nullable();
             $table->timestamps();
+            
+             // Changer le moteur de stockage
+             $table->engine = 'InnoDB'; 
         });
     }
 

@@ -8,13 +8,16 @@ class CreateUsersTable extends Migration
 {
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('user', function (Blueprint $table) {
             $table->increments('id');  // Utilisation de increments
             $table->string('username', 191);
             $table->string('password', 191);
             $table->string('email', 191);
             $table->enum('role', ['admin', 'user']);
             $table->timestamps();
+            
+             // Changer le moteur de stockage
+             $table->engine = 'InnoDB'; 
         });
     }
 

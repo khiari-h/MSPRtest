@@ -20,6 +20,9 @@ class CreateConcertsTable extends Migration
             // Définition de la clé étrangère
             $table->foreign('stage_id')->references('id')->on('stages')->onDelete('cascade');
             $table->index('stage_id');  // Ajout d'un index
+
+            // Changer le moteur de stockage
+            $table->engine = 'InnoDB'; 
         });
     }
 
