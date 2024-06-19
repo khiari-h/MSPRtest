@@ -8,7 +8,7 @@ class CreateUsersTable extends Migration
 {
     public function up()
     {
-        Schema::create('user', function (Blueprint $table) {
+        Schema::create('users', function (Blueprint $table) {
             $table->increments('id');  // Utilisation de increments
             $table->string('username', 191);
             $table->string('password', 191);

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateInfoTable extends Migration
+class CreateInfosTable extends Migration
 {
     public function up()
     {
@@ -15,8 +15,8 @@ class CreateInfoTable extends Migration
             $table->json('faq')->nullable();
             $table->timestamps();
             
-             // Changer le moteur de stockage
-             $table->engine = 'InnoDB'; 
+            // Changer le moteur de stockage
+            $table->engine = 'InnoDB'; 
         });
     }
 
