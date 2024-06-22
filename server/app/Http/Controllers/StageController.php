@@ -30,7 +30,7 @@ class StageController extends Controller
         return response()->json($stage, 200);
     }
 
-    public function delete($id)
+    public function destroy($id)
     {
         $stage = Stage::findOrFail($id);
         $stage->delete();

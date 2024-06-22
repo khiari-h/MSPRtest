@@ -46,7 +46,7 @@ class ConcertController extends Controller
         return response()->json($concert, 200);
     }
 
-    public function delete($id)
+    public function destroy($id)
     {
         $concert = Concert::findOrFail($id);
         $concert->delete();

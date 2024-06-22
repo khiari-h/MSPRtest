@@ -9,12 +9,17 @@ class UserController extends Controller
 {
     public function index()
     {
-        return User::all();
+        return response()->json(['data' => User::all()], 200);
     }
 
     public function show($id)
     {
-        return User::findOrFail($id);
+        $user = User::find($id);
+        if ($user) {
+            return response()->json($user, 200);
+        } else {
+            return response()->json(['error' => 'User not found'], 404);
+        }
     }
 
     public function store(Request $request)
@@ -32,22 +37,30 @@ class UserController extends Controller
 
     public function update(Request $request, $id)
     {
-        $user = User::findOrFail($id);
-        $validatedData = $request->validate([
-            'username' => 'string|max:191',
-            'email' => 'string|email|max:191|unique:users,email,' . $user->id,
-            'password' => 'string|min:6',
-            'role' => 'in:admin,user',
-        ]);
+        $user = User::find($id);
+        if ($user) {
+            $validatedData = $request->validate([
+                'username' => 'string|max:191',
+                'email' => 'string|email|max:191|unique:users,email,' . $user->id,
+                'password' => 'string|min:6',
+                'role' => 'in:admin,user',
+            ]);
 
-        $user->update($validatedData);
-        return response()->json($user, 200);
+            $user->update($validatedData);
+            return response()->json($user, 200);
+        } else {
+            return response()->json(['error' => 'User not found'], 404);
+        }
     }
 
-    public function delete($id)
+    public function destroy($id)
     {
-        $user = User::findOrFail($id);
-        $user->delete();
-        return response()->json(null, 204);
+        $user = User::find($id);
+        if ($user) {
+            $user->delete();
+            return response()->json(null, 200);
+        } else {
+            return response()->json(['error' => 'User not found'], 404);
+        }
     }
 }

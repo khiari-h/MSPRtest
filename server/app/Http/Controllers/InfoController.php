@@ -42,7 +42,7 @@ class InfoController extends Controller
         return response()->json($info, 200);
     }
 
-    public function delete($id)
+    public function destroy($id)
     {
         $info = Info::findOrFail($id);
         $info->delete();

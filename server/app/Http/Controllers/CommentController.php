@@ -42,7 +42,7 @@ class CommentController extends Controller
         return response()->json($comment, 200);
     }
 
-    public function delete($id)
+    public function destroy($id) 
     {
         $comment = Comment::findOrFail($id);
         $comment->delete();
