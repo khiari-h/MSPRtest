@@ -1,0 +1,152 @@
+{
+    "st1": {
+        "id": 1,
+        "name": "Albert",
+        "shortname": "",
+        "link": "",
+        "comment": "",
+        "image": "",
+        "color_map": "#7798bb",
+        "color_map_over": "#366CA3"
+    },
+    "st2": {
+        "id": 2,
+        "name": "Carleton",
+        "shortname": "",
+        "link": "",
+        "comment": "",
+        "image": "",
+        "color_map": "#7798bb",
+        "color_map_over": "#366CA3"
+    },
+    "st3": {
+        "id": 3,
+        "name": "Charlotte",
+        "shortname": "",
+        "link": "",
+        "comment": "",
+        "image": "",
+        "color_map": "#7798bb",
+        "color_map_over": "#366CA3"
+    },
+    "st4": {
+        "id": 4,
+        "name": "Gloucester",
+        "shortname": "",
+        "link": "",
+        "comment": "",
+        "image": "",
+        "color_map": "#7798bb",
+        "color_map_over": "#366CA3"
+    },
+    "st5": {
+        "id": 5,
+        "name": "Kent",
+        "shortname": "",
+        "link": "",
+        "comment": "",
+        "image": "",
+        "color_map": "#7798bb",
+        "color_map_over": "#366CA3"
+    },
+    "st6": {
+        "id": 6,
+        "name": "Kings",
+        "shortname": "",
+        "link": "",
+        "comment": "",
+        "image": "",
+        "color_map": "#7798bb",
+        "color_map_over": "#366CA3"
+    },
+    "st7": {
+        "id": 7,
+        "name": "Madawaska",
+        "shortname": "",
+        "link": "",
+        "comment": "",
+        "image": "",
+        "color_map": "#7798bb",
+        "color_map_over": "#366CA3"
+    },
+    "st8": {
+        "id": 8,
+        "name": "Northumberland",
+        "shortname": "",
+        "link": "",
+        "comment": "",
+        "image": "",
+        "color_map": "#7798bb",
+        "color_map_over": "#366CA3"
+    },
+    "st9": {
+        "id": 9,
+        "name": "Queens",
+        "shortname": "",
+        "link": "",
+        "comment": "",
+        "image": "",
+        "color_map": "#7798bb",
+        "color_map_over": "#366CA3"
+    },
+    "st10": {
+        "id": 10,
+        "name": "Restigouche",
+        "shortname": "",
+        "link": "",
+        "comment": "",
+        "image": "",
+        "color_map": "#7798bb",
+        "color_map_over": "#366CA3"
+    },
+    "st11": {
+        "id": 11,
+        "name": "Saint John",
+        "shortname": "",
+        "link": "",
+        "comment": "",
+        "image": "",
+        "color_map": "#7798bb",
+        "color_map_over": "#366CA3"
+    },
+    "st12": {
+        "id": 12,
+        "name": "Sunbury",
+        "shortname": "",
+        "link": "",
+        "comment": "",
+        "image": "",
+        "color_map": "#7798bb",
+        "color_map_over": "#366CA3"
+    },
+    "st13": {
+        "id": 13,
+        "name": "Victoria",
+        "shortname": "",
+        "link": "",
+        "comment": "",
+        "image": "",
+        "color_map": "#7798bb",
+        "color_map_over": "#366CA3"
+    },
+    "st14": {
+        "id": 14,
+        "name": "Westmorland",
+        "shortname": "",
+        "link": "",
+        "comment": "",
+        "image": "",
+        "color_map": "#7798bb",
+        "color_map_over": "#366CA3"
+    },
+    "st15": {
+        "id": 15,
+        "name": "York",
+        "shortname": "",
+        "link": "",
+        "comment": "",
+        "image": "",
+        "color_map": "#7798bb",
+        "color_map_over": "#366CA3"
+    }
+}

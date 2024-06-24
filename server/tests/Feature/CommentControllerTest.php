@@ -14,21 +14,21 @@ class CommentControllerTest extends TestCase
     public function testIndexReturnsAllComments()
     {
         Comment::factory(5)->create();
-        $response = $this->getJson('/api/comments');
+        $response = $this->actingAs(User::factory()->create(), 'sanctum')->getJson('/api/comments');
         $response->assertStatus(200)
-                 ->assertJsonCount(5);
+                 ->assertJsonCount(5); // Suppression de 'data' si la structure JSON ne l'utilise pas
     }
 
     public function testShowReturnsSpecificComment()
     {
         $comment = Comment::factory()->create();
-        $response = $this->get("/api/comments/{$comment->id}");
+        $response = $this->actingAs(User::factory()->create(), 'sanctum')->getJson("/api/comments/{$comment->id}");
         $response->assertStatus(200)
                  ->assertJson([
                      'id' => $comment->id,
                      'user_id' => $comment->user_id,
                      'content' => $comment->content,
-                     'date' => $comment->date instanceof \DateTime ? $comment->date->format('Y-m-d H:i:s') : $comment->date, // Adjusted here
+                     'date' => $comment->date->format('Y-m-d H:i:s'), // Modification pour correspondre au format attendu
                  ]);
     }
 
@@ -38,9 +38,9 @@ class CommentControllerTest extends TestCase
         $commentData = [
             'user_id' => $user->id,
             'content' => 'Test comment',
-            'date' => now()->toDateString(),
+            'date' => now()->toDateTimeString(), // Utilisation du format complet de date et heure
         ];
-        $response = $this->postJson('/api/comments', $commentData);
+        $response = $this->actingAs(User::factory()->create(), 'sanctum')->postJson('/api/comments', $commentData);
         $response->assertStatus(201);
         $this->assertDatabaseHas('comments', $commentData);
     }
@@ -50,9 +50,9 @@ class CommentControllerTest extends TestCase
         $comment = Comment::factory()->create();
         $updatedData = [
             'content' => 'Updated comment',
-            'date' => now()->toDateString(),
+            'date' => now()->toDateTimeString(), // Utilisation du format complet de date et heure
         ];
-        $response = $this->putJson("/api/comments/{$comment->id}", $updatedData);
+        $response = $this->actingAs(User::factory()->create(), 'sanctum')->putJson("/api/comments/{$comment->id}", $updatedData);
         $response->assertStatus(200);
         $this->assertDatabaseHas('comments', $updatedData);
     }
@@ -60,7 +60,7 @@ class CommentControllerTest extends TestCase
     public function testDestroyDeletesComment()
     {
         $comment = Comment::factory()->create();
-        $response = $this->deleteJson("/api/comments/{$comment->id}");
+        $response = $this->actingAs(User::factory()->create(), 'sanctum')->deleteJson("/api/comments/{$comment->id}");
         $response->assertStatus(204);
         $this->assertDatabaseMissing('comments', ['id' => $comment->id]);
     }

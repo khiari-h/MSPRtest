@@ -1,0 +1,81 @@
+# Translation of Plugins - WP Bing Map Pro - Stable (latest release) in Italian
+# This file is distributed under the same license as the Plugins - WP Bing Map Pro - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2021-10-05 17:42:53+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/4.0.0-alpha.8\n"
+"Language: it\n"
+"Project-Id-Version: Plugins - WP Bing Map Pro - Stable (latest release)\n"
+
+#: includes/BingMapPro_Includes.php:169
+msgid "Email"
+msgstr "Email"
+
+#: includes/BingMapPro_Shapes.php:486
+msgid "Show Saved Polygons"
+msgstr "Mostra poligoni salvati"
+
+#: includes/BingMapPro_Shapes.php:485
+msgid "Hide Saved Polygons"
+msgstr "Nascondi poligoni salvati"
+
+#: includes/BingMapPro_Shapes.php:249
+msgid "Radius"
+msgstr "Raggio"
+
+#: includes/BingMapPro_Pins.php:177
+msgid " No pins created. Press on the ADD icon above to get started. Thank you for using this plugin "
+msgstr "Nessun pin creato. Premi sull'icona AGGIUNGI sopra per iniziare. Grazie per aver usato questo plugin"
+
+#: includes/BingMapPro_Maps.php:323
+msgid "ID"
+msgstr "ID"
+
+#: includes/BingMapPro_Maps.php:328 includes/BingMapPro_Maps.php:449
+#: includes/BingMapPro_Maps.php:544
+msgid "Zoom"
+msgstr "Zoom"
+
+#: includes/BingMapPro_Maps.php:59 includes/BingMapPro_Pins.php:166
+#: includes/BingMapPro_Pins.php:522 includes/BingMapPro_Shapes.php:174
+#: includes/BingMapPro_Shapes.php:328 includes/BingMapPro_Shapes.php:470
+#: includes/BingMapPro_Shapes.php:556
+msgid "Delete"
+msgstr "Elimina"
+
+#: includes/BingMapPro_Maps.php:57 includes/BingMapPro_Pins.php:162
+#: includes/BingMapPro_Pins.php:521 includes/BingMapPro_Shapes.php:170
+#: includes/BingMapPro_Shapes.php:324 includes/BingMapPro_Shapes.php:466
+#: includes/BingMapPro_Shapes.php:555
+msgid "Edit"
+msgstr "Modifica"
+
+#: includes/BingMapPro_GeneralSettings.php:274
+msgid "Ok"
+msgstr "Ok"
+
+#: includes/BingMapPro_GeneralSettings.php:273
+#: includes/BingMapPro_Infobox.php:15 includes/BingMapPro_Infobox.php:133
+#: includes/BingMapPro_Infobox.php:174 includes/BingMapPro_Maps.php:550
+#: includes/BingMapPro_Maps.php:669 includes/BingMapPro_Pins.php:244
+#: includes/BingMapPro_Pins.php:470 includes/BingMapPro_Shapes.php:204
+#: includes/BingMapPro_Shapes.php:352 includes/BingMapPro_Shapes.php:498
+msgid "Cancel"
+msgstr "Annulla"
+
+#. Author of the plugin
+msgid "dan009"
+msgstr "dan009"
+
+#. Plugin Name of the plugin
+#: includes/BingMapPro_LifeCycle.php:238
+msgid "WP Bing Map Pro"
+msgstr "WP Bing Map Pro"
+
+#. Plugin URI of the plugin
+msgid "https://tuskcode.com"
+msgstr "https://tuskcode.com"

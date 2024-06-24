@@ -1,0 +1,182 @@
+{
+    "st1": {
+        "id": 1,
+        "name": "Annapolis",
+        "shortname": "",
+        "link": "",
+        "comment": "",
+        "image": "",
+        "color_map": "#7798bb",
+        "color_map_over": "#366CA3"
+    },
+    "st2": {
+        "id": 2,
+        "name": "Antigonish",
+        "shortname": "",
+        "link": "",
+        "comment": "",
+        "image": "",
+        "color_map": "#7798bb",
+        "color_map_over": "#366CA3"
+    },
+    "st3": {
+        "id": 3,
+        "name": "Cape Breton",
+        "shortname": "",
+        "link": "",
+        "comment": "",
+        "image": "",
+        "color_map": "#7798bb",
+        "color_map_over": "#366CA3"
+    },
+    "st4": {
+        "id": 4,
+        "name": "Colchester",
+        "shortname": "",
+        "link": "",
+        "comment": "",
+        "image": "",
+        "color_map": "#7798bb",
+        "color_map_over": "#366CA3"
+    },
+    "st5": {
+        "id": 5,
+        "name": "Cumberland",
+        "shortname": "",
+        "link": "",
+        "comment": "",
+        "image": "",
+        "color_map": "#7798bb",
+        "color_map_over": "#366CA3"
+    },
+    "st6": {
+        "id": 6,
+        "name": "Digby",
+        "shortname": "",
+        "link": "",
+        "comment": "",
+        "image": "",
+        "color_map": "#7798bb",
+        "color_map_over": "#366CA3"
+    },
+    "st7": {
+        "id": 7,
+        "name": "Guysborough",
+        "shortname": "",
+        "link": "",
+        "comment": "",
+        "image": "",
+        "color_map": "#7798bb",
+        "color_map_over": "#366CA3"
+    },
+    "st8": {
+        "id": 8,
+        "name": "Halifax",
+        "shortname": "",
+        "link": "",
+        "comment": "",
+        "image": "",
+        "color_map": "#7798bb",
+        "color_map_over": "#366CA3"
+    },
+    "st9": {
+        "id": 9,
+        "name": "Hants",
+        "shortname": "",
+        "link": "",
+        "comment": "",
+        "image": "",
+        "color_map": "#7798bb",
+        "color_map_over": "#366CA3"
+    },
+    "st10": {
+        "id": 10,
+        "name": "Inverness",
+        "shortname": "",
+        "link": "",
+        "comment": "",
+        "image": "",
+        "color_map": "#7798bb",
+        "color_map_over": "#366CA3"
+    },
+    "st11": {
+        "id": 11,
+        "name": "Kings",
+        "shortname": "",
+        "link": "",
+        "comment": "",
+        "image": "",
+        "color_map": "#7798bb",
+        "color_map_over": "#366CA3"
+    },
+    "st12": {
+        "id": 12,
+        "name": "Lunenburg",
+        "shortname": "",
+        "link": "",
+        "comment": "",
+        "image": "",
+        "color_map": "#7798bb",
+        "color_map_over": "#366CA3"
+    },
+    "st13": {
+        "id": 13,
+        "name": "Pictou",
+        "shortname": "",
+        "link": "",
+        "comment": "",
+        "image": "",
+        "color_map": "#7798bb",
+        "color_map_over": "#366CA3"
+    },
+    "st14": {
+        "id": 14,
+        "name": "Queens",
+        "shortname": "",
+        "link": "",
+        "comment": "",
+        "image": "",
+        "color_map": "#7798bb",
+        "color_map_over": "#366CA3"
+    },
+    "st15": {
+        "id": 15,
+        "name": "Richmond",
+        "shortname": "",
+        "link": "",
+        "comment": "",
+        "image": "",
+        "color_map": "#7798bb",
+        "color_map_over": "#366CA3"
+    },
+    "st16": {
+        "id": 16,
+        "name": "Shelburne",
+        "shortname": "",
+        "link": "",
+        "comment": "",
+        "image": "",
+        "color_map": "#7798bb",
+        "color_map_over": "#366CA3"
+    },
+    "st17": {
+        "id": 17,
+        "name": "Victoria",
+        "shortname": "",
+        "link": "",
+        "comment": "",
+        "image": "",
+        "color_map": "#7798bb",
+        "color_map_over": "#366CA3"
+    },
+    "st18": {
+        "id": 18,
+        "name": "Yarmouth",
+        "shortname": "",
+        "link": "",
+        "comment": "",
+        "image": "",
+        "color_map": "#7798bb",
+        "color_map_over": "#366CA3"
+    }
+}

@@ -1,0 +1,13 @@
+[
+    {
+        "name": "freemius/wordpress-sdk",
+        "version": "2.5.10",
+        "version_normalized": "2.5.10.0",
+        "dist": {
+            "type": "zip",
+            "url": "/tmp/wordpress-sdk-2.5.10.zip"
+        },
+        "type": "library",
+        "installation-source": "dist"
+    }
+]

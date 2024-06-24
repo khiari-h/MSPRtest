@@ -1,0 +1,546 @@
+# Translation of Plugins - Travelers&#039; Map - Stable (latest release) in German
+# This file is distributed under the same license as the Plugins - Travelers&#039; Map - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2021-04-08 17:25:47+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/4.0.0-alpha.4\n"
+"Language: de\n"
+"Project-Id-Version: Plugins - Travelers&#039; Map - Stable (latest release)\n"
+
+#: cttm-settings.php:264
+msgid "Excerpt "
+msgstr "Textauszug"
+
+#: cttm-settings.php:265
+msgid "Date "
+msgstr "Datum:"
+
+#: cttm-settings.php:263
+msgid "Title "
+msgstr "Titel "
+
+#: cttm-settings.php:262
+msgid "Thumbnail "
+msgstr "Vorschaubild"
+
+#: cttm-settings.php:137
+msgid "Disable popovers CSS"
+msgstr "Deaktiviere Popup-CSS"
+
+#: includes/admin/cttm-shortcode-helper.php:301
+msgid "By default, the map will use the tile provider set in Travelers' Map settings."
+msgstr "Standardmäßig verwendet die Karte den Kachelanbieter, der in den Karteneinstellungen von Traveler's Map festgelegt ist."
+
+#: includes/admin/cttm-shortcode-helper.php:300
+msgid "If you change your tile provider, you must fill all the fields below in order to avoid your map from not showing or having some tiles missing."
+msgstr "Wenn du deinen Kachelanbieter wechselst, musst du alle Felder unten ausfüllen, um zu verhindern, dass deine Karte nicht angezeigt wird oder einige Kacheln fehlen."
+
+#: includes/admin/cttm-shortcode-helper.php:299
+msgid "Tile provider settings"
+msgstr "Kachelanbieter Einstellungen"
+
+#: includes/admin/cttm-shortcode-helper.php:288
+msgid "Open links in a new tab"
+msgstr "Links in neuem Tab öffnen"
+
+#: includes/admin/cttm-shortcode-helper.php:282
+msgid "Prevent the markers from regrouping when too close to each other. Warning: Don't use on a map with a lot of markers as it can cause performance issues."
+msgstr "Verhindern, dass sich die Marker neu gruppieren, wenn sie zu nahe beieinander liegen. Warnung: Nicht auf einer Karte mit vielen Markern verwenden, da dies zu Leistungsproblemen führen kann."
+
+#: includes/admin/cttm-shortcode-helper.php:281
+msgid "Disable marker clustering"
+msgstr "Marker Gruppierung deaktivieren"
+
+#: includes/admin/cttm-shortcode-helper.php:271
+msgid "These settings are meant for experienced users only. Please read carefully the descriptions as these settings can cause performance issues and other problems."
+msgstr "Diese Einstellungen sind nur für erfahrene Benutzer gedacht. Bitte lies die Beschreibungen sorgfältig durch, da diese Einstellungen Leistungsprobleme und andere Probleme verursachen können."
+
+#: includes/admin/cttm-shortcode-helper.php:270
+msgid "Advanced settings"
+msgstr "Erweiterte Einstellungen"
+
+#: includes/admin/cttm-shortcode-helper.php:237
+msgid "Select the terms you want to show on the map. Default: All terms."
+msgstr "Wähle die Begriffe aus, die auf der Karte angezeigt werden sollen. Standard: Alle Begriffe."
+
+#: includes/admin/cttm-shortcode-helper.php:212
+msgid "Filter by custom taxonomies:"
+msgstr "Filtern nach individuellen Taxonomien:"
+
+#: includes/admin/cttm-shortcode-helper.php:148
+msgid "Filter by Wordpress taxonomies:"
+msgstr "Filtern nach WordPress Taxonomien:"
+
+#: cttm-settings.php:89
+msgid "You are about to copy every marker from posts in the default language (set in WPML settings) and set them to their translated posts in every other languages."
+msgstr "Du bist dabei jeden Marker aus Beiträgen in der Standardsprache (in den WPML-Einstellungen festgelegt) in die übersetzten Beiträge zu kopieren."
+
+#: cttm-settings.php:87
+msgid "WPML - Synchronise markers from default language posts (%s) to other languages"
+msgstr "WPML – Synchronisiere Marker von Beiträgen in der Standardsprache (%s) in andere Sprachen"
+
+#: cttm-settings.php:79
+msgid "You are about to copy every marker from posts in the default language (set in Polylang settings) and set them to their translated posts in every other languages."
+msgstr "Du bist dabei jeden Marker aus Beiträgen in der Standardsprache (in den Polylang-Einstellungen festgelegt) in die übersetzten Beiträge zu kopieren."
+
+#: cttm-settings.php:79 cttm-settings.php:89
+msgid "Synchronise markers"
+msgstr "Marker synchronisieren"
+
+#: cttm-settings.php:78 cttm-settings.php:88
+msgid "Press the button below to copy every marker from default language posts (%s) to their translations:"
+msgstr "Drücke den Button unten, um alle Marker von Beiträgen in der Standardsprache (%s) in deine Übersetzungen zu kopieren:"
+
+#: cttm-settings.php:77
+msgid "Polylang - Synchronise markers from default language posts (%s) to other languages"
+msgstr "Polylang – Synchronisiere Marker von Beiträgen in der Standardsprache (%s) in andere Sprachen"
+
+#: includes/admin/cttm-shortcode-helper.php:143
+msgid "Show a map with this ID's marker only. This can be combined with \"Initially zoom on current post's marker\" setting to zoom on this ID's marker but keep the others showing."
+msgstr "Zeige eine Karte nur mit dem Marker dieser ID an. Dies kann mit der Einstellung \"Zu Beginn auf den Marker des aktuellen Beitrags zoomen\" kombiniert werden, um den Marker dieser ID zu zentrieren, die anderen jedoch weiterhin anzuzeigen."
+
+#: includes/admin/cttm-shortcode-helper.php:141
+msgid "Show only this post (ID):"
+msgstr "Nur diesen Beitrag (ID) anzeigen:"
+
+#: includes/admin/cttm-shortcode-helper.php:126
+msgid "Filter markers"
+msgstr "Marker filtern"
+
+#: includes/admin/cttm-shortcode-helper.php:96
+msgid "Check this box to show a map zoomed on the current post's marker, moreover other posts are also displayed on the map."
+msgstr "Aktiviere dieses Kontrollkästchen, um eine Karte anzuzeigen, die auf die Marker des aktuellen Beitrags gezoomt wurde. Außerdem werden andere Beiträge auf der Karte angezeigt."
+
+#: includes/admin/cttm-shortcode-helper.php:95
+msgid "Initially zoom on current post's marker"
+msgstr "Zu Beginn auf den Marker des aktuellen Beitrags zoomen"
+
+#: includes/admin/cttm-shortcode-helper.php:93
+msgid "Zoom settings"
+msgstr "Zoom-Einstellungen"
+
+#: includes/admin/cttm-shortcode-helper.php:63
+msgid "Map dimensions"
+msgstr "Kartengröße"
+
+#: cttm-settings.php:242
+msgid "The fullscreen button will show up on the top right corner of each map. "
+msgstr "Die Vollbild-Schaltfläche wird in der oberen rechten Ecke jeder Karte angezeigt."
+
+#: cttm-settings.php:242
+msgid "Check this box to add a fullscreen button to your dynamic maps."
+msgstr "Aktiviere dieses Kontrollkästchen, um deinen dynamischen Karten eine Vollbild-Schaltfläche hinzuzufügen."
+
+#: cttm-settings.php:130
+msgid "Enable fullscreen button in frontend"
+msgstr "Aktiviere die Vollbild-Schaltfläche im Frontend"
+
+#: cttm-settings.php:34 includes/admin/cttm-shortcode-helper.php:28
+msgid "Do not hesitate to <a href=\"%1$s\" target=\"_blank\">rate this plugin and give me some feedbacks</a>."
+msgstr "Zögere nicht, <a href=\"%1$s\" target=\"_blank\"> dieses Plugin zu bewerten und mir Feedback zu geben</a>."
+
+#: cttm-settings.php:32 includes/admin/cttm-shortcode-helper.php:26
+msgid "Do you want to make Travelers' Map better? All the updates are based on community feedbacks!"
+msgstr "Möchtest du Travelers' Map verbessern? Alle Updates basieren auf Community-Feedback!"
+
+#: includes/admin/cttm-shortcode-helper.php:117
+msgid "On initialization, the map is zoomed to fit all the markers inside it. <br>This setting is useful to unzoom when only one marker is displayed. <code>18</code> is zoomed at the maximum, <code>1</code> is a world view."
+msgstr "Bei der Initialisierung wird die Karte so gezoomt, dass alle Marker darin passen. <br>Diese Einstellung ist nützlich, um die Ansicht zu verkleinern, wenn nur ein Marker angezeigt wird. <code>18</code> wird maximal gezoomt, <code>1</code> ist eine Weltansicht."
+
+#: includes/admin/cttm-shortcode-helper.php:115
+msgid "Initialization max zoom:"
+msgstr "max. Zoom zu Beginn:"
+
+#: includes/admin/cttm-shortcode-helper.php:110
+msgid "The maximum zoom level of the map. Default: <code>18</code>"
+msgstr "Die max. Zoomstufe der Karte. Standard: <code>18</code>"
+
+#: includes/admin/cttm-shortcode-helper.php:104
+msgid "The minimum zoom level of the map. Default: <code>0</code>"
+msgstr "Die min. Zoomstufe der Karte. Standard: <code>0</code>"
+
+#: includes/admin/cttm-shortcode-helper.php:133
+msgid "Check this box to show a map with the current post's marker only."
+msgstr "Aktiviere dieses Kontrollkästchen, um eine Karte nur mit dem Marker des aktuellen Beitrags anzuzeigen."
+
+#: includes/admin/cttm-shortcode-helper.php:132
+msgid "Show current post's marker only"
+msgstr "Nur den Marker des aktuellen Beitrags anzeigen"
+
+#: includes/admin/cttm-shortcode-helper.php:108
+msgid "Max zoom:"
+msgstr "max. Zoom:"
+
+#: includes/admin/cttm-shortcode-helper.php:102
+msgid "Min zoom:"
+msgstr "min. Zoom:"
+
+#: cttm-settings.php:250
+msgid "User needs to use two fingers to move or zoom the map. "
+msgstr "Der Benutzer muss die Karte mit zwei Fingern bewegen oder zoomen."
+
+#: cttm-settings.php:250
+msgid "Check this box to disable one-finger events on touch devices. "
+msgstr "Aktiviere dieses Kontrollkästchen, um Ein-Finger-Ereignisse auf Touch-Geräten zu deaktivieren."
+
+#: cttm-settings.php:131
+msgid "Disable one-finger touch event on touch devices (BETA)"
+msgstr "Deaktiviere das Ein-Finger-Ereignis auf Touch-Geräten (BETA)."
+
+#: cttm-settings.php:16
+msgid "Settings"
+msgstr "Einstellungen"
+
+#: cttm-settings.php:234
+msgid "The search box will show up on the top left corner of each map. "
+msgstr "Das Suchfeld wird in der oberen linken Ecke jeder Karte angezeigt."
+
+#: cttm-settings.php:234
+msgid "Check this box to add a search module on your dynamic maps."
+msgstr "Aktiviere dieses Kontrollkästchen, um ein Suchmodul zu deinen dynamischen Karten hinzuzufügen."
+
+#: cttm-settings.php:129
+msgid "Enable search module in frontend"
+msgstr "Aktiviere das Suchmodul im Frontend"
+
+#: includes/admin/cttm-admin.php:128
+msgid "Locate your marker on the map:"
+msgstr "Marker auf der Karte platzieren:"
+
+#: cttm-settings.php:179
+msgid "By default, Travelers' Map is activated on posts only. You can also activate the plugin on pages and custom post types."
+msgstr "Standardmäßig ist Travelers' Map nur für Beiträge aktiviert. Du kannst das Plugin auch auf Seiten und individuellen Beitragstypen aktivieren."
+
+#: cttm-settings.php:124
+msgid "Map settings"
+msgstr "Karten-Einstellungen"
+
+#: cttm-settings.php:121
+msgid "Activate Travelers' Map on:"
+msgstr "Aktiviere Travelers' Map auf:"
+
+#: cttm-settings.php:119
+msgid "Plugin main settings"
+msgstr "Plugin-Haupteinstellungen"
+
+#: cttm-settings.php:101
+msgid "When uninstalling, above settings are deleted from database while geolocalisation data are kept. "
+msgstr "Bei der Deinstallation werden die oben genannten Einstellungen aus der Datenbank gelöscht, während die Geolokalisierungsdaten beibehalten werden."
+
+#: includes/admin/cttm-shortcode-helper.php:172
+msgid "Select the tags you want to show on the map. Default: All tags."
+msgstr "Wähle die Schlagwörter aus, die auf der Karte angezeigt werden sollen. Standard: Alle Schlagwörter."
+
+#: includes/admin/cttm-shortcode-helper.php:171
+msgid "Tags:"
+msgstr "Schlagwörter:"
+
+#: includes/admin/cttm-shortcode-helper.php:152
+msgid "Select the categories you want to show on the map. Default: All categories."
+msgstr "Wähle die Kategorien aus, die auf der Karte angezeigt werden sollen. Standard: Alle Kategorien."
+
+#: includes/admin/cttm-shortcode-helper.php:151
+msgid "Categories:"
+msgstr "Kategorien:"
+
+#: includes/admin/cttm-shortcode-helper.php:86
+msgid "Max height:"
+msgstr "Max. Höhe:"
+
+#: includes/admin/cttm-shortcode-helper.php:82
+#: includes/admin/cttm-shortcode-helper.php:88
+msgid "Exemple:"
+msgstr "Beispiel:"
+
+#: includes/admin/cttm-shortcode-helper.php:79
+msgid "Max width:"
+msgstr "Max. Breite:"
+
+#: includes/admin/cttm-shortcode-helper.php:75
+msgid " Any <a href=\"%1$s\" target=\"_blank\">valid CSS unit</a> is accepted, although <code>px</code> and <code>vh</code> are recommended. Exemple: <code>500px</code> or <code>25vh</code>"
+msgstr "Jede <a href=\"%1$s\" target=\"_blank\">gültige CSS-Einheit</a> wird akzeptiert, obwohl <code>px</code> und <code>vh</code> empfohlen werden. Beispiel: <code>500px</code> oder <code>25vh</code>"
+
+#: includes/admin/cttm-shortcode-helper.php:73
+msgid "Height:"
+msgstr "Höhe:"
+
+#: includes/admin/cttm-shortcode-helper.php:68
+msgid " Any <a href=\"%1$s\" target=\"_blank\">valid CSS unit</a> is accepted. Exemple: <code>780px</code> or <code>50%%</code> "
+msgstr "Jede <a href=\"%1$s\" target=\"_blank\">gültige CSS-Einheit</a> wird akzeptiert. Beispiel: <code>780px</code> oder <code>50%%</code>"
+
+#: includes/admin/cttm-shortcode-helper.php:66
+msgid "Width:"
+msgstr "Breite:"
+
+#: includes/admin/cttm-shortcode-helper.php:59
+msgid "The above shortcode is automatically updated when you modify the settings below :"
+msgstr "Der obige Shortcode wird automatisch aktualisiert, wenn du die folgenden Einstellungen änderst:"
+
+#: includes/admin/cttm-shortcode-helper.php:58
+msgid "Shortcode settings"
+msgstr "Shortcode-Einstellungen"
+
+#: includes/admin/cttm-shortcode-helper.php:52
+msgid "Copy and paste this shortcode into the content of a Post or a Page to add a dynamic map:"
+msgstr "Kopiere diesen Shortcode und füge ihn in den Inhalt eines Beitrags oder einer Seite ein, um eine dynamische Karte hinzuzufügen:"
+
+#: includes/admin/cttm-shortcode-helper.php:51
+msgid "Your shortcode"
+msgstr "Dein Shortcode"
+
+#: includes/admin/cttm-shortcode-helper.php:15
+#: includes/admin/cttm-shortcode-helper.php:23
+msgid "Shortcode Helper"
+msgstr "Shortcode-Hilfe"
+
+#: includes/admin/cttm-shortcode-helper.php:15
+msgid "Travelers' Map - Shortcode Helper"
+msgstr "Travelers' Map – Shortcode-Hilfe"
+
+#: includes/admin/cttm-admin.php:250
+msgid "Longitude"
+msgstr "Längengrad"
+
+#: includes/admin/cttm-admin.php:238
+msgid "Latitude"
+msgstr "Breitengrad"
+
+#: includes/admin/cttm-admin.php:88
+msgid "Travelers' Map - Add / edit your post marker"
+msgstr "Travelers' Map – Bearbeite/füge deine Beitrags-Marker hinzu"
+
+#: cttm-activation.php:15
+msgid "Default - Violet"
+msgstr "Standard – Violett"
+
+#: cttm-activation.php:16
+msgid "Default - Red"
+msgstr "Standard – Rot"
+
+#: cttm-activation.php:17
+msgid "Default - Orange"
+msgstr "Standard – Orange"
+
+#: cttm-activation.php:18
+msgid "Default - Green"
+msgstr "Standard – Grün"
+
+#: cttm-activation.php:19
+msgid "Default - Blue"
+msgstr "Standard – Blau"
+
+#: cttm-activation.php:14
+msgid "Default - Black"
+msgstr "Standard – Schwarz"
+
+#: cttm-functions.php:84
+msgid "No thumbnail found."
+msgstr "Kein Vorschaubild gefunden"
+
+#: cttm-functions.php:69
+msgid "Travelers Map Markers"
+msgstr "Travelers-Map-Marker"
+
+#: cttm-functions.php:35
+msgid "No marker found in trash"
+msgstr "Kein Marker im Papierkorb"
+
+#: cttm-functions.php:34
+msgid "No marker found"
+msgstr "Marker nicht gefunden"
+
+#: cttm-functions.php:33
+msgid "Search marker"
+msgstr "Marker suchen"
+
+#: cttm-functions.php:32
+msgid "Customize markers"
+msgstr "Marker anpassen"
+
+#: cttm-functions.php:31
+msgid "View marker"
+msgstr "Marker anzeigen"
+
+#: cttm-functions.php:30 includes/admin/cttm-admin.php:177
+msgid "Edit marker"
+msgstr "Marker bearbeiten"
+
+#: cttm-functions.php:29
+msgid "New marker"
+msgstr "Neuer Marker"
+
+#: cttm-functions.php:28
+msgid "Add new marker"
+msgstr "Neuen Marker hinzufügen"
+
+#: cttm-functions.php:27
+msgid "Add new"
+msgstr "Erstellen"
+
+#: cttm-functions.php:26
+msgid "Travelers' Map Markers"
+msgstr "Travelers' Map Marker"
+
+#: cttm-functions.php:24
+msgid "Marker"
+msgstr "Marker"
+
+#: cttm-functions.php:23 cttm-functions.php:25
+msgid "Markers"
+msgstr "Marker"
+
+#: cttm-settings.php:280
+msgid "Leaflet default CSS is still loaded. Please note that only the content chosen above is loaded. "
+msgstr "Das Standard-CSS von Leaflet wird weiterhin geladen. Bitte beachte, dass nur der oben ausgewählte Inhalt geladen wird."
+
+#: cttm-settings.php:224
+msgid "It is not necessary, but you can support this plugin by adding: "
+msgstr "Es ist nicht erforderlich, aber du kannst dieses Plugin unterstützen, indem du Folgendes hinzufügst:"
+
+#: cttm-settings.php:222
+msgid "Attribution is shown to the lower right of the map. It is necessary to give credit to the Openstreetmap datas and your tile provider. "
+msgstr "Die Verlinkung wird unten rechts auf der Karte angezeigt. Openstreetmap und dein Kachelanbieter müssen verlinkt werden."
+
+#: cttm-settings.php:221 cttm-settings.php:268
+msgid "Preview:"
+msgstr "Vorschau:"
+
+#: cttm-settings.php:204
+msgid " If you use the <a href=\"%1$s\" target=\"_blank\">free tile providers list</a>, subdomains are displayed when different from \"abc\"."
+msgstr "Wenn du die Liste der <a href=\"%1$s\" target=\"_blank\">kostenlose Kachelanbieter</a> verwendest, werden Subdomains angezeigt, wenn diese sich von \"abc\" unterscheiden."
+
+#: cttm-settings.php:202
+msgid "However the most common subdomain is <code>abc</code>, you can find the information on your provider's website."
+msgstr "Die häufigste Subdomain ist jedoch <code>abc</code>. Du findest diese Informationen auf der Website deines Anbieters."
+
+#: cttm-settings.php:202
+msgid "In this plugin, default is <code>abcd</code> because we use CartoDB."
+msgstr "In diesem Plugin ist der Standardwert<code>abcd</code>, da wir CartoDB verwenden."
+
+#: cttm-settings.php:193
+msgid "Exemple (thunderforest.com):"
+msgstr "Beispiel (thunderforest.com):"
+
+#: cttm-settings.php:191
+msgid "If your tile provider require an API key, please insert it directly as explained on their website. "
+msgstr "Wenn dein Kachelanbieter einen API-Schlüssel benötigt, gib ihn bitte direkt ein, wie auf der Website erläutert."
+
+#: cttm-settings.php:190
+msgid " You can find a list of free tile providers <a href=\"%1$s\" target=\"_blank\">here</a>."
+msgstr "Eine Liste der kostenlosen Kachelanbieter <a href=\"%1$s\" target=\"_blank\">findest du hier</a>."
+
+#: cttm-settings.php:128 includes/admin/cttm-shortcode-helper.php:313
+msgid "Attribution"
+msgstr "Verlinkung"
+
+#: cttm-settings.php:127 includes/admin/cttm-shortcode-helper.php:308
+msgid "Tiles Server sub-domains"
+msgstr "Kachel Server Subdomain"
+
+#: cttm-settings.php:126 includes/admin/cttm-shortcode-helper.php:303
+msgid "Tiles Server URL"
+msgstr "Kachel Server-URL"
+
+#: cttm-settings.php:100
+msgid "Upon deactivation, every data (geolocalisation meta-data and settings) is kept. "
+msgstr "Bei der Deaktivierung bleiben alle Daten (Geolokalisierungs-Metadaten und Einstellungen) erhalten."
+
+#: cttm-settings.php:99
+msgid "To prevent unintentional loss of data, this is how Travelers' Map works:"
+msgstr "Um unbeabsichtigten Datenverlust zu vermeiden, funktioniert Travelers' Map folgendermaßen:"
+
+#: cttm-settings.php:98
+msgid "Are you sure you wish to delete every geolocalisation data and custom markers in your database? This action is irreversible."
+msgstr "Möchtest du wirklich alle Geolokalisierungsdaten und individuellen Marker in deiner Datenbank löschen? Diese Aktion ist unwiderruflich."
+
+#: cttm-settings.php:98
+msgid "Delete all plugin data in database"
+msgstr "Lösche alle Plugin-Daten in der Datenbank"
+
+#: cttm-settings.php:97
+msgid "Please understand this is irreversible."
+msgstr "Bitte hab Verständnis dafür, dass dies unwiderruflich ist."
+
+#: cttm-settings.php:96
+msgid "This button cleans every geolocalisation meta-data added to your posts and every custom markers added."
+msgstr "Dieser Button bereinigt alle zu deinen Posts hinzugefügten Geolokalisierungsmetadaten und alle individuellen Marker."
+
+#: cttm-settings.php:95
+msgid "Clean database - Delete all geolocalisation data and markers"
+msgstr "Löschen der Datenbank – Lösche alle Geolokalisierungsdaten und Marker"
+
+#: cttm-settings.php:67
+msgid "Are you sure you wish to reset settings to default? Current settings will be deleted."
+msgstr "Möchtest du auf die Standardeinstellungen zurücksetzen? Aktuelle Einstellungen werden gelöscht."
+
+#: cttm-settings.php:67
+msgid "Reset settings to default"
+msgstr "Auf Standardeinstellungen zurücksetzen"
+
+#: cttm-settings.php:66
+msgid "Save Changes"
+msgstr "Änderungen speichern"
+
+#: cttm-settings.php:56
+msgid "Please check the <a href=\"%1$s\" target=\"_blank\">\"Get Started\" tutorial</a> on my blog."
+msgstr "Schau dir die <a href=\"%1$s\" target=\"_blank\">\"Erste Schritte\"-Anleitung</a> auf meinem Blog an."
+
+#: cttm-settings.php:55
+msgid "Need some help setting up this plugin?"
+msgstr "Benötigst du Hilfe beim Einrichten dieses Plugins?"
+
+#: cttm-settings.php:27
+msgid "version"
+msgstr "Version"
+
+#. Author URI of the plugin
+msgid "https://verriercamille.com/"
+msgstr "https://verriercamille.com/"
+
+#. Author of the plugin
+msgid "Camille Verrier"
+msgstr "Camille Verrier"
+
+#. Description of the plugin
+msgid "Pin your Wordpress posts on a dynamic OpenStreetMap map"
+msgstr "Pinne deine WordPress-Beiträge auf einer dynamischen OpenStreetMap-Karte"
+
+#. Plugin URI of the plugin
+msgid "https://wordpress.org/plugins/travelers-map"
+msgstr "https://wordpress.org/plugins/travelers-map"
+
+#. Plugin Name of the plugin
+msgid "Travelers' Map"
+msgstr "Travelers' Map"
+
+#: cttm-settings.php:40 includes/admin/cttm-shortcode-helper.php:34
+msgid "Donate"
+msgstr "Spenden"
+
+#: cttm-settings.php:38 includes/admin/cttm-shortcode-helper.php:32
+msgid "Support this free plugin:"
+msgstr "Unterstütze dieses Plugin:"
+
+#: includes/admin/cttm-shortcode-helper.php:289
+msgid "Force popover links to open in a new tab. Warning: This is not recommended as it changes the default browser behaviour. You should let the users decide how they want to open links."
+msgstr "Erzwinge das Öffnen von Popup-Links in einem neuen Tab. Warnung: Dies wird nicht empfohlen, da dadurch das Standardverhalten des Browsers geändert wird. Du solltest die Benutzer entscheiden lassen, wie sie Links öffnen möchten."
+
+#: cttm-settings.php:280
+msgid "Check this box to disable Travelers' Map popovers CSS. "
+msgstr "Aktiviere dieses Kontrollkästchen, um die Travelers' Map Popup-CSS zu deaktivieren."
+
+#: travelers-map.php:95
+msgid "Thank you for using Travelers' Map. <br>This plugin is creating a new thumbnail size for your markers' popovers to speed up their loading time in the frontend. <br><br><strong>If you already have images in your media library before activating this plugin, please consider regenerating them with the awesome plugin <a href=\"%1$s\" target=\"_blank\">Regenerate Thumbnails</a> as this is not supported by Wordpress alone.</strong> <br><br> Please note that <strong>images added after you activate this plugin are automatically generated in the right size</strong>."
+msgstr "Vielen Dank, dass du Travelers' Map benutzt. <br>Dieses Plugin erstellt neue Vorschaubilder für deine Marker-Popover, um deren Ladezeit im Frontend zu beschleunigen. <br><br><strong>Wenn du bereits Bilder in deiner Mediathek hattest, bevor du dieses Plugin aktiviert hast, solltest du sie mit dem fantastischen Plugin <a href=\"%1$s\" target=\"_blank\">Regenerate Thumbnails</a> neu generieren, da dies nicht von WordPress unterstützt wird.</strong> <br><br> Bitte beachte, dass <strong>Bilder, die nach der Aktivierung dieses Plugins hinzugefügt wurden, automatisch in der richtigen Größe generiert werden</strong>."
+
+#: includes/admin/cttm-shortcode-helper.php:193
+msgid "Select the post types you want to show on the map. Default: All post types selected in the plugin settings page."
+msgstr "Wähle die Inhaltstypen aus, die auf der Karte angezeigt werden sollen. Standard: Alle auf der Plugin-Einstellungsseite ausgewählten Beitragstypen."
+
+#: includes/admin/cttm-shortcode-helper.php:192
+msgid "Post types:"
+msgstr "Inhaltstypen:"

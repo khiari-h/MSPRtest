@@ -1,0 +1,52 @@
+<?php return array(
+    'root' => array(
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
+        'type' => 'wordpress-plugin',
+        'install_path' => __DIR__ . '/../../build',
+        'aliases' => array(),
+        'reference' => 'd1c68248fd2f031118d0ca0143cd65dd625d154e',
+        'name' => 'carmoreira/interactive-geo-maps',
+        'dev' => false,
+    ),
+    'versions' => array(
+        'carmoreira/interactive-geo-maps' => array(
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'type' => 'wordpress-plugin',
+            'install_path' => __DIR__ . '/../../build',
+            'aliases' => array(),
+            'reference' => 'd1c68248fd2f031118d0ca0143cd65dd625d154e',
+            'dev_requirement' => false,
+        ),
+        'freemius/wordpress-sdk' => array(
+            'pretty_version' => '2.6.2',
+            'version' => '2.6.2.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../freemius/wordpress-sdk',
+            'aliases' => array(),
+            'reference' => 'ea3a288e52ff74c755b3c1eb857f41c5a2d899e5',
+            'dev_requirement' => false,
+        ),
+        'hassankhan/config' => array(
+            'pretty_version' => '3.1.0',
+            'version' => '3.1.0.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../hassankhan/config',
+            'aliases' => array(),
+            'reference' => '8e1c07f4fdc2b986b8a781f0dcba155af2a579b6',
+            'dev_requirement' => false,
+        ),
+        'saltus/framework' => array(
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'type' => 'project',
+            'install_path' => __DIR__ . '/../saltus/framework',
+            'aliases' => array(
+                0 => '9999999-dev',
+            ),
+            'reference' => '5afce29e0bc789f0f65a36853003e576a787e67c',
+            'dev_requirement' => false,
+        ),
+    ),
+);

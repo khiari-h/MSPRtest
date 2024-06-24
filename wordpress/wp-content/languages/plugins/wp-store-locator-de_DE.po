@@ -1,0 +1,2161 @@
+# Translation of Plugins - WP Store Locator - Stable (latest release) in German
+# This file is distributed under the same license as the Plugins - WP Store Locator - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2024-02-08 21:18:16+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/4.0.0-beta.2\n"
+"Language: de\n"
+"Project-Id-Version: Plugins - WP Store Locator - Stable (latest release)\n"
+
+#. Author URI of the plugin/theme
+msgid "http://wpstorelocator.co/"
+msgstr "http://wpstorelocator.co/"
+
+#. Author of the plugin/theme
+msgid "Tijmen Smit"
+msgstr "Tijmen Smit"
+
+#. Description of the plugin/theme
+msgid "An easy to use location management system that enables users to search for nearby physical stores"
+msgstr "Ein einfach zu benutzendes System für die Verwaltung von Standorten, das es den Besuchern erlaubt nach in der Nähe gelegenen Händlern zu suchen."
+
+#. Plugin Name of the plugin/theme
+msgid "WP Store Locator"
+msgstr "WP Store Locator"
+
+#: inc/wpsl-functions.php:275
+msgid "(zip code) (city)"
+msgstr "(PLZ) (Stadt)"
+
+#: inc/wpsl-functions.php:274
+msgid "(zip code) (city) (state)"
+msgstr "(PLZ) (Stadt) (Bundesland)"
+
+#: inc/wpsl-functions.php:273
+msgid "(city), (zip code)"
+msgstr "(Stadt), (PLZ)"
+
+#: inc/wpsl-functions.php:272
+msgid "(city) (zip code)"
+msgstr "(Ort) (PLZ)"
+
+#: inc/wpsl-functions.php:271
+msgid "(city), (state) (zip code)"
+msgstr "(Ort), (Bundesland) (PLZ)"
+
+#: inc/wpsl-functions.php:270
+msgid "(city) (state) (zip code)"
+msgstr "(Stadt) (Bundesland) (PLZ)"
+
+#: inc/wpsl-functions.php:255
+msgid "Terrain"
+msgstr "Boden"
+
+#: inc/wpsl-functions.php:254
+msgid "Hybrid"
+msgstr "Hybrid"
+
+#: inc/wpsl-functions.php:253
+msgid "Satellite"
+msgstr "Satellit"
+
+#: inc/wpsl-functions.php:237
+msgid "Mon %sTue %sWed %sThu %sFri %sSat Closed %sSun Closed"
+msgstr "Mo %sDi %sMi %sDo %sFr %sSa Geschlossen %sSo Geschlossen"
+
+#: inc/wpsl-functions.php:207
+msgid "Sunday"
+msgstr "Sonntag"
+
+#: inc/wpsl-functions.php:206
+msgid "Saturday"
+msgstr "Samstag"
+
+#: inc/wpsl-functions.php:205
+msgid "Friday"
+msgstr "Freitag"
+
+#: inc/wpsl-functions.php:204
+msgid "Thursday"
+msgstr "Donnerstag"
+
+#: inc/wpsl-functions.php:203
+msgid "Wednesday"
+msgstr "Mittwoch"
+
+#: inc/wpsl-functions.php:202
+msgid "Tuesday"
+msgstr "Dienstag"
+
+#: inc/wpsl-functions.php:201
+msgid "Monday"
+msgstr "Montag"
+
+#: inc/wpsl-functions.php:184
+msgid "Show the store list below the map"
+msgstr "Händlerliste unterhalb der Karte anzeigen"
+
+#: inc/class-post-types.php:165
+msgid "Zip"
+msgstr "Zip"
+
+#: inc/class-post-types.php:147
+msgid "Enter store title here"
+msgstr "Titel des Händlers hier eingeben"
+
+#: inc/class-post-types.php:116
+msgid "New Store Category Name"
+msgstr "Name der neuen Händler-Kategorie"
+
+#: inc/class-post-types.php:115
+msgid "Add New Store Category"
+msgstr "Neue Händler-Kategorie hinzufügen"
+
+#: inc/class-post-types.php:114
+msgid "Update Store Category"
+msgstr "Händler-Kategorie aktualisieren"
+
+#: inc/class-post-types.php:113
+msgid "Edit Store Category"
+msgstr "Händler-Kategorie bearbeiten"
+
+#: inc/class-post-types.php:112
+msgid "Parent Store Category:"
+msgstr "Übergeordnete Händler-Kategorie:"
+
+#: inc/class-post-types.php:111
+msgid "Parent Store Category"
+msgstr "Übergeordnete Händler-Kategorie"
+
+#: inc/class-post-types.php:110
+msgid "All Store Categories"
+msgstr "Alle Händlerkategorien"
+
+#: inc/class-post-types.php:109
+msgid "Search Store Categories"
+msgstr "Suche in Händler-Kategorien"
+
+#: inc/class-post-types.php:108
+msgid "Store Category"
+msgstr "Händler-Kategorie"
+
+#: inc/class-post-types.php:107 inc/class-post-types.php:117
+msgid "Store Categories"
+msgstr "Händler-Kategorien"
+
+#: inc/class-post-types.php:65
+msgid "No %s found in trash"
+msgstr "Keine %s im Papierkorb gefunden"
+
+#: inc/class-post-types.php:64
+msgid "No %s found"
+msgstr "Keine %s gefunden"
+
+#: inc/class-post-types.php:63
+msgid "Search %s"
+msgstr "Suche %s"
+
+#: inc/class-post-types.php:62
+msgid "View %s"
+msgstr "%s anzeigen"
+
+#: inc/class-post-types.php:60
+msgid "Edit %s"
+msgstr "%s bearbeiten"
+
+#: inc/class-post-types.php:59
+msgid "Add New %s"
+msgstr "%s neu hinzufügen"
+
+#: inc/class-post-types.php:58 inc/class-post-types.php:61
+msgid "New %s"
+msgstr "Neu %s"
+
+#: inc/class-post-types.php:56
+msgid "All %s"
+msgstr "Alle %s"
+
+#: inc/class-post-types.php:55
+msgid "Store Locator"
+msgstr "Händlersuche"
+
+#: inc/class-post-types.php:51
+msgid "Stores"
+msgstr "Händler"
+
+#: inc/class-post-types.php:50
+msgid "Store"
+msgstr "Geschäft"
+
+#: frontend/templates/default.php:60
+#: frontend/templates/store-listings-below.php:66
+msgid "Search provided by %sWP Store Locator%s"
+msgstr "Suche von %sWP Store Locator%s"
+
+#: frontend/class-frontend.php:1202
+msgid "An unknown error occurred."
+msgstr "Es ist ein unbekannter Fehler aufgetreten."
+
+#: frontend/class-frontend.php:1201
+msgid "The geolocation request timed out."
+msgstr "Die Anfrage zur Geolocation ist in eine Zeitüberschreitung gelaufen."
+
+#: frontend/class-frontend.php:1200
+msgid "Location information is unavailable."
+msgstr "Die Information zum Standort ist nicht verfügbar."
+
+#: frontend/class-frontend.php:1199
+msgid "The application does not have permission to use the Geolocation API."
+msgstr "Die Anwendung hat keine Rechte, um die Geolocation API zu verwenden."
+
+#: frontend/class-frontend.php:1086
+msgid "Any"
+msgstr "Alle"
+
+#: frontend/class-frontend.php:761
+msgid "If you use the [wpsl_map] shortcode outside a store page you need to set the ID attribute."
+msgstr "Wenn Du den [wpsl_map] Shortcode außerhalb einer Händlerseite verwenden willst, musst Du das ID-Attribut setzen."
+
+#: frontend/class-frontend.php:712
+msgid "If you use the [wpsl_hours] shortcode outside a store page you need to set the ID attribute."
+msgstr "Wenn Du den [wpsl_hours] Shortcode außerhalb einer Händlerseite verwenden willst, musst Du das ID-Attribut setzen."
+
+#: frontend/class-frontend.php:601
+msgid "If you use the [wpsl_address] shortcode outside a store page you need to set the ID attribute."
+msgstr "Wenn Du den [wpsl_address] Shortcode außerhalb einer Händlerseite verwenden willst, musst Du das ID-Attribut setzen."
+
+#: admin/upgrade.php:539
+msgid "All the store locations are now converted to custom post types. %s You can view them on the %sAll Stores%s page."
+msgstr "Alle Händlerstandorte wurden jetzt zu eigenständigen Posttypen umgewandelt. %s Du kannst sie jetzt auf der %sAlle Händler%s-Seite ansehen."
+
+#: admin/upgrade.php:417
+msgid "Start Converting"
+msgstr "Mit der Konvertierung beginnen"
+
+#: admin/upgrade.php:415
+msgid "Store locations to convert:"
+msgstr "Händerstandorte, die konvertiert werden müssen:"
+
+#: admin/upgrade.php:394
+msgid "The script converting the locations timed out. %s You can click the \"Start Converting\" button again to restart the script. %s If there are thousands of store locations left to convert and you keep seeing this message, then you can try to contact your host and ask if they can increase the maximum execution time. %s The plugin tried to disable the maximum execution time, but if you are reading this then that failed."
+msgstr "Das Skript, das die Standorte konvertieren sollte, ist in eine Zeitüberschreitung gelaufen. %s Du kannst den Button \"Konvertierung starten\" erneut anklicken, um das Skript neu zu starten. %s Wenn noch tausende Standorte übriges sind und du diese Meldung immer wieder bekommst, kannst du deinen HostingPartner ansprechen und ihn drum bitten, die \"maximum execution time\" heraufzusetzen. %s Das Plugin hat versucht die \"maximum execution time\" zu deaktivieren, aber wenn du diese Meldung siehst, hat dies nicht funktioniert."
+
+#: admin/upgrade.php:373
+msgid "Because you updated WP Store Locator from version 1.x, the %s current store locations need to be %sconverted%s to custom post types."
+msgstr "Da die WP Händlersuche von Version 1.x aus auf den neuesten Stand gebracht hast, müssen die %s derzeitigen Händlerstandorte zu eigenständigen Posttypen %sconverted%s werden."
+
+#: admin/upgrade.php:190 inc/wpsl-functions.php:91
+msgid "store-category"
+msgstr "haendler-kategorie"
+
+#: admin/upgrade.php:186 inc/wpsl-functions.php:90
+msgid "stores"
+msgstr "haendler"
+
+#: admin/upgrade.php:92
+msgid "Reset"
+msgstr "Zurücksetzen"
+
+#: admin/upgrade.php:82
+msgid "info window"
+msgstr "Infofenster"
+
+#: admin/templates/map-settings.php:473
+msgid "Clear store locator transient cache"
+msgstr "Den vorübergehenden Cache der Händlersuche leeren"
+
+#: admin/templates/map-settings.php:472
+msgid "WPSL transients"
+msgstr "WPSL vorübergehend"
+
+#: admin/templates/map-settings.php:468
+msgid "This disables the WPSL transient cache. %sThe transient cache is only used if the %sLoad locations on page load%s option is enabled."
+msgstr "Dies deaktiviert den vorübergehenden Cache von WPSL. %sDer vorübergehende Cache wird nur benutzt, wenn die Option %sLade Standorte beim Laden der Seite%s eingeschaltet ist."
+
+#: admin/templates/map-settings.php:468
+msgid "Enable store locator debug?"
+msgstr "Aktiviere das Debugging der Händlersuche?"
+
+#: admin/templates/map-settings.php:465
+msgid "Tools"
+msgstr "Werkzeuge"
+
+#: admin/templates/map-settings.php:452 frontend/class-frontend.php:1302
+#: inc/wpsl-functions.php:109
+msgid "API usage limit reached"
+msgstr "Verwendungslimit der API erreicht"
+
+#: admin/templates/map-settings.php:451
+msgid "You can raise the %susage limit%s by obtaining an API %skey%s, and fill in the \"API key\" field at the top of this page."
+msgstr "Du kannst das %susage limit%s erhöhen, indem Du einen API %skey%s holst und ihn in das Feld \"API-Schlüssel\" ganz oben auf dieser Seite einträgst."
+
+#: admin/templates/map-settings.php:451
+msgid "Query limit error"
+msgstr "Fehler beim Abfragelimit"
+
+#: admin/templates/map-settings.php:448 frontend/class-frontend.php:1301
+#: inc/wpsl-functions.php:108
+msgid "Something went wrong, please try again!"
+msgstr "Etwas ging schief, bitte versuche es erneut!"
+
+#: admin/templates/map-settings.php:447
+msgid "General error"
+msgstr "Allgemeiner Fehler"
+
+#: admin/templates/map-settings.php:443 admin/templates/map-settings.php:444
+#: admin/upgrade.php:159 frontend/class-frontend.php:1308
+#: inc/wpsl-functions.php:107
+msgid "Zoom here"
+msgstr "Hier reinzoomen"
+
+#: admin/templates/map-settings.php:439 admin/templates/map-settings.php:440
+#: admin/upgrade.php:155 frontend/class-frontend.php:1307
+#: inc/wpsl-functions.php:106
+msgid "Street view"
+msgstr "Streetview"
+
+#: admin/templates/map-settings.php:435 admin/templates/map-settings.php:436
+#: admin/upgrade.php:87 frontend/class-frontend.php:1306
+#: inc/wpsl-functions.php:105
+msgid "Back"
+msgstr "Zurück"
+
+#: admin/templates/map-settings.php:432 admin/upgrade.php:163
+#: frontend/class-frontend.php:1304 inc/wpsl-functions.php:104
+msgid "No route could be found between the origin and destination"
+msgstr "Es konnte keine Route zwischen dem Start und dem Ziel gefunden werden"
+
+#: admin/templates/map-settings.php:431
+msgid "No directions found"
+msgstr "Keine Wegbeschreibung gefunden"
+
+#: admin/templates/map-settings.php:428 frontend/class-frontend.php:1303
+#: inc/wpsl-functions.php:103
+msgid "Directions"
+msgstr "Wegbeschreibung"
+
+#: admin/templates/map-settings.php:427
+msgid "Get directions"
+msgstr "Route erzeugen"
+
+#: admin/templates/map-settings.php:423 admin/templates/map-settings.php:424
+#: frontend/class-frontend.php:1305 inc/wpsl-functions.php:95
+msgid "Start location"
+msgstr "Start-Standort"
+
+#: admin/templates/map-settings.php:403 admin/templates/map-settings.php:404
+#: frontend/class-frontend.php:663 frontend/underscore-functions.php:29
+#: frontend/underscore-functions.php:121 inc/wpsl-functions.php:110
+msgid "Phone"
+msgstr "Telefon"
+
+#: admin/templates/map-settings.php:399 admin/templates/map-settings.php:400
+#: admin/upgrade.php:66 frontend/class-frontend.php:1300
+#: frontend/underscore-functions.php:114 frontend/underscore-functions.php:141
+#: inc/wpsl-functions.php:102
+msgid "More info"
+msgstr "Weitere Informationen"
+
+#: admin/templates/map-settings.php:396 frontend/class-frontend.php:1084
+msgid "Category"
+msgstr "Kategorie"
+
+#: admin/templates/map-settings.php:395 admin/upgrade.php:218
+#: inc/wpsl-functions.php:115
+msgid "Category filter"
+msgstr "Kategorie-Filter"
+
+#: admin/templates/map-settings.php:391 admin/templates/map-settings.php:392
+#: frontend/templates/default.php:29
+#: frontend/templates/store-listings-below.php:29 inc/wpsl-functions.php:101
+msgid "Results"
+msgstr "Ergebnisse"
+
+#: admin/templates/map-settings.php:388 frontend/class-frontend.php:1298
+#: inc/wpsl-functions.php:98
+msgid "Searching..."
+msgstr "Suchen..."
+
+#: admin/templates/map-settings.php:387
+msgid "Searching (preloader text)"
+msgstr "Suche läuft (Text für den Preloader)"
+
+#: admin/templates/map-settings.php:379 admin/templates/map-settings.php:380
+#: frontend/class-frontend.php:1299 inc/wpsl-functions.php:100
+msgid "No results found"
+msgstr "Keine Ergebnisse gefunden"
+
+#: admin/templates/map-settings.php:375 admin/templates/map-settings.php:376
+#: frontend/templates/default.php:20
+#: frontend/templates/store-listings-below.php:20 inc/wpsl-functions.php:99
+msgid "Search radius"
+msgstr "Suchradius"
+
+#: admin/templates/map-settings.php:371 admin/templates/map-settings.php:372
+#: frontend/templates/default.php:11
+#: frontend/templates/store-listings-below.php:11 inc/wpsl-functions.php:96
+msgid "Your location"
+msgstr "Ihr Standort"
+
+#: admin/templates/map-settings.php:368
+msgid "Labels"
+msgstr "Formularfeld-Beschriftungen"
+
+#: admin/templates/map-settings.php:356
+msgid "The permalink slugs %smust be unique%s on your site."
+msgstr "Die Permalink Slugs %smüssen auf seiner Website einzigartig sein%s."
+
+#: admin/templates/map-settings.php:353
+msgid "Category slug"
+msgstr "Kategorie Slug"
+
+#: admin/templates/map-settings.php:349
+msgid "Store slug"
+msgstr "Händler Slug"
+
+#: admin/templates/map-settings.php:345
+msgid "Enable permalink?"
+msgstr "Permalink aktivieren?"
+
+#: admin/templates/map-settings.php:342
+msgid "Permalink"
+msgstr "Direktlink"
+
+#: admin/templates/map-settings.php:329
+msgid "The default country and opening hours are only used when a new store is created. So changing the default values will have no effect on existing store locations."
+msgstr "Das Standard-Land und die Standard-Öffnungszeiten werden nur verwendet, wenn ein neuer Händler angelegt wurde. Wenn also diese Standardwerte verändert werden, hat dies keinen Einfluss auf bereits bestehende Händlerstandorte."
+
+#: admin/templates/map-settings.php:322
+msgid "Opening hours format"
+msgstr "Format der Öffnungszeiten"
+
+#: admin/templates/map-settings.php:316 admin/templates/map-settings.php:325
+msgid "The default opening hours"
+msgstr "Die Standard-Öffnungszeiten"
+
+#: admin/templates/map-settings.php:313
+msgid "Opening hours created in version 1.x %sare not%s automatically converted to the new dropdown format."
+msgstr "Öffnungszeiten aus Version 1.x %swerden nicht%s automatisch auf das neue Auswahlformat konvertiert."
+
+#: admin/templates/map-settings.php:309
+msgid "Opening hours input type"
+msgstr "Eingabetyp der Öffnungszeiten"
+
+#: admin/templates/map-settings.php:303
+msgid "Hide the opening hours?"
+msgstr "Die Öffnungszeiten verbergen?"
+
+#: admin/templates/map-settings.php:299
+msgid "Map type for the location preview"
+msgstr "Kartentyp für die Vorschau des Standortes"
+
+#: admin/templates/map-settings.php:295
+msgid "Default country"
+msgstr "Standardland"
+
+#: admin/templates/map-settings.php:292
+msgid "Store Editor"
+msgstr "Bearbeitung des Händlers"
+
+#: admin/templates/map-settings.php:278
+msgid "The grid size of a cluster in pixels. %s A larger number will result in a lower amount of clusters and also make the algorithm run faster."
+msgstr "Die Gittergröße von Gruppen in Pixel. %s Eine größere Anzahl wird zu weniger Gruppen führen und der Algorithmus wird schneller laufen."
+
+#: admin/templates/map-settings.php:278
+msgid "Cluster size"
+msgstr "Clustergröße"
+
+#: admin/templates/map-settings.php:274
+msgid "If this zoom level is reached or exceeded, then all markers are moved out of the marker cluster and shown as individual markers."
+msgstr "Wenn dieser Zoomlevel erreicht ist oder überschritten wird, werden alle Marker aus der Gruppe gelöst und als individuelle Marker angezeigt."
+
+#: admin/templates/map-settings.php:274
+msgid "Max zoom level"
+msgstr "Maximaler Zoomlevel"
+
+#: admin/templates/map-settings.php:270
+msgid "Recommended for maps with a large amount of markers."
+msgstr "Empfohlen für Karten mit sehr vielen Markern."
+
+#: admin/templates/map-settings.php:270
+msgid "Enable marker clusters?"
+msgstr "Aktiviere Marker-Gruppen?"
+
+#: admin/templates/map-settings.php:266
+msgid "Markers"
+msgstr "Marker"
+
+#: admin/templates/map-settings.php:252
+msgid "You can add custom address formats with the %swpsl_address_formats%s filter."
+msgstr "Du kannst eigene Adress-Formate einfügen, wenn Du den %swpsl_address_formats%s-Filter verwendest."
+
+#: admin/templates/map-settings.php:252
+msgid "Address format"
+msgstr "Format der Adresse"
+
+#: admin/templates/map-settings.php:248
+msgid "If marker clusters are enabled this option will not work as expected as long as the markers are clustered. %s The bouncing of the marker won't be visible at all unless a user zooms in far enough for the marker cluster to change back in to individual markers. %s The info window will open as expected, but it won't be clear to which marker it belongs to. "
+msgstr "Wenn Markergruppen aktiviert sind, wird diese Option nicht wie erwartet funktionieren, solange die Marker gruppiert sind. %s Das Hüpfen des Markers wird nicht sichtbar sein, bis der Benutzer einen Zoomlevel aktiviert hat, der weit genug rein reicht in de Karte, um die Gruppen aufzulösen und die individuellen Marker anzuzeigen. %s Das Info-Fenster wird wie erwartet geöffnet, aber es wird nicht klar sein, zu welchem Marker es gehört. "
+
+#: admin/templates/map-settings.php:248
+msgid "If a user hovers over the search results the store marker"
+msgstr "Wenn ein Benutzer mit der Maus über die Suchergebnisse des Händlers fährt"
+
+#: admin/templates/map-settings.php:244
+msgid "Hide the distance in the search results?"
+msgstr "Die Distanz im Suchergebnis verbergen?"
+
+#: admin/templates/map-settings.php:240
+msgid "If the default style is disabled the %sInfoBox%s library will be used instead. %s This enables you to easily change the look and feel of the info window through the .wpsl-infobox css class."
+msgstr "Wenn der Standardstil deaktiviert ist, wird die %sInfoBox%s Bibliothek stattdessen verwendet. %s Dies ermöglicht es sehr einfach das Look & Feel des Infofensters über die .wpsl-infobox CSS-Klasse geändert werden kann."
+
+#: admin/templates/map-settings.php:240
+msgid "Use the default style for the info window?"
+msgstr "Benutze den Standardstil für das Info-Fenster?"
+
+#: admin/templates/map-settings.php:236
+msgid "If the store locator is not placed at the top of the page, enabling this feature can result in the page scrolling down. %s %sThis option is disabled on mobile devices.%s"
+msgstr "Wenn die Händlersuche nicht im oberen Bereich der Seite eingefügt wurde, sorgt diese Funktion dafür, dass die Seite nach unten scrollt. %s %sDiese Option ist auf mobilen Geräten nicht verfügbar.%s"
+
+#: admin/templates/map-settings.php:236
+msgid "On page load move the mouse cursor to the search field?"
+msgstr "Verschiebe den Cursor beim  Laden der Seite zum Suchfeld?"
+
+#: admin/templates/map-settings.php:232
+msgid "Clicking this link will make the map zoom in to the %s max auto zoom level %s."
+msgstr "Wenn man den Link anklickt, wird die Karte auf den %s maximalen Auto-Zoomlevel %s gezoomt."
+
+#: admin/templates/map-settings.php:232
+msgid "Show a \"Zoom here\" link in the info window?"
+msgstr "Zeige einen Link für \"Hier reinzoomen\" im Infofenster an?"
+
+#: admin/templates/map-settings.php:228
+msgid "Enabling this option can sometimes result in a small delay in the opening of the info window. %s This happens because an API request is made to Google Maps to check if street view is available for the current location."
+msgstr "Wenn diese Option aktiviert wird, kann es manchmal passieren, dass das Info mit einer kleinen Verzögerung geöffnet wird. %s Dies passiert, da eine API-Abfrage an Google Maps geschickt wird, um zu checken, ob Streetview für diesen Standort verfügbar ist."
+
+#: admin/templates/map-settings.php:228
+msgid "If street view is available for the current location, then show a \"Street view\" link in the info window?"
+msgstr "Wenn Streetview für diesen Standort verfügbar ist, zeige einen Link zu Streetview im Info-Fenster an?"
+
+#: admin/templates/map-settings.php:224
+msgid "Make the phone number clickable on mobile devices?"
+msgstr "Telefonnummer für Mobile Geräte klickbar?"
+
+#: admin/templates/map-settings.php:220
+msgid "If %spermalinks%s are enabled, the store name will always link to the store page."
+msgstr "Wenn %spermalinks%s aktiviert sind, verlinkt der Händlername immer zur Händler-Detailseite."
+
+#: admin/templates/map-settings.php:220
+msgid "Make the store name clickable if a store URL exists?"
+msgstr "Mache den Händlerlink anklickbar, wenn eine Homepage-URL existiert?"
+
+#: admin/templates/map-settings.php:216
+msgid "Where do you want to show the \"More info\" details?"
+msgstr "Wo sollen die Details zu \"Mehr Informationen\" angezeigt werden?"
+
+#: admin/templates/map-settings.php:212
+msgid "This places a \"More Info\" link below the address and will show the phone, fax, email, opening hours and description once the link is clicked. %s If you for example want the contact details to always be visible, then please follow the instructions on %sthis%s page."
+msgstr "Dies erzeugt einen \"Mehr Infos\"-Link unter der Adresse und zeigt Telefon, Fax, E-Mail-Adresse, Öffnungszeiten und eine Beschreibung, sobald der Link angeklickt wurde. %s Wenn du zum Beispiel die Kontaktdetails immer anzeigen willst, dann folge bitte den Anweisungen auf %sdieser Seite%s."
+
+#: admin/templates/map-settings.php:212
+msgid "Show a \"More info\" link in the store listings?"
+msgstr "Anzeige eines \"Mehr Informationen\" Links in der Shop Auflistung?"
+
+#: admin/templates/map-settings.php:208
+msgid "When a user clicks on \"Directions\", open a new window, and show the route on google.com/maps ?"
+msgstr "Wenn ein Benutzer auf \"Route\" klickt, öffne ein neues Fenster und zeige die Route auf google.com/maps ?"
+
+#: admin/templates/map-settings.php:204
+msgid "Show a reset map button?"
+msgstr "Reset Button anzeigen?"
+
+#: admin/templates/map-settings.php:200
+msgid "Open links in a new window?"
+msgstr "Links in einem neuen Fenster öffnen?"
+
+#: admin/templates/map-settings.php:196
+msgid "Hide the scrollbar?"
+msgstr "Die Scrollbar ausblenden?"
+
+#: admin/templates/map-settings.php:192
+msgid "The selected template is used with the [wpsl] shortcode. %s You can add a custom template with the %swpsl_templates%s filter."
+msgstr "Das ausgewählte Template wird mit dem [wpsl] Shortcode verwendet. %s Du kannst ein eigenes Template mit dem %swpsl_templates%s-Filter einfügen."
+
+#: admin/templates/map-settings.php:192
+msgid "Store Locator template"
+msgstr "Store Locator Vorlage"
+
+#: admin/templates/map-settings.php:188
+msgid "Search and radius label width"
+msgstr "Breite der Suche und des Radius-Labels"
+
+#: admin/templates/map-settings.php:184
+msgid "Search field width"
+msgstr "Breite des Suchfeldes"
+
+#: admin/templates/map-settings.php:180
+msgid "Max width for the info window content"
+msgstr "Max. Breite des Informationsfensters"
+
+#: admin/templates/map-settings.php:176
+msgid "Store Locator height"
+msgstr "Höhe der Händlersuche"
+
+#: admin/templates/map-settings.php:173
+msgid "User Experience"
+msgstr "User Experience"
+
+#: admin/templates/map-settings.php:159
+msgid "This will place a \"Search provided by WP Store Locator\" backlink below the map."
+msgstr "Dies wird einen Backlink mit dem Titel \"Suche zur Verfügung gestellt von WP Store Locator\" unter der Karte einblenden."
+
+#: admin/templates/map-settings.php:159
+msgid "Show credits?"
+msgstr "Zeige Danksagungen?"
+
+#: admin/templates/map-settings.php:155
+msgid "Preview Map Style"
+msgstr "Vorschau des Kartenstil"
+
+#: admin/templates/map-settings.php:153
+msgid "If you like to write the style code yourself, then you can find the documentation from Google %shere%s."
+msgstr "Wenn Du den Stilcode selbst schreiben will, kannst Du die Dokumentation von Google %shier%s finden."
+
+#: admin/templates/map-settings.php:152
+msgid "You can use existing map styles from %sSnazzy Maps%s or %sMap Stylr%s and paste it in the textarea below, or you can generate a custom map style through the %sMap Style Editor%s or %sStyled Maps Wizard%s."
+msgstr "Du kannst bestehende Kartenstile von %sSnazzy Maps%s oder %sMap Style%s und in die Textbox hier unten drunter einfügen, oder Du kannst einen eigenen Kartenstil mit dem %sMap Style Editor%s oder %sStyled Maps Wizard%s erzeugen."
+
+#: admin/templates/map-settings.php:149
+msgid "Custom map styles only work if the map type is set to \"Roadmap\" or \"Terrain\"."
+msgstr "Benutzerdefinierte Kartenstile sind nur möglich, wenn der Kartentyp auf \"Straßenkarte\" oder \"Gelände\" eingestellt ist."
+
+#: admin/templates/map-settings.php:149
+msgid "Map style"
+msgstr "Kartenstil"
+
+#: admin/templates/map-settings.php:145
+msgid "Map type"
+msgstr "Kartentyp"
+
+#: admin/templates/map-settings.php:141
+msgid "Large"
+msgstr "Groß"
+
+#: admin/templates/map-settings.php:139
+msgid "Small"
+msgstr "Klein"
+
+#: admin/templates/map-settings.php:136
+msgid "Zoom control style"
+msgstr "Stil der Zoom-Kontrolle"
+
+#: admin/templates/map-settings.php:132
+msgid "Right"
+msgstr "Rechts"
+
+#: admin/templates/map-settings.php:130
+msgid "Left"
+msgstr "Links"
+
+#: admin/templates/map-settings.php:127
+msgid "Zoom control position"
+msgstr "Position der Zoom-Kontrolle"
+
+#: admin/templates/map-settings.php:123
+msgid "Enable scroll wheel zooming?"
+msgstr "Zoomen mit dem Mausrad aktivieren?"
+
+#: admin/templates/map-settings.php:119
+msgid "Show the map type control?"
+msgstr "Zeige die Kartentyp Bedienelemente?"
+
+#: admin/templates/map-settings.php:115
+msgid "Show the pan controls?"
+msgstr "Zeige die Schwenk Bedienelemente?"
+
+#: admin/templates/map-settings.php:111
+msgid "Show the street view controls?"
+msgstr "Zeige die Streetview Bedienelemente?"
+
+#: admin/templates/map-settings.php:107
+msgid "This value sets the zoom level for the \"Zoom here\" link in the info window. %s It is also used to limit the zooming when the viewport of the map is changed to make all the markers fit on the screen."
+msgstr "Dieser Wert setzt den Zoomlevel für den Link \"Zoome hier\" im Info-Fenster. %s Er wird auch dafür verwendet, um das Zoomen zu limitieren, wenn die Anzeige der Karte geändert wurde, um alle Marker auf einmal anzuzeigen."
+
+#: admin/templates/map-settings.php:107
+msgid "Max auto zoom level"
+msgstr "Maximaler automatischer Zoomlevel"
+
+#: admin/templates/map-settings.php:103
+msgid "Initial zoom level"
+msgstr "Zoomlevel zu Beginn"
+
+#: admin/templates/map-settings.php:98
+msgid "%sRequired field.%s %s If auto-locating the user is disabled or fails, the center of the provided city or country will be used as the initial starting point for the user."
+msgstr "%sNotwendiges Feld.%s %s Wenn der Benutzer der automatischen Lokalisierung widerspricht oder aber diese fehlschlägt, wird das Zentrum der hier angegebenen Stadt oder des Landes als Startpunkt für den Benutzer verwendet."
+
+#: admin/templates/map-settings.php:98
+msgid "Start point"
+msgstr "Startpunkt"
+
+#: admin/templates/map-settings.php:94
+msgid "Although the location data is cached after the first load, a lower number will result in the map being more responsive. %s If this field is left empty or set to 0, then all locations are loaded."
+msgstr "Auch wenn die Daten nach dem ersten Aufruf im Cache sind, wird eine geringere Anzahl wird dazu führen, dass die Karte schnelle reagiert. %s Wenn dieses Feld leer bleibt oder auf 0 gesetzt wird, werden alle Standorte geladen."
+
+#: admin/templates/map-settings.php:94
+msgid "Number of locations to show"
+msgstr "Anzahl der Standorte, die angezeigt werden sollen"
+
+#: admin/templates/map-settings.php:90
+msgid "Load locations on page load"
+msgstr "Standorte beim Aufruf der Seite laden"
+
+#: admin/templates/map-settings.php:86
+msgid "Attempt to auto-locate the user"
+msgstr "Versuche den Benutzer automatisch zu lokalisieren"
+
+#: admin/templates/map-settings.php:83
+msgid "Map"
+msgstr "Karte"
+
+#: admin/templates/map-settings.php:69
+msgid "Search radius options"
+msgstr "Optionen für den Suchradius"
+
+#: admin/templates/map-settings.php:65 admin/templates/map-settings.php:69
+msgid "The default value is set between the [ ]."
+msgstr "Der Standartwert ist gesetzt zwischen: [ ]."
+
+#: admin/templates/map-settings.php:65
+msgid "Max search results"
+msgstr "Maximale Suchergebnisse"
+
+#: admin/templates/map-settings.php:61
+msgid "mi"
+msgstr "mi"
+
+#: admin/templates/map-settings.php:59
+msgid "km"
+msgstr "km"
+
+#: admin/templates/map-settings.php:56
+msgid "Distance unit"
+msgstr "Einheit der Distanz"
+
+#: admin/templates/map-settings.php:52
+msgid "Show the category dropdown?"
+msgstr "Zeige eine Auswahl mit den Kategorien?"
+
+#: admin/templates/map-settings.php:48
+msgid "Show the search radius dropdown?"
+msgstr "Zeige eine Auswahl mit dem Suchradius?"
+
+#: admin/templates/map-settings.php:44
+msgid "Show the max results dropdown?"
+msgstr "Zeige eine Auswahl mit den maximalen Ergebnissen?"
+
+#: admin/templates/map-settings.php:41 admin/templates/map-settings.php:383
+#: admin/templates/map-settings.php:384 frontend/templates/default.php:43
+#: frontend/templates/store-listings-below.php:43 inc/wpsl-functions.php:97
+msgid "Search"
+msgstr "Suche"
+
+#: admin/templates/map-settings.php:31 admin/templates/map-settings.php:73
+#: admin/templates/map-settings.php:163 admin/templates/map-settings.php:256
+#: admin/templates/map-settings.php:282 admin/templates/map-settings.php:332
+#: admin/templates/map-settings.php:358 admin/templates/map-settings.php:455
+#: admin/templates/map-settings.php:476
+msgid "Save Changes"
+msgstr "Änderungen speichern"
+
+#: admin/templates/map-settings.php:25
+msgid "This will bias the geocoding results towards the selected region. %s If no region is selected the bias is set to the United States."
+msgstr "Dies wird die Geocoding-Ergebnisse auf die ausgewählte Region ausrichten. %s Wenn keine Region ausgewählt wurde, wird die Ausrichtung auf die Vereinigten Staaten von Amerika gesetzt."
+
+#: admin/templates/map-settings.php:25
+msgid "Map region"
+msgstr "Kartenregion"
+
+#: admin/templates/map-settings.php:19
+msgid "If no map language is selected the browser's prefered language is used."
+msgstr "Wenn keine Sprache für die Karte ausgewählt wurde, wird die im Browser eingestellte Sprache verwendet."
+
+#: admin/templates/map-settings.php:19
+msgid "Map language"
+msgstr "Kartensprache"
+
+#: admin/templates/map-settings.php:16
+msgid "Optional"
+msgstr "Optional"
+
+#: admin/templates/map-settings.php:15
+msgid "A valid %sAPI key%s allows you to monitor the API usage and is required if you need to purchase additional quota."
+msgstr "Ein gültiger %sAPI-Schlüssel%s erlaubt es die Benutzung der API zu verfolgen und wird dann notwendig, wenn Du zusätzliche Quota erwerben musst."
+
+#: admin/templates/map-settings.php:15
+msgid "API key"
+msgstr "API-Schlüssel"
+
+#: admin/templates/map-settings.php:12
+msgid "Google Maps API"
+msgstr "Google Maps API"
+
+#: admin/roles.php:20
+msgid "Store Locator Manager"
+msgstr "Verwaltung der Händler-Standorte"
+
+#: admin/class-settings.php:1012
+msgid "24 Hours"
+msgstr "24 Stunden"
+
+#: admin/class-settings.php:1011
+msgid "12 Hours"
+msgstr "12 Stunden"
+
+#: admin/class-settings.php:955
+msgid "In the info window on the map"
+msgstr "Im Info-Fenster auf der Karte"
+
+#: admin/class-settings.php:954
+msgid "In the store listings"
+msgstr "In den Händlerlisten"
+
+#: admin/class-settings.php:946
+msgid "Does not respond"
+msgstr "Antwortet nicht"
+
+#: admin/class-settings.php:945
+msgid "Will open the info window"
+msgstr "Öffnet das Info-Fenster"
+
+#: admin/class-settings.php:944
+msgid "Bounces up and down"
+msgstr "Hüpft hoch und runter"
+
+#: admin/class-settings.php:936
+msgid "Dropdowns (recommended)"
+msgstr "Auswahlen (empfohlen)"
+
+#: admin/class-settings.php:935
+msgid "Textarea"
+msgstr "Textbereich"
+
+#: admin/class-settings.php:854
+msgid "Store location marker"
+msgstr "Marker des Standorts"
+
+#: admin/class-settings.php:852
+msgid "Start location marker"
+msgstr "Startmarker"
+
+#: admin/class-settings.php:712 inc/wpsl-functions.php:252
+msgid "Roadmap"
+msgstr "Straßenansicht"
+
+#: admin/class-settings.php:709 admin/class-settings.php:822
+#: inc/wpsl-functions.php:179
+msgid "Default"
+msgstr "Standard"
+
+#: admin/class-settings.php:706
+msgid "World view"
+msgstr "Weltansicht"
+
+#: admin/class-settings.php:663
+msgid "Zimbabwe"
+msgstr "Simbabwe"
+
+#: admin/class-settings.php:662
+msgid "Zambia"
+msgstr "Sambia"
+
+#: admin/class-settings.php:661
+msgid "Yemen"
+msgstr "Jemen"
+
+#: admin/class-settings.php:660
+msgid "Vietnam"
+msgstr "Vietnam"
+
+#: admin/class-settings.php:659
+msgid "Venezuela"
+msgstr "Venezuela"
+
+#: admin/class-settings.php:658
+msgid "Wallis Futuna"
+msgstr "Wallis Futuna"
+
+#: admin/class-settings.php:657
+msgid "Uzbekistan"
+msgstr "Usbekistan"
+
+#: admin/class-settings.php:656
+msgid "Uruguay"
+msgstr "Uruguay"
+
+#: admin/class-settings.php:655
+msgid "United States"
+msgstr "Vereinigte Staaten von Amerika"
+
+#: admin/class-settings.php:654
+msgid "United Kingdom"
+msgstr "Vereinigtes Königreich"
+
+#: admin/class-settings.php:653
+msgid "United Arab Emirates"
+msgstr "Vereinigte Arabische Emirate"
+
+#: admin/class-settings.php:652
+msgid "Ukraine"
+msgstr "Ukraine"
+
+#: admin/class-settings.php:651
+msgid "Uganda"
+msgstr "Uganda"
+
+#: admin/class-settings.php:650
+msgid "Tuvalu"
+msgstr "Tuvalu"
+
+#: admin/class-settings.php:649
+msgid "Turkmenistan"
+msgstr "Turkmenistan"
+
+#: admin/class-settings.php:648
+msgid "Turkey"
+msgstr "Türkei"
+
+#: admin/class-settings.php:647
+msgid "Tunisia"
+msgstr "Tunesien"
+
+#: admin/class-settings.php:646
+msgid "Trinidad and Tobago"
+msgstr "Trinidad und Tobago"
+
+#: admin/class-settings.php:645
+msgid "Tonga"
+msgstr "Tonga"
+
+#: admin/class-settings.php:644
+msgid "Togo"
+msgstr "Togo"
+
+#: admin/class-settings.php:643
+msgid "Tokelau"
+msgstr "Tokelau"
+
+#: admin/class-settings.php:642
+msgid "Timor-Leste"
+msgstr "Osttimor"
+
+#: admin/class-settings.php:641
+msgid "Thailand"
+msgstr "Thailand"
+
+#: admin/class-settings.php:640
+msgid "Tanzania"
+msgstr "Tansania"
+
+#: admin/class-settings.php:639
+msgid "Tajikistan"
+msgstr "Tadschikistan"
+
+#: admin/class-settings.php:638
+msgid "Taiwan"
+msgstr "Taiwan"
+
+#: admin/class-settings.php:637
+msgid "Syria"
+msgstr "Syrien"
+
+#: admin/class-settings.php:636
+msgid "Switzerland"
+msgstr "Schweiz"
+
+#: admin/class-settings.php:635
+msgid "Sweden"
+msgstr "Schweden"
+
+#: admin/class-settings.php:634
+msgid "Swaziland"
+msgstr "Eswatini"
+
+#: admin/class-settings.php:633
+msgid "Sudan"
+msgstr "Sudan"
+
+#: admin/class-settings.php:632
+msgid "Sri Lanka"
+msgstr "Sri Lanka"
+
+#: admin/class-settings.php:631
+msgid "Spain"
+msgstr "Spanien"
+
+#: admin/class-settings.php:630
+msgid "South Korea"
+msgstr "Südkorea"
+
+#: admin/class-settings.php:629
+msgid "South Africa"
+msgstr "Südafrika"
+
+#: admin/class-settings.php:628
+msgid "Somalia"
+msgstr "Somalia"
+
+#: admin/class-settings.php:627
+msgid "Solomon Islands"
+msgstr "Salomonen"
+
+#: admin/class-settings.php:626
+msgid "Slovakia"
+msgstr "Slowakei"
+
+#: admin/class-settings.php:625
+msgid "Singapore"
+msgstr "Singapur"
+
+#: admin/class-settings.php:624
+msgid "Sierra Leone"
+msgstr "Sierra Leone"
+
+#: admin/class-settings.php:623
+msgid "Seychelles"
+msgstr "Seychellen"
+
+#: admin/class-settings.php:622
+msgid "Serbia"
+msgstr "Serbien"
+
+#: admin/class-settings.php:621
+msgid "Senegal"
+msgstr "Senegal"
+
+#: admin/class-settings.php:620
+msgid "Saudi Arabia"
+msgstr "Saudi-Arabien"
+
+#: admin/class-settings.php:619
+msgid "São Tomé and Príncipe"
+msgstr "São Tomé und Príncipe"
+
+#: admin/class-settings.php:618
+msgid "San Marino"
+msgstr "San Marino"
+
+#: admin/class-settings.php:617
+msgid "Samoa"
+msgstr "Samoa"
+
+#: admin/class-settings.php:616
+msgid "Saint Lucia"
+msgstr "St. Lucia"
+
+#: admin/class-settings.php:615
+msgid "Saint Vincent and the Grenadines"
+msgstr "St. Vincent und die Grenadinen"
+
+#: admin/class-settings.php:614
+msgid "Saint Kitts and Nevis"
+msgstr "St. Kitts und Nevis"
+
+#: admin/class-settings.php:613
+msgid "Saint Helena"
+msgstr "St. Helena"
+
+#: admin/class-settings.php:612
+msgid "Rwanda"
+msgstr "Ruanda"
+
+#: admin/class-settings.php:611
+msgid "Russia"
+msgstr "Russland"
+
+#: admin/class-settings.php:610
+msgid "Romania"
+msgstr "Rumänien"
+
+#: admin/class-settings.php:609
+msgid "Reunion"
+msgstr "Réunion"
+
+#: admin/class-settings.php:608
+msgid "Qatar"
+msgstr "Katar"
+
+#: admin/class-settings.php:607
+msgid "Portugal"
+msgstr "Portugal"
+
+#: admin/class-settings.php:606
+msgid "Poland"
+msgstr "Polen"
+
+#: admin/class-settings.php:605
+msgid "Pitcairn Islands"
+msgstr "Pitcairninseln"
+
+#: admin/class-settings.php:604
+msgid "Philippines"
+msgstr "Philippinen"
+
+#: admin/class-settings.php:603
+msgid "Peru"
+msgstr "Peru"
+
+#: admin/class-settings.php:602
+msgid "Paraguay"
+msgstr "Paraguay"
+
+#: admin/class-settings.php:601
+msgid "Papua New Guinea"
+msgstr "Papua-Neuguinea"
+
+#: admin/class-settings.php:600
+msgid "Panama"
+msgstr "Panama"
+
+#: admin/class-settings.php:599
+msgid "Pakistan"
+msgstr "Pakistan"
+
+#: admin/class-settings.php:598
+msgid "Oman"
+msgstr "Oman"
+
+#: admin/class-settings.php:597
+msgid "Norway"
+msgstr "Norwegen"
+
+#: admin/class-settings.php:596
+msgid "Northern Mariana Islands"
+msgstr "Nördliche Marianen"
+
+#: admin/class-settings.php:595
+msgid "Niue"
+msgstr "Niue"
+
+#: admin/class-settings.php:594
+msgid "Nigeria"
+msgstr "Nigeria"
+
+#: admin/class-settings.php:593
+msgid "Niger"
+msgstr "Niger"
+
+#: admin/class-settings.php:592
+msgid "Nicaragua"
+msgstr "Nicaragua"
+
+#: admin/class-settings.php:591
+msgid "New Zealand"
+msgstr "Neuseeland"
+
+#: admin/class-settings.php:590
+msgid "Netherlands Antilles"
+msgstr "Niederländische Antillen"
+
+#: admin/class-settings.php:589
+msgid "Netherlands"
+msgstr "Niederlande"
+
+#: admin/class-settings.php:588
+msgid "Nepal"
+msgstr "Nepal"
+
+#: admin/class-settings.php:587
+msgid "Nauru"
+msgstr "Nauru"
+
+#: admin/class-settings.php:586
+msgid "Namibia"
+msgstr "Namibia"
+
+#: admin/class-settings.php:585
+msgid "Myanmar"
+msgstr "Myanmar"
+
+#: admin/class-settings.php:584
+msgid "Mozambique"
+msgstr "Mosambik"
+
+#: admin/class-settings.php:583
+msgid "Morocco"
+msgstr "Marokko"
+
+#: admin/class-settings.php:582
+msgid "Montserrat"
+msgstr "Montserrat"
+
+#: admin/class-settings.php:581
+msgid "Montenegro"
+msgstr "Montenegro"
+
+#: admin/class-settings.php:580
+msgid "Mongolia"
+msgstr "Mongolei"
+
+#: admin/class-settings.php:579
+msgid "Monaco"
+msgstr "Monaco"
+
+#: admin/class-settings.php:578
+msgid "Moldova"
+msgstr "Moldawien"
+
+#: admin/class-settings.php:577
+msgid "Micronesia"
+msgstr "Mikronesien"
+
+#: admin/class-settings.php:576
+msgid "Mexico"
+msgstr "Mexiko"
+
+#: admin/class-settings.php:575
+msgid "Mauritius"
+msgstr "Mauritius"
+
+#: admin/class-settings.php:574
+msgid "Mauritania"
+msgstr "Mauretanien"
+
+#: admin/class-settings.php:573
+msgid "Martinique"
+msgstr "Martinique"
+
+#: admin/class-settings.php:572
+msgid "Marshall Islands"
+msgstr "Marshallinseln"
+
+#: admin/class-settings.php:571
+msgid "Mali"
+msgstr "Mali"
+
+#: admin/class-settings.php:570
+msgid "Malaysia "
+msgstr "Malaysia"
+
+#: admin/class-settings.php:569
+msgid "Malawi"
+msgstr "Malawi"
+
+#: admin/class-settings.php:568
+msgid "Madagascar"
+msgstr "Madagaskar"
+
+#: admin/class-settings.php:567
+msgid "Macedonia"
+msgstr "Nordmazedonien"
+
+#: admin/class-settings.php:566
+msgid "Macau"
+msgstr "Macau"
+
+#: admin/class-settings.php:565
+msgid "Luxembourg"
+msgstr "Luxemburg"
+
+#: admin/class-settings.php:564
+msgid "Lithuania"
+msgstr "Litauen"
+
+#: admin/class-settings.php:563
+msgid "Liechtenstein"
+msgstr "Liechtenstein"
+
+#: admin/class-settings.php:562
+msgid "Libya"
+msgstr "Libyen"
+
+#: admin/class-settings.php:561
+msgid "Liberia"
+msgstr "Liberia"
+
+#: admin/class-settings.php:560
+msgid "Lesotho"
+msgstr "Lesotho"
+
+#: admin/class-settings.php:559
+msgid "Lebanon"
+msgstr "Libanon"
+
+#: admin/class-settings.php:558
+msgid "Latvia"
+msgstr "Lettland"
+
+#: admin/class-settings.php:557
+msgid "Laos"
+msgstr "Laos"
+
+#: admin/class-settings.php:556
+msgid "Kyrgyzstan"
+msgstr "Kirgisistan"
+
+#: admin/class-settings.php:555
+msgid "Kuwait"
+msgstr "Kuwait"
+
+#: admin/class-settings.php:554
+msgid "Kenya"
+msgstr "Kenia"
+
+#: admin/class-settings.php:553
+msgid "Kazakhstan"
+msgstr "Kasachstan"
+
+#: admin/class-settings.php:552
+msgid "Jordan"
+msgstr "Jordanien"
+
+#: admin/class-settings.php:551
+msgid "Japan"
+msgstr "Japan"
+
+#: admin/class-settings.php:550
+msgid "Jamaica"
+msgstr "Jamaika"
+
+#: admin/class-settings.php:549
+msgid "Italy"
+msgstr "Italien"
+
+#: admin/class-settings.php:548
+msgid "Israel"
+msgstr "Israel"
+
+#: admin/class-settings.php:547
+msgid "Ireland"
+msgstr "Irland"
+
+#: admin/class-settings.php:546
+msgid "Iraq"
+msgstr "Irak"
+
+#: admin/class-settings.php:545
+msgid "Iran"
+msgstr "Iran"
+
+#: admin/class-settings.php:544
+msgid "Indonesia"
+msgstr "Indonesien"
+
+#: admin/class-settings.php:543
+msgid "India"
+msgstr "Indien"
+
+#: admin/class-settings.php:542
+msgid "Iceland"
+msgstr "Island"
+
+#: admin/class-settings.php:541
+msgid "Hungary"
+msgstr "Ungarn"
+
+#: admin/class-settings.php:540
+msgid "Hong Kong"
+msgstr "Hongkong"
+
+#: admin/class-settings.php:539
+msgid "Honduras"
+msgstr "Honduras"
+
+#: admin/class-settings.php:538
+msgid "Haiti"
+msgstr "Haiti"
+
+#: admin/class-settings.php:537
+msgid "Guinea-Bissau"
+msgstr "Guinea-Bissau"
+
+#: admin/class-settings.php:536
+msgid "Guinea"
+msgstr "Guinea"
+
+#: admin/class-settings.php:535
+msgid "Guatemala"
+msgstr "Guatemala"
+
+#: admin/class-settings.php:534
+msgid "Guadeloupe"
+msgstr "Guadeloupe"
+
+#: admin/class-settings.php:533
+msgid "Guam"
+msgstr "Guam"
+
+#: admin/class-settings.php:532
+msgid "Grenada"
+msgstr "Grenada"
+
+#: admin/class-settings.php:531
+msgid "Greece"
+msgstr "Griechenland"
+
+#: admin/class-settings.php:530
+msgid "Greenland"
+msgstr "Grönland"
+
+#: admin/class-settings.php:529
+msgid "Ghana"
+msgstr "Ghana"
+
+#: admin/class-settings.php:528
+msgid "Germany"
+msgstr "Deutschland"
+
+#: admin/class-settings.php:527
+msgid "Gambia"
+msgstr "Gambia"
+
+#: admin/class-settings.php:526
+msgid "Gabon"
+msgstr "Gabun"
+
+#: admin/class-settings.php:525
+msgid "French Guiana"
+msgstr "Französisch-Guayana"
+
+#: admin/class-settings.php:524
+msgid "France"
+msgstr "Frankreich"
+
+#: admin/class-settings.php:523
+msgid "Finland"
+msgstr "Finnland"
+
+#: admin/class-settings.php:522
+msgid "Fiji"
+msgstr "Fidschi"
+
+#: admin/class-settings.php:521
+msgid "Ethiopia"
+msgstr "Äthiopien"
+
+#: admin/class-settings.php:520
+msgid "Estonia"
+msgstr "Estland"
+
+#: admin/class-settings.php:519
+msgid "Eritrea"
+msgstr "Eritrea"
+
+#: admin/class-settings.php:518
+msgid "Equatorial Guinea"
+msgstr "Äquatorialguinea"
+
+#: admin/class-settings.php:517
+msgid "El Salvador"
+msgstr "El Salvador"
+
+#: admin/class-settings.php:516
+msgid "Egypt"
+msgstr "Ägypten"
+
+#: admin/class-settings.php:515
+msgid "Ecuador"
+msgstr "Ecuador"
+
+#: admin/class-settings.php:514
+msgid "Dominican Republic"
+msgstr "Dominikanische Republik"
+
+#: admin/class-settings.php:513
+msgid "Dominica"
+msgstr "Dominica"
+
+#: admin/class-settings.php:512
+msgid "Democratic Republic of the Congo"
+msgstr "Demokratische Republik Kongo"
+
+#: admin/class-settings.php:511
+msgid "Djibouti"
+msgstr "Dschibuti"
+
+#: admin/class-settings.php:510
+msgid "Denmark"
+msgstr "Dänemark"
+
+#: admin/class-settings.php:509
+msgid "Czech Republic"
+msgstr "Tschechien"
+
+#: admin/class-settings.php:508
+msgid "Cuba"
+msgstr "Kuba"
+
+#: admin/class-settings.php:507
+msgid "Croatia"
+msgstr "Kroatien"
+
+#: admin/class-settings.php:506
+msgid "Côte d'Ivoire"
+msgstr "Elfenbeinküste"
+
+#: admin/class-settings.php:505
+msgid "Costa Rica"
+msgstr "Costa Rica"
+
+#: admin/class-settings.php:504
+msgid "Congo"
+msgstr "Kongo"
+
+#: admin/class-settings.php:503
+msgid "Comoros"
+msgstr "Komoren"
+
+#: admin/class-settings.php:502
+msgid "Colombia"
+msgstr "Kolumbien"
+
+#: admin/class-settings.php:501
+msgid "Cocos Islands"
+msgstr "Kokosinseln (Keelinginseln)"
+
+#: admin/class-settings.php:500
+msgid "Christmas Island"
+msgstr "Weihnachtsinsel"
+
+#: admin/class-settings.php:499
+msgid "China"
+msgstr "China"
+
+#: admin/class-settings.php:498
+msgid "Chile"
+msgstr "Chile"
+
+#: admin/class-settings.php:497
+msgid "Chad"
+msgstr "Tschad"
+
+#: admin/class-settings.php:496
+msgid "Central African Republic"
+msgstr "Zentralafrikanische Republik"
+
+#: admin/class-settings.php:495
+msgid "Cayman Islands"
+msgstr "Kaimaninseln"
+
+#: admin/class-settings.php:494
+msgid "Cape Verde"
+msgstr "Kap Verde"
+
+#: admin/class-settings.php:493
+msgid "Canada"
+msgstr "Kanada"
+
+#: admin/class-settings.php:492
+msgid "Cameroon"
+msgstr "Kamerun"
+
+#: admin/class-settings.php:491
+msgid "Cambodia"
+msgstr "Kambodscha"
+
+#: admin/class-settings.php:490
+msgid "Burundi"
+msgstr "Burundi"
+
+#: admin/class-settings.php:489
+msgid "Burkina Faso"
+msgstr "Burkina Faso"
+
+#: admin/class-settings.php:488
+msgid "Bulgaria"
+msgstr "Bulgarien"
+
+#: admin/class-settings.php:487
+msgid "Brunei"
+msgstr "Brunei"
+
+#: admin/class-settings.php:486
+msgid "British Indian Ocean Territory"
+msgstr "Britisches Territorium im Indischen Ozean"
+
+#: admin/class-settings.php:485
+msgid "Brazil"
+msgstr "Brasilien"
+
+#: admin/class-settings.php:484
+msgid "Botswana"
+msgstr "Botswana"
+
+#: admin/class-settings.php:483
+msgid "Bosnia and Herzegovina"
+msgstr "Bosnien und Herzegowina"
+
+#: admin/class-settings.php:482
+msgid "Bolivia"
+msgstr "Bolivien"
+
+#: admin/class-settings.php:481
+msgid "Bhutan"
+msgstr "Bhutan"
+
+#: admin/class-settings.php:480
+msgid "Bermuda"
+msgstr "Bermuda"
+
+#: admin/class-settings.php:479
+msgid "Benin"
+msgstr "Benin"
+
+#: admin/class-settings.php:478
+msgid "Belize"
+msgstr "Belize"
+
+#: admin/class-settings.php:477
+msgid "Belgium"
+msgstr "Belgien"
+
+#: admin/class-settings.php:476
+msgid "Belarus"
+msgstr "Weißrussland"
+
+#: admin/class-settings.php:475
+msgid "Barbados"
+msgstr "Barbados"
+
+#: admin/class-settings.php:474
+msgid "Bangladesh"
+msgstr "Bangladesch"
+
+#: admin/class-settings.php:473
+msgid "Bahrain"
+msgstr "Bahrain"
+
+#: admin/class-settings.php:472
+msgid "Bahamas"
+msgstr "Bahamas"
+
+#: admin/class-settings.php:471
+msgid "Azerbaijan"
+msgstr "Aserbaidschan"
+
+#: admin/class-settings.php:470
+msgid "Austria"
+msgstr "Österreich"
+
+#: admin/class-settings.php:469
+msgid "Australia"
+msgstr "Australien"
+
+#: admin/class-settings.php:468
+msgid "Aruba"
+msgstr "Aruba"
+
+#: admin/class-settings.php:467
+msgid "Armenia"
+msgstr "Armenien"
+
+#: admin/class-settings.php:466
+msgid "Argentina"
+msgstr "Argentinien"
+
+#: admin/class-settings.php:465
+msgid "Antigua and Barbuda"
+msgstr "Antigua und Barbuda"
+
+#: admin/class-settings.php:464
+msgid "Angola"
+msgstr "Angola"
+
+#: admin/class-settings.php:463
+msgid "Anguilla"
+msgstr "Anguilla"
+
+#: admin/class-settings.php:462
+msgid "Andorra"
+msgstr "Andorra"
+
+#: admin/class-settings.php:461
+msgid "American Samoa"
+msgstr "Amerikanisch-Samoa"
+
+#: admin/class-settings.php:460
+msgid "Algeria"
+msgstr "Algerien"
+
+#: admin/class-settings.php:459
+msgid "Albania"
+msgstr "Albanien"
+
+#: admin/class-settings.php:458
+msgid "Afghanistan"
+msgstr "Afghanistan"
+
+#: admin/class-settings.php:457
+msgid "Select your region"
+msgstr "Wähle deine Region"
+
+#: admin/class-settings.php:452
+msgid "Chinese (Traditional)"
+msgstr "Chinesisch (Traditionell)"
+
+#: admin/class-settings.php:451
+msgid "Chinese (Simplified)"
+msgstr "Chinesisch (Vereinfacht)"
+
+#: admin/class-settings.php:450
+msgid "Vietnamese"
+msgstr "Vietnamesisch"
+
+#: admin/class-settings.php:449
+msgid "Ukrainian"
+msgstr "Ukrainisch"
+
+#: admin/class-settings.php:448
+msgid "Turkish"
+msgstr "Türkisch"
+
+#: admin/class-settings.php:447
+msgid "Thai"
+msgstr "Thailändisch"
+
+#: admin/class-settings.php:446
+msgid "Telugu"
+msgstr "Telugu"
+
+#: admin/class-settings.php:445
+msgid "Tamil"
+msgstr "Tamilisch"
+
+#: admin/class-settings.php:444
+msgid "Tagalog"
+msgstr "Tagalog"
+
+#: admin/class-settings.php:443
+msgid "Swedish"
+msgstr "Schwedisch"
+
+#: admin/class-settings.php:442
+msgid "Serbian"
+msgstr "Serbisch"
+
+#: admin/class-settings.php:441
+msgid "Slovenian"
+msgstr "Slowenisch"
+
+#: admin/class-settings.php:440
+msgid "Slovak"
+msgstr "Slowakisch"
+
+#: admin/class-settings.php:439
+msgid "Russian"
+msgstr "Russisch"
+
+#: admin/class-settings.php:438
+msgid "Romanian"
+msgstr "Rumänisch"
+
+#: admin/class-settings.php:437
+msgid "Portuguese (Portugal)"
+msgstr "Portugiesisch (Portugal)"
+
+#: admin/class-settings.php:436
+msgid "Portuguese (Brazil)"
+msgstr "Portugiesisch (Brasilien)"
+
+#: admin/class-settings.php:435
+msgid "Portuguese"
+msgstr "Portugiesisch"
+
+#: admin/class-settings.php:434
+msgid "Polish"
+msgstr "Polnisch"
+
+#: admin/class-settings.php:433
+msgid "Norwegian Nynorsk"
+msgstr "Norwegisch Nynorsk"
+
+#: admin/class-settings.php:432
+msgid "Norwegian"
+msgstr "Norwegisch"
+
+#: admin/class-settings.php:431
+msgid "Dutch"
+msgstr "Niederländisch"
+
+#: admin/class-settings.php:430
+msgid "Marathi"
+msgstr "Marathi"
+
+#: admin/class-settings.php:429
+msgid "Malayalam"
+msgstr "Malayalam"
+
+#: admin/class-settings.php:428
+msgid "Latvian"
+msgstr "Lettisch"
+
+#: admin/class-settings.php:427
+msgid "Lithuanian"
+msgstr "Litauisch"
+
+#: admin/class-settings.php:426
+msgid "Korean"
+msgstr "Koreanisch"
+
+#: admin/class-settings.php:425
+msgid "Kannada"
+msgstr "Kannada"
+
+#: admin/class-settings.php:424
+msgid "Japanese"
+msgstr "Japanisch"
+
+#: admin/class-settings.php:423
+msgid "Hebrew"
+msgstr "Hebräisch"
+
+#: admin/class-settings.php:422
+msgid "Italian"
+msgstr "Italienisch"
+
+#: admin/class-settings.php:421
+msgid "Indonesian"
+msgstr "Indonesisch"
+
+#: admin/class-settings.php:420
+msgid "Hungarian"
+msgstr "Ungarisch"
+
+#: admin/class-settings.php:419
+msgid "Croatian"
+msgstr "Kroatisch"
+
+#: admin/class-settings.php:418
+msgid "Hindi"
+msgstr "Hindi"
+
+#: admin/class-settings.php:417
+msgid "Gujarati"
+msgstr "Gujarati"
+
+#: admin/class-settings.php:416
+msgid "Galician"
+msgstr "Galicisch"
+
+#: admin/class-settings.php:415
+msgid "French"
+msgstr "Französisch"
+
+#: admin/class-settings.php:414
+msgid "Filipino"
+msgstr "Filipino"
+
+#: admin/class-settings.php:413
+msgid "Finnish"
+msgstr "Finnisch"
+
+#: admin/class-settings.php:412
+msgid "Farsi"
+msgstr "Farsi"
+
+#: admin/class-settings.php:411
+msgid "Spanish"
+msgstr "Spanisch"
+
+#: admin/class-settings.php:410
+msgid "English (Great Britain)"
+msgstr "Englisch (Großbritannien)"
+
+#: admin/class-settings.php:409
+msgid "English (Australian)"
+msgstr "Englisch (Australien)"
+
+#: admin/class-settings.php:408
+msgid "Greek"
+msgstr "Griechisch"
+
+#: admin/class-settings.php:407
+msgid "German"
+msgstr "Deutsch"
+
+#: admin/class-settings.php:406
+msgid "Danish"
+msgstr "Dänisch"
+
+#: admin/class-settings.php:405
+msgid "Czech"
+msgstr "Tschechisch"
+
+#: admin/class-settings.php:404
+msgid "Catalan"
+msgstr "Katalanisch"
+
+#: admin/class-settings.php:403
+msgid "Bengali"
+msgstr "Bengalisch"
+
+#: admin/class-settings.php:402
+msgid "Bulgarian"
+msgstr "Bulgarisch"
+
+#: admin/class-settings.php:401
+msgid "Basque"
+msgstr "Baskisch"
+
+#: admin/class-settings.php:400
+msgid "Arabic"
+msgstr "Arabisch"
+
+#: admin/class-settings.php:399
+msgid "English"
+msgstr "Englisch"
+
+#: admin/class-settings.php:398
+msgid "Select your language"
+msgstr "Wähle deine Sprache"
+
+#: admin/class-settings.php:377
+msgid "Please provide the name of a city or country that can be used as a starting point under \"Map Settings\". %s This will only be used if auto-locating the user fails, or the option itself is disabled."
+msgstr "Bitte gib den Namen der Stadt oder des Landes unter \"Karteneinstellungen\" an, das als Startpunkt verwendet werden soll. %s Dieser Name wird nur verwendet, wenn die automatische Lokalisierung des Benutzers fehl schlägt, oder wenn eben diese Option deaktiviert ist."
+
+#: admin/class-settings.php:374
+msgid "The search radius field cannot be empty, the default value has been restored."
+msgstr "Das Feld mit der Suchradius darf nicht leer sein. Der Standard-Wert wurde wiederhergestellt."
+
+#: admin/class-settings.php:371
+msgid "The max results field cannot be empty, the default value has been restored."
+msgstr "Das Feld mit der maximalen Anzahl der Ergebnisse darf nicht leer sein. Der Standard-Wert wurde wiederhergestellt."
+
+#: admin/class-settings.php:38
+msgid "WP Store Locator Transients Cleared"
+msgstr "WP Händlerindex Cache geleert"
+
+#: admin/class-metaboxes.php:862
+msgid "Preview store"
+msgstr "Händlervorschau"
+
+#: admin/class-metaboxes.php:856
+msgid "View store"
+msgstr "Zeige Händler"
+
+#: admin/class-metaboxes.php:850
+msgid "Store draft updated."
+msgstr "Händlerentwurf geändert."
+
+#: admin/class-metaboxes.php:848
+msgid "M j, Y @ G:i"
+msgstr "j. M. Y \\u\\m G:i \\U\\h\\r"
+
+#: admin/class-metaboxes.php:847
+msgid "Store scheduled for: <strong>%1$s</strong>."
+msgstr "Händler wird veröffentlicht am: <strong>%1$s</strong>."
+
+#: admin/class-metaboxes.php:845
+msgid "Store submitted."
+msgstr "Händler übermittelt."
+
+#: admin/class-metaboxes.php:844
+msgid "Store saved."
+msgstr "Händler gespeichert."
+
+#: admin/class-metaboxes.php:843
+msgid "Store published."
+msgstr "Händler veröffentlicht."
+
+#: admin/class-metaboxes.php:842
+msgid "Store restored to revision from %s"
+msgstr "Händler wurde auf die Revision vom %s zurück gesetzt."
+
+#: admin/class-metaboxes.php:840
+msgid "Custom field deleted."
+msgstr "Eigenes Feld gelöscht."
+
+#: admin/class-metaboxes.php:839
+msgid "Custom field updated."
+msgstr "Eigenes Feld geändert."
+
+#: admin/class-metaboxes.php:838 admin/class-metaboxes.php:841
+msgid "Store updated."
+msgstr "Händler wurde geändert."
+
+#: admin/class-metaboxes.php:818
+msgid "You can drag the marker to adjust the exact location of the marker."
+msgstr "Du kannst den Marker verschieben, um den exakten Standort des Markers festzulegen."
+
+#: admin/class-metaboxes.php:817
+msgid "The map preview is based on the provided address, city and country details. %s It will ignore any custom latitude or longitude values."
+msgstr "Die Kartenvorschau basiert auf der zur Verfügung gestellten Adresse, Stadt und Land. %s Selbst eingegebene Breiten- und Längengrade werden ignoriert."
+
+#: admin/class-metaboxes.php:816
+msgid "Preview Location"
+msgstr "Vorschau des Standorts"
+
+#: admin/class-metaboxes.php:681
+msgid "Failed to publish the store. Please fill in the required store details."
+msgstr "Der Händler konnte nicht veröffentlicht werden. Bitte fülle die erforderlichen Händlerdetails aus."
+
+#: admin/class-metaboxes.php:434
+msgid "Opening Periods"
+msgstr "Öffnungszeiten"
+
+#: admin/class-metaboxes.php:433
+msgid "Days"
+msgstr "Tage"
+
+#: admin/class-metaboxes.php:426
+msgid "Hour format"
+msgstr "Stunden-Format"
+
+#: admin/class-metaboxes.php:97 admin/templates/map-settings.php:415
+#: admin/templates/map-settings.php:416 admin/upgrade.php:214
+#: frontend/class-frontend.php:676 inc/wpsl-functions.php:113
+msgid "Url"
+msgstr "URL"
+
+#: admin/class-metaboxes.php:94 admin/templates/map-settings.php:411
+#: admin/templates/map-settings.php:412 admin/upgrade.php:210
+#: frontend/class-frontend.php:671 frontend/underscore-functions.php:35
+#: frontend/underscore-functions.php:127 inc/wpsl-functions.php:112
+msgid "Email"
+msgstr "E-Mail"
+
+#: admin/class-metaboxes.php:91 admin/templates/map-settings.php:407
+#: admin/templates/map-settings.php:408 frontend/class-frontend.php:667
+#: frontend/underscore-functions.php:32 frontend/underscore-functions.php:124
+#: inc/wpsl-functions.php:111
+msgid "Fax"
+msgstr "Fax"
+
+#: admin/class-metaboxes.php:88
+msgid "Tel"
+msgstr "Tel"
+
+#: admin/class-metaboxes.php:86
+msgid "Additional Information"
+msgstr "Zusätzliche Informationen"
+
+#: admin/class-metaboxes.php:82 admin/templates/map-settings.php:419
+#: admin/templates/map-settings.php:420 frontend/underscore-functions.php:133
+#: inc/wpsl-functions.php:114
+msgid "Hours"
+msgstr "Stunden"
+
+#: admin/class-metaboxes.php:80 admin/class-metaboxes.php:129
+#: admin/class-metaboxes.php:144
+msgid "Opening Hours"
+msgstr "Öffnungszeiten"
+
+#: admin/class-metaboxes.php:77
+msgid "Longitude"
+msgstr "Längengrad"
+
+#: admin/class-metaboxes.php:74
+msgid "Latitude"
+msgstr "Breitengrad"
+
+#: admin/class-metaboxes.php:67
+msgid "Country"
+msgstr "Land"
+
+#: admin/class-metaboxes.php:64
+msgid "Zip Code"
+msgstr "PLZ"
+
+#: admin/class-metaboxes.php:61 inc/class-post-types.php:164
+msgid "State"
+msgstr "Staat / Bundesland"
+
+#: admin/class-metaboxes.php:57 inc/class-post-types.php:163
+msgid "City"
+msgstr "Stadt"
+
+#: admin/class-metaboxes.php:54
+msgid "Address 2"
+msgstr "Adressfeld 2"
+
+#: admin/class-metaboxes.php:50 inc/class-post-types.php:162
+msgid "Address"
+msgstr "Adresse"
+
+#: admin/class-metaboxes.php:48
+msgid "Location"
+msgstr "Standort"
+
+#: admin/class-metaboxes.php:34
+msgid "Store Map"
+msgstr "Händlerkarte"
+
+#: admin/class-metaboxes.php:33
+msgid "Store Details"
+msgstr "Händler-Details"
+
+#: admin/class-geocode.php:79 admin/class-geocode.php:105
+msgid "The Google Geocoding API failed to return valid data, please try again later."
+msgstr "Die Google Geocoding API hat keine validen Daten zurück geliefert. Bitte versuche es erneut."
+
+#: admin/class-geocode.php:76
+msgid "You have reached the daily allowed geocoding limit, you can read more %shere%s."
+msgstr "Du hast das täglich erlaubte Geocoding-Limit erreicht, %sHier%s kannst du mehr lesen."
+
+#: admin/class-geocode.php:73
+msgid "The Google Geocoding API returned no results for the supplied address. Please change the address and try again."
+msgstr "Die Google Geocoding API hat für diese Adresse keine Ergebnisse zurück geliefert. Bitte ändere die Adresse und versuche es erneut."
+
+#: admin/class-admin.php:429
+msgid "If you like this plugin please leave us a %s5 star%s rating."
+msgstr "Wenn Dir dieses Plugin gefällt, gibt uns eine %s5 star%s Wertung."
+
+#: admin/class-admin.php:409
+msgid "General Settings"
+msgstr "Haupteinstellungen"
+
+#: admin/class-admin.php:406
+msgid "Documentation"
+msgstr "Dokumentation"
+
+#: admin/class-admin.php:362
+msgid "Sign up for the latest plugin updates and announcements."
+msgstr "Registriere Dich, um die neuesten Updates und Ankündigungen zu erhalten."
+
+#: admin/class-admin.php:361
+msgid "Welcome to WP Store Locator"
+msgstr "Willkommen bei der WP Store Locator"
+
+#: admin/class-admin.php:270
+msgid "The code for the map style is invalid."
+msgstr "Der Code für den Kartenstil ist nicht gültig."
+
+#: admin/class-admin.php:269 admin/class-metaboxes.php:504
+#: frontend/class-frontend.php:485
+msgid "Closed"
+msgstr "Geschlossen"
+
+#: admin/class-admin.php:268
+msgid "The map preview requires all the location details."
+msgstr "Die Vorschau der Karte benötigt alle Standortdetails."
+
+#: admin/class-admin.php:267
+msgid "Please fill in all the required store details."
+msgstr "Bitte trage alle notwendigen Händlerdetails ein."
+
+#: admin/class-admin.php:266 admin/upgrade.php:395
+msgid "Security check failed, reload the page and try again."
+msgstr "Die Sicherheitsabfrage ist fehlgeschlagen. Lade die Seite neu und versuche es erneut."
+
+#: admin/class-admin.php:265
+msgid "Geocode was not successful for the following reason"
+msgstr "Das Geocoding hat aus den folgenden Gründen nicht funktioniert"
+
+#: admin/class-admin.php:264
+msgid "Cannot determine the address at this location."
+msgstr "Die Adresse dieses Standorts kann nicht ermittelt werden."
+
+#: admin/class-admin.php:150 admin/templates/map-settings.php:4
+msgid "Settings"
+msgstr "Einstellungen"
+
+#: admin/class-admin.php:120
+msgid "Before adding the [wpsl] shortcode to a page, please don't forget to define a start point on the %ssettings%s page. %sDismiss%s"
+msgstr "Bevor Du den [wpsl] Shortcode in eine Seite einfügst, definiere bitte einen Startpunkt auf der %sEinstellungsseite%s. %sHinweis entfernen%s "
+
+#: admin/class-admin.php:118
+msgid "Before adding the [wpsl] shortcode to a page, please don't forget to define a %sstart point%s. %sDismiss%s"
+msgstr "Bevor Du den [wpsl] Shortcode in eine Seite einfügst, definiere bitte einen %sStartpunkt%s. %sHinweis entfernen%s"

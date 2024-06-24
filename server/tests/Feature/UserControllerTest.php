@@ -12,16 +12,16 @@ class UserControllerTest extends TestCase
 
     public function testIndexReturnsAllUsers()
     {
-        User::factory(5)->create();
-        $response = $this->get('/api/users');
+        User::factory()->count(5)->create();
+        $response = $this->actingAs(User::factory()->create(), 'sanctum')->getJson('/api/users');
         $response->assertStatus(200)
-                 ->assertJsonCount(5, 'data');
+                 ->assertJsonCount(6); // 5 utilisateurs créés + 1 utilisateur connecté
     }
 
     public function testShowReturnsSpecificUser()
     {
         $user = User::factory()->create();
-        $response = $this->get("/api/users/{$user->id}");
+        $response = $this->actingAs(User::factory()->create(), 'sanctum')->getJson("/api/users/{$user->id}");
         $response->assertStatus(200)
                  ->assertJson($user->toArray());
     }
@@ -31,10 +31,10 @@ class UserControllerTest extends TestCase
         $userData = [
             'username' => 'testuser',
             'email' => 'testuser@example.com',
-            'password' => bcrypt('password'),
+            'password' => 'password',
             'role' => 'user',
         ];
-        $response = $this->post('/api/users', $userData);
+        $response = $this->actingAs(User::factory()->create(), 'sanctum')->postJson('/api/users', $userData);
         $response->assertStatus(201);
         $this->assertDatabaseHas('users', [
             'username' => 'testuser',
@@ -48,7 +48,7 @@ class UserControllerTest extends TestCase
             'username' => 'updateduser',
             'email' => 'updateduser@example.com',
         ];
-        $response = $this->put("/api/users/{$user->id}", $updatedData);
+        $response = $this->actingAs(User::factory()->create(), 'sanctum')->putJson("/api/users/{$user->id}", $updatedData);
         $response->assertStatus(200);
         $this->assertDatabaseHas('users', $updatedData);
     }
@@ -56,8 +56,8 @@ class UserControllerTest extends TestCase
     public function testDestroyDeletesUser()
     {
         $user = User::factory()->create();
-        $response = $this->delete("/api/users/{$user->id}");
-        $response->assertStatus(200);
+        $response = $this->actingAs(User::factory()->create(), 'sanctum')->deleteJson("/api/users/{$user->id}");
+        $response->assertStatus(204); // Vérifie que le statut retourné est 204.
         $this->assertDatabaseMissing('users', ['id' => $user->id]);
     }
 }

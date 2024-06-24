@@ -1,0 +1,12 @@
+{
+    "st1": {
+        "id": 1,
+        "name": "Yukon",
+        "shortname": "",
+        "link": "",
+        "comment": "",
+        "image": "",
+        "color_map": "#7798bb",
+        "color_map_over": "#366CA3"
+    }
+}
