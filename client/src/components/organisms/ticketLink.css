@@ -33,3 +33,14 @@
   color: black;
   border: 2px solid #007BFF; /* Couleur de la bordure au survol */
 }
+
+@media (max-width: 640px) {
+  .ticket-link-title {
+    font-size: 1.25rem; /* Ajustement de la taille de la police pour les petits écrans */
+  }
+
+  .ticket-link-button {
+    font-size: 14px; /* Ajustement de la taille de la police pour les petits écrans */
+    padding: 10px 14px; /* Ajustement du padding pour les petits écrans */
+  }
+}

@@ -1,4 +1,3 @@
-// src/components/organisms/ContactForm.js
 import React, { useState } from 'react';
 import Text from '../atoms/text';
 import Button from '../atoms/button';
@@ -45,23 +44,62 @@ const ContactForm = () => {
       <form className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-white p-6 rounded-lg shadow-lg" onSubmit={handleSubmit}>
         <div className="flex flex-col">
           <label htmlFor="name" className="block text-gray-700 font-bold mb-2">Nom</label>
-          <input type="text" id="name" className="input-field" placeholder="Entrez votre nom" value={formData.name} onChange={handleChange} />
-          {errors.name && <span className="text-red-500 text-sm">{errors.name}</span>}
+          <input
+            type="text"
+            id="name"
+            className="input-field"
+            placeholder="Entrez votre nom"
+            value={formData.name}
+            onChange={handleChange}
+            aria-required="true"
+            aria-invalid={errors.name ? "true" : "false"}
+            aria-describedby={errors.name ? "name-error" : null}
+          />
+          {errors.name && <span id="name-error" className="text-red-500 text-sm">{errors.name}</span>}
         </div>
         <div className="flex flex-col">
           <label htmlFor="email" className="block text-gray-700 font-bold mb-2">Email</label>
-          <input type="email" id="email" className="input-field" placeholder="Entrez votre email" value={formData.email} onChange={handleChange} />
-          {errors.email && <span className="text-red-500 text-sm">{errors.email}</span>}
+          <input
+            type="email"
+            id="email"
+            className="input-field"
+            placeholder="Entrez votre email"
+            value={formData.email}
+            onChange={handleChange}
+            aria-required="true"
+            aria-invalid={errors.email ? "true" : "false"}
+            aria-describedby={errors.email ? "email-error" : null}
+          />
+          {errors.email && <span id="email-error" className="text-red-500 text-sm">{errors.email}</span>}
         </div>
         <div className="flex flex-col md:col-span-2">
           <label htmlFor="subject" className="block text-gray-700 font-bold mb-2">Sujet</label>
-          <input type="text" id="subject" className="input-field" placeholder="Sujet de votre message" value={formData.subject} onChange={handleChange} />
-          {errors.subject && <span className="text-red-500 text-sm">{errors.subject}</span>}
+          <input
+            type="text"
+            id="subject"
+            className="input-field"
+            placeholder="Sujet de votre message"
+            value={formData.subject}
+            onChange={handleChange}
+            aria-required="true"
+            aria-invalid={errors.subject ? "true" : "false"}
+            aria-describedby={errors.subject ? "subject-error" : null}
+          />
+          {errors.subject && <span id="subject-error" className="text-red-500 text-sm">{errors.subject}</span>}
         </div>
         <div className="flex flex-col md:col-span-2">
           <label htmlFor="message" className="block text-gray-700 font-bold mb-2">Message</label>
-          <textarea id="message" className="input-field h-32" placeholder="Votre message" value={formData.message} onChange={handleChange}></textarea>
-          {errors.message && <span className="text-red-500 text-sm">{errors.message}</span>}
+          <textarea
+            id="message"
+            className="input-field h-32"
+            placeholder="Votre message"
+            value={formData.message}
+            onChange={handleChange}
+            aria-required="true"
+            aria-invalid={errors.message ? "true" : "false"}
+            aria-describedby={errors.message ? "message-error" : null}
+          ></textarea>
+          {errors.message && <span id="message-error" className="text-red-500 text-sm">{errors.message}</span>}
         </div>
         <div className="flex justify-center md:col-span-2">
           <Button label="Envoyer" type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" />
@@ -72,4 +110,3 @@ const ContactForm = () => {
 };
 
 export default ContactForm;
-

@@ -5,11 +5,11 @@ import Button from '../atoms/button';
 const HeroSection = () => {
   return (
     <section
-      className="relative bg-cover bg-center h-screen md:h-2/3-screen flex items-center justify-center"
+      className="relative bg-cover bg-center h-screen md:h-2/3-screen lg:h-3/4-screen flex items-center justify-center"
       style={{ backgroundImage: 'url(/concert2.jpg)', backgroundSize: 'cover' }}
-      aria-label="Hero section with a welcome message and a call to action to buy tickets"
+      aria-label="Hero section avec un message de bienvenue et un appel à l'action pour acheter des billets"
     >
-      <div className="absolute inset-0 bg-black opacity-30"></div> {/* Overlay to enhance text readability */}
+      <div className="absolute inset-0 bg-black opacity-30"></div> {/* Overlay pour améliorer la lisibilité du texte */}
       <div className="relative container mx-auto text-center p-4 md:p-8 rounded">
         <Text content="Bienvenue au Festival Nation Sounds" type="h1" className="text-3xl md:text-5xl font-bold mb-4 text-white drop-shadow-lg font-serif" />
         <Text content="Rejoignez-nous pour une expérience inoubliable" type="p" className="text-lg md:text-2xl mb-8 text-white drop-shadow-lg font-serif" />

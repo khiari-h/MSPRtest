@@ -5,8 +5,8 @@ import './practicalInfo.css';
 
 const PracticalInfo = () => {
   return (
-    <section className="practical-info-section container mx-auto py-8">
-      <Text content="Infos Pratiques" type="h2" className="text-3xl font-bold mb-8 text-center" />
+    <section className="practical-info-section container mx-auto py-8" aria-labelledby="practical-info-heading">
+      <Text content="Infos Pratiques" type="h2" className="text-3xl font-bold mb-8 text-center" id="practical-info-heading" />
 
       <div className="accordion-container">
         <Accordion title="Accès et Transport">
@@ -78,6 +78,7 @@ const PracticalInfo = () => {
           height="300"
           frameBorder="0"
           allowFullScreen
+          aria-label="Carte du Festival"
         ></iframe>
       </div>
     </section>

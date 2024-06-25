@@ -15,8 +15,8 @@ const ConcertSchedule = () => {
   };
 
   return (
-    <section className="container mx-auto py-8">
-      <Text content="Planning des Concerts" type="h2" className="text-2xl font-bold mb-6 text-center" />
+    <section className="container mx-auto py-8" aria-labelledby="concert-schedule-heading">
+      <Text content="Planning des Concerts" type="h2" className="text-2xl font-bold mb-6 text-center" id="concert-schedule-heading" />
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {concertsSchedule.slice(0, visibleConcerts).map((event, index) => (
           <InfoCard
@@ -31,12 +31,12 @@ const ConcertSchedule = () => {
       </div>
       <div className="flex justify-center mt-6 space-x-4">
         {visibleConcerts < concertsSchedule.length && (
-          <button onClick={showMoreConcerts} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+          <button onClick={showMoreConcerts} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" aria-label="Voir plus de concerts">
             Voir Plus
           </button>
         )}
         {visibleConcerts > 3 && (
-          <button onClick={showLessConcerts} className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+          <button onClick={showLessConcerts} className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" aria-label="Voir moins de concerts">
             Voir Moins
           </button>
         )}
