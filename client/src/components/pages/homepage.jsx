@@ -1,3 +1,4 @@
+// src/components/pages/HomePage.js
 import React from 'react';
 import Header from '../organisms/header';
 import HeroSection from '../organisms/heroSection';
@@ -6,7 +7,7 @@ import ConcertSchedule from '../organisms/ConcertSchedule';
 import TicketLink from '../organisms/TicketLink';
 import PracticalInfo from '../organisms/practicalInfo';
 import Footer from '../organisms/footer';
-import Text from '../atoms/text';
+import CTASection from '../molecules/ctaSection';
 
 const HomePage = () => {
   return (
@@ -17,11 +18,16 @@ const HomePage = () => {
       <ConcertSchedule />
       <TicketLink />
       <PracticalInfo />
-      <section className="cta-section text-center py-8">
-        <a href="/contact" className="cta-button bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full text-lg mt-4 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-xl">
-          Restons en Contact!
-        </a>
-      </section>
+      <CTASection
+        title="Restons en Contact!"
+        ctas={[
+          {
+            label: "Contactez-nous",
+            href: "/contact",
+            className: "bg-blue-500 hover:bg-blue-700 text-white focus:bg-white focus:text-blue-500 focus:border-2 focus:border-blue-500"
+          },
+        ]}
+      />
       <Footer />
     </div>
   );

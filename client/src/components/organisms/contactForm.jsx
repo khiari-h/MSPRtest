@@ -102,7 +102,7 @@ const ContactForm = () => {
           {errors.message && <span id="message-error" className="text-red-500 text-sm">{errors.message}</span>}
         </div>
         <div className="flex justify-center md:col-span-2">
-          <Button label="Envoyer" type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" />
+          <Button label="Envoyer" type="submit" />
         </div>
       </form>
     </section>
