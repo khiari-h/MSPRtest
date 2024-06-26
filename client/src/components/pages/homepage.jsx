@@ -24,7 +24,15 @@ const HomePage = () => {
           {
             label: "Contactez-nous",
             href: "/contact",
-            className: "bg-blue-500 hover:bg-blue-700 text-white focus:bg-white focus:text-blue-500 focus:border-2 focus:border-blue-500"
+          },
+        ]}
+      />
+        <CTASection
+        title="Découvrez nos partenaires"
+        ctas={[
+          {
+            label: "Nos Partenaires",
+            href: "/partenaires",
           },
         ]}
       />

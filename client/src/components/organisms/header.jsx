@@ -44,6 +44,7 @@ const Header = () => {
               <NavItem label="Programmation" href="/programmation" className="text-lg font-semibold" />
               <NavItem label="Artistes" href="/artistes" className="text-lg font-semibold" />
               <NavItem label="Infos Pratiques" href="/infos-pratiques" className="text-lg font-semibold" />
+              <NavItem label="Partenaires" href="/partenaires" className="text-lg font-semibold" />
               <NavItem label="Contact" href="/contact" className="text-lg font-semibold" />
             </nav>
           </div>
@@ -53,6 +54,7 @@ const Header = () => {
           <NavItem label="Programmation" href="/programmation" />
           <NavItem label="Artistes" href="/artistes" />
           <NavItem label="Infos Pratiques" href="/infos-pratiques" />
+          <NavItem label="Partenaires" href="/partenaires"/>
           <NavItem label="Contact" href="/contact" />
         </nav>
       </div>
