@@ -5,6 +5,8 @@ import { fab } from '@fortawesome/free-brands-svg-icons';
 import HomePage from './components/pages/homepage';
 import PartnersPage from './components/pages/PartnersPage';
 import ContactPage from './components/pages/contactPage';
+import ConcertsPage from './components/pages/concertsPage';
+import ConcertsSchedulePage from './components/pages/concertsSchedulePage';
 import './index.css';
 
 // Ajouter les icônes à la bibliothèque
@@ -17,6 +19,8 @@ const App = () => {
         <Route path="/" element={<HomePage />} />
         <Route path="/partenaires" element={<PartnersPage />} />
         <Route path="/contact" element={<ContactPage />} />
+        <Route path="/concerts" element={<ConcertsPage />} />
+        <Route path="/concerts-schedule" element={<ConcertsSchedulePage />} />
       </Routes>
     </Router>
   );

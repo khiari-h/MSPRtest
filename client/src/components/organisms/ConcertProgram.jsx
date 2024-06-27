@@ -1,18 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import InfoCard from '../molecules/infoCard';
 import Text from '../atoms/text';
+import Button from '../atoms/button';
 import { concerts } from '../../data/concertsData';
 
 const ConcertProgram = () => {
-  const [visibleConcerts, setVisibleConcerts] = useState(3);
-
-  const showMoreConcerts = () => {
-    setVisibleConcerts(prevVisibleConcerts => prevVisibleConcerts + 3);
-  };
-
-  const showLessConcerts = () => {
-    setVisibleConcerts(3);
-  };
+  const visibleConcerts = 3;
 
   return (
     <section className="container mx-auto py-8" aria-labelledby="concert-program-heading">
@@ -30,14 +23,12 @@ const ConcertProgram = () => {
       </div>
       <div className="flex justify-center mt-6 space-x-4">
         {visibleConcerts < concerts.length && (
-          <button onClick={showMoreConcerts} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" aria-label="Voir plus de concerts">
-            Voir Plus
-          </button>
-        )}
-        {visibleConcerts > 3 && (
-          <button onClick={showLessConcerts} className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" aria-label="Voir moins de concerts">
-            Voir Moins
-          </button>
+          <Button
+            label="Voir Plus"
+            href="/concerts"
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
+            aria-label="Voir tous les concerts"
+          />
         )}
       </div>
     </section>

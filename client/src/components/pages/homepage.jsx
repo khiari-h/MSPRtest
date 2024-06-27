@@ -8,6 +8,7 @@ import TicketLink from '../organisms/TicketLink';
 import PracticalInfo from '../organisms/practicalInfo';
 import Footer from '../organisms/footer';
 import CTASection from '../molecules/ctaSection';
+import ArtistMeetingsPreview from '../organisms/ArtistMeetingPreview';
 
 const HomePage = () => {
   return (
@@ -16,6 +17,7 @@ const HomePage = () => {
       <HeroSection />
       <ConcertProgram />
       <ConcertSchedule />
+      <ArtistMeetingsPreview />
       <TicketLink />
       <PracticalInfo />
       <CTASection
