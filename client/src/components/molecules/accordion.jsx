@@ -9,11 +9,20 @@ const Accordion = ({ title, children }) => {
   };
 
   return (
-    <div className="accordion-item">
-      <button onClick={toggleOpen} className="accordion-title">
-        {title} <span>{isOpen ? '-' : '+'}</span>
+    <div className="bg-white rounded-lg shadow-md mb-4">
+      <button
+        onClick={toggleOpen}
+        className="flex justify-between items-center w-full px-4 py-2 text-lg font-bold text-left bg-gray-100 rounded-t-lg focus:outline-none"
+        aria-expanded={isOpen}
+      >
+        {title}
+        <span>{isOpen ? '-' : '+'}</span>
       </button>
-      {isOpen && <div className="accordion-content">{children}</div>}
+      {isOpen && (
+        <div className="px-4 py-2 text-gray-700">
+          {children}
+        </div>
+      )}
     </div>
   );
 };

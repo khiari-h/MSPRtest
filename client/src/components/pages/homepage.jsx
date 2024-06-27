@@ -9,12 +9,14 @@ import PracticalInfo from '../organisms/practicalInfo';
 import Footer from '../organisms/footer';
 import CTASection from '../molecules/ctaSection';
 import ArtistMeetingsPreview from '../organisms/ArtistMeetingPreview';
+import NewsAndUpdates from '../organisms/NewsAndUpdates';
 
 const HomePage = () => {
   return (
     <div>
       <Header />
       <HeroSection />
+      <NewsAndUpdates/>
       <ConcertProgram />
       <ConcertSchedule />
       <ArtistMeetingsPreview />

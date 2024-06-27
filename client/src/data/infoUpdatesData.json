@@ -1,0 +1,30 @@
+{
+    "sections": [
+      {
+        "title": "Horaires d'ouverture",
+        "description": "Le festival ouvrira ses portes chaque jour à 10h et fermera à 23h.",
+        "importance": 1
+      },
+      {
+        "title": "Mesures de sécurité",
+        "description": "Des contrôles de sécurité seront effectués à l'entrée. Consultez la liste des objets interdits.",
+        "importance": 2
+      },
+      {
+        "title": "Accès et Transport",
+        "description": "Informations sur les moyens de transport disponibles pour se rendre au festival, y compris les navettes et les parkings.",
+        "importance": 3
+      },
+      {
+        "title": "Nouveaux Artistes",
+        "description": "De nouveaux artistes ont été ajoutés à la programmation. Découvrez la liste mise à jour.",
+        "importance": 4
+      },
+      {
+        "title": "Restauration",
+        "description": "Découvrez nos options de restauration sur place, y compris les options végétariennes et véganes.",
+        "importance": 5
+      }
+    ]
+  }
+  

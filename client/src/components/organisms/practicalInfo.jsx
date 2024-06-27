@@ -1,85 +1,49 @@
-import React from 'react';
+// src/components/organisms/PracticalInfo.js
+import React, { useEffect, useState } from 'react';
 import Text from '../atoms/text';
 import Accordion from '../molecules/accordion';
-import './practicalInfo.css';
+import practicalInfoData from '../../data/practicalInfoData.json';
 
 const PracticalInfo = () => {
+  const [practicalInfo, setPracticalInfo] = useState([]);
+
+  useEffect(() => {
+    setPracticalInfo(practicalInfoData.sections);
+  }, []);
+
   return (
-    <section className="practical-info-section container mx-auto py-8" aria-labelledby="practical-info-heading">
-      <Text content="Infos Pratiques" type="h2" className="text-3xl font-bold mb-8 text-center" id="practical-info-heading" />
+    <section className="bg-gradient-to-b from-gray-100 to-white py-12" aria-labelledby="practical-info-heading">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <Text content="Infos Pratiques" type="h2" className="text-4xl font-bold mb-8 text-center text-gray-800" id="practical-info-heading" />
 
-      <div className="accordion-container">
-        <Accordion title="Accès et Transport">
-          <>
-            <p>Adresse : 123 rue du Festival, Ville, Pays.</p>
-            <p>Moyens de transport :</p>
-            <ul className="list-disc list-inside">
-              <li>Transports en commun : Bus n°X, Tram n°Y</li>
-              <li>Navettes : Départ toutes les 30 minutes depuis la gare centrale</li>
-              <li>Parking : Disponible à proximité avec des tarifs spéciaux</li>
-              <li>Covoiturage : Consultez notre page <a href="/covoiturage" className="text-blue-500">Covoiturage</a></li>
-            </ul>
-            <p>Horaires d’ouverture : De 10h à 23h tous les jours du festival.</p>
-          </>
-        </Accordion>
+        <div className="space-y-8">
+          {practicalInfo.map((section, index) => (
+            <Accordion key={index} title={section.title}>
+              <div className="text-gray-700">
+                {section.content}
+                {section.faqItems && (
+                  <div className="mt-4">
+                    {section.faqItems.map((item, faqIndex) => (
+                      <Accordion key={faqIndex} title={item.question}>
+                        <p>{item.answer}</p>
+                      </Accordion>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </Accordion>
+          ))}
+        </div>
 
-        <Accordion title="Hébergement">
-          <>
-            <p>Pour votre séjour, voici quelques options d'hébergement à proximité :</p>
-            <ul className="list-disc list-inside">
-              <li><a href="https://hotel.com" className="text-blue-500">Hôtel 1</a> : Description et prix</li>
-              <li><a href="https://camping.com" className="text-blue-500">Camping 1</a> : Description et prix</li>
-            </ul>
-            <p>Partenariats et réductions disponibles pour les festivaliers. <a href="/partenariats" className="text-blue-500">En savoir plus</a></p>
-          </>
-        </Accordion>
-
-        <Accordion title="Restauration">
-          <>
-            <p>Découvrez nos options de restauration sur place :</p>
-            <ul className="list-disc list-inside">
-              <li>Stands de nourriture : Variété de plats y compris options végétariennes et vegan</li>
-              <li>Bars : Large choix de boissons</li>
-            </ul>
-          </>
-        </Accordion>
-
-        <Accordion title="Sécurité et Règlement">
-          <>
-            <p>Pour assurer la sécurité de tous, voici les mesures en place :</p>
-            <ul className="list-disc list-inside">
-              <li>Contrôles à l'entrée</li>
-              <li>Objets interdits : Liste des objets interdits sur le site</li>
-              <li>Règlement intérieur : Règles à respecter pendant le festival</li>
-            </ul>
-          </>
-        </Accordion>
-
-        <Accordion title="Accessibilité">
-          <>
-            <p>Nous nous engageons à rendre le festival accessible à tous :</p>
-            <ul className="list-disc list-inside">
-              <li>Accès pour les personnes à mobilité réduite</li>
-              <li>Services disponibles : Toilettes, rampes d'accès, etc.</li>
-            </ul>
-          </>
-        </Accordion>
-
-        <Accordion title="FAQ">
-          <p>Retrouvez les réponses à vos questions fréquentes dans notre <a href="/faq" className="text-blue-500">FAQ</a>.</p>
-        </Accordion>
-      </div>
-
-      <div className="map-container mt-8">
-        <h3 className="text-xl font-semibold mb-2">Carte du Festival</h3>
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.825064072408!2d144.95565151531698!3d-37.81732497975171!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0xf577d52ed5c9b1f5!2sFederation+Square!5e0!3m2!1sen!2sau!4v1464883813255"
-          width="100%"
-          height="300"
-          frameBorder="0"
-          allowFullScreen
-          aria-label="Carte du Festival"
-        ></iframe>
+        <div className="mt-12">
+          <h3 className="text-2xl font-semibold mb-4 text-center text-gray-800">Carte du Festival</h3>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.825064072408!2d144.95565151531698!3d-37.81732497975171!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0xf577d52ed5c9b1f5!2sFederation+Square!5e0!3m2!1sen!2sau!4v1464883813255"
+            className="w-full h-64 rounded-lg shadow-md border-0"
+            allowFullScreen
+            aria-label="Carte du Festival"
+          ></iframe>
+        </div>
       </div>
     </section>
   );
