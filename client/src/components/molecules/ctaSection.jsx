@@ -7,7 +7,7 @@ const CTASection = ({ title, ctas }) => {
   return (
     <section className="cta-section text-center py-8">
       <h2 className="text-2xl font-bold mb-4">{title}</h2>
-      <div className="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-4">
+      <div className="flex justify-center">
         {ctas.map((cta, index) => (
           <Button
             key={index}

@@ -16,30 +16,34 @@ const HomePage = () => {
     <div>
       <Header />
       <HeroSection />
-      <NewsAndUpdates/>
+      <NewsAndUpdates />
       <ConcertProgram />
       <ConcertSchedule />
       <ArtistMeetingsPreview />
       <TicketLink />
       <PracticalInfo />
-      <CTASection
-        title="Restons en Contact!"
-        ctas={[
-          {
-            label: "Contactez-nous",
-            href: "/contact",
-          },
-        ]}
-      />
+      <div className="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-24 py-8 px-4">
         <CTASection
-        title="Découvrez nos partenaires"
-        ctas={[
-          {
-            label: "Nos Partenaires",
-            href: "/partenaires",
-          },
-        ]}
-      />
+          title="Restons en Contact!"
+          ctas={[
+            {
+              label: "Contactez-nous",
+              href: "/contact",
+              className: "bg-blue-500 text-white px-4 py-2 rounded",
+            },
+          ]}
+        />
+        <CTASection
+          title="Découvrez nos partenaires"
+          ctas={[
+            {
+              label: "Nos Partenaires",
+              href: "/partenaires",
+              className: "bg-blue-500 text-white px-4 py-2 rounded",
+            },
+          ]}
+        />
+      </div>
       <Footer />
     </div>
   );
