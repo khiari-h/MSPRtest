@@ -1,4 +1,4 @@
-/** @type {import('tailwindcss').Config} */
+// tailwind.config.js
 module.exports = {
   purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
   darkMode: false, // or 'media' or 'class'
@@ -8,13 +8,11 @@ module.exports = {
         '1/2-screen': '50vh',
       },
       colors: {
-        'indigo-soft': '#4B0082',
-        'light-beige': '#F5F5DC',
-        'midnight-blue': '#2C3E50',
-        'dark-violet': '#6A1B9A',
-        'sapphire-blue': '#0B3D91',
+        'soft-beige': '#FAF0E6',
+        'deep-purple': '#4C1D95',
+        'vibrant-blue': '#1E3A8A',
+        'charcoal': '#36454F',
       },
-    
     },
   },
   variants: {
@@ -22,4 +20,3 @@ module.exports = {
   },
   plugins: [],
 }
-

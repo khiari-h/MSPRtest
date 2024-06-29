@@ -1,3 +1,4 @@
+// src/App.js
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -15,16 +16,18 @@ library.add(fab);
 
 const App = () => {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/partenaires" element={<PartnersPage />} />
-        <Route path="/contact" element={<ContactPage />} />
-        <Route path="/concerts" element={<ConcertsPage />} />
-        <Route path="/concerts-schedule" element={<ConcertsSchedulePage />} />
-        <Route path="/actualites" element={<NewsPage />}  />
-      </Routes>
-    </Router>
+    <div className="bg-global min-h-screen">
+      <Router>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/partenaires" element={<PartnersPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/concerts" element={<ConcertsPage />} />
+          <Route path="/concerts-schedule" element={<ConcertsSchedulePage />} />
+          <Route path="/actualites" element={<NewsPage />} />
+        </Routes>
+      </Router>
+    </div>
   );
 };
 
