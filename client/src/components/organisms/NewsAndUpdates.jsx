@@ -23,12 +23,17 @@ const NewsAndUpdates = () => {
       {/* Section Actualités */}
       <div className="mb-12">
         <Text content="Actualités" type="h3" className="text-3xl font-bold mb-4 text-center text-gray-800" />
-        <Swiper spaceBetween={20} slidesPerView={1} breakpoints={{
-          640: { slidesPerView: 1 },
-          768: { slidesPerView: 2 },
-          1024: { slidesPerView: 3 },
-        }}>
-          {news.map((newsItem, index) => (
+        <Swiper
+          spaceBetween={20}
+          slidesPerView={1}
+          navigation
+          breakpoints={{
+            640: { slidesPerView: 1 },
+            768: { slidesPerView: 2 },
+            1024: { slidesPerView: 3 },
+          }}
+        >
+          {news.slice(0, 3).map((newsItem, index) => (
             <SwiperSlide key={index}>
               <div className="bg-white shadow-lg rounded-lg p-6 hover:shadow-2xl transition-shadow duration-300">
                 <h3 className="text-2xl font-bold mb-2 mt-4">{newsItem.title}</h3>
