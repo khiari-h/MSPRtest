@@ -1,7 +1,7 @@
 // src/components/molecules/CTASection.js
 import React from 'react';
 import PropTypes from 'prop-types';
-import Button from '../atoms/button';
+import Button from '../atoms/Button';
 
 const CTASection = ({ title, ctas }) => {
   return (

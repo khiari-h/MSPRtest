@@ -1,7 +1,8 @@
+// src/components/organisms/ConcertProgram.js
 import React from 'react';
 import InfoCard from '../molecules/infoCard';
 import Text from '../atoms/text';
-import Button from '../atoms/button';
+import Button from '../atoms/Button';
 import { concerts } from '../../data/concertsData';
 
 const ConcertProgram = () => {

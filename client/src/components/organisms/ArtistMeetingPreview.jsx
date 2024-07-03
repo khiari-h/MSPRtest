@@ -1,7 +1,7 @@
 // src/components/organisms/ArtistMeetingsPreview.js
 import React from 'react';
 import Text from '../atoms/text';
-import Button from '../atoms/button';
+import Button from '../atoms/Button';
 import { artistMeetings } from '../../data/artistMeetingsData';
 
 const ArtistMeetingsPreview = () => {

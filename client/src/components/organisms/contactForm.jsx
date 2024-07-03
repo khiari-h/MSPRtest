@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Text from '../atoms/text';
-import Button from '../atoms/button';
+import Button from '../atoms/Button';
 import './contactForm.css';
 
 const ContactForm = () => {

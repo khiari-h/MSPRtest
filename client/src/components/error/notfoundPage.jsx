@@ -1,5 +1,5 @@
 import React from 'react';
-import ErrorMessage from '../atoms/ErrorMessage';
+import ErrorMessage from './ErrorMessage';
 
 const NotFoundPage = () => {
   return (

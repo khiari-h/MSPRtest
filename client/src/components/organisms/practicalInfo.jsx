@@ -1,4 +1,3 @@
-// src/components/organisms/PracticalInfo.js
 import React, { useEffect, useState } from 'react';
 import Text from '../atoms/text';
 import Accordion from '../molecules/accordion';
@@ -12,7 +11,7 @@ const PracticalInfo = () => {
   }, []);
 
   return (
-    <section className="bg-gradient-to-b from-gray-100 to-white py-12" aria-labelledby="practical-info-heading">
+    <section className="bg-soft-beige py-12" aria-labelledby="practical-info-heading">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <Text content="Infos Pratiques" type="h2" className="text-4xl font-bold mb-8 text-center text-gray-800" id="practical-info-heading" />
 

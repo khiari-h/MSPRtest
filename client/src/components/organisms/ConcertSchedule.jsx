@@ -1,7 +1,8 @@
+// src/components/organisms/ConcertSchedule.js
 import React from 'react';
 import InfoCard from '../molecules/infoCard';
 import Text from '../atoms/text';
-import Button from '../atoms/button';
+import Button from '../atoms/Button';
 import { concertsSchedule } from '../../data/concertsScheduleData';
 
 const ConcertSchedule = () => {
@@ -10,7 +11,7 @@ const ConcertSchedule = () => {
   return (
     <section className="container mx-auto py-8" aria-labelledby="concert-schedule-heading">
       <Text content="Planning des Concerts" type="h2" className="text-2xl font-bold mb-6 text-center" id="concert-schedule-heading" />
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {concertsSchedule.slice(0, visibleConcerts).map((event, index) => (
           <InfoCard
             key={index}
@@ -18,7 +19,7 @@ const ConcertSchedule = () => {
             description={event.description}
             image={event.image}
             additionalInfo={`Date: ${event.date}, Heure: ${event.time}, Lieu: ${event.venue}`}
-            type="schedule"
+            type="program"
           />
         ))}
       </div>

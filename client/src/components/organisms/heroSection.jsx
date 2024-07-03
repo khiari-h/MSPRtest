@@ -1,6 +1,6 @@
 import React from 'react';
 import Text from '../atoms/text';
-import Button from '../atoms/button';
+import Button from '../atoms/Button';
 
 const HeroSection = () => {
   return (
