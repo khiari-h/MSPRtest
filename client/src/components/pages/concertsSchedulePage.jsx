@@ -9,7 +9,7 @@ const ConcertsSchedulePage = () => {
   const [concertsSchedule, setConcertsSchedule] = useState([]);
 
   useEffect(() => {
-    axios.get('/api/concerts-schedule')
+    axios.get('http://127.0.0.1:8000/api/concerts_schedule')
       .then(response => {
         setConcertsSchedule(response.data);
       })
