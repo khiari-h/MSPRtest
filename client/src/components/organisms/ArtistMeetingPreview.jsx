@@ -1,11 +1,22 @@
-// src/components/organisms/ArtistMeetingsPreview.js
-import React from 'react';
-import InfoCard from '../molecules/infoCard';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import Text from '../atoms/text';
+import InfoCard from '../molecules/infoCard';
 import Button from '../atoms/Button';
-import { artistMeetings } from '../../data/artistMeetingsData';
 
-const ArtistMeetingsPreview = () => {
+const ArtistMeetingPreview = () => {
+  const [artistMeetings, setArtistMeetings] = useState([]);
+
+  useEffect(() => {
+    axios.get('/api/artist-meetings')
+      .then(response => {
+        setArtistMeetings(response.data);
+      })
+      .catch(error => {
+        console.error("Erreur lors de la récupération des rencontres avec les artistes!", error);
+      });
+  }, []);
+
   const visibleMeetings = 3;
 
   return (
@@ -16,24 +27,22 @@ const ArtistMeetingsPreview = () => {
           <InfoCard
             key={index}
             title={meeting.artist}
-            description={`Date: ${meeting.date}, Heure: ${meeting.time}, Lieu: ${meeting.venue}`}
+            description={meeting.description}
             image={meeting.image}
-            type="artist"
+            type="meeting"
           />
         ))}
       </div>
       <div className="flex justify-center mt-6 space-x-4">
-        {visibleMeetings < artistMeetings.length && (
-          <Button
-            label="Voir Plus"
-            href="/artist-meetings"
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
-            aria-label="Voir toutes les rencontres avec les artistes"
-          />
-        )}
+        <Button
+          label="Voir Plus"
+          href="/artist-meetings"
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
+          aria-label="Voir toutes les rencontres avec les artistes"
+        />
       </div>
     </section>
   );
 };
 
-export default ArtistMeetingsPreview;
+export default ArtistMeetingPreview;

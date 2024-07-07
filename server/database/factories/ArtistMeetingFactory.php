@@ -3,20 +3,20 @@
 
 namespace Database\Factories;
 
-use App\Models\Concert;
+use App\Models\ArtistMeeting;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class ConcertFactory extends Factory
+class ArtistMeetingFactory extends Factory
 {
-    protected $model = Concert::class;
+    protected $model = ArtistMeeting::class;
 
     public function definition()
     {
         return [
-            'name' => $this->faker->sentence(3),
+            'artist' => $this->faker->name,
             'date' => $this->faker->date,
             'time' => $this->faker->time,
-            'stage_id' => \App\Models\Stage::factory(),
+            'venue' => $this->faker->address,
             'description' => $this->faker->paragraph,
         ];
     }

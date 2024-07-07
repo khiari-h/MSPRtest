@@ -1,12 +1,22 @@
-// src/components/organisms/ConcertSchedule.js
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import InfoCard from '../molecules/infoCard';
 import Text from '../atoms/text';
 import Button from '../atoms/Button';
-import { concertsSchedule } from '../../data/concertsScheduleData';
 
 const ConcertSchedule = () => {
+  const [concertsSchedule, setConcertsSchedule] = useState([]);
   const visibleConcerts = 3;
+
+  useEffect(() => {
+    axios.get('/api/concerts-schedule')
+      .then(response => {
+        setConcertsSchedule(response.data);
+      })
+      .catch(error => {
+        console.error("Erreur lors de la récupération du planning des concerts!", error);
+      });
+  }, []);
 
   return (
     <section className="container mx-auto py-8" aria-labelledby="concert-schedule-heading">

@@ -14,10 +14,12 @@ class CreateUsersTable extends Migration
             $table->string('password', 191);
             $table->string('email', 191);
             $table->enum('role', ['admin', 'user']);
+            $table->timestamp('email_verified_at')->nullable(); // Ajout de la colonne email_verified_at
+            $table->rememberToken();
             $table->timestamps();
             
-             // Changer le moteur de stockage
-             $table->engine = 'InnoDB'; 
+            // Changer le moteur de stockage
+            $table->engine = 'InnoDB'; 
         });
     }
 

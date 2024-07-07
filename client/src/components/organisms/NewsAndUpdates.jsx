@@ -1,16 +1,21 @@
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.css';
 import { Navigation } from 'swiper/modules';
-import newsData from '../../data/newsData.json';
-import Button from '../atoms/Button'; // Assurez-vous d'utiliser la bonne casse pour le nom du fichier
+import Button from '../atoms/Button';
 
 const NewsAndUpdates = () => {
   const [news, setNews] = useState([]);
 
   useEffect(() => {
-    const sortedNews = newsData.news.sort((a, b) => a.importance - b.importance);
-    setNews(sortedNews);
+    axios.get('/api/news')
+      .then(response => {
+        setNews(response.data);
+      })
+      .catch(error => {
+        console.error("Erreur lors de la récupération des actualités!", error);
+      });
   }, []);
 
   return (
@@ -34,7 +39,7 @@ const NewsAndUpdates = () => {
             <SwiperSlide key={index}>
               <div className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-transform transform hover:-translate-y-1">
                 <h3 className="text-2xl font-bold mb-2 mt-4 text-center text-blue-600">{newsItem.title}</h3>
-                <p className="text-gray-700 mb-4 text-center">{newsItem.description}</p>
+                <p className="text-gray-700 mb-4 text-center">{newsItem.content}</p>
                 <div className="text-center">
                   <a href={newsItem.link} className="inline-block font-bold text-blue-600 underline">En savoir plus</a>
                 </div>
@@ -43,7 +48,7 @@ const NewsAndUpdates = () => {
           ))}
         </Swiper>
         <div className="text-center mt-8">
-          <Button href="/actualites" label="Voir toutes les actualités" />
+          <Button href="/news" label="Voir toutes les actualités" />
         </div>
       </div>
 
@@ -53,7 +58,7 @@ const NewsAndUpdates = () => {
           {news.slice(3, 6).map((infoItem, index) => (
             <div key={index} className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
               <h3 className="text-2xl font-bold mb-2 text-blue-600">{infoItem.title}</h3>
-              <p className="text-gray-700">{infoItem.description}</p>
+              <p className="text-gray-700">{infoItem.content}</p>
             </div>
           ))}
         </div>

@@ -1,11 +1,23 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import Header from '../organisms/header';
 import Footer from '../organisms/footer';
-import Text from '../atoms/text';
 import InfoCard from '../molecules/infoCard';
-import { concertsSchedule } from '../../data/concertsScheduleData';
+import Text from '../atoms/text';
 
 const ConcertsSchedulePage = () => {
+  const [concertsSchedule, setConcertsSchedule] = useState([]);
+
+  useEffect(() => {
+    axios.get('/api/concerts-schedule')
+      .then(response => {
+        setConcertsSchedule(response.data);
+      })
+      .catch(error => {
+        console.error("Erreur lors de la récupération du planning des concerts!", error);
+      });
+  }, []);
+
   return (
     <div>
       <Header />

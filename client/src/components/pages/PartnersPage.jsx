@@ -1,11 +1,26 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import Header from '../organisms/header';
 import Footer from '../organisms/footer';
 import Text from '../atoms/text';
 import PartnerCard from '../molecules/partnersCard';
-import { permanentPartners, newPartners } from '../../data/partnersData';
 
 const PartnersPage = () => {
+  const [permanentPartners, setPermanentPartners] = useState([]);
+  const [newPartners, setNewPartners] = useState([]);
+
+  useEffect(() => {
+    axios.get('/api/partners')
+      .then(response => {
+        const partners = response.data;
+        setPermanentPartners(partners.filter(partner => partner.category === 'permanent'));
+        setNewPartners(partners.filter(partner => partner.category === 'new'));
+      })
+      .catch(error => {
+        console.error("Erreur lors de la récupération des partenaires!", error);
+      });
+  }, []);
+
   return (
     <div>
       <Header />

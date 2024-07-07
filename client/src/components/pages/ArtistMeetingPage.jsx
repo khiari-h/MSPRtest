@@ -1,12 +1,23 @@
-// src/components/pages/ArtistMeetingsPage.js
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import Header from '../organisms/header';
 import Footer from '../organisms/footer';
 import InfoCard from '../molecules/infoCard';
 import Text from '../atoms/text';
-import { artistMeetings } from '../../data/artistMeetingsData';
 
 const ArtistMeetingsPage = () => {
+  const [artistMeetings, setArtistMeetings] = useState([]);
+
+  useEffect(() => {
+    axios.get('/api/artist-meetings')
+      .then(response => {
+        setArtistMeetings(response.data);
+      })
+      .catch(error => {
+        console.error("Erreur lors de la récupération des rencontres avec les artistes!", error);
+      });
+  }, []);
+
   return (
     <div>
       <Header />

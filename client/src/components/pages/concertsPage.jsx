@@ -1,11 +1,23 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import Header from '../organisms/header';
 import Footer from '../organisms/footer';
 import InfoCard from '../molecules/infoCard';
 import Text from '../atoms/text';
-import { concerts } from '../../data/concertsData';
 
 const ConcertsPage = () => {
+  const [concerts, setConcerts] = useState([]);
+
+  useEffect(() => {
+    axios.get('http://localhost:8000/api/concerts') // Modifier l'URL si nécessaire
+      .then(response => {
+        setConcerts(response.data);
+      })
+      .catch(error => {
+        console.error("Erreur lors de la récupération des concerts!", error);
+      });
+  }, []);
+
   return (
     <div>
       <Header />

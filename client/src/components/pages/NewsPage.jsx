@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import Text from '../atoms/text';
-import newsData from '../../data/newsData.json';
 import Header from '../organisms/header';
 import Footer from '../organisms/footer';
 
@@ -9,7 +9,13 @@ const NewsPage = () => {
   const [filter, setFilter] = useState('all');
 
   useEffect(() => {
-    setNews(newsData.news.sort((a, b) => a.importance - b.importance));
+    axios.get('/api/news')
+      .then(response => {
+        setNews(response.data.sort((a, b) => a.importance - b.importance));
+      })
+      .catch(error => {
+        console.error("Erreur lors de la récupération des actualités!", error);
+      });
   }, []);
 
   const filteredNews = filter === 'all' ? news : news.filter(item => item.category === filter);

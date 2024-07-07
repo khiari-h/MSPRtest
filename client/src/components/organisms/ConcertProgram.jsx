@@ -1,11 +1,22 @@
-// src/components/organisms/ConcertProgram.js
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import InfoCard from '../molecules/infoCard';
 import Text from '../atoms/text';
 import Button from '../atoms/Button';
-import { concerts } from '../../data/concertsData';
 
 const ConcertProgram = () => {
+  const [concerts, setConcerts] = useState([]);
+
+  useEffect(() => {
+    axios.get('/api/concerts')
+      .then(response => {
+        setConcerts(response.data);
+      })
+      .catch(error => {
+        console.error("Erreur lors de la récupération des concerts!", error);
+      });
+  }, []);
+
   const visibleConcerts = 3;
 
   return (
@@ -15,7 +26,7 @@ const ConcertProgram = () => {
         {concerts.slice(0, visibleConcerts).map((concert, index) => (
           <InfoCard
             key={index}
-            title={concert.title}
+            title={concert.name}
             description={concert.description}
             image={concert.image}
             type="program"

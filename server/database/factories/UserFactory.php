@@ -15,8 +15,10 @@ class UserFactory extends Factory
         return [
             'username' => $this->faker->userName,
             'email' => $this->faker->unique()->safeEmail,
-            'password' => bcrypt('password'), 
+            'email_verified_at' => now(), // Ajout de la colonne email_verified_at
+            'password' => bcrypt('password'),
             'role' => $this->faker->randomElement(['admin', 'user']),
+            'remember_token' => Str::random(10),
         ];
     }
 }

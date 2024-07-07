@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import Text from '../atoms/text';
 import Button from '../atoms/Button';
 import './contactForm.css';
@@ -12,6 +13,7 @@ const ContactForm = () => {
   });
 
   const [errors, setErrors] = useState({});
+  const [status, setStatus] = useState('');
 
   const handleChange = (e) => {
     setFormData({
@@ -33,8 +35,15 @@ const ContactForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validate()) {
-      // Envoyer les données du formulaire
-      console.log('Données envoyées:', formData);
+      axios.post('/api/contact', formData)
+        .then(response => {
+          setStatus('Message envoyé avec succès!');
+          setFormData({ name: '', email: '', subject: '', message: '' });
+        })
+        .catch(error => {
+          setStatus('Erreur lors de l\'envoi du message.');
+          console.error('Erreur lors de l\'envoi du message:', error);
+        });
     }
   };
 
@@ -104,6 +113,7 @@ const ContactForm = () => {
         <div className="flex justify-center md:col-span-2">
           <Button label="Envoyer" type="submit" />
         </div>
+        {status && <p className="text-center text-green-500 mt-4">{status}</p>}
       </form>
     </section>
   );
