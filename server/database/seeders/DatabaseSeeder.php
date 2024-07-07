@@ -15,6 +15,9 @@ class DatabaseSeeder extends Seeder
             CommentSeeder::class,
             InfoSeeder::class,
             PartnerSeeder::class,
+            ContactSeeder::class,
+            ArtistMeetingSeeder::class,
+            NewsSeeder::class,
         ]);
     }
 }

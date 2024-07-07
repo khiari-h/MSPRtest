@@ -9,24 +9,6 @@ class StageSeeder extends Seeder
 {
     public function run()
     {
-        Stage::factory()->create([
-            'name' => 'Main Stage',
-            'location' => 'Central Park'
-        ]);
-
-        Stage::factory()->create([
-            'name' => 'Acoustic Stage',
-            'location' => 'Downtown Plaza'
-        ]);
-
-        Stage::factory()->create([
-            'name' => 'Electric Stage',
-            'location' => 'East Side Arena'
-        ]);
-
-        Stage::factory()->create([
-            'name' => 'Jazz Stage',
-            'location' => 'West End Park'
-        ]);
+        Stage::factory()->count(5)->create();
     }
 }

@@ -1,9 +1,7 @@
 <?php
 
-namespace Database\Factories;
-
-use App\Models\News;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\News;
 
 class NewsFactory extends Factory
 {
@@ -15,7 +13,9 @@ class NewsFactory extends Factory
             'title' => $this->faker->sentence,
             'description' => $this->faker->paragraph,
             'link' => $this->faker->url,
-            'category' => $this->faker->randomElement(['concert', 'info', 'interview', 'event', 'organization']),
+            'image' => $this->faker->imageUrl(),
+            'category' => $this->faker->randomElement(['concert', 'info', 'other']), // Utilisation des valeurs définies
+            'importance' => $this->faker->numberBetween(1, 10),
         ];
     }
 }
