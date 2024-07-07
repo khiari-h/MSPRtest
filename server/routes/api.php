@@ -12,20 +12,18 @@ use App\Http\Controllers\ArtistMeetingController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\WordpressController;
 
-// Protected Routes
-Route::middleware('auth:sanctum')->group(function () {
-    Route::resources([
-        'users' => UserController::class,
-        'stages' => StageController::class,
-        'concerts' => ConcertController::class,
-        'comments' => CommentController::class,
-        'info' => InfoController::class,
-        'partners' => PartnerController::class,
-        'contacts' => ContactController::class,
-        'artist_meetings' => ArtistMeetingController::class,
-        'news' => NewsController::class,
-    ]);
-});
+// Public Routes
+Route::resources([
+    'users' => UserController::class,
+    'stages' => StageController::class,
+    'concerts' => ConcertController::class,
+    'comments' => CommentController::class,
+    'info' => InfoController::class,
+    'partners' => PartnerController::class,
+    'contacts' => ContactController::class,
+    'artist_meetings' => ArtistMeetingController::class,
+    'news' => NewsController::class,
+]);
 
 // Wordpress Routes
 Route::prefix('wordpress')->group(function () {
