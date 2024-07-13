@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import axios from '../../config/axiosConfig';  // Import de la configuration Axios
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.css';
 import { Navigation } from 'swiper/modules';
 import Button from '../atoms/Button';
+import Accordion from '../molecules/accordion';  // Import du composant Accordéon
+import importantInfos from '../../data/importantInfos.json'; 
 
 const NewsAndUpdates = () => {
   const [news, setNews] = useState([]);
+  const [infos, setInfos] = useState([]);
 
   useEffect(() => {
     axios.get('/api/news')
@@ -16,6 +19,8 @@ const NewsAndUpdates = () => {
       .catch(error => {
         console.error("Erreur lors de la récupération des actualités!", error);
       });
+
+    setInfos(importantInfos);  // Charger les infos à partir du fichier JSON
   }, []);
 
   return (
@@ -39,7 +44,7 @@ const NewsAndUpdates = () => {
             <SwiperSlide key={index}>
               <div className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-transform transform hover:-translate-y-1">
                 <h3 className="text-2xl font-bold mb-2 mt-4 text-center text-blue-600">{newsItem.title}</h3>
-                <p className="text-gray-700 mb-4 text-center">{newsItem.content}</p>
+                <p className="text-gray-700 mb-4 text-center">{newsItem.description}</p>
                 <div className="text-center">
                   <a href={newsItem.link} className="inline-block font-bold text-blue-600 underline">En savoir plus</a>
                 </div>
@@ -52,14 +57,15 @@ const NewsAndUpdates = () => {
         </div>
       </div>
 
-      <div>
+      <div className="bg-soft-beige py-8">
         <h3 className="text-3xl font-bold mb-4 text-center text-gray-800">Informations Importantes</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {news.slice(3, 6).map((infoItem, index) => (
-            <div key={index} className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
-              <h3 className="text-2xl font-bold mb-2 text-blue-600">{infoItem.title}</h3>
-              <p className="text-gray-700">{infoItem.content}</p>
-            </div>
+        <div className="space-y-8">
+          {infos.map((infoItem, index) => (
+            <Accordion key={index} title={infoItem.title}>
+              <div className="text-gray-700">
+                {infoItem.content}
+              </div>
+            </Accordion>
           ))}
         </div>
       </div>

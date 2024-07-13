@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import axios from '../../config/axiosConfig';  // Utilisation de la configuration Axios
 import InfoCard from '../molecules/infoCard';
 import Text from '../atoms/text';
 import Button from '../atoms/Button';
@@ -9,7 +9,7 @@ const ConcertSchedule = () => {
   const visibleConcerts = 3;
 
   useEffect(() => {
-    axios.get('http://127.0.0.1:8000/api/concerts_schedule')
+    axios.get('/api/concerts_schedule')
       .then(response => {
         setConcertsSchedule(response.data);
       })

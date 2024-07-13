@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import axios from '../../config/axiosConfig';  // Utilisation de la configuration Axios
 import InfoCard from '../molecules/infoCard';
 import Text from '../atoms/text';
 import Button from '../atoms/Button';

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import axios from '../../config/axiosConfig';  // Utilisation de la configuration Axios
 import Text from '../atoms/text';
 import InfoCard from '../molecules/infoCard';
 import Button from '../atoms/Button';
@@ -8,7 +8,7 @@ const ArtistMeetingPreview = () => {
   const [artistMeetings, setArtistMeetings] = useState([]);
 
   useEffect(() => {
-    axios.get('/api/artist-meetings')
+    axios.get('/api/artist_meetings')
       .then(response => {
         setArtistMeetings(response.data);
       })
