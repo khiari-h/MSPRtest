@@ -1,3 +1,4 @@
+// src/components/NewsAndUpdates.js
 import React, { useEffect, useState } from 'react';
 import axios from '../../config/axiosConfig';  // Import de la configuration Axios
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -25,10 +26,10 @@ const NewsAndUpdates = () => {
 
   return (
     <section className="container mx-auto py-8" aria-labelledby="news-updates-heading">
-      <h2 id="news-updates-heading" className="text-4xl font-bold mb-8 text-center text-blue-600">Informations et Actualités</h2>
+      <h2 id="news-updates-heading" className="text-4xl font-bold mb-8 text-center text-primary-blue font-headline">Informations et Actualités</h2>
 
       <div className="mb-12">
-        <h3 className="text-3xl font-bold mb-4 text-center text-gray-800">Actualités</h3>
+        <h3 className="text-3xl font-bold mb-4 text-center text-gray-800 font-concert">Actualités</h3>
         <Swiper
           modules={[Navigation]}
           spaceBetween={20}
@@ -43,10 +44,10 @@ const NewsAndUpdates = () => {
           {news.slice(0, 3).map((newsItem, index) => (
             <SwiperSlide key={index}>
               <div className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-transform transform hover:-translate-y-1">
-                <h3 className="text-2xl font-bold mb-2 mt-4 text-center text-blue-600">{newsItem.title}</h3>
+                <h3 className="text-2xl font-bold mb-2 mt-4 text-center text-primary-blue font-concert">{newsItem.title}</h3>
                 <p className="text-gray-700 mb-4 text-center">{newsItem.description}</p>
                 <div className="text-center">
-                  <a href={newsItem.link} className="inline-block font-bold text-blue-600 underline">En savoir plus</a>
+                  <a href={newsItem.link} className="inline-block font-bold text-primary-blue underline">En savoir plus</a>
                 </div>
               </div>
             </SwiperSlide>
@@ -58,7 +59,7 @@ const NewsAndUpdates = () => {
       </div>
 
       <div className="bg-soft-beige py-8">
-        <h3 className="text-3xl font-bold mb-4 text-center text-gray-800">Informations Importantes</h3>
+        <h3 className="text-3xl font-bold mb-4 text-center text-gray-800 font-headline">Informations Importantes</h3>
         <div className="space-y-8">
           {infos.map((infoItem, index) => (
             <Accordion key={index} title={infoItem.title}>

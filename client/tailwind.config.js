@@ -4,6 +4,10 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
+      fontFamily: {
+        'concert': ['Poppins', 'sans-serif'],
+        'headline': ['Lobster', 'cursive'],
+      },
       height: {
         '1/2-screen': '50vh',
       },
