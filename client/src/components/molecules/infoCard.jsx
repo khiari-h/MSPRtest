@@ -1,16 +1,17 @@
 // src/components/molecules/InfoCard.js
 import React from 'react';
 import PropTypes from 'prop-types';
+import './infoCard.css';  // Import du fichier CSS
 
 const InfoCard = ({ title, description, image, additionalInfo, link, type }) => {
   return (
-    <div className={`bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300 ${type === 'schedule' ? 'border-l-4 border-blue-500' : ''}`} role="article" aria-labelledby={`info-card-title-${title}`}>
-      <img src={image} alt={`Image de ${title}`} className="w-full h-48 object-cover" />
-      <div className="p-6">
-        <h3 id={`info-card-title-${title}`} className={`text-xl font-semibold mb-2 ${type === 'schedule' ? 'text-blue-500' : 'text-black'}`}>{title}</h3>
-        <p className="text-gray-700 mb-4">{description}</p>
-        {additionalInfo && <p className="text-gray-600 mb-4">{additionalInfo}</p>}
-        {link && <a href={link} className="text-blue-500 hover:text-blue-700 font-bold" aria-label={`En savoir plus sur ${title}`}>En savoir plus</a>}
+    <div className={`card ${type === 'schedule' ? 'border-l-4 border-blue-500' : ''}`} role="article" aria-labelledby={`info-card-title-${title}`}>
+      <img src={image} alt={`Image de ${title}`} />
+      <div className="card-content">
+        <h3 id={`info-card-title-${title}`} className="card-title">{title}</h3>
+        <p className="card-description">{description}</p>
+        {additionalInfo && <p className="card-additional-info">{additionalInfo}</p>}
+        {link && <a href={link} className="card-link" aria-label={`En savoir plus sur ${title}`}>En savoir plus</a>}
       </div>
     </div>
   );

@@ -1,11 +1,9 @@
 // src/components/NewsAndUpdates.js
 import React, { useEffect, useState } from 'react';
 import axios from '../../config/axiosConfig';  // Import de la configuration Axios
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/swiper-bundle.css';
-import { Navigation } from 'swiper/modules';
 import Button from '../atoms/Button';
 import Accordion from '../molecules/accordion';  // Import du composant Accordéon
+import NewsCard from '../molecules/NewsCard';
 import importantInfos from '../../data/importantInfos.json'; 
 
 const NewsAndUpdates = () => {
@@ -30,29 +28,17 @@ const NewsAndUpdates = () => {
 
       <div className="mb-12">
         <h3 className="text-3xl font-bold mb-4 text-center text-gray-800 font-concert">Actualités</h3>
-        <Swiper
-          modules={[Navigation]}
-          spaceBetween={20}
-          slidesPerView={1}
-          navigation
-          breakpoints={{
-            640: { slidesPerView: 1 },
-            768: { slidesPerView: 2 },
-            1024: { slidesPerView: 3 },
-          }}
-        >
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {news.slice(0, 3).map((newsItem, index) => (
-            <SwiperSlide key={index}>
-              <div className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-transform transform hover:-translate-y-1">
-                <h3 className="text-2xl font-bold mb-2 mt-4 text-center text-primary-blue font-concert">{newsItem.title}</h3>
-                <p className="text-gray-700 mb-4 text-center">{newsItem.description}</p>
-                <div className="text-center">
-                  <a href={newsItem.link} className="inline-block font-bold text-primary-blue underline">En savoir plus</a>
-                </div>
-              </div>
-            </SwiperSlide>
+            <NewsCard
+              key={index}
+              title={newsItem.title}
+              description={newsItem.description}
+              image={newsItem.image || 'path/to/default-image.jpg'} // Default image if none provided
+              link={newsItem.link}
+            />
           ))}
-        </Swiper>
+        </div>
         <div className="text-center mt-8">
           <Button href="/news" label="Voir toutes les actualités" />
         </div>
