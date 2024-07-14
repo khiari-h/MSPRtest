@@ -6,7 +6,7 @@ import './infoCard.css';  // Import du fichier CSS
 const InfoCard = ({ title, description, image, additionalInfo, link, type }) => {
   return (
     <div className={`card ${type === 'schedule' ? 'border-l-4 border-blue-500' : ''}`} role="article" aria-labelledby={`info-card-title-${title}`}>
-      <img src={image} alt={`Image de ${title}`} />
+      <img src={image} alt={`Image de ${title}`} className="card-image"/>
       <div className="card-content">
         <h3 id={`info-card-title-${title}`} className="card-title">{title}</h3>
         <p className="card-description">{description}</p>

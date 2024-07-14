@@ -15,7 +15,7 @@ const PracticalInfo = () => {
   return (
     <section className="bg-soft-beige py-12" aria-labelledby="practical-info-heading">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <Text content="Infos Pratiques" type="h2" className="text-4xl font-bold mb-8 text-center text-gray-800" id="practical-info-heading" />
+        <Text content="Infos Pratiques et FAQ" type="h2" className="text-4xl font-bold mb-8 text-center text-gray-800" id="practical-info-heading" />
 
         <div className="space-y-8">
           {practicalInfo.map((section, index) => (

@@ -11,6 +11,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ArtistMeetingController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\WordpressController;
+use App\Http\Controllers\ConcertScheduleController;
 
 // Public Routes
 Route::resources([
@@ -23,6 +24,7 @@ Route::resources([
     'contacts' => ContactController::class,
     'artist_meetings' => ArtistMeetingController::class,
     'news' => NewsController::class,
+    'concerts_schedule' => ConcertScheduleController::class,
 ]);
 
 // Wordpress Routes

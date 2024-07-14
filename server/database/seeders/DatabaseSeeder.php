@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             ContactSeeder::class,
             ArtistMeetingSeeder::class,
             NewsSeeder::class,
+            ConcertsScheduleSeeder::class, 
         ]);
     }
 }

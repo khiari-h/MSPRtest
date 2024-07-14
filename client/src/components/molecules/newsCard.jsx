@@ -1,16 +1,14 @@
 // src/components/molecules/NewsCard.js
 import React from 'react';
 import PropTypes from 'prop-types';
-import './newsCard.css';
+import './newsCard.css';  // Import du fichier CSS
 
-const NewsCard = ({ title, description, image, link }) => {
+const NewsCard = ({ title, description }) => {
   return (
     <div className="news-card">
-      <img src={image} alt={`Image de ${title}`} className="news-card-image" />
       <div className="news-card-content">
         <h3 className="news-card-title">{title}</h3>
         <p className="news-card-description">{description}</p>
-        <a href={link} className="news-card-link" aria-label={`En savoir plus sur ${title}`}>En savoir plus</a>
       </div>
     </div>
   );
@@ -19,8 +17,6 @@ const NewsCard = ({ title, description, image, link }) => {
 NewsCard.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  image: PropTypes.string.isRequired,
-  link: PropTypes.string.isRequired,
 };
 
 export default NewsCard;

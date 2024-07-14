@@ -1,7 +1,8 @@
 <?php
 
-use Illuminate\Database\Eloquent\Factories\Factory;
+namespace Database\Factories;
 use App\Models\News;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 class NewsFactory extends Factory
 {
@@ -19,3 +20,4 @@ class NewsFactory extends Factory
         ];
     }
 }
+
