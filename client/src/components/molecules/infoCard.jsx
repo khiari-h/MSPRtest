@@ -1,7 +1,7 @@
 // src/components/molecules/InfoCard.js
 import React from 'react';
 import PropTypes from 'prop-types';
-import './infoCard.css';  // Import du fichier CSS
+import './infoCard.css';  
 
 const InfoCard = ({ title, description, image, additionalInfo, link, type }) => {
   return (

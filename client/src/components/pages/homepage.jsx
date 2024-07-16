@@ -2,9 +2,7 @@
 import React from 'react';
 import Header from '../organisms/header';
 import HeroSection from '../organisms/heroSection';
-import ConcertProgram from '../organisms/ConcertProgram';
-import ConcertSchedule from '../organisms/ConcertSchedule';
-import TicketLink from '../organisms/TicketLink';
+import ConcertsOverview from '../organisms/ConcertsOverview';
 import PracticalInfo from '../organisms/practicalInfo';
 import Footer from '../organisms/footer';
 import CTASection from '../molecules/ctaSection';
@@ -17,10 +15,19 @@ const HomePage = () => {
       <Header />
       <HeroSection />
       <NewsAndUpdates />
-      <ConcertProgram />
-      <ConcertSchedule />
+      <ConcertsOverview />
       <ArtistMeetingsPreview />
-      <TicketLink />
+      <CTASection
+        title="Réservez vos billets pour une expérience inoubliable!"
+        customClass="ticket-cta-section"
+        ctas={[
+          {
+            label: "Acheter des billets",
+            href: "https://www.site-de-billetterie.com",
+            className: "bg-blue-500 text-white hover:bg-white hover:text-black hover:border-2 hover:border-blue-500 w-full md:w-auto rounded-full shadow-lg transform hover:scale-105 transition-transform",
+          },
+        ]}
+      />
       <PracticalInfo />
       <div className="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-24 py-8 px-4">
         <CTASection

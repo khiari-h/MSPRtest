@@ -2,10 +2,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Button from '../atoms/Button';
+import './ctaSection.css';
 
-const CTASection = ({ title, ctas }) => {
+
+const CTASection = ({ title, ctas, customClass }) => {
   return (
-    <section className="cta-section text-center py-8">
+    <section className={`cta-section text-center py-8 ${customClass}`}>
       <h2 className="text-2xl font-bold mb-4">{title}</h2>
       <div className="flex justify-center">
         {ctas.map((cta, index) => (
@@ -30,6 +32,7 @@ CTASection.propTypes = {
       className: PropTypes.string,
     })
   ).isRequired,
+  customClass: PropTypes.string,
 };
 
 export default CTASection;

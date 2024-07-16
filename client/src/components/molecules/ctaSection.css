@@ -1,0 +1,31 @@
+.ticket-cta-section {
+    background-color: #FAF0E6; /* Utiliser la couleur soft-beige comme fond */
+    padding: 40px 20px; /* Augmenter le padding pour un espacement confortable */
+    border-radius: 16px; /* Arrondir davantage les coins */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Augmenter l'ombre pour plus de profondeur */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  }
+  
+  .ticket-cta-section:hover {
+    transform: translateY(-5px); /* Légère translation vers le haut au survol */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); /* Augmenter l'ombre au survol */
+  }
+  
+  .ticket-cta-section .button {
+    background-color: #4C1D95; /* Utiliser la couleur deep-purple */
+    border: none;
+    color: white;
+    padding: 12px 24px; /* Augmenter le padding pour un bouton plus grand */
+    font-size: 18px; /* Augmenter la taille de la police */
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    border-radius: 50px;
+  }
+  
+  .ticket-cta-section .button:hover {
+    background-color: #6B2FBF; /* Légère variation de deep-purple pour le survol */
+    color: white; /* Conserver le texte en blanc */
+    border: none; /* Pas de bordure */
+    transform: scale(1.1); /* Augmenter légèrement l'échelle au survol */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
