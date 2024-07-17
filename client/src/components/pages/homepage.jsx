@@ -8,6 +8,7 @@ import Footer from '../organisms/footer';
 import CTASection from '../molecules/ctaSection';
 import ArtistMeetingsPreview from '../organisms/ArtistMeetingPreview';
 import NewsAndUpdates from '../organisms/NewsAndUpdates';
+import Map from '../organisms/Map';
 
 const HomePage = () => {
   return (
@@ -29,6 +30,7 @@ const HomePage = () => {
         ]}
       />
       <PracticalInfo />
+      <Map/>
       <div className="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-24 py-8 px-4">
         <CTASection
           title="Restons en Contact!"

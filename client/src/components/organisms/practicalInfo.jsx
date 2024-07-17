@@ -1,9 +1,8 @@
-// src/components/PracticalInfo.js
+// src/components/organisms/PracticalInfo.js
 import React, { useEffect, useState } from 'react';
 import Text from '../atoms/text';
 import Accordion from '../molecules/accordion';
 import practicalInfoData from '../../data/practicalInfoData.json';
-import { FaMapMarkerAlt } from 'react-icons/fa';
 
 const PracticalInfo = () => {
   const [practicalInfo, setPracticalInfo] = useState([]);
@@ -34,19 +33,6 @@ const PracticalInfo = () => {
               </div>
             </Accordion>
           ))}
-        </div>
-
-        <div className="mt-12">
-          <h3 className="text-2xl font-semibold mb-4 text-center text-gray-800">Carte du Festival</h3>
-          <div className="flex justify-center mb-4">
-            <FaMapMarkerAlt className="text-blue-600 text-3xl" />
-          </div>
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.825064072408!2d144.95565151531698!3d-37.81732497975171!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0xf577d52ed5c9b1f5!2sFederation+Square!5e0!3m2!1sen!2sau!4v1464883813255"
-            className="w-full h-64 rounded-lg shadow-md border-0"
-            allowFullScreen
-            aria-label="Carte du Festival"
-          ></iframe>
         </div>
       </div>
     </section>
