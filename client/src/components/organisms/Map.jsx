@@ -4,7 +4,6 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import axios from 'axios';
-import './Map.css';
 
 // Fix marker icon issue with Leaflet in React
 delete L.Icon.Default.prototype._getIconUrl;
@@ -30,7 +29,7 @@ const Map = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
 
   useEffect(() => {
-    axios.get('https://nationsounds.online/wp-json/wp/v2/pointsinteret')
+    axios.get('https://votre-site.com/wp-json/wp/v2/pointsinteret')
       .then(response => {
         setPointsOfInterest(response.data);
         setFilteredPoints(response.data);
@@ -51,7 +50,7 @@ const Map = () => {
 
   return (
     <div>
-      <div className="flex justify-center mb-4">
+      <div className="button-container">
         {categories.map(category => (
           <button
             key={category.id}
@@ -62,7 +61,7 @@ const Map = () => {
           </button>
         ))}
       </div>
-      <MapContainer center={[48.8566, 2.3522]} zoom={13} style={{ height: "80vh", width: "100%" }}>
+      <MapContainer className="map-container" center={[48.8566, 2.3522]} zoom={13}>
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
