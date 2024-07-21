@@ -1,39 +1,46 @@
-/* Styles pour les boutons de filtrage */
-.btn {
-    margin: 0 5px;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s, color 0.3s;
-  }
-  
-  .btn-primary {
-    background-color: #007BFF;
-    color: white;
-    border: 1px solid #007BFF;
-  }
-  
-  .btn-secondary {
-    background-color: #6c757d;
-    color: white;
-    border: 1px solid #6c757d;
-  }
-  
-  .btn:hover {
-    opacity: 0.8;
-  }
-  
-  /* Styles pour la carte */
-  .map-container {
-    height: 80vh;
+/* Styles pour le panneau d'instructions */
+.leaflet-routing-container {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  padding: 15px;
+  max-width: 400px;
+  margin: 20px auto;
+  font-family: 'Arial, sans-serif';
+}
+
+.leaflet-routing-alt {
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.leaflet-routing-alt strong {
+  color: #007bff;
+}
+
+.leaflet-routing-container button {
+  display: none; /* Hide the default close button */
+}
+
+/* Styles spécifiques pour les appareils mobiles */
+@media (max-width: 768px) {
+  .leaflet-routing-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
     width: 100%;
+    height: 50%;
+    z-index: 1000;
+    overflow-y: auto;
+    max-width: none;
+    border-radius: 10px 10px 0 0;
   }
-  
-  /* Styles pour le conteneur des boutons */
-  .button-container {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 16px;
+
+  .leaflet-routing-alt {
+    font-size: 12px;
   }
-  
+
+  .leaflet-routing-container .leaflet-routing-alt ul {
+    max-height: 100%;
+  }
+}
