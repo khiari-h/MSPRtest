@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import Text from '../atoms/text';
+import Text from '../atoms/Text';
 import Button from '../atoms/Button';
-import './contactForm.css';
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -56,7 +55,7 @@ const ContactForm = () => {
           <input
             type="text"
             id="name"
-            className="input-field"
+            className="border border-gray-300 p-2 rounded-md"
             placeholder="Entrez votre nom"
             value={formData.name}
             onChange={handleChange}
@@ -71,7 +70,7 @@ const ContactForm = () => {
           <input
             type="email"
             id="email"
-            className="input-field"
+            className="border border-gray-300 p-2 rounded-md"
             placeholder="Entrez votre email"
             value={formData.email}
             onChange={handleChange}
@@ -86,7 +85,7 @@ const ContactForm = () => {
           <input
             type="text"
             id="subject"
-            className="input-field"
+            className="border border-gray-300 p-2 rounded-md"
             placeholder="Sujet de votre message"
             value={formData.subject}
             onChange={handleChange}
@@ -100,7 +99,7 @@ const ContactForm = () => {
           <label htmlFor="message" className="block text-gray-700 font-bold mb-2">Message</label>
           <textarea
             id="message"
-            className="input-field h-32"
+            className="border border-gray-300 p-2 rounded-md h-32"
             placeholder="Votre message"
             value={formData.message}
             onChange={handleChange}

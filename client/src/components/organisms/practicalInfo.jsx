@@ -1,7 +1,6 @@
-// src/components/organisms/PracticalInfo.js
 import React, { useEffect, useState } from 'react';
-import Text from '../atoms/text';
-import Accordion from '../molecules/accordion';
+import Text from '../atoms/Text';
+import Accordion from '../molecules/Accordion';
 import practicalInfoData from '../../data/practicalInfoData.json';
 
 const PracticalInfo = () => {

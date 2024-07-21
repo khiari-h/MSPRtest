@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import NavItem from '../molecules/NavItem';
-import Image from '../atoms/image';
+import Image from '../atoms/Image';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -41,9 +41,8 @@ const Header = () => {
           >
             <nav className="flex flex-col items-center space-y-4">
               <NavItem label="Accueil" href="/" className="text-lg font-semibold" />
-              <NavItem label="Programmation" href="/programmation" className="text-lg font-semibold" />
+              <NavItem label="Programmation" href="/concerts" className="text-lg font-semibold" />
               <NavItem label="Artistes" href="/artistes" className="text-lg font-semibold" />
-              <NavItem label="Infos Pratiques" href="/infos-pratiques" className="text-lg font-semibold" />
               <NavItem label="Partenaires" href="/partenaires" className="text-lg font-semibold" />
               <NavItem label="Contact" href="/contact" className="text-lg font-semibold" />
             </nav>
@@ -51,10 +50,9 @@ const Header = () => {
         )}
         <nav className="hidden md:flex md:items-center md:space-x-4">
           <NavItem label="Accueil" href="/" />
-          <NavItem label="Programmation" href="/programmation" />
+          <NavItem label="Programmation" href="/concerts" />
           <NavItem label="Artistes" href="/artistes" />
-          <NavItem label="Infos Pratiques" href="/infos-pratiques" />
-          <NavItem label="Partenaires" href="/partenaires"/>
+          <NavItem label="Partenaires" href="/partenaires" />
           <NavItem label="Contact" href="/contact" />
         </nav>
       </div>

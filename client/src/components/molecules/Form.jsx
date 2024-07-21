@@ -1,9 +1,9 @@
 // src/components/molecules/Form.js
 import React from 'react';
 import PropTypes from 'prop-types';
-import Label from '../atoms/label';
-import Input from '../atoms/input';
-import Button from '../atoms/button';
+import Label from '../atoms/Label';
+import Input from '../atoms/Input';
+import Button from '../atoms/Button';
 
 const Form = ({ fields, onSubmit }) => {
   const handleSubmit = (event) => {

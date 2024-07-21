@@ -1,5 +1,5 @@
 import React from 'react';
-import Text from '../atoms/text';
+import Text from '../atoms/Text';
 import Button from '../atoms/Button';
 
 const HeroSection = () => {
@@ -9,7 +9,7 @@ const HeroSection = () => {
       style={{ backgroundImage: 'url(/concert2.jpg)', backgroundSize: 'cover' }}
       aria-label="Hero section avec un message de bienvenue et un appel à l'action pour acheter des billets"
     >
-      <div className="absolute inset-0 bg-black opacity-30"></div> {/* Overlay pour améliorer la lisibilité du texte */}
+      <div className="absolute inset-0 bg-black opacity-30"></div>
       <div className="relative container mx-auto text-center p-4 md:p-8 rounded">
         <Text content="Bienvenue au Festival Nation Sounds" type="h1" className="text-3xl md:text-5xl font-bold mb-4 text-white drop-shadow-lg font-serif" />
         <Text content="Rejoignez-nous pour une expérience inoubliable" type="p" className="text-lg md:text-2xl mb-8 text-white drop-shadow-lg font-serif" />

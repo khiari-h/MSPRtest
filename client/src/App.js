@@ -1,13 +1,15 @@
-// src/App.js
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
-import HomePage from './components/pages/homepage';
+import HomePage from './components/pages/HomePage';
 import PartnersPage from './components/pages/PartnersPage';
-import ContactPage from './components/pages/contactPage';
+import ContactPage from './components/pages/ContactPage';
 import ConcertsDetailsPage from './components/pages/ConcertsDetailsPage';
 import NewsPage from './components/pages/NewsPage';
+import ArtistMeetingPage from './components/pages/ArtistMeetingPage';
+import NotFoundPage from './components/error/NotFoundPage';
+import ServerErrorPage from './components/error/ServerErrorPage';
 import './index.css';
 
 // Ajouter les icônes à la bibliothèque
@@ -23,6 +25,9 @@ const App = () => {
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/concerts" element={<ConcertsDetailsPage />} />
           <Route path="/news" element={<NewsPage />} />
+          <Route path="/artistes" element={<ArtistMeetingPage />} />
+          <Route path="/500" element={<ServerErrorPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Router>
     </div>

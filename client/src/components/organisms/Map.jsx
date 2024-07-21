@@ -5,9 +5,9 @@ import 'leaflet/dist/leaflet.css';
 import 'leaflet-routing-machine/dist/leaflet-routing-machine.css';
 import axios from 'axios';
 import 'leaflet-routing-machine';
-import './Map.css';  // Assurez-vous d'avoir ce fichier CSS
+import Text from '../atoms/Text'; // Import du composant Text
+import './Map.css';
 
-// Fix marker icon issue with Leaflet in React
 delete L.Icon.Default.prototype._getIconUrl;
 
 L.Icon.Default.mergeOptions({
@@ -46,14 +46,14 @@ const RoutingControl = ({ from, to }) => {
           ],
           router: L.Routing.osrmv1({
             serviceUrl: 'https://router.project-osrm.org/route/v1',
-            profile: 'car', // Utilisation du profil 'car' pour un itinéraire rapide
-            language: 'fr', // Définit la langue en français
-            units: 'metric', // Utilise les unités métriques
+            profile: 'car',
+            language: 'fr',
+            units: 'metric',
           }),
           routeWhileDragging: true,
           addWaypoints: false,
           draggableWaypoints: false,
-          show: false,
+          show: true,
           lineOptions: {
             styles: [{ color: 'blue', opacity: 1, weight: 6 }]
           },
@@ -79,7 +79,6 @@ const RoutingControl = ({ from, to }) => {
           const summary = routes[0].summary;
           console.log(`Distance: ${summary.totalDistance / 1000} km, Time: ${Math.round(summary.totalTime % 3600 / 60)} minutes`);
           
-          // Afficher les instructions dans le panneau intégré à la carte
           const instructions = routes[0].instructions.map(instr => `<li>${instr.text}</li>`).join('');
           document.getElementById('routing-instructions').innerHTML = `<ul>${instructions}</ul>`;
         });
@@ -150,6 +149,7 @@ const Map = () => {
 
   return (
     <div className="container mx-auto p-4">
+      <Text content="Carte du Festival" type="h2" className="text-3xl font-bold mb-6 text-center" /> {/* Ajout du titre ici */}
       <div className="flex flex-wrap justify-center mb-4 space-x-4">
         {categories.map(category => (
           <label key={category.id} className="inline-flex items-center">
@@ -239,7 +239,6 @@ const Map = () => {
       {showInstructions && (
         <div className="fixed inset-x-0 bottom-0 bg-white p-4 shadow-md z-50 md:hidden overflow-y-auto" style={{ maxHeight: '50vh' }}>
           <div id="routing-instructions">
-            {/* Instructions d'itinéraire seront rendues ici */}
           </div>
         </div>
       )}

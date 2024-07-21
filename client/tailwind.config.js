@@ -5,8 +5,10 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'concert': ['Poppins', 'sans-serif'],
-        'headline': ['Lobster', 'cursive'],
+        'concert-title': ['Oswald', 'sans-serif'],
+        'concert-body': ['Roboto', 'sans-serif'],
+        'concert-description': ['Lora', 'serif'],
+        'concert-subtitle': ['Montserrat', 'sans-serif'],
       },
       height: {
         '1/2-screen': '50vh',
@@ -16,6 +18,10 @@ module.exports = {
         'deep-purple': '#4C1D95',
         'vibrant-blue': '#1E3A8A',
         'charcoal': '#36454F',
+        'concert-bg': '#1a1a2e',
+        'concert-text': '#e94560',
+        'concert-accent': '#0f3460',
+        'concert-muted': '#f0e5cf',
       },
     },
   },

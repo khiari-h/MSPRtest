@@ -1,9 +1,8 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebookF, faTwitter, faInstagram, faLinkedin } from '@fortawesome/free-brands-svg-icons';
-import Text from '../atoms/text';
+import Text from '../atoms/Text';
 import NavItem from '../molecules/NavItem';
-import './footer.css';
 
 const Footer = () => {
   return (
@@ -23,7 +22,7 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-bold mb-2">Newsletter</h3>
             <form className="max-w-sm mx-auto">
-              <input type="email" placeholder="Votre email" className="p-2 rounded text-black input-small w-full" aria-label="Email" />
+              <input type="email" placeholder="Votre email" className="p-2 rounded text-black w-full" aria-label="Email" />
               <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2">S'inscrire</button>
             </form>
           </div>
