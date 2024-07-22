@@ -7,9 +7,13 @@ const PartnersPageTemplate = ({ permanentPartners, newPartners, cta }) => {
   return (
     <div>
       <Header />
-      {permanentPartners}
-      {newPartners}
-      {cta}
+      <main className="bg-gray-100 py-8 px-4 sm:px-6 lg:px-8" role="main">
+        <div className="container mx-auto">
+          {permanentPartners}
+          {newPartners}
+          {cta}
+        </div>
+      </main>
       <Footer />
     </div>
   );

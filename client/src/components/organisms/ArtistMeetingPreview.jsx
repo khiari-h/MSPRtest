@@ -10,7 +10,7 @@ const ArtistMeetingPreview = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    axios.get('/api/artist_meetings')
+    axios.get('https://nationsounds.online/wp-json/wp/v2/artists_meetings')
       .then(response => {
         setArtistMeetings(response.data);
         setLoading(false);
@@ -34,9 +34,9 @@ const ArtistMeetingPreview = () => {
           {artistMeetings.slice(0, visibleMeetings).map((meeting, index) => (
             <InfoCard
               key={index}
-              title={meeting.artist}
-              description={meeting.description}
-              image={meeting.image}
+              title={meeting.acf.artist}
+              description={meeting.acf.description}
+              image={meeting.acf.image}
               type="meeting"
             />
           ))}
@@ -45,7 +45,7 @@ const ArtistMeetingPreview = () => {
       <div className="flex justify-center mt-6 space-x-4">
         <Button
           label="Voir Plus"
-          href="/artist-meetings"
+          href="/artistes"
           className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
           aria-label="Voir toutes les rencontres avec les artistes"
         />

@@ -11,7 +11,7 @@ const ArtistMeetingsPage = () => {
   const [error, setError] = useState('');
 
   useEffect(() => {
-    axios.get('/api/artist-meetings')
+    axios.get('https://nationsounds.online/wp-json/wp/v2/artists_meetings')
       .then(response => {
         setArtistMeetings(response.data);
         setLoading(false);
@@ -36,10 +36,10 @@ const ArtistMeetingsPage = () => {
             {artistMeetings.map((meeting, index) => (
               <InfoCard
                 key={index}
-                title={meeting.artist}
-                description={meeting.description}
-                image={meeting.image}
-                additionalInfo={`Date: ${meeting.date}, Heure: ${meeting.time}, Lieu: ${meeting.venue}`}
+                title={meeting.acf.artist}
+                description={meeting.acf.description}
+                image={meeting.acf.image}
+                additionalInfo={`Date: ${meeting.acf.date}, Heure: ${meeting.acf.time}, Lieu: ${meeting.acf.venue}`}
                 type="meeting"
               />
             ))}

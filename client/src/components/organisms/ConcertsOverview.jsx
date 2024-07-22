@@ -11,8 +11,9 @@ const ConcertsOverview = () => {
   const visibleConcerts = 3;
 
   useEffect(() => {
-    axios.get('/api/concerts')
+    axios.get('https://nationsounds.online/wp-json/wp/v2/concerts')
       .then(response => {
+        console.log("Concerts data:", response.data); // Log the API response
         setConcerts(response.data);
         setLoading(false);
       })
@@ -24,6 +25,8 @@ const ConcertsOverview = () => {
   }, []);
 
   const visibleConcertsList = concerts.slice(0, visibleConcerts);
+  console.log("Total concerts:", concerts.length); // Log the length of concerts array
+  console.log("Visible concerts list:", visibleConcertsList); // Log the visible concerts list
 
   return (
     <section className="container mx-auto py-8" aria-labelledby="concerts-overview-heading">
@@ -35,24 +38,22 @@ const ConcertsOverview = () => {
           {visibleConcertsList.map((concert, index) => (
             <InfoCard
               key={index}
-              title={concert.name}
-              description={concert.description}
-              image={concert.image}
-              additionalInfo={`Date: ${concert.date}, Heure: ${concert.time}, Lieu: ${concert.venue}`}
+              title={concert.acf.name}
+              description={concert.acf.description}
+              image={concert.acf.image}
+              additionalInfo={`Date: ${concert.acf.date}, Heure: ${concert.acf.time}, Lieu: ${concert.acf.venue}`}
               type="program"
             />
           ))}
         </div>
       )}
       <div className="flex justify-center mt-6 space-x-4">
-        {concerts.length > visibleConcerts && (
-          <Button
-            label="Voir Plus de Concerts"
-            href="/concerts"
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
-            aria-label="Voir tous les concerts"
-          />
-        )}
+        <Button
+          label="Voir Plus de Concerts"
+          href="/concerts"
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
+          aria-label="Voir tous les concerts"
+        />
       </div>
     </section>
   );

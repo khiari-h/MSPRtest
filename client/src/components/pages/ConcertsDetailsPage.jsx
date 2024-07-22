@@ -11,11 +11,11 @@ const ConcertsDetailsPage = () => {
   const [filters, setFilters] = useState({ date: '', venue: '', search: '' });
 
   useEffect(() => {
-    axios.get('/api/concerts')
+    axios.get('https://nationsounds.online/wp-json/wp/v2/concerts')
       .then(response => {
         setConcerts(response.data);
-        setDates([...new Set(response.data.map(concert => concert.date))]);
-        setVenues([...new Set(response.data.map(concert => concert.venue))]);
+        setDates([...new Set(response.data.map(concert => concert.acf.date))]);
+        setVenues([...new Set(response.data.map(concert => concert.acf.venue))]);
       })
       .catch(error => {
         console.error("Erreur lors de la récupération des concerts!", error);
@@ -29,9 +29,9 @@ const ConcertsDetailsPage = () => {
 
   const filteredConcerts = concerts.filter(concert => {
     return (
-      (filters.date === '' || concert.date === filters.date) &&
-      (filters.venue === '' || concert.venue === filters.venue) &&
-      (filters.search === '' || concert.name.toLowerCase().includes(filters.search.toLowerCase()))
+      (filters.date === '' || concert.acf.date === filters.date) &&
+      (filters.venue === '' || concert.acf.venue === filters.venue) &&
+      (filters.search === '' || concert.acf.name.toLowerCase().includes(filters.search.toLowerCase()))
     );
   });
 
@@ -89,10 +89,10 @@ const ConcertsDetailsPage = () => {
       {filteredConcerts.map((concert, index) => (
         <InfoCard
           key={index}
-          title={concert.name}
-          description={concert.description}
-          image={concert.image}
-          additionalInfo={`Date: ${concert.date}, Heure: ${concert.time}, Lieu: ${concert.venue}`}
+          title={concert.acf.name}
+          description={concert.acf.description}
+          image={concert.acf.image}
+          additionalInfo={`Date: ${concert.acf.date}, Heure: ${concert.acf.time}, Lieu: ${concert.acf.venue}`}
           type="program"
         />
       ))}
