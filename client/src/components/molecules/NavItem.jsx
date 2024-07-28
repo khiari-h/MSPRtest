@@ -1,8 +1,7 @@
-// src/components/molecules/NavItem.js
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const NavItem = ({ label, href, className }) => {
+const NavItem = ({ label, href, className = '' }) => {
   return (
     <a
       href={href}
@@ -17,10 +16,6 @@ NavItem.propTypes = {
   label: PropTypes.string.isRequired,
   href: PropTypes.string.isRequired,
   className: PropTypes.string,
-};
-
-NavItem.defaultProps = {
-  className: '',
 };
 
 export default NavItem;
