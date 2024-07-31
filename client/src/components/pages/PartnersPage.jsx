@@ -5,59 +5,79 @@ import Text from '../atoms/Text';
 import PartnerCard from '../molecules/PartnersCard';
 
 const PartnersPage = () => {
-  const [permanentPartners, setPermanentPartners] = useState([]);
-  const [newPartners, setNewPartners] = useState([]);
+  const [partners, setPartners] = useState([]);
+  const [filteredPartners, setFilteredPartners] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState('Tous');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
   useEffect(() => {
-    axios.get('https://nationsounds.online/wp-json/wp/v2/partners')
-      .then(response => {
-        const partners = response.data;
-        setPermanentPartners(partners.filter(partner => partner.acf.category === 'permanent'));
-        setNewPartners(partners.filter(partner => partner.acf.category === 'new'));
+    const fetchPartners = async () => {
+      try {
+        const response = await axios.get('https://nationsounds.online/wp-json/wp/v2/partners');
+        const partnersData = response.data;
+
+        // Récupérer les URLs des logos
+        const partnersWithLogos = await Promise.all(partnersData.map(async (partner) => {
+          if (partner.acf.logo) {
+            try {
+              const logoResponse = await axios.get(`https://nationsounds.online/wp-json/wp/v2/media/${partner.acf.logo}`);
+              return { ...partner, acf: { ...partner.acf, logoUrl: logoResponse.data.source_url } };
+            } catch (logoError) {
+              console.error("Erreur lors de la récupération du logo!", logoError);
+              return { ...partner, acf: { ...partner.acf, logoUrl: '' } };
+            }
+          }
+          return { ...partner, acf: { ...partner.acf, logoUrl: '' } };
+        }));
+
+        setPartners(partnersWithLogos);
+        setFilteredPartners(partnersWithLogos);
         setLoading(false);
-      })
-      .catch(error => {
+      } catch (error) {
         console.error("Erreur lors de la récupération des partenaires!", error);
         setError("Erreur lors de la récupération des données.");
         setLoading(false);
-      });
+      }
+    };
+
+    fetchPartners();
   }, []);
 
-  const permanentPartnersSection = (
-    <section className="mb-12" aria-labelledby="permanent-partners">
-      <Text content="Partenaires Permanents" type="h2" id="permanent-partners" className="text-2xl font-bold mb-6 text-center" />
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {permanentPartners.map((partner, index) => (
-          <PartnerCard
-            key={index}
-            name={partner.acf.name}
-            logo={partner.acf.logo}
-            link={partner.acf.link}
-            description={partner.acf.description}
-          />
-        ))}
-      </div>
-    </section>
-  );
+  const categories = ['Tous', ...new Set(partners.map(partner => partner.acf && partner.acf.categorie ? partner.acf.categorie : ''))];
 
-  const newPartnersSection = (
-    <section className="mb-12" aria-labelledby="new-partners">
-      <Text content="Nouveaux Partenaires" type="h2" id="new-partners" className="text-2xl font-bold mb-6 text-center" />
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {newPartners.map((partner, index) => (
-          <PartnerCard
-            key={index}
-            name={partner.acf.name}
-            logo={partner.acf.logo}
-            link={partner.acf.link}
-            description={partner.acf.description}
-          />
-        ))}
-      </div>
-    </section>
-  );
+  const handleCategoryChange = (category) => {
+    setSelectedCategory(category);
+    if (category === 'Tous') {
+      setFilteredPartners(partners);
+    } else {
+      setFilteredPartners(partners.filter(partner => partner.acf && partner.acf.categorie === category));
+    }
+  };
+
+  const filters = categories.map((category, index) => (
+    <button
+      key={index}
+      onClick={() => handleCategoryChange(category)}
+      className={`${
+        selectedCategory === category ? 'bg-blue-700' : 'bg-blue-500'
+      } text-white py-2 px-4 rounded mx-2 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50 transition-colors duration-300`}
+    >
+      {category}
+    </button>
+  ));
+
+  const partnersSection = filteredPartners.map((partner, index) => (
+    <PartnerCard
+      key={index}
+      name={partner.acf.nom}
+      logo={partner.acf.logoUrl}
+      link={partner.acf.lien}
+      description={partner.acf.description}
+      category={partner.acf.categorie}
+      isPrincipal={partner.acf.categorie === 'Partenaire Principal'}
+    />
+  ));
 
   const ctaSection = (
     <div className="mt-12 text-center">
@@ -70,8 +90,8 @@ const PartnersPage = () => {
 
   return (
     <PartnersPageTemplate
-      permanentPartners={loading || error ? <p>{loading ? 'Chargement...' : error}</p> : permanentPartnersSection}
-      newPartners={loading || error ? null : newPartnersSection}
+      filters={loading || error ? <p>{loading ? 'Chargement...' : error}</p> : filters}
+      partners={loading || error ? <p>{loading ? 'Chargement...' : error}</p> : partnersSection}
       cta={loading || error ? null : ctaSection}
     />
   );

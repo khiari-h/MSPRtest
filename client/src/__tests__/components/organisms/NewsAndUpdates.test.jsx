@@ -1,12 +1,10 @@
-// src/__tests__/components/organisms/NewsAndUpdates.test.jsx
-
 import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
 import axios from '../../../config/axiosConfig';
 import NewsAndUpdates from '../../../components/organisms/NewsAndUpdates';
 import { jest } from '@jest/globals';
 
-jest.mock('../../../config/axiosConfig'); 
+jest.mock('../../../config/axiosConfig');
 
 const mockData = [
   {

@@ -7,6 +7,7 @@ import axios from 'axios';
 import 'leaflet-routing-machine';
 import Text from '../atoms/Text'; // Import du composant Text
 import './Map.css';
+import he from 'he'; 
 
 delete L.Icon.Default.prototype._getIconUrl;
 
@@ -103,20 +104,28 @@ const Map = () => {
   const [startLocation, setStartLocation] = useState(null);
   const [endLocation, setEndLocation] = useState(null);
   const [showInstructions, setShowInstructions] = useState(false);
+  const uniqueCategories = ['Tous', ...new Set(pointsOfInterest.map(point => point.acf.Categorie))];
+
 
   useEffect(() => {
     const fetchPoints = async () => {
       try {
         const response = await axios.get('https://nationsounds.online/wp-json/wp/v2/pointsinterets');
-        setPointsOfInterest(response.data);
-        setFilteredPoints(response.data);
+        const decodedData = response.data.map(point => ({
+          ...point,
+          title: { ...point.title, rendered: he.decode(point.title.rendered) },
+          acf: { ...point.acf, Description: he.decode(point.acf.Description) }
+        }));
+        setPointsOfInterest(decodedData);
+        setFilteredPoints(decodedData);
       } catch (error) {
         console.error("Erreur lors de la récupération des points d'intérêt!", error);
       }
     };
-
+  
     fetchPoints();
   }, []);
+  
 
   useEffect(() => {
     if (selectedCategories.includes('Tous')) {
@@ -151,19 +160,20 @@ const Map = () => {
     <div className="container mx-auto p-4">
       <Text content="Carte du Festival" type="h2" className="text-3xl font-bold mb-6 text-center" /> {/* Ajout du titre ici */}
       <div className="flex flex-wrap justify-center mb-4 space-x-4">
-        {categories.map(category => (
-          <label key={category.id} className="inline-flex items-center">
-            <input
-              type="checkbox"
-              value={category.id}
-              checked={selectedCategories.includes(category.id)}
-              onChange={handleCategoryChange}
-              className="form-checkbox h-5 w-5 text-blue-600"
-            />
-            <span className="ml-2">{category.name}</span>
-          </label>
-        ))}
-      </div>
+  {uniqueCategories.map(category => (
+    <label key={category} className="inline-flex items-center">
+      <input
+        type="checkbox"
+        value={category}
+        checked={selectedCategories.includes(category)}
+        onChange={handleCategoryChange}
+        className="form-checkbox h-5 w-5 text-blue-600"
+      />
+      <span className="ml-2">{category}</span>
+    </label>
+  ))}
+</div>
+
       <div className="flex flex-wrap justify-center mb-4">
         <div className="mr-2">
           <label htmlFor="start-select" className="sr-only">Point de départ</label>

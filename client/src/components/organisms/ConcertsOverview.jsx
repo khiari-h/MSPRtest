@@ -11,17 +11,30 @@ const ConcertsOverview = () => {
   const visibleConcerts = 3;
 
   useEffect(() => {
-    axios.get('https://nationsounds.online/wp-json/wp/v2/concerts')
-      .then(response => {
-        console.log("Concerts data:", response.data); // Log the API response
-        setConcerts(response.data);
+    const fetchConcerts = async () => {
+      try {
+        const response = await axios.get('https://nationsounds.online/wp-json/wp/v2/concerts');
+        const concertsData = response.data;
+
+        // Fetch media details for each concert
+        const concertsWithImages = await Promise.all(concertsData.map(async concert => {
+          if (concert.acf.photo) {
+            const mediaResponse = await axios.get(`https://nationsounds.online/wp-json/wp/v2/media/${concert.acf.photo}`);
+            concert.acf.photo = mediaResponse.data.source_url;
+          }
+          return concert;
+        }));
+
+        setConcerts(concertsWithImages);
         setLoading(false);
-      })
-      .catch(error => {
+      } catch (error) {
         console.error("Erreur lors de la récupération des concerts!", error);
         setError("Erreur lors de la récupération des données.");
         setLoading(false);
-      });
+      }
+    };
+
+    fetchConcerts();
   }, []);
 
   const visibleConcertsList = concerts.slice(0, visibleConcerts);
@@ -38,10 +51,10 @@ const ConcertsOverview = () => {
           {visibleConcertsList.map((concert, index) => (
             <InfoCard
               key={index}
-              title={concert.acf.name}
+              title={concert.acf.nom}
               description={concert.acf.description}
-              image={concert.acf.image}
-              additionalInfo={`Date: ${concert.acf.date}, Heure: ${concert.acf.time}, Lieu: ${concert.acf.venue}`}
+              image={concert.acf.photo} // Utilise directement l'URL de l'image
+              additionalInfo={`Date: ${concert.acf.date}, Heure: ${concert.acf.heure}, Lieu: ${concert.acf.lieu}`}
               type="program"
             />
           ))}

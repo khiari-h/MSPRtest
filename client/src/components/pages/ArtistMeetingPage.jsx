@@ -1,70 +1,124 @@
-// src/__tests__/components/pages/ArtistMeetingPage.test.jsx
-import React from 'react';
-import { render, screen, waitFor, act } from '@testing-library/react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import ArtistMeetingPage from '../../../components/pages/ArtistMeetingPage';
-import { jest } from '@jest/globals';
+import ArtistMeetingsPageTemplate from '../templates/ArtistMeetingPageTemplate';
+import InfoCard from '../molecules/InfoCard';
+import Text from '../atoms/Text';
 
-jest.mock('axios');
+const ArtistMeetingsPage = () => {
+  const [artistMeetings, setArtistMeetings] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
+  const [filters, setFilters] = useState({ type: '', search: '' });
+  const [artistTypes, setArtistTypes] = useState([]);
 
-const mockData = [
-  {
-    acf: {
-      artist: 'Artiste 1',
-      description: 'Description 1',
-      image: 'image1.jpg',
-      date: '2024-07-30',
-      time: '20:00',
-      venue: 'Lieu 1',
-    },
-  },
-  {
-    acf: {
-      artist: 'Artiste 2',
-      description: 'Description 2',
-      image: 'image2.jpg',
-      date: '2024-08-01',
-      time: '21:00',
-      venue: 'Lieu 2',
-    },
-  },
-];
+  useEffect(() => {
+    const fetchArtistMeetings = async () => {
+      try {
+        const response = await axios.get('https://nationsounds.online/wp-json/wp/v2/artists_meetings');
+        const meetingsData = response.data;
+        console.log("Meetings data received:", meetingsData);
 
-describe('ArtistMeetingPage', () => {
-  test('affiche un message de chargement pendant le chargement des données', async () => {
-    axios.get.mockResolvedValueOnce({ data: [] });
+        // Fetch media details for each meeting
+        const meetingsWithImages = await Promise.all(meetingsData.map(async meeting => {
+          if (meeting.acf.photo) {
+            try {
+              const mediaResponse = await axios.get(`https://nationsounds.online/wp-json/wp/v2/media/${meeting.acf.photo}`);
+              meeting.acf.photo = mediaResponse.data.source_url;
+            } catch (mediaError) {
+              console.error(`Erreur lors de la récupération de l'image pour la réunion ${meeting.id}`, mediaError);
+              meeting.acf.photo = '';  // Set to an empty string or a default image URL in case of error
+            }
+          }
+          return meeting;
+        }));
 
-    await act(async () => {
-      render(<ArtistMeetingPage />);
-    });
+        const types = Array.from(new Set(meetingsWithImages.map(meeting => meeting.acf.type))).filter(Boolean);
+        setArtistTypes(types);
+        setArtistMeetings(meetingsWithImages);
+        setLoading(false);
+      } catch (error) {
+        console.error("Erreur lors de la récupération des rencontres avec les artistes!", error);
+        setError("Erreur lors de la récupération des données.");
+        setLoading(false);
+      }
+    };
 
-    expect(screen.getByText('Chargement...')).toBeInTheDocument();
+    fetchArtistMeetings();
+  }, []);
+
+  const handleFilterChange = (e) => {
+    const { name, value } = e.target;
+    setFilters({ ...filters, [name]: value });
+  };
+
+  const filteredMeetings = artistMeetings.filter(meeting => {
+    return (
+      (filters.type === '' || meeting.acf.type?.toLowerCase().includes(filters.type.toLowerCase())) &&
+      (filters.search === '' || meeting.acf.nom.toLowerCase().includes(filters.search.toLowerCase()))
+    );
   });
 
-  test('affiche un message d\'erreur en cas de problème lors de la récupération des données', async () => {
-    axios.get.mockRejectedValueOnce(new Error('Erreur de chargement'));
+  const filterSection = (
+    <div className="mb-6">
+      <form className="flex flex-wrap justify-center space-x-4">
+        <div className="w-full sm:w-auto">
+          <label htmlFor="type" className="block text-sm font-medium text-gray-700">Type d'Artiste</label>
+          <select
+            id="type"
+            name="type"
+            value={filters.type}
+            onChange={handleFilterChange}
+            className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
+          >
+            <option value="">Tous les types</option>
+            {artistTypes.map((type, index) => (
+              <option key={index} value={type}>{type}</option>
+            ))}
+          </select>
+        </div>
+        <div className="w-full sm:w-auto">
+          <label htmlFor="search" className="block text-sm font-medium text-gray-700">Recherche</label>
+          <input
+            type="text"
+            id="search"
+            name="search"
+            value={filters.search}
+            onChange={handleFilterChange}
+            placeholder="Rechercher par nom"
+            className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
+          />
+        </div>
+      </form>
+    </div>
+  );
 
-    await act(async () => {
-      render(<ArtistMeetingPage />);
-    });
+  // Transformation des données en composant InfoCard pour le template
+  const artistMeetingsContent = loading ? (
+    <div className="text-center">Chargement...</div>
+  ) : error ? (
+    <div className="text-red-500 text-center">{error}</div>
+  ) : (
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {filteredMeetings.map((meeting, index) => (
+        <InfoCard
+          key={index}
+          title={meeting.acf.nom}
+          description={meeting.acf.description}
+          image={meeting.acf.photo}
+          additionalInfo={`Date: ${meeting.acf.date}, Heure: ${meeting.acf.heure}, Lieu: ${meeting.acf.lieu}, Type: ${meeting.acf.type}`}
+          type="meeting"
+        />
+      ))}
+    </div>
+  );
 
-    await waitFor(() => {
-      expect(screen.getByText('Erreur lors de la récupération des rencontres avec les artistes !')).toBeInTheDocument();
-    });
-  });
+  return (
+    <ArtistMeetingsPageTemplate
+      title={<Text content="Rencontres avec les Artistes" type="h1" className="font-concert-title text-4xl text-center mb-6" />}
+      filters={filterSection}
+      artistMeetings={artistMeetingsContent}
+    />
+  );
+};
 
-  test('affiche les informations des réunions artistiques lorsqu\'elles sont chargées', async () => {
-    axios.get.mockResolvedValueOnce({ data: mockData });
-
-    await act(async () => {
-      render(<ArtistMeetingPage />);
-    });
-
-    await waitFor(() => {
-      expect(screen.getByText(/Artiste 1/i)).toBeInTheDocument();
-      expect(screen.getByText(/Description 1/i)).toBeInTheDocument();
-      expect(screen.getByText(/Artiste 2/i)).toBeInTheDocument();
-      expect(screen.getByText(/Description 2/i)).toBeInTheDocument();
-    });
-  });
-});
+export default ArtistMeetingsPage;

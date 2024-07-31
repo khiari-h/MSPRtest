@@ -11,15 +11,29 @@ const ConcertsDetailsPage = () => {
   const [filters, setFilters] = useState({ date: '', venue: '', search: '' });
 
   useEffect(() => {
-    axios.get('https://nationsounds.online/wp-json/wp/v2/concerts')
-      .then(response => {
-        setConcerts(response.data);
-        setDates([...new Set(response.data.map(concert => concert.acf.date))]);
-        setVenues([...new Set(response.data.map(concert => concert.acf.venue))]);
-      })
-      .catch(error => {
+    const fetchConcerts = async () => {
+      try {
+        const response = await axios.get('https://nationsounds.online/wp-json/wp/v2/concerts');
+        const concertsData = response.data;
+
+        // Fetch media details for each concert
+        const concertsWithImages = await Promise.all(concertsData.map(async concert => {
+          if (concert.acf.photo) {
+            const mediaResponse = await axios.get(`https://nationsounds.online/wp-json/wp/v2/media/${concert.acf.photo}`);
+            concert.acf.photo = mediaResponse.data.source_url;
+          }
+          return concert;
+        }));
+
+        setConcerts(concertsWithImages);
+        setDates([...new Set(concertsWithImages.map(concert => concert.acf.date))]);
+        setVenues([...new Set(concertsWithImages.map(concert => concert.acf.lieu))]);
+      } catch (error) {
         console.error("Erreur lors de la récupération des concerts!", error);
-      });
+      }
+    };
+
+    fetchConcerts();
   }, []);
 
   const handleFilterChange = (e) => {
@@ -30,8 +44,8 @@ const ConcertsDetailsPage = () => {
   const filteredConcerts = concerts.filter(concert => {
     return (
       (filters.date === '' || concert.acf.date === filters.date) &&
-      (filters.venue === '' || concert.acf.venue === filters.venue) &&
-      (filters.search === '' || concert.acf.name.toLowerCase().includes(filters.search.toLowerCase()))
+      (filters.venue === '' || concert.acf.lieu === filters.venue) &&
+      (filters.search === '' || concert.acf.nom.toLowerCase().includes(filters.search.toLowerCase()))
     );
   });
 
@@ -89,10 +103,10 @@ const ConcertsDetailsPage = () => {
       {filteredConcerts.map((concert, index) => (
         <InfoCard
           key={index}
-          title={concert.acf.name}
+          title={concert.acf.nom}
           description={concert.acf.description}
-          image={concert.acf.image}
-          additionalInfo={`Date: ${concert.acf.date}, Heure: ${concert.acf.time}, Lieu: ${concert.acf.venue}`}
+          image={concert.acf.photo} // Utilise directement l'URL de l'image
+          additionalInfo={`Date: ${concert.acf.date}, Heure: ${concert.acf.heure}, Lieu: ${concert.acf.lieu}`}
           type="program"
         />
       ))}

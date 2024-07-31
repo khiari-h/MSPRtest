@@ -1,16 +1,17 @@
-// src/__tests__/components/pages/NewsPage.test.jsx
 import React from 'react';
-import { render, screen, waitFor } from '@testing-library/react';
+import { render, screen, waitFor, fireEvent } from '@testing-library/react';
+import axios from '../../config/axiosConfig';
 import NewsPage from '../../../components/pages/NewsPage';
-import axios from 'axios';
 import { jest } from '@jest/globals';
 
-jest.mock('axios');
+jest.mock('../../config/axiosConfig');
 
 const mockNews = [
-  { id: 1, title: 'News 1', content: 'Content 1' },
-  { id: 2, title: 'News 2', content: 'Content 2' },
-  { id: 3, title: 'News 3', content: 'Content 3' },
+  { id: 1, title: 'Concert News', description: 'Description 1', category: 'concert', importance: 1 },
+  { id: 2, title: 'Info News', description: 'Description 2', category: 'info', importance: 2 },
+  { id: 3, title: 'Interview News', description: 'Description 3', category: 'interview', importance: 3 },
+  { id: 4, title: 'Event News', description: 'Description 4', category: 'event', importance: 4 },
+  { id: 5, title: 'Organization News', description: 'Description 5', category: 'organization', importance: 5 }
 ];
 
 describe('NewsPage', () => {
@@ -18,25 +19,50 @@ describe('NewsPage', () => {
     axios.get.mockResolvedValue({ data: mockNews });
   });
 
-  test('rend le NewsPageTemplate avec les boutons de filtre et les éléments d\'actualités', async () => {
+  test('renders news items after successful data fetch', async () => {
     render(<NewsPage />);
 
     await waitFor(() => {
-      // Utiliser getByRole pour obtenir le bouton "Tous"
-      const tousButton = screen.getByRole('button', { name: /afficher toutes les actualités/i });
-      expect(tousButton).toBeInTheDocument();
-      expect(tousButton).toHaveAttribute('aria-pressed', 'true');
-
-      const concertsButton = screen.getByRole('button', { name: /afficher les actualités de concerts/i });
-      expect(concertsButton).toBeInTheDocument();
-
-      const infosButton = screen.getByRole('button', { name: /afficher les informations/i });
-      expect(infosButton).toBeInTheDocument();
-
-      const newsItems = mockNews.map(news => news.title);
-      newsItems.forEach(title => {
-        expect(screen.getByText(title)).toBeInTheDocument();
+      mockNews.forEach(newsItem => {
+        expect(screen.getByText(newsItem.title)).toBeInTheDocument();
+        expect(screen.getByText(newsItem.description)).toBeInTheDocument();
       });
+    });
+  });
+
+  test('renders filter buttons based on categories in data', async () => {
+    render(<NewsPage />);
+
+    await waitFor(() => {
+      expect(screen.getByText('Tous')).toBeInTheDocument();
+      expect(screen.getByText('Concert')).toBeInTheDocument();
+      expect(screen.getByText('Info')).toBeInTheDocument();
+      expect(screen.getByText('Interview')).toBeInTheDocument();
+      expect(screen.getByText('Event')).toBeInTheDocument();
+      expect(screen.getByText('Organization')).toBeInTheDocument();
+    });
+  });
+
+  test('filters news items based on category', async () => {
+    render(<NewsPage />);
+
+    await waitFor(() => {
+      fireEvent.click(screen.getByText('Concert'));
+      expect(screen.getByText('Concert News')).toBeInTheDocument();
+      expect(screen.queryByText('Info News')).toBeNull();
+
+      fireEvent.click(screen.getByText('Info'));
+      expect(screen.getByText('Info News')).toBeInTheDocument();
+      expect(screen.queryByText('Concert News')).toBeNull();
+    });
+  });
+
+  test('renders pagination buttons', async () => {
+    render(<NewsPage />);
+
+    await waitFor(() => {
+      expect(screen.getByText('1')).toBeInTheDocument();
+      // Add more assertions for other page numbers if there are more pages
     });
   });
 });

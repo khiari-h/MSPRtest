@@ -9,23 +9,25 @@ jest.mock('../../../config/axiosConfig');
 describe('ConcertsDetailsPage', () => {
   const mockConcerts = [
     {
+      id: 1,
       acf: {
-        name: 'Concert 1',
+        nom: 'Concert 1',
         description: 'Description 1',
-        image: 'image1.jpg',
+        photo: 'https://nationsounds.online/wp-content/uploads/2024/07/concert1.jpg',
         date: '2024-07-30',
-        time: '20:00',
-        venue: 'Venue 1',
+        heure: '20:00',
+        lieu: 'Lieu 1',
       },
     },
     {
+      id: 2,
       acf: {
-        name: 'Concert 2',
+        nom: 'Concert 2',
         description: 'Description 2',
-        image: 'image2.jpg',
+        photo: 'https://nationsounds.online/wp-content/uploads/2024/07/concert2.jpg',
         date: '2024-08-01',
-        time: '21:00',
-        venue: 'Venue 2',
+        heure: '21:00',
+        lieu: 'Lieu 2',
       },
     },
   ];
@@ -38,15 +40,17 @@ describe('ConcertsDetailsPage', () => {
     render(<ConcertsDetailsPage />);
     
     await waitFor(() => {
-      expect(screen.getByText(/Tous les Concerts et leur Planning/i)).toBeInTheDocument();
-      expect(screen.getByLabelText(/Date/i)).toBeInTheDocument();
-      expect(screen.getByLabelText(/Lieu/i)).toBeInTheDocument();
-      expect(screen.getByLabelText(/Recherche/i)).toBeInTheDocument();
+      expect(screen.getByText(/Date/i)).toBeInTheDocument();
+      expect(screen.getByText(/Lieu/i)).toBeInTheDocument();
+      expect(screen.getByText(/Recherche/i)).toBeInTheDocument();
     });
     
     // Vérification que les concerts sont affichés
     expect(screen.getByText(/Concert 1/i)).toBeInTheDocument();
     expect(screen.getByText(/Concert 2/i)).toBeInTheDocument();
+    // Verify that images are rendered
+    expect(screen.getByAltText('Image de Concert 1')).toBeInTheDocument();
+    expect(screen.getByAltText('Image de Concert 2')).toBeInTheDocument();
   });
 
   test('filtre les concerts en fonction des options sélectionnées', async () => {
@@ -54,7 +58,7 @@ describe('ConcertsDetailsPage', () => {
     
     await waitFor(() => {
       fireEvent.change(screen.getByLabelText(/Date/i), { target: { value: '2024-07-30' } });
-      fireEvent.change(screen.getByLabelText(/Lieu/i), { target: { value: 'Venue 1' } });
+      fireEvent.change(screen.getByLabelText(/Lieu/i), { target: { value: 'Lieu 1' } });
       
       // Assure-toi que le concert filtré est affiché
       expect(screen.getByText(/Concert 1/i)).toBeInTheDocument();
@@ -69,7 +73,7 @@ describe('ConcertsDetailsPage', () => {
     
     await waitFor(() => {
       // Vérifie les erreurs dans la console ou le comportement prévu
-      // En cas de message d'erreur spécifique à ajouter, vérifier ici
+      expect(screen.getByText(/Erreur lors de la récupération des concerts!/i)).toBeInTheDocument();
     });
   });
 });

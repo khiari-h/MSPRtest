@@ -1,70 +1,82 @@
-// src/__tests__/components/pages/ArtistMeetingPage.test.jsx
 import React from 'react';
-import { render, screen, waitFor, act } from '@testing-library/react';
+import { render, screen, waitFor, fireEvent } from '@testing-library/react';
 import axios from 'axios';
-import ArtistMeetingPage from '../../../components/pages/ArtistMeetingPage';
+import ArtistMeetingsPage from '../../../components/pages/ArtistMeetingPage';
 import { jest } from '@jest/globals';
 
 jest.mock('axios');
 
 const mockData = [
   {
+    id: 1,
     acf: {
-      artist: 'Artiste 1',
+      nom: 'Artiste 1',
       description: 'Description 1',
-      image: 'image1.jpg',
+      photo: 'https://nationsounds.online/wp-content/uploads/2024/07/meeting1.jpg',
       date: '2024-07-30',
-      time: '20:00',
-      venue: 'Lieu 1',
+      heure: '20:00',
+      lieu: 'Lieu 1',
+      type: 'Rock'
     },
   },
   {
+    id: 2,
     acf: {
-      artist: 'Artiste 2',
+      nom: 'Artiste 2',
       description: 'Description 2',
-      image: 'image2.jpg',
+      photo: 'https://nationsounds.online/wp-content/uploads/2024/07/meeting2.jpg',
       date: '2024-08-01',
-      time: '21:00',
-      venue: 'Lieu 2',
+      heure: '21:00',
+      lieu: 'Lieu 2',
+      type: 'Pop'
     },
   },
 ];
 
-describe('ArtistMeetingPage', () => {
-  test('affiche un message de chargement pendant le chargement des données', async () => {
-    axios.get.mockResolvedValueOnce({ data: [] });
+describe('ArtistMeetingsPage', () => {
+  beforeEach(() => {
+    axios.get.mockResolvedValue({ data: mockData });
+  });
 
-    await act(async () => {
-      render(<ArtistMeetingPage />);
-    });
-
-    expect(screen.getByText('Chargement...')).toBeInTheDocument();
+  test('affiche un message de chargement pendant le chargement des données', () => {
+    axios.get.mockImplementation(() => new Promise(() => {}));
+    render(<ArtistMeetingsPage />);
+    expect(screen.getByText(/Chargement.../i)).toBeInTheDocument();
   });
 
   test('affiche un message d\'erreur en cas de problème lors de la récupération des données', async () => {
     axios.get.mockRejectedValueOnce(new Error('Erreur de chargement'));
-
-    await act(async () => {
-      render(<ArtistMeetingPage />);
-    });
-
+    render(<ArtistMeetingsPage />);
+    
     await waitFor(() => {
-      expect(screen.getByText('Erreur lors de la récupération des rencontres avec les artistes !')).toBeInTheDocument();
+      expect(screen.getByText(/Erreur lors de la récupération des données./i)).toBeInTheDocument();
     });
   });
 
   test('affiche les informations des réunions artistiques lorsqu\'elles sont chargées', async () => {
-    axios.get.mockResolvedValueOnce({ data: mockData });
-
-    await act(async () => {
-      render(<ArtistMeetingPage />);
-    });
-
+    render(<ArtistMeetingsPage />);
+    
     await waitFor(() => {
       expect(screen.getByText(/Artiste 1/i)).toBeInTheDocument();
       expect(screen.getByText(/Description 1/i)).toBeInTheDocument();
       expect(screen.getByText(/Artiste 2/i)).toBeInTheDocument();
       expect(screen.getByText(/Description 2/i)).toBeInTheDocument();
+      // Verify that images are rendered
+      expect(screen.getByAltText('Image de Artiste 1')).toBeInTheDocument();
+      expect(screen.getByAltText('Image de Artiste 2')).toBeInTheDocument();
+    });
+  });
+
+  test('filtre les artistes en fonction des options sélectionnées', async () => {
+    render(<ArtistMeetingsPage />);
+    
+    await waitFor(() => {
+      fireEvent.change(screen.getByLabelText(/Type d'Artiste/i), { target: { value: 'Rock' } });
+      
+      // Assure-toi que l'artiste filtré est affiché
+      expect(screen.getByText(/Artiste 1/i)).toBeInTheDocument();
+      // Assure-toi que l'artiste non filtré est caché
+      expect(screen.queryByText(/Artiste 2/i)).toBeNull();
     });
   });
 });

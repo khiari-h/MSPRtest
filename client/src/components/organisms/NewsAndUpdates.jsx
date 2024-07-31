@@ -23,7 +23,7 @@ const NewsAndUpdates = () => {
 
   return (
     <section className="container mx-auto py-8" aria-labelledby="news-updates-heading">
-      <h2 id="news-updates-heading" className="text-4xl font-bold mb-8 text-center text-primary-blue font-headline">Actualités</h2>
+      <h2 id="news-updates-heading" className="text-4xl font-bold mb-8 text-center text-concert-accent font-concert-title">Actualités</h2>
       {loading && <p>Chargement...</p>}
       {error && <p className="text-red-500">{error}</p>}
       {!loading && !error && (
