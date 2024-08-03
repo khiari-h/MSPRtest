@@ -1,4 +1,3 @@
-// src/components/molecules/Form.js
 import React from 'react';
 import PropTypes from 'prop-types';
 import Label from '../atoms/Label';
@@ -12,20 +11,23 @@ const Form = ({ fields, onSubmit }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
+    <form onSubmit={handleSubmit} className="space-y-4 bg-concert-bg-beige p-4 rounded-lg shadow-md">
       {fields.map((field, index) => (
         <div key={index} className="space-y-2">
           <Label htmlFor={field.name} text={field.label} />
           <Input
+            id={field.name}
             type={field.type}
             name={field.name}
             placeholder={field.placeholder}
             value={field.value}
             onChange={field.onChange}
+            required={field.required}
+            error={field.error}
           />
         </div>
       ))}
-      <Button label="Submit" />
+      <Button label="Submit" className="bg-concert-accent text-white hover:bg-white hover:text-concert-accent" />
     </form>
   );
 };
@@ -39,6 +41,8 @@ Form.propTypes = {
       placeholder: PropTypes.string,
       value: PropTypes.string.isRequired,
       onChange: PropTypes.func.isRequired,
+      required: PropTypes.bool,
+      error: PropTypes.string,
     })
   ).isRequired,
   onSubmit: PropTypes.func.isRequired,

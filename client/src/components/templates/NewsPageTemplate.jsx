@@ -6,14 +6,14 @@ import Text from '../atoms/Text';
 
 const NewsPageTemplate = ({ title, filters, newsItems, pagination }) => {
   return (
-    <div>
+    <div className="bg-global text-concert-text min-h-screen">
       <Header />
-      <div className="container mx-auto py-8">
-        <Text content={title} type="h1" className="text-4xl font-bold mb-8 text-center text-primary-blue font-headline" />
+      <main className="container mx-auto py-8">
+        <Text content={title} type="h1" className="h1-class text-center mb-8" />
         {filters}
         {newsItems}
         {pagination}
-      </div>
+      </main>
       <Footer />
     </div>
   );

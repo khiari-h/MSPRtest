@@ -10,17 +10,28 @@ const ConcertsOverview = () => {
   const [error, setError] = useState(null);
   const visibleConcerts = 3;
 
+  const formatDate = (dateStr) => {
+    if (!dateStr) return dateStr;
+    const year = dateStr.slice(0, 4);
+    const month = dateStr.slice(4, 6);
+    const day = dateStr.slice(6, 8);
+    return `${day}/${month}/${year}`;
+  };
+
   useEffect(() => {
     const fetchConcerts = async () => {
       try {
         const response = await axios.get('https://nationsounds.online/wp-json/wp/v2/concerts');
         const concertsData = response.data;
 
-        // Fetch media details for each concert
         const concertsWithImages = await Promise.all(concertsData.map(async concert => {
-          if (concert.acf.photo) {
+          if (concert.acf && concert.acf.photo) {
             const mediaResponse = await axios.get(`https://nationsounds.online/wp-json/wp/v2/media/${concert.acf.photo}`);
             concert.acf.photo = mediaResponse.data.source_url;
+          }
+          // Formater la date ici
+          if (concert.acf) {
+            concert.acf.date = formatDate(concert.acf.date);
           }
           return concert;
         }));
@@ -53,8 +64,8 @@ const ConcertsOverview = () => {
               key={index}
               title={concert.acf.nom}
               description={concert.acf.description}
-              image={concert.acf.photo} // Utilise directement l'URL de l'image
-              additionalInfo={`Date: ${concert.acf.date}, Heure: ${concert.acf.heure}, Lieu: ${concert.acf.lieu}`}
+              image={concert.acf.photo}
+              additionalInfo={`Date: ${concert.acf.date}, Heure de début: ${concert.acf.heuredebut}, Heure de fin: ${concert.acf.heurefin}, Lieu: ${concert.acf.lieu}, Type: ${concert.acf.type}`}
               type="program"
             />
           ))}

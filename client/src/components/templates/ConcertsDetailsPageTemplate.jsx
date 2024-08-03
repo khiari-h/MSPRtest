@@ -6,10 +6,10 @@ import Text from '../atoms/Text';
 
 const ConcertsDetailsPageTemplate = ({ filters, concerts }) => {
   return (
-    <div>
+    <div className="bg-global text-concert-text min-h-screen">
       <Header />
       <main className="container mx-auto py-8">
-        <Text content="Tous les Concerts et leur Planning" type="h1" className="text-3xl font-bold mb-6 text-center" />
+        <Text content="Tous les Concerts et leur Planning" type="h1" className="h1-class text-center mb-6" />
         {filters}
         {concerts}
       </main>

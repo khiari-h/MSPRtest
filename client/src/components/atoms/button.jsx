@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const Button = ({ label, onClick, href, className = '' }) => {
   const baseClasses = "inline-block font-bold text-center cursor-pointer rounded-full py-3 px-6 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-xl";
-  const defaultClasses = "bg-blue-500 hover:bg-white hover:text-blue-500 text-white";
+  const defaultClasses = "bg-light-blue hover:bg-white hover:text-light-blue text-white font-concert-body";
 
   return href ? (
     <a

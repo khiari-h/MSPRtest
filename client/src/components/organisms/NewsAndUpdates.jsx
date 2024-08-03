@@ -23,9 +23,9 @@ const NewsAndUpdates = () => {
 
   return (
     <section className="container mx-auto py-8" aria-labelledby="news-updates-heading">
-      <h2 id="news-updates-heading" className="text-4xl font-bold mb-8 text-center text-concert-accent font-concert-title">Actualités</h2>
+      <h1 id="news-updates-heading" className="h1-class mb-8 text-center">Actualités</h1>
       {loading && <p>Chargement...</p>}
-      {error && <p className="text-red-500">{error}</p>}
+      {error && <p className="text-error-red">{error}</p>}
       {!loading && !error && (
         <>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

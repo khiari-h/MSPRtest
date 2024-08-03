@@ -1,9 +1,11 @@
-// tailwind.config.js
 module.exports = {
   purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
-  darkMode: false, // or 'media' or 'class'
+  darkMode: false,
   theme: {
     extend: {
+      backgroundImage: {
+        'hero-pattern': "url('../public/concert2.jpg')",
+      },
       fontFamily: {
         'concert-title': ['Oswald', 'sans-serif'],
         'concert-body': ['Roboto', 'sans-serif'],
@@ -14,14 +16,33 @@ module.exports = {
         '1/2-screen': '50vh',
       },
       colors: {
-        'soft-beige': '#FAF0E6',
+        'concert-bg-beige': '#FAF0E6',
+        'concert-bg-secondary': '#faf0e6',
+        'custom-gray': '#f3f4f6',
+        'concert-text': '#ffffff',
+        'concert-text-secondary': '#36454f',
+        'concert-accent': '#e94560',
+        'concert-secondary': '#0f3460',
+        'custom-gray-900': '#1a202c',
+        'custom-blue-500': '#4299e1',
+        'black': '#000000',
+        'white': '#ffffff',
         'deep-purple': '#4C1D95',
         'vibrant-blue': '#1E3A8A',
         'charcoal': '#36454F',
-        'concert-bg': '#1a1a2e',
-        'concert-text': '#e94560',
-        'concert-accent': '#0f3460',
-        'concert-muted': '#f0e5cf',
+        'light-blue': '#3B82F6',
+        'error-red': '#e3342f',
+        'border-gray': '#d1d5db',
+        'custom-yellow-500': '#FCD34D',
+        'hover-yellow': '#FBBF24', 
+        'purple-500': '#805AD5',
+        'pink-500': '#ED64A6',
+        'red-500': '#F56565',
+        'gray-800': '#2D3748',
+        'gray-400': '#A0AEC0',
+        'blue-500': '#4299E1',
+        'blue-700': '#2B6CB0',
+        'soft-beige': '#F5F5DC', 
       },
     },
   },
@@ -29,4 +50,4 @@ module.exports = {
     extend: {},
   },
   plugins: [],
-}
+};

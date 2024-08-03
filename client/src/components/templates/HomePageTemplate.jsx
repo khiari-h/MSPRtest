@@ -3,18 +3,35 @@ import PropTypes from 'prop-types';
 import Header from '../organisms/Header';
 import Footer from '../organisms/Footer';
 
+
 const HomePageTemplate = ({ heroSection, newsAndUpdates, concertsOverview, artistMeetingsPreview, ctaBeforeMap, practicalInfo, map, ctaAfterMap }) => {
   return (
-    <div>
+    <div className="bg-global text-concert-text min-h-screen">
       <Header />
-      {heroSection}
-      {newsAndUpdates}
-      {concertsOverview}
-      {artistMeetingsPreview}
-      {ctaBeforeMap}
-      {practicalInfo}
-      {map}
-      {ctaAfterMap}
+      <main>
+        {heroSection}
+        <section aria-labelledby="news-updates-heading">
+          {newsAndUpdates}
+        </section>
+        <section aria-labelledby="concerts-overview-heading">
+          {concertsOverview}
+        </section>
+        <section aria-labelledby="artist-meetings-heading">
+          {artistMeetingsPreview}
+        </section>
+        <section aria-labelledby="cta-before-map-heading">
+          {ctaBeforeMap}
+        </section>
+        <section aria-labelledby="practical-info-heading">
+          {practicalInfo}
+        </section>
+        <section aria-labelledby="map-heading">
+          {map}
+        </section>
+        <section aria-labelledby="cta-after-map-heading">
+          {ctaAfterMap}
+        </section>
+      </main>
       <Footer />
     </div>
   );

@@ -1,10 +1,9 @@
-// src/components/atoms/Label.js
 import React from 'react';
 import PropTypes from 'prop-types';
 
 const Label = ({ htmlFor, text }) => {
   return (
-    <label htmlFor={htmlFor} className="block text-sm font-medium text-gray-700">
+    <label htmlFor={htmlFor} className="block text-sm font-medium text-concert-secondary">
       {text}
     </label>
   );

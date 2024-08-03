@@ -12,6 +12,7 @@ import NotFoundPage from './components/error/NotFoundPage';
 import ServerErrorPage from './components/error/ServerErrorPage';
 import './index.css';
 
+
 // Ajouter les icônes à la bibliothèque
 library.add(fab);
 
@@ -28,6 +29,7 @@ const App = () => {
           <Route path="/artistes" element={<ArtistMeetingPage />} />
           <Route path="/500" element={<ServerErrorPage />} />
           <Route path="*" element={<NotFoundPage />} />
+         
         </Routes>
       </Router>
     </div>

@@ -10,18 +10,35 @@ const ConcertsDetailsPage = () => {
   const [venues, setVenues] = useState([]);
   const [filters, setFilters] = useState({ date: '', venue: '', search: '' });
 
+  const formatDate = (dateStr) => {
+    if (!dateStr) return dateStr;
+    const year = dateStr.slice(0, 4);
+    const month = dateStr.slice(4, 6);
+    const day = dateStr.slice(6, 8);
+    return `${day}/${month}/${year}`;
+  };
+
+  const formatTime = (timeStr) => {
+    if (!timeStr) return timeStr;
+    const [hour, minute] = timeStr.split(':');
+    return `${hour}:${minute}`;
+  };
+
   useEffect(() => {
     const fetchConcerts = async () => {
       try {
         const response = await axios.get('https://nationsounds.online/wp-json/wp/v2/concerts');
         const concertsData = response.data;
 
-        // Fetch media details for each concert
         const concertsWithImages = await Promise.all(concertsData.map(async concert => {
           if (concert.acf.photo) {
             const mediaResponse = await axios.get(`https://nationsounds.online/wp-json/wp/v2/media/${concert.acf.photo}`);
             concert.acf.photo = mediaResponse.data.source_url;
           }
+          // Formater la date et les heures ici
+          concert.acf.date = formatDate(concert.acf.date);
+          concert.acf.heuredebut = formatTime(concert.acf.heuredebut);
+          concert.acf.heurefin = formatTime(concert.acf.heurefin);
           return concert;
         }));
 
@@ -53,13 +70,13 @@ const ConcertsDetailsPage = () => {
     <div className="mb-6">
       <form className="flex flex-wrap justify-center space-x-4">
         <div className="w-full sm:w-auto">
-          <label htmlFor="date" className="block text-sm font-medium text-gray-700">Date</label>
+          <Text content="Date" type="label" className="block text-sm font-medium text-charcoal" />
           <select
             id="date"
             name="date"
             value={filters.date}
             onChange={handleFilterChange}
-            className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
+            className="mt-1 block w-full p-2 border border-border-gray rounded-md text-black"
           >
             <option value="">Toutes les dates</option>
             {dates.map((date, index) => (
@@ -68,13 +85,13 @@ const ConcertsDetailsPage = () => {
           </select>
         </div>
         <div className="w-full sm:w-auto">
-          <label htmlFor="venue" className="block text-sm font-medium text-gray-700">Lieu</label>
+          <Text content="Lieu" type="label" className="block text-sm font-medium text-charcoal" />
           <select
             id="venue"
             name="venue"
             value={filters.venue}
             onChange={handleFilterChange}
-            className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
+            className="mt-1 block w-full p-2 border border-border-gray rounded-md text-black"
           >
             <option value="">Tous les lieux</option>
             {venues.map((venue, index) => (
@@ -83,7 +100,7 @@ const ConcertsDetailsPage = () => {
           </select>
         </div>
         <div className="w-full sm:w-auto">
-          <label htmlFor="search" className="block text-sm font-medium text-gray-700">Recherche</label>
+          <Text content="Recherche" type="label" className="block text-sm font-medium text-charcoal" />
           <input
             type="text"
             id="search"
@@ -91,7 +108,7 @@ const ConcertsDetailsPage = () => {
             value={filters.search}
             onChange={handleFilterChange}
             placeholder="Rechercher par nom"
-            className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
+            className="mt-1 block w-full p-2 border border-border-gray rounded-md text-black"
           />
         </div>
       </form>
@@ -105,8 +122,8 @@ const ConcertsDetailsPage = () => {
           key={index}
           title={concert.acf.nom}
           description={concert.acf.description}
-          image={concert.acf.photo} // Utilise directement l'URL de l'image
-          additionalInfo={`Date: ${concert.acf.date}, Heure: ${concert.acf.heure}, Lieu: ${concert.acf.lieu}`}
+          image={concert.acf.photo}
+          additionalInfo={`Date: ${concert.acf.date}, Heure de début: ${concert.acf.heuredebut}, Heure de fin: ${concert.acf.heurefin}, Lieu: ${concert.acf.lieu}, Type: ${concert.acf.type}`}
           type="program"
         />
       ))}

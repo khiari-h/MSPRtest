@@ -8,9 +8,10 @@ import CTASection from '../molecules/CtaSection';
 import PracticalInfo from '../organisms/PracticalInfo';
 import Map from '../organisms/Map';
 
+
 const HomePage = () => {
   const ctaAfterMap = (
-    <div className="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-24 py-8 px-4">
+    <div className="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-4 py-8 px-4">
       <CTASection
         title="Restons en Contact!"
         ctas={[

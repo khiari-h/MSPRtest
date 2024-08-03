@@ -31,7 +31,7 @@ const NewsPage = () => {
           key={category}
           onClick={() => {
             setFilter(category);
-            setCurrentPage(1); // Reset to first page when filter changes
+            setCurrentPage(1);
           }}
           className={`${
             filter === category ? 'bg-blue-700' : 'bg-blue-500'

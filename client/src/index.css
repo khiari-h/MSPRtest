@@ -1,28 +1,25 @@
-/* src/index.css */
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
 @import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Oswald:wght@400;700&family=Roboto:wght@400;700&family=Montserrat:wght@400;700&display=swap');
 
-body {
-  font-family: 'Roboto', sans-serif;
-}
-
-h1 {
-  font-family: 'Oswald', sans-serif;
-}
-
-h2 {
-  font-family: 'Montserrat', sans-serif;
-}
-
-p {
-  font-family: 'Lora', serif;
-}
-
 .bg-global {
-  @apply bg-soft-beige text-black;
+  @apply bg-concert-bg-beige;
 }
 
+.h1-class {
+  @apply font-concert-title text-black text-2xl font-bold;
+}
 
+.h2-class {
+  @apply font-concert-subtitle text-black text-xl font-bold;
+}
+
+.p-class {
+  @apply font-concert-description text-black;
+}
+
+.a-class {
+  @apply text-concert-accent hover:text-white;
+}

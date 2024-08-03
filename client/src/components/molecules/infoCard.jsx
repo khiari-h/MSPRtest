@@ -1,15 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Text from '../atoms/Text';
 
 const InfoCard = ({ title, description, image, additionalInfo, link, type }) => {
   return (
-    <div className={`bg-soft-beige rounded-lg shadow-md mb-4 transition-transform transform hover:-translate-y-1 hover:shadow-lg overflow-hidden flex flex-col ${type === 'schedule' ? 'border-l-4 border-blue-500' : ''}`} role="article" aria-labelledby={`info-card-title-${title}`}>
-      <img src={image} alt={`Image de ${title}`} className="w-full h-48 object-cover border-b border-gray-200" />
+    <div className={`bg-concert-bg-beige rounded-lg shadow-md mb-4 transition-transform transform hover:-translate-y-1 hover:shadow-lg overflow-hidden flex flex-col ${type === 'schedule' ? 'border-l-4 border-custom-blue-500' : ''}`} role="article" aria-labelledby={`info-card-title-${title}`}>
+      <img src={image} alt={title} className="w-full h-48 object-cover border-b border-border-gray" />
       <div className="p-4 flex flex-col justify-between flex-grow bg-white">
-        <h3 id={`info-card-title-${title}`} className="font-concert text-xl text-gray-900 mb-2">{title}</h3>
-        <p className="font-concert text-base text-gray-700 mb-4 flex-grow">{description}</p>
-        {additionalInfo && <p className="font-concert text-sm text-gray-500 mb-2">{additionalInfo}</p>}
-        {link && <a href={link} className="font-concert text-blue-500 hover:text-blue-700 font-bold" aria-label={`En savoir plus sur ${title}`}>En savoir plus</a>}
+        <Text type="h3" content={title} className="mb-2 h3-class" />
+        <Text type="p" content={description} className="mb-4 flex-grow p-class" />
+        {additionalInfo && <Text type="p" content={additionalInfo} className="text-sm mb-2 p-class" />}
+        {link && <a href={link} className="a-class" aria-label={`En savoir plus sur ${title}`}>En savoir plus</a>}
       </div>
     </div>
   );

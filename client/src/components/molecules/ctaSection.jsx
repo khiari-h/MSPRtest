@@ -1,13 +1,13 @@
-// src/components/molecules/CTASection.js
 import React from 'react';
 import PropTypes from 'prop-types';
 import Button from '../atoms/Button';
+import Text from '../atoms/Text';
 
 const CTASection = ({ title, ctas, customClass }) => {
   return (
-    <section className={`text-center py-8 bg-soft-beige rounded-lg shadow-none ${customClass}`}>
-      <h2 className="text-2xl font-bold mb-4 font-concert">{title}</h2>
-      <div className="flex justify-center">
+    <section className={`text-center py-8 bg-concert-bg-beige rounded-lg shadow-none ${customClass}`}>
+      <Text type="h1" content={title} className="mb-4 h1-class" />
+      <div className="flex justify-center space-x-4">
         {ctas.map((cta, index) => (
           <Button
             key={index}

@@ -2,13 +2,15 @@ import React, { useEffect, useState, useRef } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import 'leaflet-routing-machine/dist/leaflet-routing-machine.css';
 import axios from 'axios';
+import 'leaflet-routing-machine/dist/leaflet-routing-machine.css';
 import 'leaflet-routing-machine';
-import Text from '../atoms/Text'; // Import du composant Text
+import Text from '../atoms/Text';
 import './Map.css';
-import he from 'he'; 
+import he from 'he';
+import GeolocationButton from '../atoms/GeolocationBouton';
 
+// Suppression des icônes Leaflet par défaut
 delete L.Icon.Default.prototype._getIconUrl;
 
 L.Icon.Default.mergeOptions({
@@ -16,15 +18,6 @@ L.Icon.Default.mergeOptions({
   iconUrl: require('leaflet/dist/images/marker-icon.png'),
   shadowUrl: require('leaflet/dist/images/marker-shadow.png'),
 });
-
-const categories = [
-  { id: 'Tous', name: 'Tous' },
-  { id: 'Scène', name: 'Scènes' },
-  { id: 'Shops', name: 'Shops' },
-  { id: 'Buvettes', name: 'Buvettes' },
-  { id: 'WC', name: 'WC' },
-  { id: 'Restaurants', name: 'Restaurants' }
-];
 
 const RoutingControl = ({ from, to }) => {
   const map = useMap();
@@ -56,30 +49,32 @@ const RoutingControl = ({ from, to }) => {
           draggableWaypoints: false,
           show: true,
           lineOptions: {
-            styles: [{ color: 'blue', opacity: 1, weight: 6 }]
+            styles: [{ color: 'blue', weight: 4 }],
           },
           createMarker: function (i, waypoint, n) {
-            const marker = L.marker(waypoint.latLng, {
+            return L.marker(waypoint.latLng, {
               draggable: true,
-              bounceOnAdd: false,
-              bounceOnAddOptions: {
-                duration: 1000,
-                height: 800,
-              },
               icon: L.icon({
                 iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png',
                 shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
               }),
             });
-            return marker.bindPopup(waypoint.latLng.toString());
           },
+          formatter: new L.Routing.Formatter({
+            language: 'fr',
+            units: 'metric',
+            roundingSensitivity: 1,
+            formatInstruction: function (instruction) {
+              return `<strong>${instruction.text}</strong>`;
+            },
+          }),
         }).addTo(map);
 
         routingControlRef.current.on('routesfound', function (e) {
           const routes = e.routes;
           const summary = routes[0].summary;
           console.log(`Distance: ${summary.totalDistance / 1000} km, Time: ${Math.round(summary.totalTime % 3600 / 60)} minutes`);
-          
+
           const instructions = routes[0].instructions.map(instr => `<li>${instr.text}</li>`).join('');
           document.getElementById('routing-instructions').innerHTML = `<ul>${instructions}</ul>`;
         });
@@ -94,23 +89,39 @@ const RoutingControl = ({ from, to }) => {
     };
   }, [from, to, map]);
 
-  return <div id="routing-instructions" className="leaflet-routing-container leaflet-bar"></div>;
+  return <div id="routing-instructions" className="instructions-container"></div>;
+};
+
+const CenterMap = ({ position }) => {
+  const map = useMap();
+
+  useEffect(() => {
+    if (position) {
+      map.setView(position, 13); // Centrer la carte et ajuster le zoom
+    }
+  }, [position, map]);
+
+  return null;
 };
 
 const Map = () => {
   const [pointsOfInterest, setPointsOfInterest] = useState([]);
+  const [concerts, setConcerts] = useState([]);
   const [filteredPoints, setFilteredPoints] = useState([]);
   const [selectedCategories, setSelectedCategories] = useState(['Tous']);
+  const [showCurrentConcerts, setShowCurrentConcerts] = useState(false);
   const [startLocation, setStartLocation] = useState(null);
   const [endLocation, setEndLocation] = useState(null);
-  const [showInstructions, setShowInstructions] = useState(false);
-  const uniqueCategories = ['Tous', ...new Set(pointsOfInterest.map(point => point.acf.Categorie))];
+  const [userPosition, setUserPosition] = useState(null);
 
+  const mapRef = useRef(null);
+
+  const uniqueCategories = ['Tous', ...new Set(pointsOfInterest.map(point => point.acf.Categorie))];
 
   useEffect(() => {
     const fetchPoints = async () => {
       try {
-        const response = await axios.get('https://nationsounds.online/wp-json/wp/v2/pointsinterets');
+        const response = await axios.get('https://nationsounds.online/wp-json/wp/v2/pointsinterets?per_page=20');
         const decodedData = response.data.map(point => ({
           ...point,
           title: { ...point.title, rendered: he.decode(point.title.rendered) },
@@ -122,10 +133,29 @@ const Map = () => {
         console.error("Erreur lors de la récupération des points d'intérêt!", error);
       }
     };
-  
+
+    const fetchConcerts = async () => {
+      try {
+        const response = await axios.get('https://nationsounds.online/wp-json/wp/v2/concerts');
+        const concertsData = response.data.map(concert => ({
+          ...concert,
+          title: he.decode(concert.title.rendered),
+          acf: {
+            ...concert.acf,
+            startDateTime: new Date(`${concert.acf.date.slice(0,4)}-${concert.acf.date.slice(4,6)}-${concert.acf.date.slice(6,8)}T${concert.acf.heuredebut}`),
+            endDateTime: new Date(`${concert.acf.date.slice(0,4)}-${concert.acf.date.slice(4,6)}-${concert.acf.date.slice(6,8)}T${concert.acf.heurefin}`)
+          }
+        }));
+        console.log('Concerts récupérés:', concertsData); // Log des concerts récupérés
+        setConcerts(concertsData);
+      } catch (error) {
+        console.error("Erreur lors de la récupération des concerts!", error);
+      }
+    };
+
     fetchPoints();
+    fetchConcerts();
   }, []);
-  
 
   useEffect(() => {
     if (selectedCategories.includes('Tous')) {
@@ -134,6 +164,22 @@ const Map = () => {
       setFilteredPoints(pointsOfInterest.filter(point => selectedCategories.includes(point.acf.Categorie)));
     }
   }, [selectedCategories, pointsOfInterest]);
+
+  useEffect(() => {
+    let points = pointsOfInterest;
+    if (showCurrentConcerts) {
+      const now = new Date();
+      points = points.filter(point => {
+        const concertsForPoint = concerts.filter(c => c.acf.lieu === point.acf.nom);
+        return concertsForPoint.some(concert => {
+          const concertStart = concert.acf.startDateTime;
+          const concertEnd = concert.acf.endDateTime;
+          return concertStart <= now && now <= concertEnd;
+        });
+      });
+    }
+    setFilteredPoints(points);
+  }, [showCurrentConcerts, pointsOfInterest, concerts]);
 
   const handleCategoryChange = (e) => {
     const { value, checked } = e.target;
@@ -149,6 +195,7 @@ const Map = () => {
   const handleRouteChange = (e, type) => {
     const [lat, lng] = e.target.value.split(',');
     const location = [parseFloat(lat), parseFloat(lng)];
+
     if (type === 'start') {
       setStartLocation(location);
     } else {
@@ -156,23 +203,58 @@ const Map = () => {
     }
   };
 
+  const handleGeolocationClick = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { latitude, longitude } = position.coords;
+          console.log('Latitude:', latitude, 'Longitude:', longitude);
+          setUserPosition([latitude, longitude]);
+          setStartLocation([latitude, longitude]);
+          alert('Position géographique détectée.');
+        },
+        (error) => {
+          console.error('Erreur de géolocalisation : ', error);
+          alert('Impossible de détecter votre position.');
+        }
+      );
+    } else {
+      alert('La géolocalisation n\'est pas supportée par ce navigateur.');
+    }
+  };
+
+  const formatDate = (dateString) => {
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    return new Date(dateString).toLocaleDateString('fr-FR', options);
+  };
+
   return (
     <div className="container mx-auto p-4">
-      <Text content="Carte du Festival" type="h2" className="text-3xl font-bold mb-6 text-center" /> {/* Ajout du titre ici */}
+      <Text content="Carte du Festival" type="h2" className="text-3xl font-bold mb-6 text-center" />
+
       <div className="flex flex-wrap justify-center mb-4 space-x-4">
-  {uniqueCategories.map(category => (
-    <label key={category} className="inline-flex items-center">
-      <input
-        type="checkbox"
-        value={category}
-        checked={selectedCategories.includes(category)}
-        onChange={handleCategoryChange}
-        className="form-checkbox h-5 w-5 text-blue-600"
-      />
-      <span className="ml-2">{category}</span>
-    </label>
-  ))}
-</div>
+        {uniqueCategories.map(category => (
+          <label key={category} className="inline-flex items-center">
+            <input
+              type="checkbox"
+              value={category}
+              checked={selectedCategories.includes(category)}
+              onChange={handleCategoryChange}
+              className="form-checkbox h-5 w-5 text-blue-600"
+            />
+            <span className="ml-2 text-black">{category}</span>
+          </label>
+        ))}
+        <label className="inline-flex items-center">
+          <input
+            type="checkbox"
+            checked={showCurrentConcerts}
+            onChange={() => setShowCurrentConcerts(!showCurrentConcerts)}
+            className="form-checkbox h-5 w-5 text-blue-600"
+          />
+          <span className="ml-2 text-black">Afficher concerts en cours</span>
+        </label>
+      </div>
 
       <div className="flex flex-wrap justify-center mb-4">
         <div className="mr-2">
@@ -181,9 +263,12 @@ const Map = () => {
             id="start-select"
             value={startLocation ? startLocation.join(',') : ''}
             onChange={(e) => handleRouteChange(e, 'start')}
-            className="p-2 border border-gray-300 rounded-md"
+            className="p-2 border border-gray-300 rounded-md text-black"
           >
             <option value="">Sélectionner un point de départ</option>
+            {userPosition && (
+              <option value={userPosition.join(',')}>Votre position actuelle</option>
+            )}
             {filteredPoints.map((point, index) => (
               <option key={index} value={`${point.acf.Latitude},${point.acf.Longitude}`}>
                 {point.title.rendered}
@@ -191,13 +276,14 @@ const Map = () => {
             ))}
           </select>
         </div>
+
         <div>
           <label htmlFor="end-select" className="sr-only">Point d'arrivée</label>
           <select
             id="end-select"
             value={endLocation ? endLocation.join(',') : ''}
             onChange={(e) => handleRouteChange(e, 'end')}
-            className="p-2 border border-gray-300 rounded-md"
+            className="p-2 border border-gray-300 rounded-md text-black"
           >
             <option value="">Sélectionner un point d'arrivée</option>
             {filteredPoints.map((point, index) => (
@@ -208,50 +294,72 @@ const Map = () => {
           </select>
         </div>
       </div>
-      <MapContainer
-        center={[48.8566, 2.3522]}
-        zoom={13}
-        className="map-container"
-        style={{ height: "80vh", width: "100%" }}
-      >
-        <TileLayer
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-        />
-        {filteredPoints.map((point, index) => (
-          <Marker
-            key={index}
-            position={[point.acf.Latitude, point.acf.Longitude]}
-            icon={new L.Icon({
-              iconUrl: require('leaflet/dist/images/marker-icon.png'),
-              shadowUrl: require('leaflet/dist/images/marker-shadow.png'),
-              iconSize: [25, 41],
-              iconAnchor: [12, 41]
-            })}
-          >
-            <Popup>
-              <strong>{point.title.rendered}</strong><br />
-              {point.acf.Description}<br />
-              Catégorie: {point.acf.Categorie}
-            </Popup>
-          </Marker>
-        ))}
-        {startLocation && endLocation && (
-          <RoutingControl from={startLocation} to={endLocation} />
-        )}
-      </MapContainer>
-      <button 
-        className="block md:hidden bg-blue-500 text-white p-2 rounded-full fixed bottom-4 right-4 z-50" 
-        onClick={() => setShowInstructions(!showInstructions)}
-      >
-        {showInstructions ? 'Fermer' : 'Itinéraire'}
-      </button>
-      {showInstructions && (
-        <div className="fixed inset-x-0 bottom-0 bg-white p-4 shadow-md z-50 md:hidden overflow-y-auto" style={{ maxHeight: '50vh' }}>
-          <div id="routing-instructions">
-          </div>
-        </div>
-      )}
+
+      <div className="map-container-wrapper relative">
+        <MapContainer
+          center={[48.8566, 2.3522]}
+          zoom={13}
+          className="map-container"
+          style={{ height: "80vh", width: "100%" }}
+          whenCreated={mapInstance => {
+            mapRef.current = mapInstance;
+          }}
+        >
+          <TileLayer
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+          />
+          {filteredPoints.map((point, index) => (
+            <Marker
+              key={index}
+              position={[point.acf.Latitude, point.acf.Longitude]}
+              icon={new L.Icon({
+                iconUrl: require('leaflet/dist/images/marker-icon.png'),
+                shadowUrl: require('leaflet/dist/images/marker-shadow.png'),
+                iconSize: [25, 41],
+                iconAnchor: [12, 41]
+              })}
+            >
+              <Popup>
+                <strong>{point.title.rendered}</strong><br />
+                {point.acf.Description}<br />
+                Catégorie: {point.acf.Categorie}
+                {showCurrentConcerts && concerts.filter(c => c.acf.lieu === point.acf.nom).map((concert, idx) => (
+                  <div key={idx} className="mt-4">
+                    <hr />
+                    <span className="text-red-500 font-bold">Concerts en cours</span><br />
+                    <strong>{concert.title}</strong><br />
+                    {concert.acf.description}<br />
+                    Date: {formatDate(concert.acf.date)}<br />
+                    Heure début: {concert.acf.heuredebut}<br />
+                    Heure fin: {concert.acf.heurefin}
+                  </div>
+                ))}
+              </Popup>
+            </Marker>
+          ))}
+          {startLocation && endLocation && (
+            <RoutingControl from={startLocation} to={endLocation} />
+          )}
+          {userPosition && (
+            <Marker
+              position={userPosition}
+              icon={new L.Icon({
+                iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png',
+                shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
+                iconSize: [25, 41],
+                iconAnchor: [12, 41]
+              })}
+            >
+              <Popup>
+                <strong>Votre position</strong>
+              </Popup>
+            </Marker>
+          )}
+          <GeolocationButton onClick={handleGeolocationClick} />
+          <CenterMap position={userPosition} />
+        </MapContainer>
+      </div>
     </div>
   );
 };

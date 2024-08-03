@@ -1,46 +1,24 @@
-/* Styles pour le panneau d'instructions */
-.leaflet-routing-container {
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-  padding: 15px;
-  max-width: 400px;
-  margin: 20px auto;
-  font-family: 'Arial, sans-serif';
+/* Styles pour le bouton de géolocalisation intégré dans la carte */
+.geolocation-button {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background-color: #10B981;
+  padding: 10px;
+  border-radius: 50%;
+  z-index: 1000;
+  font-size: 1.5rem;
+  color: white;
+  border: none;
+  cursor: pointer;
+
 }
 
-.leaflet-routing-alt {
-  margin-bottom: 10px;
-  font-size: 14px;
+
+.geolocation-button:hover {
+  background-color: #059669;
 }
 
-.leaflet-routing-alt strong {
-  color: #007bff;
-}
-
-.leaflet-routing-container button {
-  display: none; /* Hide the default close button */
-}
-
-/* Styles spécifiques pour les appareils mobiles */
-@media (max-width: 768px) {
-  .leaflet-routing-container {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 50%;
-    z-index: 1000;
-    overflow-y: auto;
-    max-width: none;
-    border-radius: 10px 10px 0 0;
-  }
-
-  .leaflet-routing-alt {
-    font-size: 12px;
-  }
-
-  .leaflet-routing-container .leaflet-routing-alt ul {
-    max-height: 100%;
-  }
+.leaflet-routing-container .leaflet-routing-alt {
+  color: black; 
 }

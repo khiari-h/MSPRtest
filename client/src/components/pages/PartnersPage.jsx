@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import axios from '../../config/axiosConfig';
 import PartnersPageTemplate from '../templates/PartnersPageTemplate';
 import Text from '../atoms/Text';
 import PartnerCard from '../molecules/PartnersCard';
@@ -55,44 +55,63 @@ const PartnersPage = () => {
     }
   };
 
-  const filters = categories.map((category, index) => (
-    <button
-      key={index}
-      onClick={() => handleCategoryChange(category)}
-      className={`${
-        selectedCategory === category ? 'bg-blue-700' : 'bg-blue-500'
-      } text-white py-2 px-4 rounded mx-2 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50 transition-colors duration-300`}
-    >
-      {category}
-    </button>
-  ));
+  const filters = (
+    <div className="flex justify-center mb-6">
+      {categories.map((category, index) => (
+        <button
+          key={index}
+          onClick={() => handleCategoryChange(category)}
+          className={`${
+            selectedCategory === category ? 'bg-custom-blue-700' : 'bg-custom-blue-500'
+          } text-white py-2 px-4 rounded mx-2 focus:outline-none focus:ring-2 focus:ring-custom-blue-600 focus:ring-opacity-50 transition-colors duration-300`}
+          aria-pressed={selectedCategory === category}
+          aria-label={`Afficher les partenaires de catégorie ${category}`}
+        >
+          {category}
+        </button>
+      ))}
+    </div>
+  );
 
-  const partnersSection = filteredPartners.map((partner, index) => (
-    <PartnerCard
-      key={index}
-      name={partner.acf.nom}
-      logo={partner.acf.logoUrl}
-      link={partner.acf.lien}
-      description={partner.acf.description}
-      category={partner.acf.categorie}
-      isPrincipal={partner.acf.categorie === 'Partenaire Principal'}
-    />
-  ));
+  const partnersSection = (
+    <section className="mb-12">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {filteredPartners.map((partner, index) => (
+          <PartnerCard
+            key={index}
+            name={partner.acf.nom}
+            logo={partner.acf.logoUrl}
+            link={partner.acf.lien}
+            description={partner.acf.description}
+            category={partner.acf.categorie}
+            isPrincipal={partner.acf.principal}
+          />
+        ))}
+      </div>
+    </section>
+  );
 
   const ctaSection = (
     <div className="mt-12 text-center">
-      <Text content="Vous souhaitez devenir partenaire ?" type="h2" className="text-2xl font-bold mb-4" aria-label="Vous souhaitez devenir partenaire ?" />
-      <a href="/contact" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition-colors duration-300" aria-label="Contactez-nous pour devenir partenaire">
+      <Text content="Vous souhaitez devenir partenaire ?" type="h2" className="h2-class mb-4" aria-label="Vous souhaitez devenir partenaire ?" />
+      <a href="/contact" className="bg-custom-blue-500 hover:bg-custom-blue-700 text-white font-bold py-2 px-4 rounded transition-colors duration-300" aria-label="Contactez-nous pour devenir partenaire">
         Contactez-nous
       </a>
     </div>
   );
 
+  const messageSection = (
+    <div className="bg-custom-yellow-500 p-4 rounded-lg mb-6 text-center">
+      <Text content="Profitez de 10% de réduction chez nos partenaires principaux !" type="h2" className="text-xl font-semibold" />
+    </div>
+  );
+
   return (
     <PartnersPageTemplate
-      filters={loading || error ? <p>{loading ? 'Chargement...' : error}</p> : filters}
+      filters={filters}
       partners={loading || error ? <p>{loading ? 'Chargement...' : error}</p> : partnersSection}
       cta={loading || error ? null : ctaSection}
+      message={messageSection}
     />
   );
 };

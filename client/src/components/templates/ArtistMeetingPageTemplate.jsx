@@ -5,7 +5,7 @@ import Footer from '../organisms/Footer';
 
 const ArtistMeetingsPageTemplate = ({ title, filters, artistMeetings }) => {
   return (
-    <div className="bg-soft-beige text-concert-text min-h-screen">
+    <div className="bg-global text-concert-text min-h-screen">
       <Header />
       <main className="container mx-auto py-8">
         {title}
