@@ -41,8 +41,8 @@ const Header = () => {
           >
             <nav className="flex flex-col items-center space-y-4">
               <NavItem label="Accueil" href="/" className="text-lg font-semibold" />
-              <NavItem label="Programmation" href="/concerts" className="text-lg font-semibold" />
-              <NavItem label="Artistes" href="/artistes" className="text-lg font-semibold" />
+              <NavItem label="Programmation" href="/programmation" className="text-lg font-semibold" />
+              <NavItem label="Concerts" href="/concerts" className="text-lg font-semibold" />
               <NavItem label="Partenaires" href="/partenaires" className="text-lg font-semibold" />
               <NavItem label="Contact" href="/contact" className="text-lg font-semibold" />
             </nav>
@@ -50,8 +50,8 @@ const Header = () => {
         )}
         <nav className="hidden md:flex md:items-center md:space-x-4">
           <NavItem label="Accueil" href="/" />
-          <NavItem label="Programmation" href="/concerts" />
-          <NavItem label="Artistes" href="/artistes" />
+          <NavItem label="Programmation" href="/programmation" />
+          <NavItem label="Concerts" href="/concerts" />
           <NavItem label="Partenaires" href="/partenaires" />
           <NavItem label="Contact" href="/contact" />
         </nav>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFacebookF, faTwitter, faInstagram, faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import { faFacebookF, faTwitter, faInstagram, faLinkedin, faSnapchatGhost, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import Text from '../atoms/Text';
 import NavItem from '../molecules/NavItem';
 
@@ -50,6 +50,12 @@ const Footer = () => {
               </a>
               <a href="https://linkedin.com" className="text-white hover:text-gray-400" aria-label="LinkedIn">
                 <FontAwesomeIcon icon={faLinkedin} />
+              </a>
+              <a href="https://snapchat.com" className="text-white hover:text-gray-400" aria-label="Snapchat">
+                <FontAwesomeIcon icon={faSnapchatGhost} />
+              </a>
+              <a href="https://youtube.com" className="text-white hover:text-gray-400" aria-label="YouTube">
+                <FontAwesomeIcon icon={faYoutube} />
               </a>
             </div>
           </div>

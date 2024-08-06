@@ -7,7 +7,7 @@ import PartnersPage from './components/pages/PartnersPage';
 import ContactPage from './components/pages/ContactPage';
 import ConcertsDetailsPage from './components/pages/ConcertsDetailsPage';
 import NewsPage from './components/pages/NewsPage';
-import ArtistMeetingPage from './components/pages/ArtistMeetingPage';
+import ProgrammingPage from './components/pages/ProgrammingPage';
 import NotFoundPage from './components/error/NotFoundPage';
 import ServerErrorPage from './components/error/ServerErrorPage';
 import './index.css';
@@ -26,7 +26,7 @@ const App = () => {
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/concerts" element={<ConcertsDetailsPage />} />
           <Route path="/news" element={<NewsPage />} />
-          <Route path="/artistes" element={<ArtistMeetingPage />} />
+          <Route path="/programmation" element={<ProgrammingPage/>} />
           <Route path="/500" element={<ServerErrorPage />} />
           <Route path="*" element={<NotFoundPage />} />
          

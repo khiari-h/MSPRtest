@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Text from '../atoms/Text';
 
-const PartnerCard = ({ name, logo, link, description, category, isPrincipal }) => {
+const PartnerCard = ({ name, logo, link, description }) => {
   return (
-    <a href={link} className={`partner-card bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300 p-6 text-center ${isPrincipal ? 'border-2 border-custom-yellow-500' : ''}`}>
+    <div className="partner-card bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300 p-6 text-center">
       {logo ? (
         <img src={logo} alt={name} className="mx-auto mb-4 h-24" />
       ) : (
@@ -14,8 +14,10 @@ const PartnerCard = ({ name, logo, link, description, category, isPrincipal }) =
       )}
       <Text type="h3" content={name} className="text-xl font-semibold h3-class" />
       <Text type="p" content={description} className="mt-2 p-class" />
-      <Text type="p" content={`Catégorie: ${category}`} className="text-sm p-class mt-1" />
-    </a>
+      <a href={link} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:text-blue-700 mt-2 block">
+        Visiter le site
+      </a>
+    </div>
   );
 };
 
@@ -24,8 +26,6 @@ PartnerCard.propTypes = {
   logo: PropTypes.string,
   link: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  category: PropTypes.string.isRequired,
-  isPrincipal: PropTypes.bool.isRequired,
 };
 
 export default PartnerCard;

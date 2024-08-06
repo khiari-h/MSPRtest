@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import axios from '../../config/axiosConfig';
-import InfoCard from '../molecules/InfoCard';
-import Text from '../atoms/Text';
-import Button from '../atoms/Button';
+import axios from '../../../config/axiosConfig';
+import InfoCard from '../../molecules/InfoCard';
+import Text from '../../atoms/Text';
 
-const ConcertsOverview = ({ showFilters = false, showMoreButton = true, heading = "Planning des Concerts", apiEndpoint = 'https://nationsounds.online/wp-json/wp/v2/concerts' }) => {
+const ConcertsProgramming = ({ apiEndpoint = 'https://nationsounds.online/wp-json/wp/v2/concerts' }) => {
   const [concerts, setConcerts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [filters, setFilters] = useState({ date: '', venue: '', type: '' });
+  const [filters, setFilters] = useState({ date: '', heuredebut: '', lieu: '', type: '' });
   const [filteredConcerts, setFilteredConcerts] = useState([]);
 
   const formatDate = (dateStr) => {
@@ -59,8 +58,11 @@ const ConcertsOverview = ({ showFilters = false, showMoreButton = true, heading 
     if (filters.date) {
       filtered = filtered.filter(concert => concert.acf.date === filters.date);
     }
-    if (filters.venue) {
-      filtered = filtered.filter(concert => concert.acf.lieu === filters.venue);
+    if (filters.heuredebut) {
+      filtered = filtered.filter(concert => concert.acf.heuredebut === filters.heuredebut);
+    }
+    if (filters.lieu) {
+      filtered = filtered.filter(concert => concert.acf.lieu === filters.lieu);
     }
     if (filters.type) {
       filtered = filtered.filter(concert => concert.acf.type === filters.type);
@@ -68,7 +70,7 @@ const ConcertsOverview = ({ showFilters = false, showMoreButton = true, heading 
     setFilteredConcerts(filtered);
   }, [filters, concerts]);
 
-  const filterSection = showFilters && (
+  const filterSection = (
     <div className="mb-6">
       <form className="flex flex-wrap justify-center space-x-4">
         <div className="w-full sm:w-auto">
@@ -87,17 +89,32 @@ const ConcertsOverview = ({ showFilters = false, showMoreButton = true, heading 
           </select>
         </div>
         <div className="w-full sm:w-auto">
+          <Text content="Heure" type="label" className="block text-sm font-medium text-charcoal" />
+          <select
+            id="heuredebut"
+            name="heuredebut"
+            value={filters.heuredebut}
+            onChange={handleFilterChange}
+            className="mt-1 block w-full p-2 border border-border-gray rounded-md text-black"
+          >
+            <option value="">Toutes les heures</option>
+            {[...new Set(concerts.map(concert => concert.acf.heuredebut))].map((heure, index) => (
+              <option key={index} value={heure}>{heure}</option>
+            ))}
+          </select>
+        </div>
+        <div className="w-full sm:w-auto">
           <Text content="Lieu" type="label" className="block text-sm font-medium text-charcoal" />
           <select
-            id="venue"
-            name="venue"
-            value={filters.venue}
+            id="lieu"
+            name="lieu"
+            value={filters.lieu}
             onChange={handleFilterChange}
             className="mt-1 block w-full p-2 border border-border-gray rounded-md text-black"
           >
             <option value="">Tous les lieux</option>
-            {[...new Set(concerts.map(concert => concert.acf.lieu))].map((venue, index) => (
-              <option key={index} value={venue}>{venue}</option>
+            {[...new Set(concerts.map(concert => concert.acf.lieu))].map((lieu, index) => (
+              <option key={index} value={lieu}>{lieu}</option>
             ))}
           </select>
         </div>
@@ -121,8 +138,8 @@ const ConcertsOverview = ({ showFilters = false, showMoreButton = true, heading 
   );
 
   return (
-    <section className="container mx-auto py-8" aria-labelledby="concerts-overview-heading">
-      <Text content={heading} type="h2" className="text-2xl font-bold mb-6 text-center" id="concerts-overview-heading" />
+    <section className="container mx-auto py-8" aria-labelledby="concerts-programming-heading">
+      <Text content="Programmation des Concerts" type="h2" className="text-2xl font-bold mb-6 text-center" id="concerts-programming-heading" />
       {loading && <p>Chargement...</p>}
       {error && <p className="text-red-500">{error}</p>}
       {!loading && !error && (
@@ -140,20 +157,10 @@ const ConcertsOverview = ({ showFilters = false, showMoreButton = true, heading 
               />
             ))}
           </div>
-          {showMoreButton && (
-            <div className="flex justify-center mt-6 space-x-4">
-              <Button
-                label="Voir Plus de Concerts"
-                href="/concerts"
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
-                aria-label="Voir tous les concerts"
-              />
-            </div>
-          )}
         </>
       )}
     </section>
   );
 };
 
-export default ConcertsOverview;
+export default ConcertsProgramming;

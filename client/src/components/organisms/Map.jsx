@@ -5,6 +5,7 @@ import 'leaflet/dist/leaflet.css';
 import axios from 'axios';
 import 'leaflet-routing-machine/dist/leaflet-routing-machine.css';
 import 'leaflet-routing-machine';
+import '@fortawesome/fontawesome-free/css/all.min.css'; // Import Font Awesome
 import Text from '../atoms/Text';
 import './Map.css';
 import he from 'he';
@@ -19,7 +20,7 @@ L.Icon.Default.mergeOptions({
   shadowUrl: require('leaflet/dist/images/marker-shadow.png'),
 });
 
-const RoutingControl = ({ from, to }) => {
+const RoutingControl = ({ from, to, showInstructions }) => {
   const map = useMap();
   const routingControlRef = useRef(null);
 
@@ -89,6 +90,16 @@ const RoutingControl = ({ from, to }) => {
     };
   }, [from, to, map]);
 
+  useEffect(() => {
+    if (routingControlRef.current) {
+      if (showInstructions) {
+        routingControlRef.current.show();
+      } else {
+        routingControlRef.current.hide();
+      }
+    }
+  }, [showInstructions]);
+
   return <div id="routing-instructions" className="instructions-container"></div>;
 };
 
@@ -113,7 +124,7 @@ const Map = () => {
   const [startLocation, setStartLocation] = useState(null);
   const [endLocation, setEndLocation] = useState(null);
   const [userPosition, setUserPosition] = useState(null);
-
+  const [showInstructions, setShowInstructions] = useState(true);
   const mapRef = useRef(null);
 
   const uniqueCategories = ['Tous', ...new Set(pointsOfInterest.map(point => point.acf.Categorie))];
@@ -295,6 +306,16 @@ const Map = () => {
         </div>
       </div>
 
+      <button
+        onClick={() => setShowInstructions(!showInstructions)}
+        className="mb-4 px-4 py-2 border rounded bg-gray-200 hover:bg-gray-300 focus:outline-none"
+      >
+   <i className={`fa ${showInstructions ? 'fa-toggle-on' : 'fa-toggle-off'}`} style={{ backgroundColor: 'blue', color: 'white', padding: '5px', borderRadius: '50%' }}></i>
+
+
+
+      </button>
+
       <div className="map-container-wrapper relative">
         <MapContainer
           center={[48.8566, 2.3522]}
@@ -339,7 +360,7 @@ const Map = () => {
             </Marker>
           ))}
           {startLocation && endLocation && (
-            <RoutingControl from={startLocation} to={endLocation} />
+            <RoutingControl from={startLocation} to={endLocation} showInstructions={showInstructions} />
           )}
           {userPosition && (
             <Marker

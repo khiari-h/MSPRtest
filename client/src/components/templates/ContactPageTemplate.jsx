@@ -4,23 +4,21 @@ import Header from '../organisms/Header';
 import Footer from '../organisms/Footer';
 import Text from '../atoms/Text';
 
-const ConcertsDetailsPageTemplate = ({ filters, concerts }) => {
+const ContactPageTemplate = ({ contactForm }) => {
   return (
     <div className="bg-global text-concert-text min-h-screen">
       <Header />
       <main className="container mx-auto py-8">
-        <Text content="Tous les Concerts et leur Planning" type="h1" className="h1-class text-center mb-6" />
-        {filters}
-        {concerts}
+        <Text content="Contactez-nous" type="h1" className="h1-class text-center mb-6" />
+        {contactForm}
       </main>
       <Footer />
     </div>
   );
 };
 
-ConcertsDetailsPageTemplate.propTypes = {
-  filters: PropTypes.node.isRequired,
-  concerts: PropTypes.node.isRequired,
+ContactPageTemplate.propTypes = {
+  contactForm: PropTypes.node.isRequired,
 };
 
-export default ConcertsDetailsPageTemplate;
+export default ContactPageTemplate;

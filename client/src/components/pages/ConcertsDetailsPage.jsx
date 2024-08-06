@@ -6,9 +6,8 @@ import Text from '../atoms/Text';
 
 const ConcertsDetailsPage = () => {
   const [concerts, setConcerts] = useState([]);
-  const [dates, setDates] = useState([]);
-  const [venues, setVenues] = useState([]);
-  const [filters, setFilters] = useState({ date: '', venue: '', search: '' });
+  const [groups, setGroups] = useState([]);
+  const [filters, setFilters] = useState({ group: '', date: '', venue: '', type: '' });
 
   const formatDate = (dateStr) => {
     if (!dateStr) return dateStr;
@@ -30,21 +29,19 @@ const ConcertsDetailsPage = () => {
         const response = await axios.get('https://nationsounds.online/wp-json/wp/v2/concerts');
         const concertsData = response.data;
 
-        const concertsWithImages = await Promise.all(concertsData.map(async concert => {
+        const concertsWithDetails = await Promise.all(concertsData.map(async concert => {
           if (concert.acf.photo) {
             const mediaResponse = await axios.get(`https://nationsounds.online/wp-json/wp/v2/media/${concert.acf.photo}`);
             concert.acf.photo = mediaResponse.data.source_url;
           }
-          // Formater la date et les heures ici
           concert.acf.date = formatDate(concert.acf.date);
           concert.acf.heuredebut = formatTime(concert.acf.heuredebut);
           concert.acf.heurefin = formatTime(concert.acf.heurefin);
           return concert;
         }));
 
-        setConcerts(concertsWithImages);
-        setDates([...new Set(concertsWithImages.map(concert => concert.acf.date))]);
-        setVenues([...new Set(concertsWithImages.map(concert => concert.acf.lieu))]);
+        setConcerts(concertsWithDetails);
+        setGroups([...new Set(concertsWithDetails.map(concert => concert.acf.nom))]);
       } catch (error) {
         console.error("Erreur lors de la récupération des concerts!", error);
       }
@@ -60,15 +57,31 @@ const ConcertsDetailsPage = () => {
 
   const filteredConcerts = concerts.filter(concert => {
     return (
+      (filters.group === '' || concert.acf.nom === filters.group) &&
       (filters.date === '' || concert.acf.date === filters.date) &&
       (filters.venue === '' || concert.acf.lieu === filters.venue) &&
-      (filters.search === '' || concert.acf.nom.toLowerCase().includes(filters.search.toLowerCase()))
+      (filters.type === '' || concert.acf.type === filters.type)
     );
   });
 
   const filterSection = (
     <div className="mb-6">
       <form className="flex flex-wrap justify-center space-x-4">
+        <div className="w-full sm:w-auto">
+          <Text content="Groupe" type="label" className="block text-sm font-medium text-charcoal" />
+          <select
+            id="group"
+            name="group"
+            value={filters.group}
+            onChange={handleFilterChange}
+            className="mt-1 block w-full p-2 border border-border-gray rounded-md text-black"
+          >
+            <option value="">Tous les groupes</option>
+            {groups.map((group, index) => (
+              <option key={index} value={group}>{group}</option>
+            ))}
+          </select>
+        </div>
         <div className="w-full sm:w-auto">
           <Text content="Date" type="label" className="block text-sm font-medium text-charcoal" />
           <select
@@ -79,7 +92,7 @@ const ConcertsDetailsPage = () => {
             className="mt-1 block w-full p-2 border border-border-gray rounded-md text-black"
           >
             <option value="">Toutes les dates</option>
-            {dates.map((date, index) => (
+            {[...new Set(concerts.map(concert => concert.acf.date))].map((date, index) => (
               <option key={index} value={date}>{date}</option>
             ))}
           </select>
@@ -94,22 +107,25 @@ const ConcertsDetailsPage = () => {
             className="mt-1 block w-full p-2 border border-border-gray rounded-md text-black"
           >
             <option value="">Tous les lieux</option>
-            {venues.map((venue, index) => (
+            {[...new Set(concerts.map(concert => concert.acf.lieu))].map((venue, index) => (
               <option key={index} value={venue}>{venue}</option>
             ))}
           </select>
         </div>
         <div className="w-full sm:w-auto">
-          <Text content="Recherche" type="label" className="block text-sm font-medium text-charcoal" />
-          <input
-            type="text"
-            id="search"
-            name="search"
-            value={filters.search}
+          <Text content="Type" type="label" className="block text-sm font-medium text-charcoal" />
+          <select
+            id="type"
+            name="type"
+            value={filters.type}
             onChange={handleFilterChange}
-            placeholder="Rechercher par nom"
             className="mt-1 block w-full p-2 border border-border-gray rounded-md text-black"
-          />
+          >
+            <option value="">Tous les types</option>
+            {[...new Set(concerts.map(concert => concert.acf.type))].map((type, index) => (
+              <option key={index} value={type}>{type}</option>
+            ))}
+          </select>
         </div>
       </form>
     </div>

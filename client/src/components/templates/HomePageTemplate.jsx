@@ -4,7 +4,8 @@ import Header from '../organisms/Header';
 import Footer from '../organisms/Footer';
 
 
-const HomePageTemplate = ({ heroSection, newsAndUpdates, concertsOverview, artistMeetingsPreview, ctaBeforeMap, practicalInfo, map, ctaAfterMap }) => {
+
+const HomePageTemplate = ({ heroSection, newsAndUpdates, concertsOverview, ProgrammingOverview, ctaBeforeMap, practicalInfo, map, ctaAfterMap }) => {
   return (
     <div className="bg-global text-concert-text min-h-screen">
       <Header />
@@ -16,8 +17,8 @@ const HomePageTemplate = ({ heroSection, newsAndUpdates, concertsOverview, artis
         <section aria-labelledby="concerts-overview-heading">
           {concertsOverview}
         </section>
-        <section aria-labelledby="artist-meetings-heading">
-          {artistMeetingsPreview}
+        <section aria-labelledby="programming-overview-heading">
+          {ProgrammingOverview}
         </section>
         <section aria-labelledby="cta-before-map-heading">
           {ctaBeforeMap}

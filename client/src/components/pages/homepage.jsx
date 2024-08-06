@@ -3,7 +3,7 @@ import HomePageTemplate from '../templates/HomePageTemplate';
 import HeroSection from '../organisms/HeroSection';
 import NewsAndUpdates from '../organisms/NewsAndUpdates';
 import ConcertsOverview from '../organisms/ConcertsOverview';
-import ArtistMeetingsPreview from '../organisms/ArtistMeetingPreview';
+import ProgrammingOverview from '../organisms/ProgrammingOverview';
 import CTASection from '../molecules/CtaSection';
 import PracticalInfo from '../organisms/PracticalInfo';
 import Map from '../organisms/Map';
@@ -38,7 +38,7 @@ const HomePage = () => {
       heroSection={<HeroSection />}
       newsAndUpdates={<NewsAndUpdates />}
       concertsOverview={<ConcertsOverview />}
-      artistMeetingsPreview={<ArtistMeetingsPreview />}
+      ProgrammingOverview={<ProgrammingOverview/>}
       ctaBeforeMap={
         <CTASection
           title="Réservez vos billets pour une expérience inoubliable!"

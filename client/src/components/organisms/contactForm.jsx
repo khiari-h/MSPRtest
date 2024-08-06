@@ -58,7 +58,7 @@ const ContactForm = () => {
           <select
             id="type"
             name="type"
-            className="border border-border-gray p-2 rounded-md"
+            className="border border-border-gray p-2 rounded-md text-black bg-white"
             value={formData.type}
             onChange={handleChange}
             aria-required="true"
@@ -108,7 +108,7 @@ const ContactForm = () => {
           <textarea
             id="message"
             name="message"
-            className="border border-border-gray p-2 rounded-md h-32"
+            className="border border-border-gray p-2 rounded-md h-32 text-black bg-white"
             placeholder="Votre message"
             value={formData.message}
             onChange={handleChange}
@@ -119,7 +119,7 @@ const ContactForm = () => {
           {errors.message && <span id="message-error" className="text-error-red text-sm">{errors.message}</span>}
         </div>
         <div className="flex justify-center md:col-span-2">
-          <Button label="Envoyer" type="submit" className="bg-custom-blue-500 hover:bg-custom-blue-700 text-white font-bold py-2 px-4 rounded-full" />
+          <Button label="Envoyer" type="submit" />
         </div>
         {status && <p className="text-center text-green-500 mt-4">{status}</p>}
       </form>

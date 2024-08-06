@@ -1,14 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Button = ({ label, onClick, href, className = '' }) => {
+const Button = ({ label, onClick, href, className = '', isSelected = false }) => {
   const baseClasses = "inline-block font-bold text-center cursor-pointer rounded-full py-3 px-6 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-xl";
   const defaultClasses = "bg-light-blue hover:bg-white hover:text-light-blue text-white font-concert-body";
+  const selectedClasses = "bg-light-blue";
+
+  const combinedClasses = isSelected ? `${baseClasses} ${selectedClasses}` : `${baseClasses} ${defaultClasses}`;
 
   return href ? (
     <a
       href={href}
-      className={`${baseClasses} ${className || defaultClasses}`}
+      className={`${combinedClasses} ${className}`}
       target="_blank"
       rel="noopener noreferrer"
       aria-label={label}
@@ -16,7 +19,7 @@ const Button = ({ label, onClick, href, className = '' }) => {
       {label}
     </a>
   ) : (
-    <button onClick={onClick} className={`${baseClasses} ${className || defaultClasses}`} aria-label={label}>
+    <button onClick={onClick} className={`${combinedClasses} ${className}`} aria-label={label}>
       {label}
     </button>
   );
@@ -27,6 +30,7 @@ Button.propTypes = {
   onClick: PropTypes.func,
   href: PropTypes.string,
   className: PropTypes.string,
+  isSelected: PropTypes.bool,
 };
 
 export default Button;

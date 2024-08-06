@@ -3,11 +3,14 @@ import axios from '../../config/axiosConfig';
 import PartnersPageTemplate from '../templates/PartnersPageTemplate';
 import Text from '../atoms/Text';
 import PartnerCard from '../molecules/PartnersCard';
+import Button from '../atoms/Button';
 
 const PartnersPage = () => {
   const [partners, setPartners] = useState([]);
   const [filteredPartners, setFilteredPartners] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('Tous');
+  const [currentPage, setCurrentPage] = useState(1);
+  const [partnersPerPage] = useState(6);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
@@ -48,6 +51,7 @@ const PartnersPage = () => {
 
   const handleCategoryChange = (category) => {
     setSelectedCategory(category);
+    setCurrentPage(1); // Reset to the first page
     if (category === 'Tous') {
       setFilteredPartners(partners);
     } else {
@@ -55,20 +59,27 @@ const PartnersPage = () => {
     }
   };
 
+  // Get current partners for pagination
+  const indexOfLastPartner = currentPage * partnersPerPage;
+  const indexOfFirstPartner = indexOfLastPartner - partnersPerPage;
+  const currentPartners = filteredPartners.slice(indexOfFirstPartner, indexOfLastPartner);
+
+  const totalPages = Math.ceil(filteredPartners.length / partnersPerPage);
+
+  const handleClick = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
   const filters = (
-    <div className="flex justify-center mb-6">
+    <div className="flex justify-center mb-6 space-x-4">
       {categories.map((category, index) => (
-        <button
+        <Button
           key={index}
+          label={category}
           onClick={() => handleCategoryChange(category)}
-          className={`${
-            selectedCategory === category ? 'bg-custom-blue-700' : 'bg-custom-blue-500'
-          } text-white py-2 px-4 rounded mx-2 focus:outline-none focus:ring-2 focus:ring-custom-blue-600 focus:ring-opacity-50 transition-colors duration-300`}
+          isSelected={selectedCategory === category}
           aria-pressed={selectedCategory === category}
-          aria-label={`Afficher les partenaires de catégorie ${category}`}
-        >
-          {category}
-        </button>
+        />
       ))}
     </div>
   );
@@ -76,15 +87,24 @@ const PartnersPage = () => {
   const partnersSection = (
     <section className="mb-12">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {filteredPartners.map((partner, index) => (
+        {currentPartners.map((partner, index) => (
           <PartnerCard
             key={index}
             name={partner.acf.nom}
             logo={partner.acf.logoUrl}
             link={partner.acf.lien}
             description={partner.acf.description}
-            category={partner.acf.categorie}
-            isPrincipal={partner.acf.principal}
+          />
+        ))}
+      </div>
+      <div className="flex justify-center mt-8">
+        {Array.from({ length: totalPages }, (_, index) => (
+          <Button
+            key={index + 1}
+            label={index + 1}
+            onClick={() => handleClick(index + 1)}
+            isSelected={currentPage === index + 1}
+            className="mx-1"
           />
         ))}
       </div>
