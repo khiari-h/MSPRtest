@@ -1,29 +1,35 @@
-// src/__tests__/components/atoms/Button.test.js
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import Button from '../../../components/atoms/Button';
 
-test('renders button with text and handles click', () => {
-  const handleClick = jest.fn();
-  const { getByText } = render(<Button label="Click me" onClick={handleClick} />);
-  
-  // Vérifie que le texte est présent
-  expect(getByText(/click me/i)).toBeInTheDocument();
-  
-  // Simule un clic sur le bouton
-  fireEvent.click(getByText(/click me/i));
-  
-  // Vérifie que la fonction onClick a été appelée
-  expect(handleClick).toHaveBeenCalledTimes(1);
-});
+describe('Button Component', () => {
+  // Test pour vérifier que le bouton est rendu avec le texte correct
+  test('renders the button with label', () => {
+    render(<Button label="Click Me" />);
+    const buttonElement = screen.getByText(/Click Me/i);
+    expect(buttonElement).toBeInTheDocument();
+  });
 
-test('renders link with text and has correct href', () => {
-  const { getByText } = render(<Button label="Go to Google" href="https://www.google.com" />);
-  
-  // Vérifie que le texte est présent
-  expect(getByText(/go to google/i)).toBeInTheDocument();
-  
-  // Vérifie que l'élément est un lien avec l'attribut href correct
-  const linkElement = getByText(/go to google/i);
-  expect(linkElement).toHaveAttribute('href', 'https://www.google.com');
+  // Test pour vérifier que la fonction onClick est appelée lorsque le bouton est cliqué
+  test('calls the onClick handler when clicked', () => {
+    const onClick = jest.fn();
+    render(<Button label="Click Me" onClick={onClick} />);
+    const buttonElement = screen.getByText(/Click Me/i);
+    fireEvent.click(buttonElement);
+    expect(onClick).toHaveBeenCalledTimes(1);
+  });
+
+  // Test pour vérifier que le bouton est rendu comme un lien lorsqu'une href est fournie
+  test('renders the button with href as a link', () => {
+    render(<Button label="Click Me" href="https://example.com" />);
+    const linkElement = screen.getByText(/Click Me/i);
+    expect(linkElement.closest('a')).toHaveAttribute('href', 'https://example.com');
+  });
+
+  // Test pour vérifier que les classes spécifiques sont appliquées lorsque isSelected est vrai
+  test('applies selected classes when isSelected is true', () => {
+    render(<Button label="Click Me" isSelected />);
+    const buttonElement = screen.getByText(/Click Me/i);
+    expect(buttonElement).toHaveClass('bg-light-blue');
+  });
 });

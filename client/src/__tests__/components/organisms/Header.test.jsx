@@ -1,26 +1,34 @@
-// __tests__/Header.test.js
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import '@testing-library/jest-dom';
 import Header from '../../../components/organisms/Header';
 
-describe('Header', () => {
-  test('renders logo and navigation links', () => {
+describe('Header Component', () => {
+  test('renders the header with navigation items', () => {
     render(<Header />);
+    
+    // Vérifie que le logo est présent
     expect(screen.getByAltText('Festival Logo')).toBeInTheDocument();
+    
+    // Vérifie que les éléments de navigation sont présents
     expect(screen.getByText('Accueil')).toBeInTheDocument();
     expect(screen.getByText('Programmation')).toBeInTheDocument();
-    expect(screen.getByText('Artistes')).toBeInTheDocument();
+    expect(screen.getByText('Concerts')).toBeInTheDocument();
     expect(screen.getByText('Partenaires')).toBeInTheDocument();
-    expect(screen.getByText('Contact')).toBeInTheDocument();
+    expect(screen.getByText('Actualités')).toBeInTheDocument();
   });
 
-  test('toggles mobile menu visibility', () => {
+  test('toggles the mobile menu', () => {
     render(<Header />);
-    const mobileMenuButton = screen.getByLabelText('Ouvrir le menu');
-    fireEvent.click(mobileMenuButton);
-    expect(screen.getByRole('menu')).toBeVisible();
-    fireEvent.click(screen.getByLabelText('Fermer le menu'));
-    expect(screen.queryByRole('menu')).toBeNull();
+    
+    const menuButton = screen.getByRole('button', { name: /ouvrir le menu/i });
+    expect(menuButton).toBeInTheDocument();
+
+    // Simule le clic sur le bouton du menu mobile pour l'ouvrir
+    fireEvent.click(menuButton);
+    expect(screen.getByRole('menu')).toBeInTheDocument();
+
+    // Simule le clic sur le bouton du menu mobile pour le fermer
+    fireEvent.click(menuButton);
+    expect(screen.queryByRole('menu')).not.toBeInTheDocument();
   });
 });

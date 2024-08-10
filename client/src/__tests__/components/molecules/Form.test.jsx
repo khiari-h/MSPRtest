@@ -1,40 +1,57 @@
-// src/__tests__/components/molecules/Form.test.js
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import Form from '../../../components/molecules/Form';
-import Input from '../../../components/atoms/Input';
-import Label from '../../../components/atoms/Label';
-import Button from '../../../components/atoms/Button';
 
-test('renders form with fields and handles submit', () => {
-  const handleSubmit = jest.fn();
+describe('Form Component', () => {
+  const mockOnChange = jest.fn();
+  const mockOnSubmit = jest.fn();
   const fields = [
     {
-      label: 'Username',
+      label: 'Name',
       type: 'text',
-      name: 'username',
-      placeholder: 'Enter your username',
+      name: 'name',
+      placeholder: 'Enter your name',
       value: '',
-      onChange: jest.fn(),
+      onChange: mockOnChange,
+      required: true,
+      error: '',
     },
     {
-      label: 'Password',
-      type: 'password',
-      name: 'password',
-      placeholder: 'Enter your password',
+      label: 'Email',
+      type: 'email',
+      name: 'email',
+      placeholder: 'Enter your email',
       value: '',
-      onChange: jest.fn(),
+      onChange: mockOnChange,
+      required: true,
+      error: '',
     },
   ];
 
-  const { getByPlaceholderText, getByText } = render(<Form fields={fields} onSubmit={handleSubmit} />);
+  // Test pour vérifier que tous les champs sont rendus avec les labels corrects
+  test('renders all fields with correct labels', () => {
+    render(<Form fields={fields} onSubmit={mockOnSubmit} />);
+    fields.forEach(field => {
+      const labelElement = screen.getByText(new RegExp(field.label, 'i'));
+      expect(labelElement).toBeInTheDocument();
+    });
+  });
 
-  // Vérifie que les champs de saisie et le bouton de soumission sont présents
-  expect(getByPlaceholderText(/enter your username/i)).toBeInTheDocument();
-  expect(getByPlaceholderText(/enter your password/i)).toBeInTheDocument();
-  expect(getByText(/submit/i)).toBeInTheDocument();
+  // Test pour vérifier que la fonction onSubmit est appelée lorsque le formulaire est soumis
+  test('calls onSubmit when the form is submitted', () => {
+    const { container } = render(<Form fields={fields} onSubmit={mockOnSubmit} />);
+    const form = container.querySelector('form'); // Sélectionnez le formulaire directement
+    fireEvent.submit(form); // Simulez la soumission du formulaire
+    expect(mockOnSubmit).toHaveBeenCalledTimes(1);
+  });
 
-  // Simule la soumission du formulaire
-  fireEvent.submit(getByText(/submit/i));
-  expect(handleSubmit).toHaveBeenCalled();
+  // Test pour vérifier que les champs déclenchent la fonction onChange lors de la modification
+  test('calls onChange when input values are changed', () => {
+    render(<Form fields={fields} onSubmit={mockOnSubmit} />);
+    fields.forEach(field => {
+      const inputElement = screen.getByPlaceholderText(new RegExp(field.placeholder, 'i'));
+      fireEvent.change(inputElement, { target: { value: 'test' } });
+      expect(mockOnChange).toHaveBeenCalledTimes(fields.indexOf(field) + 1); // Vérifiez que onChange a été appelé le bon nombre de fois
+    });
+  });
 });

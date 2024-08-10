@@ -13,15 +13,6 @@ const HomePage = () => {
   const ctaAfterMap = (
     <div className="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-4 py-8 px-4">
       <CTASection
-        title="Restons en Contact!"
-        ctas={[
-          {
-            label: "Contactez-nous",
-            href: "/contact",
-          },
-        ]}
-      />
-      <CTASection
         title="Découvrez nos partenaires"
         ctas={[
           {

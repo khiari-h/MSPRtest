@@ -17,14 +17,14 @@ const PartnersPage = () => {
   useEffect(() => {
     const fetchPartners = async () => {
       try {
-        const response = await axios.get('https://nationsounds.online/wp-json/wp/v2/partners');
+        const response = await axios.get('/api/wordpress/partners');
         const partnersData = response.data;
 
         // Récupérer les URLs des logos
         const partnersWithLogos = await Promise.all(partnersData.map(async (partner) => {
           if (partner.acf.logo) {
             try {
-              const logoResponse = await axios.get(`https://nationsounds.online/wp-json/wp/v2/media/${partner.acf.logo}`);
+              const logoResponse = await axios.get(`/api/wordpress/media/${partner.acf.logo}`);
               return { ...partner, acf: { ...partner.acf, logoUrl: logoResponse.data.source_url } };
             } catch (logoError) {
               console.error("Erreur lors de la récupération du logo!", logoError);
@@ -114,11 +114,16 @@ const PartnersPage = () => {
   const ctaSection = (
     <div className="mt-12 text-center">
       <Text content="Vous souhaitez devenir partenaire ?" type="h2" className="h2-class mb-4" aria-label="Vous souhaitez devenir partenaire ?" />
-      <a href="/contact" className="bg-custom-blue-500 hover:bg-custom-blue-700 text-white font-bold py-2 px-4 rounded transition-colors duration-300" aria-label="Contactez-nous pour devenir partenaire">
-        Contactez-nous
-      </a>
+      <Button
+        label="Envoyez-nous un email"
+        onClick={() => window.location.href = 'mailto:partenariats@nationsounds.com'}
+        className="bg-custom-blue-500 hover:bg-custom-blue-700 text-white font-bold py-2 px-4 rounded transition-colors duration-300"
+        aria-label="Envoyez-nous un email pour devenir partenaire"
+      />
     </div>
   );
+  
+  
 
   const messageSection = (
     <div className="bg-custom-yellow-500 p-4 rounded-lg mb-6 text-center">

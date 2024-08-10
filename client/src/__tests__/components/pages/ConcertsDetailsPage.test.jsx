@@ -1,79 +1,69 @@
 import React from 'react';
-import { render, screen, waitFor, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import axios from '../../../config/axiosConfig';
 import ConcertsDetailsPage from '../../../components/pages/ConcertsDetailsPage';
-import { jest } from '@jest/globals';
 
 jest.mock('../../../config/axiosConfig');
 
 describe('ConcertsDetailsPage', () => {
   const mockConcerts = [
     {
-      id: 1,
       acf: {
         nom: 'Concert 1',
         description: 'Description 1',
-        photo: 'https://nationsounds.online/wp-content/uploads/2024/07/concert1.jpg',
-        date: '2024-07-30',
-        heure: '20:00',
+        photo: 'photo-url-1',
+        date: '2024-08-09',
+        heuredebut: '18:00',
+        heurefin: '20:00',
         lieu: 'Lieu 1',
-      },
+        type: 'Type 1'
+      }
     },
     {
-      id: 2,
       acf: {
         nom: 'Concert 2',
         description: 'Description 2',
-        photo: 'https://nationsounds.online/wp-content/uploads/2024/07/concert2.jpg',
-        date: '2024-08-01',
-        heure: '21:00',
+        photo: 'photo-url-2',
+        date: '2024-08-10',
+        heuredebut: '19:00',
+        heurefin: '21:00',
         lieu: 'Lieu 2',
-      },
-    },
+        type: 'Type 2'
+      }
+    }
   ];
 
   beforeEach(() => {
-    axios.get.mockResolvedValueOnce({ data: mockConcerts });
+    axios.get.mockResolvedValue({ data: mockConcerts });
   });
 
-  test('affiche les filtres et les concerts correctement', async () => {
+  test('fetches and displays concerts on load', async () => {
     render(<ConcertsDetailsPage />);
-    
-    await waitFor(() => {
-      expect(screen.getByText(/Date/i)).toBeInTheDocument();
-      expect(screen.getByText(/Lieu/i)).toBeInTheDocument();
-      expect(screen.getByText(/Recherche/i)).toBeInTheDocument();
-    });
-    
-    // Vérification que les concerts sont affichés
-    expect(screen.getByText(/Concert 1/i)).toBeInTheDocument();
-    expect(screen.getByText(/Concert 2/i)).toBeInTheDocument();
-    // Verify that images are rendered
-    expect(screen.getByAltText('Image de Concert 1')).toBeInTheDocument();
-    expect(screen.getByAltText('Image de Concert 2')).toBeInTheDocument();
+
+    // Ici, on utilise `findAllByText` pour éviter les collisions entre les options du select et les titres des concerts.
+    const concertElements = await screen.findAllByText('Concert 1');
+    expect(concertElements).toHaveLength(2);  // Cela s'assure que les deux occurrences sont trouvées
+    expect(screen.getByText('Concert 2')).toBeInTheDocument();
   });
 
-  test('filtre les concerts en fonction des options sélectionnées', async () => {
+  test('filters concerts based on selected group', async () => {
     render(<ConcertsDetailsPage />);
-    
-    await waitFor(() => {
-      fireEvent.change(screen.getByLabelText(/Date/i), { target: { value: '2024-07-30' } });
-      fireEvent.change(screen.getByLabelText(/Lieu/i), { target: { value: 'Lieu 1' } });
-      
-      // Assure-toi que le concert filtré est affiché
-      expect(screen.getByText(/Concert 1/i)).toBeInTheDocument();
-      // Assure-toi que le concert non filtré est caché
-      expect(screen.queryByText(/Concert 2/i)).toBeNull();
-    });
+
+    await waitFor(() => screen.findByText('Concert 1'));
+
+    fireEvent.change(screen.getByLabelText('Groupe'), { target: { value: 'Concert 1' } });
+
+    // Assurez-vous de bien utiliser `queryAllByText` pour vérifier la présence multiple d'un élément.
+    expect(screen.queryAllByText('Concert 2')).toHaveLength(0);
+    expect(screen.getAllByText('Concert 1')).toHaveLength(2);
   });
 
-  test('affiche un message d\'erreur en cas de problème lors de la récupération des concerts', async () => {
-    axios.get.mockRejectedValueOnce(new Error('Erreur de chargement'));
+  test('handles API errors gracefully', async () => {
+    axios.get.mockRejectedValue(new Error('Erreur lors de la récupération des concerts!'));
+
     render(<ConcertsDetailsPage />);
-    
-    await waitFor(() => {
-      // Vérifie les erreurs dans la console ou le comportement prévu
-      expect(screen.getByText(/Erreur lors de la récupération des concerts!/i)).toBeInTheDocument();
-    });
+
+    // En cas d'erreur, nous vérifions que le message est affiché correctement.
+    expect(await screen.findByText(/Erreur lors de la récupération des concerts!/i)).toBeInTheDocument();
   });
 });

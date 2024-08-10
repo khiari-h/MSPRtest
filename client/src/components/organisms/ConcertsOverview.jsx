@@ -4,11 +4,11 @@ import InfoCard from '../molecules/InfoCard';
 import Text from '../atoms/Text';
 import Button from '../atoms/Button';
 
-const ConcertsOverview = ({ showFilters = false, showMoreButton = true, heading = "Planning des Concerts", apiEndpoint = 'https://nationsounds.online/wp-json/wp/v2/concerts' }) => {
+const ConcertsOverview = ({ showFilters = false, showMoreButton = true, heading = "Planning des Concerts", apiEndpoint = '/api/wordpress/concerts' }) => {
   const [concerts, setConcerts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [filters, setFilters] = useState({ date: '', venue: '', type: '' });
+  const [filters, setFilters] = useState({ date: '', lieu: '', type: '' });
   const [filteredConcerts, setFilteredConcerts] = useState([]);
 
   const formatDate = (dateStr) => {
@@ -27,11 +27,8 @@ const ConcertsOverview = ({ showFilters = false, showMoreButton = true, heading 
 
         const concertsWithImages = await Promise.all(concertsData.map(async concert => {
           if (concert.acf && concert.acf.photo) {
-            const mediaResponse = await axios.get(`https://nationsounds.online/wp-json/wp/v2/media/${concert.acf.photo}`);
+            const mediaResponse = await axios.get(`/api/wordpress/media/${concert.acf.photo}`);
             concert.acf.photo = mediaResponse.data.source_url;
-          }
-          if (concert.acf) {
-            concert.acf.date = formatDate(concert.acf.date);
           }
           return concert;
         }));
@@ -59,8 +56,8 @@ const ConcertsOverview = ({ showFilters = false, showMoreButton = true, heading 
     if (filters.date) {
       filtered = filtered.filter(concert => concert.acf.date === filters.date);
     }
-    if (filters.venue) {
-      filtered = filtered.filter(concert => concert.acf.lieu === filters.venue);
+    if (filters.lieu) {
+      filtered = filtered.filter(concert => concert.acf.lieu === filters.lieu);
     }
     if (filters.type) {
       filtered = filtered.filter(concert => concert.acf.type === filters.type);
@@ -89,15 +86,15 @@ const ConcertsOverview = ({ showFilters = false, showMoreButton = true, heading 
         <div className="w-full sm:w-auto">
           <Text content="Lieu" type="label" className="block text-sm font-medium text-charcoal" />
           <select
-            id="venue"
-            name="venue"
-            value={filters.venue}
+            id="lieu"
+            name="lieu"
+            value={filters.lieu}
             onChange={handleFilterChange}
             className="mt-1 block w-full p-2 border border-border-gray rounded-md text-black"
           >
             <option value="">Tous les lieux</option>
-            {[...new Set(concerts.map(concert => concert.acf.lieu))].map((venue, index) => (
-              <option key={index} value={venue}>{venue}</option>
+            {[...new Set(concerts.map(concert => concert.acf.lieu))].map((lieu, index) => (
+              <option key={index} value={lieu}>{lieu}</option>
             ))}
           </select>
         </div>
@@ -134,9 +131,7 @@ const ConcertsOverview = ({ showFilters = false, showMoreButton = true, heading 
                 key={index}
                 title={concert.acf.nom}
                 description={concert.acf.description}
-                image={concert.acf.photo}
-                additionalInfo={`Date: ${concert.acf.date}, Heure de début: ${concert.acf.heuredebut}, Heure de fin: ${concert.acf.heurefin}, Lieu: ${concert.acf.lieu}, Type: ${concert.acf.type}`}
-                type="program"
+                image={concert.acf.photo || 'default.jpg'}
               />
             ))}
           </div>

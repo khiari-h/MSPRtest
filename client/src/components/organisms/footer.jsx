@@ -1,10 +1,44 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebookF, faTwitter, faInstagram, faLinkedin, faSnapchatGhost, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import Text from '../atoms/Text';
 import NavItem from '../molecules/NavItem';
+import axios from '../../config/axiosConfig';
 
 const Footer = () => {
+  const [formData, setFormData] = useState({ firstName: '', lastName: '', email: '' });
+  const [status, setStatus] = useState('');
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubscribe = async (e) => {
+    e.preventDefault();
+    try {
+        await axios.post('/api/newsletter', {
+            first_name: formData.firstName,
+            last_name: formData.lastName,
+            email: formData.email,
+        });
+        setStatus('Inscription réussie!');
+        setFormData({ firstName: '', lastName: '', email: '' });
+    } catch (error) {
+        setStatus('Erreur lors de l\'inscription.');
+    }
+  };
+
+  useEffect(() => {
+    if (status) {
+      const timer = setTimeout(() => {
+        setStatus(''); // Clear the status after 3 seconds
+      }, 3000);
+
+      return () => clearTimeout(timer); // Cleanup the timer if the component unmounts
+    }
+  }, [status]);
+
   return (
     <footer className="bg-gray-800 text-white py-8">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -21,10 +55,46 @@ const Footer = () => {
           </div>
           <div>
             <h3 className="text-lg font-bold mb-2">Newsletter</h3>
-            <form className="max-w-sm mx-auto">
-              <input type="email" placeholder="Votre email" className="p-2 rounded text-black w-full" aria-label="Email" />
-              <button type="submit" className="bg-custom-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2">S'inscrire</button>
+            <form className="max-w-sm mx-auto" onSubmit={handleSubscribe}>
+              <input
+                type="text"
+                name="firstName"
+                placeholder="Votre prénom"
+                className="p-2 rounded text-black w-full mb-2"
+                aria-label="Prénom"
+                value={formData.firstName}
+                onChange={handleInputChange}
+                required
+              />
+              <input
+                type="text"
+                name="lastName"
+                placeholder="Votre nom"
+                className="p-2 rounded text-black w-full mb-2"
+                aria-label="Nom"
+                value={formData.lastName}
+                onChange={handleInputChange}
+                required
+              />
+              <input
+                type="email"
+                name="email"
+                placeholder="Votre email"
+                className="p-2 rounded text-black w-full mb-2"
+                aria-label="Email"
+                value={formData.email}
+                onChange={handleInputChange}
+                required
+              />
+              <button type="submit" className="bg-custom-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2">
+                S'inscrire
+              </button>
             </form>
+            {status && (
+              <p className={`mt-2 text-center ${status === 'Inscription réussie!' ? 'text-light-blue' : 'text-error-red'}`}>
+                {status}
+              </p>
+            )}
           </div>
           <div>
             <h3 className="text-lg font-bold mb-2">Informations légales</h3>

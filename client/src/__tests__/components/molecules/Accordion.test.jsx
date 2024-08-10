@@ -1,31 +1,38 @@
-// src/__tests__/components/molecules/Accordion.test.js
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import Accordion from '../../../components/molecules/Accordion';
-import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
 
-test('renders accordion with title and toggles content visibility', () => {
-  const { getByText, queryByText } = render(
-    <Accordion title="Accordion Title">
-      <p>Accordion Content</p>
-    </Accordion>
-  );
+describe('Accordion Component', () => {
+  // Test pour vérifier que le titre de l'accordéon est rendu correctement
+  test('renders the accordion title', () => {
+    render(<Accordion title="Test Title">Test Content</Accordion>);
+    const titleElement = screen.getByText(/Test Title/i);
+    expect(titleElement).toBeInTheDocument();
+  });
 
-  // Vérifie que le titre est présent
-  expect(getByText(/accordion title/i)).toBeInTheDocument();
-  
-  // Vérifie que le contenu n'est pas visible au départ
-  expect(queryByText(/accordion content/i)).toBeNull();
+  // Test pour vérifier que le contenu de l'accordéon est masqué par défaut
+  test('hides content by default', () => {
+    render(<Accordion title="Test Title">Test Content</Accordion>);
+    const contentElement = screen.queryByText(/Test Content/i);
+    expect(contentElement).not.toBeInTheDocument();
+  });
 
-  // Simule un clic sur le bouton pour ouvrir l'accordéon
-  fireEvent.click(getByText(/accordion title/i));
+  // Test pour vérifier que le contenu de l'accordéon s'affiche lorsqu'on clique sur le titre
+  test('shows content when the title is clicked', () => {
+    render(<Accordion title="Test Title">Test Content</Accordion>);
+    const buttonElement = screen.getByRole('button');
+    fireEvent.click(buttonElement);
+    const contentElement = screen.getByText(/Test Content/i);
+    expect(contentElement).toBeInTheDocument();
+  });
 
-  // Vérifie que le contenu est maintenant visible
-  expect(getByText(/accordion content/i)).toBeInTheDocument();
-
-  // Simule un clic pour fermer l'accordéon
-  fireEvent.click(getByText(/accordion title/i));
-
-  // Vérifie que le contenu n'est plus visible
-  expect(queryByText(/accordion content/i)).toBeNull();
+  // Test pour vérifier que le contenu de l'accordéon est masqué lorsqu'on reclique sur le titre
+  test('hides content when the title is clicked again', () => {
+    render(<Accordion title="Test Title">Test Content</Accordion>);
+    const buttonElement = screen.getByRole('button');
+    fireEvent.click(buttonElement); // Ouvrir l'accordéon
+    fireEvent.click(buttonElement); // Fermer l'accordéon
+    const contentElement = screen.queryByText(/Test Content/i);
+    expect(contentElement).not.toBeInTheDocument();
+  });
 });

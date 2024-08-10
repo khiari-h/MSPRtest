@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import ProgrammingPageTemplate from '../templates/ProgrammingPageTemplate';
 import ConcertsProgramming from '../organisms/ProgrammingOrganisms/ConcertProgramming';
-import ArtistMeetingPreview from '../organisms/ProgrammingOrganisms/ArtistMeetingPreview';
-import WorkshopsOverview from '../organisms/ProgrammingOrganisms/WorkshopsOverview';
+import ArtistMeeting from '../organisms/ProgrammingOrganisms/ArtistMeeting';
+import Workshops from '../organisms/ProgrammingOrganisms/Workshops';
 
 const ProgrammingPage = () => {
   const [currentSection, setCurrentSection] = useState('concerts');
@@ -12,9 +12,9 @@ const ProgrammingPage = () => {
       case 'concerts':
         return <ConcertsProgramming />;
       case 'workshops':
-        return <WorkshopsOverview />;
+        return <Workshops />;
       case 'artistMeetings':
-        return <ArtistMeetingPreview />;
+        return <ArtistMeeting />;
       default:
         return null;
     }

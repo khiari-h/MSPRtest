@@ -17,7 +17,7 @@ const Input = ({ id, type, name, placeholder, value, onChange, required, label, 
         aria-required={required}
         aria-invalid={!!error}
         aria-describedby={error ? `${id}-error` : null}
-        className={`border ${error ? 'border-error-red' : 'border-border-gray'} p-2 rounded w-full`}
+        className={`border ${error ? 'border-error-red' : 'border-border-gray'} p-2 rounded w-full text-black`}
       />
       {error && <span id={`${id}-error`} className="text-error-red text-sm">{error}</span>}
     </div>

@@ -1,68 +1,78 @@
 import React from 'react';
-import { render, screen, waitFor, fireEvent } from '@testing-library/react';
-import axios from '../../config/axiosConfig';
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import axios from '../../../config/axiosConfig';
 import NewsPage from '../../../components/pages/NewsPage';
-import { jest } from '@jest/globals';
 
-jest.mock('../../config/axiosConfig');
-
-const mockNews = [
-  { id: 1, title: 'Concert News', description: 'Description 1', category: 'concert', importance: 1 },
-  { id: 2, title: 'Info News', description: 'Description 2', category: 'info', importance: 2 },
-  { id: 3, title: 'Interview News', description: 'Description 3', category: 'interview', importance: 3 },
-  { id: 4, title: 'Event News', description: 'Description 4', category: 'event', importance: 4 },
-  { id: 5, title: 'Organization News', description: 'Description 5', category: 'organization', importance: 5 }
-];
+jest.mock('../../../config/axiosConfig');
 
 describe('NewsPage', () => {
+  const mockNews = [
+    {
+      title: 'News 1',
+      description: 'Description 1',
+      category: 'Category 1',
+      importance: 1,
+    },
+    {
+      title: 'News 2',
+      description: 'Description 2',
+      category: 'Category 2',
+      importance: 2,
+    },
+  ];
+
   beforeEach(() => {
     axios.get.mockResolvedValue({ data: mockNews });
   });
 
-  test('renders news items after successful data fetch', async () => {
+  test('fetches and displays news on load', async () => {
+    render(<NewsPage />);
+
+    expect(await screen.findByText('News 1')).toBeInTheDocument();
+    expect(screen.getByText('News 2')).toBeInTheDocument();
+  });
+
+  test('filters news based on selected category', async () => {
+    render(<NewsPage />);
+
+    await waitFor(() => screen.findByText('News 1'));
+
+    fireEvent.click(screen.getByText('Category 1'));
+
+    expect(screen.getByText('News 1')).toBeInTheDocument();
+    expect(screen.queryByText('News 2')).not.toBeInTheDocument();
+  });
+
+  test('handles API errors gracefully', async () => {
+    axios.get.mockRejectedValue(new Error('Erreur lors de la récupération des actualités!'));
+
     render(<NewsPage />);
 
     await waitFor(() => {
-      mockNews.forEach(newsItem => {
-        expect(screen.getByText(newsItem.title)).toBeInTheDocument();
-        expect(screen.getByText(newsItem.description)).toBeInTheDocument();
-      });
+      expect(screen.getByText('Erreur lors de la récupération des actualités!')).toBeInTheDocument();
     });
   });
 
-  test('renders filter buttons based on categories in data', async () => {
+  test('paginates news items correctly', async () => {
+    const mockPaginatedNews = Array.from({ length: 10 }, (_, index) => ({
+      title: `News ${index + 1}`,
+      description: `Description ${index + 1}`,
+      category: 'Category 1',
+      importance: index + 1,
+    }));
+
+    axios.get.mockResolvedValue({ data: mockPaginatedNews });
+
     render(<NewsPage />);
 
-    await waitFor(() => {
-      expect(screen.getByText('Tous')).toBeInTheDocument();
-      expect(screen.getByText('Concert')).toBeInTheDocument();
-      expect(screen.getByText('Info')).toBeInTheDocument();
-      expect(screen.getByText('Interview')).toBeInTheDocument();
-      expect(screen.getByText('Event')).toBeInTheDocument();
-      expect(screen.getByText('Organization')).toBeInTheDocument();
-    });
-  });
+    expect(await screen.findByText('News 1')).toBeInTheDocument();
+    expect(screen.getByText('News 6')).toBeInTheDocument();
+    expect(screen.queryByText('News 7')).not.toBeInTheDocument();
 
-  test('filters news items based on category', async () => {
-    render(<NewsPage />);
+    fireEvent.click(screen.getByText('2'));
 
-    await waitFor(() => {
-      fireEvent.click(screen.getByText('Concert'));
-      expect(screen.getByText('Concert News')).toBeInTheDocument();
-      expect(screen.queryByText('Info News')).toBeNull();
-
-      fireEvent.click(screen.getByText('Info'));
-      expect(screen.getByText('Info News')).toBeInTheDocument();
-      expect(screen.queryByText('Concert News')).toBeNull();
-    });
-  });
-
-  test('renders pagination buttons', async () => {
-    render(<NewsPage />);
-
-    await waitFor(() => {
-      expect(screen.getByText('1')).toBeInTheDocument();
-      // Add more assertions for other page numbers if there are more pages
-    });
+    expect(await screen.findByText('News 7')).toBeInTheDocument();
+    expect(screen.getByText('News 10')).toBeInTheDocument();
+    expect(screen.queryByText('News 1')).not.toBeInTheDocument();
   });
 });

@@ -26,7 +26,7 @@ const ConcertsDetailsPage = () => {
   useEffect(() => {
     const fetchConcerts = async () => {
       try {
-        const response = await axios.get('https://nationsounds.online/wp-json/wp/v2/concerts');
+        const response = await axios.get('/api/wordpress/concerts');
         const concertsData = response.data;
 
         const concertsWithDetails = await Promise.all(concertsData.map(async concert => {

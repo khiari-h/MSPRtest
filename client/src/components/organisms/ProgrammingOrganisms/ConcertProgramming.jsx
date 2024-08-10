@@ -3,7 +3,7 @@ import axios from '../../../config/axiosConfig';
 import InfoCard from '../../molecules/InfoCard';
 import Text from '../../atoms/Text';
 
-const ConcertsProgramming = ({ apiEndpoint = 'https://nationsounds.online/wp-json/wp/v2/concerts' }) => {
+const ConcertsProgramming = ({ apiEndpoint = '/api/wordpress/concerts' }) => {
   const [concerts, setConcerts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -74,7 +74,7 @@ const ConcertsProgramming = ({ apiEndpoint = 'https://nationsounds.online/wp-jso
     <div className="mb-6">
       <form className="flex flex-wrap justify-center space-x-4">
         <div className="w-full sm:w-auto">
-          <Text content="Date" type="label" className="block text-sm font-medium text-charcoal" />
+          <label htmlFor="date" className="block text-sm font-medium text-charcoal">Date</label>
           <select
             id="date"
             name="date"
@@ -89,7 +89,7 @@ const ConcertsProgramming = ({ apiEndpoint = 'https://nationsounds.online/wp-jso
           </select>
         </div>
         <div className="w-full sm:w-auto">
-          <Text content="Heure" type="label" className="block text-sm font-medium text-charcoal" />
+          <label htmlFor="heuredebut" className="block text-sm font-medium text-charcoal">Heure</label>
           <select
             id="heuredebut"
             name="heuredebut"
@@ -104,7 +104,7 @@ const ConcertsProgramming = ({ apiEndpoint = 'https://nationsounds.online/wp-jso
           </select>
         </div>
         <div className="w-full sm:w-auto">
-          <Text content="Lieu" type="label" className="block text-sm font-medium text-charcoal" />
+          <label htmlFor="lieu" className="block text-sm font-medium text-charcoal">Lieu</label>
           <select
             id="lieu"
             name="lieu"
@@ -119,7 +119,7 @@ const ConcertsProgramming = ({ apiEndpoint = 'https://nationsounds.online/wp-jso
           </select>
         </div>
         <div className="w-full sm:w-auto">
-          <Text content="Type" type="label" className="block text-sm font-medium text-charcoal" />
+          <label htmlFor="type" className="block text-sm font-medium text-charcoal">Type</label>
           <select
             id="type"
             name="type"
@@ -151,7 +151,7 @@ const ConcertsProgramming = ({ apiEndpoint = 'https://nationsounds.online/wp-jso
                 key={index}
                 title={concert.acf.nom}
                 description={concert.acf.description}
-                image={concert.acf.photo}
+                image={concert.acf.photo || 'default.jpg'} // Utilisation d'une image par défaut si `photo` est undefined
                 additionalInfo={`Date: ${concert.acf.date}, Heure de début: ${concert.acf.heuredebut}, Heure de fin: ${concert.acf.heurefin}, Lieu: ${concert.acf.lieu}, Type: ${concert.acf.type}`}
                 type="program"
               />

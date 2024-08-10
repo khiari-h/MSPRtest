@@ -1,52 +1,56 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import HomePageTemplate from '../../../components/templates/HomePageTemplate';
-import Header from '../../../components/organisms/Header';
-import Footer from '../../../components/organisms/Footer';
-
-jest.mock('../../../components/organisms/Header', () => () => <div>Header</div>);
-jest.mock('../../../components/organisms/Footer', () => () => <div>Footer</div>);
 
 describe('HomePageTemplate', () => {
-  test('affiche le Header et le Footer', () => {
+  test('renders all sections correctly', () => {
+    const heroSection = <div data-testid="hero-section">Hero Section</div>;
+    const newsAndUpdates = <div data-testid="news-updates">News and Updates Section</div>;
+    const concertsOverview = <div data-testid="concerts-overview">Concerts Overview Section</div>;
+    const programmingOverview = <div data-testid="programming-overview">Programming Overview Section</div>;
+    const ctaBeforeMap = <div data-testid="cta-before-map">CTA Before Map Section</div>;
+    const practicalInfo = <div data-testid="practical-info">Practical Info Section</div>;
+    const map = <div data-testid="map">Map Section</div>;
+    const ctaAfterMap = <div data-testid="cta-after-map">CTA After Map Section</div>;
+
     render(
       <HomePageTemplate
-        heroSection={<div>HeroSection</div>}
-        newsAndUpdates={<div>NewsAndUpdates</div>}
-        concertsOverview={<div>ConcertsOverview</div>}
-        artistMeetingsPreview={<div>ArtistMeetingsPreview</div>}
-        ctaBeforeMap={<div>CTASection Before Map</div>}
-        practicalInfo={<div>PracticalInfo</div>}
-        map={<div>Map</div>}
-        ctaAfterMap={<div>CTASection After Map</div>}
+        heroSection={heroSection}
+        newsAndUpdates={newsAndUpdates}
+        concertsOverview={concertsOverview}
+        ProgrammingOverview={programmingOverview}
+        ctaBeforeMap={ctaBeforeMap}
+        practicalInfo={practicalInfo}
+        map={map}
+        ctaAfterMap={ctaAfterMap}
       />
     );
 
-    expect(screen.getByText(/Header/i)).toBeInTheDocument();
-    expect(screen.getByText(/Footer/i)).toBeInTheDocument();
+    expect(screen.getByTestId('hero-section')).toBeInTheDocument();
+    expect(screen.getByTestId('news-updates')).toBeInTheDocument();
+    expect(screen.getByTestId('concerts-overview')).toBeInTheDocument();
+    expect(screen.getByTestId('programming-overview')).toBeInTheDocument();
+    expect(screen.getByTestId('cta-before-map')).toBeInTheDocument();
+    expect(screen.getByTestId('practical-info')).toBeInTheDocument();
+    expect(screen.getByTestId('map')).toBeInTheDocument();
+    expect(screen.getByTestId('cta-after-map')).toBeInTheDocument();
   });
 
-  test('affiche toutes les sections passées en prop', () => {
+  test('renders the header and footer', () => {
     render(
       <HomePageTemplate
-        heroSection={<div>HeroSection</div>}
-        newsAndUpdates={<div>NewsAndUpdates</div>}
-        concertsOverview={<div>ConcertsOverview</div>}
-        artistMeetingsPreview={<div>ArtistMeetingsPreview</div>}
-        ctaBeforeMap={<div>CTASection Before Map</div>}
-        practicalInfo={<div>PracticalInfo</div>}
-        map={<div>Map</div>}
-        ctaAfterMap={<div>CTASection After Map</div>}
+        heroSection={<div />}
+        newsAndUpdates={<div />}
+        concertsOverview={<div />}
+        ProgrammingOverview={<div />}
+        ctaBeforeMap={<div />}
+        practicalInfo={<div />}
+        map={<div />}
+        ctaAfterMap={<div />}
       />
     );
 
-    expect(screen.getByText(/HeroSection/i)).toBeInTheDocument();
-    expect(screen.getByText(/NewsAndUpdates/i)).toBeInTheDocument();
-    expect(screen.getByText(/ConcertsOverview/i)).toBeInTheDocument();
-    expect(screen.getByText(/ArtistMeetingsPreview/i)).toBeInTheDocument();
-    expect(screen.getByText(/CTASection Before Map/i)).toBeInTheDocument();
-    expect(screen.getByText(/PracticalInfo/i)).toBeInTheDocument();
-    expect(screen.getAllByText(/Map/i).length).toBeGreaterThan(0);
-    expect(screen.getByText(/CTASection After Map/i)).toBeInTheDocument();
+    expect(screen.getByText('Mocked Header')).toBeInTheDocument(); // Check the mocked Header
+    expect(screen.getByText('Mocked Footer')).toBeInTheDocument(); // Check the mocked Footer
   });
 });

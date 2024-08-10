@@ -3,7 +3,7 @@ import axios from '../../../config/axiosConfig';
 import Text from '../../atoms/Text';
 import InfoCard from '../../molecules/InfoCard';
 
-const ArtistMeetingPreview = () => {
+const ArtistMeeting = () => {
   const [artistMeetings, setArtistMeetings] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -21,13 +21,13 @@ const ArtistMeetingPreview = () => {
   useEffect(() => {
     const fetchArtistMeetings = async () => {
       try {
-        const response = await axios.get('https://nationsounds.online/wp-json/wp/v2/artists_meetings');
+        const response = await axios.get('/api/wordpress/artists_meetings');
         const meetingsData = response.data;
 
         const meetingsWithImages = await Promise.all(meetingsData.map(async meeting => {
           if (meeting.acf.photo) {
             try {
-              const mediaResponse = await axios.get(`https://nationsounds.online/wp-json/wp/v2/media/${meeting.acf.photo}`);
+              const mediaResponse = await axios.get(`/api/wordpress/media/${meeting.acf.photo}`);
               meeting.acf.photo = mediaResponse.data.source_url;
             } catch (mediaError) {
               meeting.acf.photo = '';
@@ -167,4 +167,4 @@ const ArtistMeetingPreview = () => {
   );
 };
 
-export default ArtistMeetingPreview;
+export default ArtistMeeting;

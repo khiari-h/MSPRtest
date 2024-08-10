@@ -11,50 +11,30 @@ const ProgrammingOverview = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const formatDate = (dateStr) => {
-    if (!dateStr) return dateStr;
-    const year = dateStr.slice(0, 4);
-    const month = dateStr.slice(4, 6);
-    const day = dateStr.slice(6, 8);
-    return `${day}/${month}/${year}`;
-  };
-
-  const formatTime = (timeStr) => {
-    if (!timeStr) return timeStr;
-    const [hour, minute] = timeStr.split(':');
-    return `${hour}:${minute}`;
-  };
-
   useEffect(() => {
     const fetchEvents = async () => {
       try {
         // Fetch concerts
-        const concertResponse = await axios.get('https://nationsounds.online/wp-json/wp/v2/concerts');
+        const concertResponse = await axios.get('/api/wordpress/concerts');
         const concertData = concertResponse.data;
         if (concertData.length > 0) {
           const firstConcert = concertData[0];
           if (firstConcert.acf && firstConcert.acf.photo) {
-            const mediaResponse = await axios.get(`https://nationsounds.online/wp-json/wp/v2/media/${firstConcert.acf.photo}`);
+            const mediaResponse = await axios.get(`/api/wordpress/media/${firstConcert.acf.photo}`);
             firstConcert.acf.photo = mediaResponse.data.source_url;
           }
-          firstConcert.acf.date = formatDate(firstConcert.acf.date);
-          firstConcert.acf.heuredebut = formatTime(firstConcert.acf.heuredebut);
-          firstConcert.acf.heurefin = formatTime(firstConcert.acf.heurefin);
           setConcert(firstConcert);
         }
 
         // Fetch artist meetings
-        const artistMeetingResponse = await axios.get('https://nationsounds.online/wp-json/wp/v2/artists_meetings');
+        const artistMeetingResponse = await axios.get('/api/wordpress/artists_meetings');
         const artistMeetingData = artistMeetingResponse.data;
         if (artistMeetingData.length > 0) {
           const firstArtistMeeting = artistMeetingData[0];
           if (firstArtistMeeting.acf && firstArtistMeeting.acf.photo) {
-            const mediaResponse = await axios.get(`https://nationsounds.online/wp-json/wp/v2/media/${firstArtistMeeting.acf.photo}`);
+            const mediaResponse = await axios.get(`/api/wordpress/media/${firstArtistMeeting.acf.photo}`);
             firstArtistMeeting.acf.photo = mediaResponse.data.source_url;
           }
-          firstArtistMeeting.acf.date = formatDate(firstArtistMeeting.acf.date);
-          firstArtistMeeting.acf.heuredebut = firstArtistMeeting.acf.heuredebut ? formatTime(firstArtistMeeting.acf.heuredebut) : 'Non spécifiée';
-          firstArtistMeeting.acf.heurefin = firstArtistMeeting.acf.heurefin ? formatTime(firstArtistMeeting.acf.heurefin) : 'Non spécifiée';
           setArtistMeeting(firstArtistMeeting);
         }
 
@@ -63,8 +43,6 @@ const ProgrammingOverview = () => {
         const workshopData = workshopResponse.data;
         if (workshopData.length > 0) {
           const firstWorkshop = workshopData[0];
-          firstWorkshop.date = formatDate(firstWorkshop.date);
-          firstWorkshop.time = formatTime(firstWorkshop.time);
           setWorkshop(firstWorkshop);
         }
 
@@ -89,8 +67,7 @@ const ProgrammingOverview = () => {
             <InfoCard
               title={concert.acf.nom}
               description={concert.acf.description}
-              image={concert.acf.photo}
-              additionalInfo={`Date: ${concert.acf.date}, Heure de début: ${concert.acf.heuredebut}, Heure de fin: ${concert.acf.heurefin}, Lieu: ${concert.acf.lieu}, Type: ${concert.acf.type}`}
+              image={concert.acf.photo || 'default.jpg'}
               type="program"
             />
           )}
@@ -98,8 +75,7 @@ const ProgrammingOverview = () => {
             <InfoCard
               title={artistMeeting.acf.nom}
               description={artistMeeting.acf.description}
-              image={artistMeeting.acf.photo}
-              additionalInfo={`Date: ${artistMeeting.acf.date}, Heure de début: ${artistMeeting.acf.heuredebut}, Heure de fin: ${artistMeeting.acf.heurefin}, Lieu: ${artistMeeting.acf.lieu}, Type: ${artistMeeting.acf.type}`}
+              image={artistMeeting.acf.photo || 'default.jpg'}
               type="meeting"
             />
           )}
@@ -107,8 +83,7 @@ const ProgrammingOverview = () => {
             <InfoCard
               title={workshop.name}
               description={workshop.description}
-              image={workshop.photo}
-              additionalInfo={`Date: ${workshop.date}, Heure: ${workshop.time}, Lieu: ${workshop.venue}`}
+              image={workshop.photo || 'default.jpg'}
               type="workshop"
             />
           )}

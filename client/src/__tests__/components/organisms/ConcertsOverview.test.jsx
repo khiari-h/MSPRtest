@@ -1,86 +1,68 @@
 import React from 'react';
-import { render, screen, waitFor, act } from '@testing-library/react';
-import '@testing-library/jest-dom';
+import { render, screen, waitFor, fireEvent } from '@testing-library/react';
 import axios from '../../../config/axiosConfig';
 import ConcertsOverview from '../../../components/organisms/ConcertsOverview';
 
-// Mock axios module
 jest.mock('../../../config/axiosConfig');
 
-describe('ConcertsOverview', () => {
-  test('renders loading state', async () => {
-    axios.get.mockImplementation(() => new Promise(() => {})); // Never resolves, so stays in loading state
+const mockConcertData = [
+  {
+    acf: {
+      nom: 'Concert 1',
+      description: 'Description Concert 1',
+      photo: 'concert1.jpg',
+      lieu: 'Lieu 1',
+      type: 'Type 1'
+    }
+  },
+  {
+    acf: {
+      nom: 'Concert 2',
+      description: 'Description Concert 2',
+      photo: 'concert2.jpg',
+      lieu: 'Lieu 2',
+      type: 'Type 2'
+    }
+  }
+];
 
-    await act(async () => {
-      render(<ConcertsOverview />);
-    });
-
-    // Wait for the loading state to be displayed
-    expect(screen.getByText('Chargement...')).toBeInTheDocument();
+describe('ConcertsOverview Component', () => {
+  // Mock des données pour les tests
+  beforeEach(() => {
+    axios.get.mockResolvedValue({ data: mockConcertData });
   });
 
-  test('renders error state', async () => {
-    axios.get.mockRejectedValue(new Error('Error fetching data'));
+  test('charge et affiche les concerts', async () => {
+    render(<ConcertsOverview />);
+    // Vérifie que le message de chargement est affiché
+    expect(screen.getByText(/Chargement/i)).toBeInTheDocument();
+    // Attendre que l'en-tête soit affiché
+    await waitFor(() => expect(screen.getByText(/Planning des Concerts/i)).toBeInTheDocument());
 
-    await act(async () => {
-      render(<ConcertsOverview />);
-    });
-
-    await waitFor(() => {
-      expect(screen.getByText('Erreur lors de la récupération des données.')).toBeInTheDocument();
-    });
+    // Vérifie que les concerts sont affichés
+    expect(screen.getByText(/Concert 1/i)).toBeInTheDocument();
+    expect(screen.getByText(/Description Concert 1/i)).toBeInTheDocument();
+    expect(screen.getByText(/Concert 2/i)).toBeInTheDocument();
+    expect(screen.getByText(/Description Concert 2/i)).toBeInTheDocument();
   });
 
-  test('renders concerts when data is fetched successfully', async () => {
-    const mockData = [
-      {
-        id: 1,
-        acf: {
-          nom: 'Concert 1',
-          description: 'Description 1',
-          photo: 'https://nationsounds.online/wp-content/uploads/2024/07/concert1.jpg',
-          date: '2024-07-27',
-          heure: '20:00',
-          lieu: 'Lieu 1'
-        }
-      },
-      {
-        id: 2,
-        acf: {
-          nom: 'Concert 2',
-          description: 'Description 2',
-          photo: 'https://nationsounds.online/wp-content/uploads/2024/07/concert2.jpg',
-          date: '2024-07-28',
-          heure: '21:00',
-          lieu: 'Lieu 2'
-        }
-      }
-    ];
-    axios.get.mockResolvedValue({ data: mockData });
+  test('filtre les concerts correctement', async () => {
+    render(<ConcertsOverview showFilters={true} />);
+    // Attendre que l'en-tête soit affiché
+    await waitFor(() => expect(screen.getByText(/Planning des Concerts/i)).toBeInTheDocument());
 
-    await act(async () => {
-      render(<ConcertsOverview />);
-    });
-
+    // Appliquer le filtre par lieu
+    fireEvent.change(screen.getByLabelText(/Lieu/i), { target: { value: 'Lieu 1' } });
     await waitFor(() => {
-      expect(screen.getByText('Programme et Planning des Concerts')).toBeInTheDocument();
-      expect(screen.getByText('Concert 1')).toBeInTheDocument();
-      expect(screen.getByText('Concert 2')).toBeInTheDocument();
-      // Verify that images are rendered
-      expect(screen.getByAltText('Image de Concert 1')).toBeInTheDocument();
-      expect(screen.getByAltText('Image de Concert 2')).toBeInTheDocument();
-    });
-  });
-
-  test('renders "Voir Plus de Concerts" button', async () => {
-    axios.get.mockResolvedValue({ data: [] });
-
-    await act(async () => {
-      render(<ConcertsOverview />);
+      expect(screen.getByText(/Concert 1/i)).toBeInTheDocument();
+      expect(screen.queryByText(/Concert 2/i)).not.toBeInTheDocument();
     });
 
+    // Appliquer le filtre par type
+    fireEvent.change(screen.getByLabelText(/Type/i), { target: { value: 'Type 2' } });
     await waitFor(() => {
-      expect(screen.getByText('Voir Plus de Concerts')).toBeInTheDocument();
+      expect(screen.getByText(/Concert 2/i)).toBeInTheDocument();
+      expect(screen.queryByText(/Concert 1/i)).not.toBeInTheDocument();
     });
   });
 });

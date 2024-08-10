@@ -2,10 +2,10 @@ import React, { useEffect, useState, useRef } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import axios from 'axios';
+import axios from '../../config/axiosConfig';
 import 'leaflet-routing-machine/dist/leaflet-routing-machine.css';
 import 'leaflet-routing-machine';
-import '@fortawesome/fontawesome-free/css/all.min.css'; // Import Font Awesome
+import '@fortawesome/fontawesome-free/css/all.min.css';
 import Text from '../atoms/Text';
 import './Map.css';
 import he from 'he';
@@ -132,7 +132,7 @@ const Map = () => {
   useEffect(() => {
     const fetchPoints = async () => {
       try {
-        const response = await axios.get('https://nationsounds.online/wp-json/wp/v2/pointsinterets?per_page=20');
+        const response = await axios.get('/api/wordpress/points-interets');
         const decodedData = response.data.map(point => ({
           ...point,
           title: { ...point.title, rendered: he.decode(point.title.rendered) },

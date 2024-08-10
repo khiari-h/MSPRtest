@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from '../../config/axiosConfig';
 import NewsPageTemplate from '../templates/NewsPageTemplate';
 import NewsCard from '../molecules/NewsCard';
+import Button from '../atoms/Button';
 
 const NewsPage = () => {
   const [news, setNews] = useState([]);
@@ -27,8 +28,9 @@ const NewsPage = () => {
   const filterButtons = (
     <div className="flex justify-center mb-6">
       {uniqueCategories.map((category) => (
-        <button
+        <Button
           key={category}
+          label={category}
           onClick={() => {
             setFilter(category);
             setCurrentPage(1);
@@ -38,9 +40,7 @@ const NewsPage = () => {
           } text-white py-2 px-4 rounded mx-2 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50 transition-colors duration-300`}
           aria-pressed={filter === category}
           aria-label={`Afficher les actualités de ${category}`}
-        >
-          {category.charAt(0).toUpperCase() + category.slice(1)}
-        </button>
+        />
       ))}
     </div>
   );
@@ -52,15 +52,14 @@ const NewsPage = () => {
   const paginationButtons = (
     <div className="flex justify-center mt-6">
       {Array.from({ length: Math.ceil(filteredNews.length / itemsPerPage) }, (_, index) => (
-        <button
+        <Button
           key={index}
+          label={index + 1}
           onClick={() => handlePageChange(index + 1)}
           className={`${
             currentPage === index + 1 ? 'bg-blue-700' : 'bg-blue-500'
           } text-white py-2 px-4 rounded mx-1 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50 transition-colors duration-300`}
-        >
-          {index + 1}
-        </button>
+        />
       ))}
     </div>
   );

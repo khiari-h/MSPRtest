@@ -11,27 +11,28 @@ const HomePageTemplate = ({ heroSection, newsAndUpdates, concertsOverview, Progr
       <Header />
       <main>
         {heroSection}
-        <section aria-labelledby="news-updates-heading">
-          {newsAndUpdates}
-        </section>
-        <section aria-labelledby="concerts-overview-heading">
-          {concertsOverview}
-        </section>
-        <section aria-labelledby="programming-overview-heading">
-          {ProgrammingOverview}
-        </section>
-        <section aria-labelledby="cta-before-map-heading">
-          {ctaBeforeMap}
-        </section>
-        <section aria-labelledby="practical-info-heading">
-          {practicalInfo}
-        </section>
-        <section aria-labelledby="map-heading">
-          {map}
-        </section>
-        <section aria-labelledby="cta-after-map-heading">
-          {ctaAfterMap}
-        </section>
+        <section aria-labelledby="actualites-mises-a-jour">
+  {newsAndUpdates}
+</section>
+<section aria-labelledby="aperçu-concerts">
+  {concertsOverview}
+</section>
+<section aria-labelledby="aperçu-programmation">
+  {ProgrammingOverview}
+</section>
+<section aria-labelledby="cta-avant-carte">
+  {ctaBeforeMap}
+</section>
+<section aria-labelledby="infos-pratiques">
+  {practicalInfo}
+</section>
+<section aria-labelledby="carte">
+  {map}
+</section>
+<section aria-labelledby="cta-apres-carte">
+  {ctaAfterMap}
+</section>
+
       </main>
       <Footer />
     </div>
@@ -42,7 +43,6 @@ HomePageTemplate.propTypes = {
   heroSection: PropTypes.node.isRequired,
   newsAndUpdates: PropTypes.node.isRequired,
   concertsOverview: PropTypes.node.isRequired,
-  artistMeetingsPreview: PropTypes.node.isRequired,
   ctaBeforeMap: PropTypes.node.isRequired,
   practicalInfo: PropTypes.node.isRequired,
   map: PropTypes.node.isRequired,
