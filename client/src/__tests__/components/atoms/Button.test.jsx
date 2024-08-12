@@ -4,9 +4,16 @@ import Button from '../../../components/atoms/Button';
 
 describe('Button Component', () => {
   // Test pour vérifier que le bouton est rendu avec le texte correct
-  test('renders the button with label', () => {
+  test('renders the button with string label', () => {
     render(<Button label="Click Me" />);
     const buttonElement = screen.getByText(/Click Me/i);
+    expect(buttonElement).toBeInTheDocument();
+  });
+
+  // Test pour vérifier que le bouton est rendu avec un numéro comme label
+  test('renders the button with number label', () => {
+    render(<Button label={1} />);
+    const buttonElement = screen.getByText(/1/i);
     expect(buttonElement).toBeInTheDocument();
   });
 

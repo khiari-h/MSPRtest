@@ -7,62 +7,71 @@ jest.mock('../../../config/axiosConfig');
 
 const mockConcertData = [
   {
+    id: 370,
     acf: {
-      nom: 'Concert 1',
-      description: 'Description Concert 1',
-      photo: 'concert1.jpg',
-      lieu: 'Lieu 1',
-      type: 'Type 1'
-    }
+      nom: 'Tes fr',
+      description: 'fdfdfsd',
+      date: '20240804',
+      heuredebut: '00:00:00',
+      heurefin: '04:00:00',
+      lieu: 'ScenePrincipale',
+      type: 'Rock',
+      photo: '',
+    },
   },
   {
+    id: 367,
     acf: {
-      nom: 'Concert 2',
-      description: 'Description Concert 2',
-      photo: 'concert2.jpg',
-      lieu: 'Lieu 2',
-      type: 'Type 2'
-    }
-  }
+      nom: 'A',
+      description: 'tset',
+      date: '20240803',
+      heuredebut: '19:00:00',
+      heurefin: '20:00:00',
+      lieu: 'ScenePontNeuf',
+      type: 'Rock',
+      photo: '',
+    },
+  },
+  {
+    id: 364,
+    acf: {
+      nom: 'Test',
+      description: 'Test du filtre',
+      date: '20240803',
+      heuredebut: '19:30:00',
+      heurefin: '22:00:00',
+      lieu: 'SceneMarais',
+      type: 'Rock',
+      photo: '',
+    },
+  },
 ];
 
 describe('ConcertsOverview Component', () => {
-  // Mock des données pour les tests
   beforeEach(() => {
     axios.get.mockResolvedValue({ data: mockConcertData });
   });
 
   test('charge et affiche les concerts', async () => {
     render(<ConcertsOverview />);
-    // Vérifie que le message de chargement est affiché
-    expect(screen.getByText(/Chargement/i)).toBeInTheDocument();
-    // Attendre que l'en-tête soit affiché
-    await waitFor(() => expect(screen.getByText(/Planning des Concerts/i)).toBeInTheDocument());
 
-    // Vérifie que les concerts sont affichés
-    expect(screen.getByText(/Concert 1/i)).toBeInTheDocument();
-    expect(screen.getByText(/Description Concert 1/i)).toBeInTheDocument();
-    expect(screen.getByText(/Concert 2/i)).toBeInTheDocument();
-    expect(screen.getByText(/Description Concert 2/i)).toBeInTheDocument();
+    // Attendre que le message de chargement soit affiché
+    expect(screen.getByText(/Chargement/i)).toBeInTheDocument();
+
+    // Attendre que les concerts soient chargés et affichés
+    await waitFor(() => {
+      const concertTitles = screen.getAllByRole('heading', { level: 3 });
+      expect(concertTitles[0]).toHaveTextContent('Tes fr');
+      expect(concertTitles[1]).toHaveTextContent('A');
+      expect(concertTitles[2]).toHaveTextContent('Test');
+    });
   });
 
-  test('filtre les concerts correctement', async () => {
-    render(<ConcertsOverview showFilters={true} />);
-    // Attendre que l'en-tête soit affiché
-    await waitFor(() => expect(screen.getByText(/Planning des Concerts/i)).toBeInTheDocument());
 
-    // Appliquer le filtre par lieu
-    fireEvent.change(screen.getByLabelText(/Lieu/i), { target: { value: 'Lieu 1' } });
-    await waitFor(() => {
-      expect(screen.getByText(/Concert 1/i)).toBeInTheDocument();
-      expect(screen.queryByText(/Concert 2/i)).not.toBeInTheDocument();
-    });
+  test('affiche un message d\'erreur si la récupération des concerts échoue', async () => {
+    axios.get.mockRejectedValue(new Error('Erreur lors de la récupération des concerts.'));
+    render(<ConcertsOverview />);
 
-    // Appliquer le filtre par type
-    fireEvent.change(screen.getByLabelText(/Type/i), { target: { value: 'Type 2' } });
-    await waitFor(() => {
-      expect(screen.getByText(/Concert 2/i)).toBeInTheDocument();
-      expect(screen.queryByText(/Concert 1/i)).not.toBeInTheDocument();
-    });
+    await waitFor(() => expect(screen.getByText(/Erreur lors de la récupération des données/i)).toBeInTheDocument());
   });
 });

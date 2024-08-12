@@ -2,6 +2,10 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import HomePageTemplate from '../../../components/templates/HomePageTemplate';
 
+// Mock des composants Header et Footer
+jest.mock('../../../components/organisms/Header', () => () => <div>Mocked Header</div>);
+jest.mock('../../../components/organisms/Footer', () => () => <div>Mocked Footer</div>);
+
 describe('HomePageTemplate', () => {
   test('renders all sections correctly', () => {
     const heroSection = <div data-testid="hero-section">Hero Section</div>;
@@ -50,7 +54,7 @@ describe('HomePageTemplate', () => {
       />
     );
 
-    expect(screen.getByText('Mocked Header')).toBeInTheDocument(); // Check the mocked Header
-    expect(screen.getByText('Mocked Footer')).toBeInTheDocument(); // Check the mocked Footer
+    expect(screen.getByText('Mocked Header')).toBeInTheDocument(); // Vérifie que le Header mocké est rendu
+    expect(screen.getByText('Mocked Footer')).toBeInTheDocument(); // Vérifie que le Footer mocké est rendu
   });
 });

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from '../../../config/axiosConfig';
 import Text from '../../atoms/Text';
 import InfoCard from '../../molecules/InfoCard';
+import Filter from '../../atoms/Filter';
 
 const ArtistMeeting = () => {
   const [artistMeetings, setArtistMeetings] = useState([]);
@@ -51,11 +52,6 @@ const ArtistMeeting = () => {
     fetchArtistMeetings();
   }, []);
 
-  const handleFilterChange = (e) => {
-    const { name, value } = e.target;
-    setFilters({ ...filters, [name]: value });
-  };
-
   useEffect(() => {
     let filtered = artistMeetings;
     if (filters.date) {
@@ -73,72 +69,18 @@ const ArtistMeeting = () => {
     setFilteredMeetings(filtered);
   }, [filters, artistMeetings]);
 
-  const filterSection = (
-    <div className="mb-6">
-      <form className="flex flex-wrap justify-center space-x-4">
-        <div className="w-full sm:w-auto">
-          <Text content="Date" type="label" className="block text-sm font-medium text-charcoal" />
-          <select
-            id="date"
-            name="date"
-            value={filters.date}
-            onChange={handleFilterChange}
-            className="mt-1 block w-full p-2 border border-border-gray rounded-md text-black"
-          >
-            <option value="">Toutes les dates</option>
-            {[...new Set(artistMeetings.map(meeting => meeting.acf.date))].map((date, index) => (
-              <option key={index} value={date}>{date}</option>
-            ))}
-          </select>
-        </div>
-        <div className="w-full sm:w-auto">
-          <Text content="Heure de début" type="label" className="block text-sm font-medium text-charcoal" />
-          <select
-            id="heuredebut"
-            name="heuredebut"
-            value={filters.heuredebut}
-            onChange={handleFilterChange}
-            className="mt-1 block w-full p-2 border border-border-gray rounded-md text-black"
-          >
-            <option value="">Toutes les heures de début</option>
-            {[...new Set(artistMeetings.map(meeting => meeting.acf.heuredebut))].map((heure, index) => (
-              <option key={index} value={heure}>{heure}</option>
-            ))}
-          </select>
-        </div>
-        <div className="w-full sm:w-auto">
-          <Text content="Lieu" type="label" className="block text-sm font-medium text-charcoal" />
-          <select
-            id="lieu"
-            name="lieu"
-            value={filters.lieu}
-            onChange={handleFilterChange}
-            className="mt-1 block w-full p-2 border border-border-gray rounded-md text-black"
-          >
-            <option value="">Tous les lieux</option>
-            {[...new Set(artistMeetings.map(meeting => meeting.acf.lieu))].map((lieu, index) => (
-              <option key={index} value={lieu}>{lieu}</option>
-            ))}
-          </select>
-        </div>
-        <div className="w-full sm:w-auto">
-          <Text content="Type" type="label" className="block text-sm font-medium text-charcoal" />
-          <select
-            id="type"
-            name="type"
-            value={filters.type}
-            onChange={handleFilterChange}
-            className="mt-1 block w-full p-2 border border-border-gray rounded-md text-black"
-          >
-            <option value="">Tous les types</option>
-            {[...new Set(artistMeetings.map(meeting => meeting.acf.type))].map((type, index) => (
-              <option key={index} value={type}>{type}</option>
-            ))}
-          </select>
-        </div>
-      </form>
-    </div>
-  );
+  const handleFilterChange = (key, value) => {
+    setFilters(prevFilters => ({
+      ...prevFilters,
+      [key]: value
+    }));
+  };
+
+  const resetFilters = () => {
+    setFilters({ date: '', heuredebut: '', lieu: '', type: '' });
+  };
+
+  const filterKeys = ['date', 'heuredebut', 'lieu', 'type'];
 
   return (
     <section className="container mx-auto py-8" aria-labelledby="artist-meetings-heading">
@@ -147,7 +89,14 @@ const ArtistMeeting = () => {
       {error && <p className="text-error-red">{error}</p>}
       {!loading && !error && (
         <>
-          {filterSection}
+          <Filter
+            data={artistMeetings}
+            filters={filters}
+            filterKeys={filterKeys}
+            handleFilterChange={handleFilterChange}
+            resetFilters={resetFilters}
+            placeholderLabels={{ date: 'Dates', heuredebut: 'Heures', lieu: 'Lieux', type: 'Types' }}
+          />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredMeetings.map((meeting) => (
               <InfoCard

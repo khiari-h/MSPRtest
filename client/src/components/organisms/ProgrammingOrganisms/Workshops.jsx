@@ -3,6 +3,7 @@ import axios from '../../../config/axiosConfig';
 import InfoCard from '../../molecules/InfoCard';
 import Text from '../../atoms/Text';
 import Button from '../../atoms/Button';
+import Filter from '../../atoms/Filter';
 
 const Workshops = () => {
   const [workshops, setWorkshops] = useState([]);
@@ -15,26 +16,12 @@ const Workshops = () => {
   const [formData, setFormData] = useState({ firstName: '', lastName: '', email: '' });
   const [status, setStatus] = useState('');
 
-  useEffect(() => {
-    if (status) {
-      const timer = setTimeout(() => {
-        setStatus(''); // Clear the status after 3 seconds
-      }, 3000);
-
-      return () => clearTimeout(timer); // Cleanup the timer if the component unmounts
-    }
-  }, [status]);
+  const filterKeys = ['date', 'heure', 'lieu', 'type'];
 
   const formatDate = (dateStr) => {
     if (!dateStr) return dateStr;
-    const parts = dateStr.split('-');
-    if (parts.length === 3) {
-      const year = parts[0];
-      const month = parts[1].padStart(2, '0');
-      const day = parts[2].padStart(2, '0');
-      return `${day}/${month}/${year}`;
-    }
-    return dateStr;
+    const [year, month, day] = dateStr.split('-');
+    return `${day}/${month}/${year}`;
   };
 
   const formatTime = (timeStr) => {
@@ -50,9 +37,9 @@ const Workshops = () => {
         const workshopsData = response.data.map(workshop => ({
           ...workshop,
           date: formatDate(workshop.date),
-          time: formatTime(workshop.time),
+          heure: formatTime(workshop.time),
+          lieu: workshop.venue,
         }));
-
         setWorkshops(workshopsData);
         setFilteredWorkshops(workshopsData);
         setLoading(false);
@@ -65,103 +52,31 @@ const Workshops = () => {
     fetchWorkshops();
   }, []);
 
-  const handleFilterChange = (e) => {
-    const { name, value } = e.target;
-    setFilters({ ...filters, [name]: value });
-    setCurrentPage(1); // Reset to the first page when filters change
-  };
-
   useEffect(() => {
-    let filtered = workshops;
-    if (filters.date) {
-      filtered = filtered.filter(workshop => workshop.date === filters.date);
-    }
-    if (filters.heure) {
-      filtered = filtered.filter(workshop => workshop.time === filters.heure);
-    }
-    if (filters.lieu) {
-      filtered = filtered.filter(workshop => workshop.lieu === filters.lieu);
-    }
-    if (filters.type) {
-      filtered = filtered.filter(workshop => workshop.type === filters.type);
-    }
-    setFilteredWorkshops(filtered);
+    const filterWorkshops = () => {
+      let filtered = workshops;
+      if (filters.date) filtered = filtered.filter(workshop => workshop.date === filters.date);
+      if (filters.heure) filtered = filtered.filter(workshop => workshop.heure === filters.heure);
+      if (filters.lieu) filtered = filtered.filter(workshop => workshop.lieu === filters.lieu);
+      if (filters.type) filtered = filtered.filter(workshop => workshop.type === filters.type);
+      setFilteredWorkshops(filtered);
+    };
+
+    filterWorkshops();
   }, [filters, workshops]);
 
-  const indexOfLastWorkshop = currentPage * workshopsPerPage;
-  const indexOfFirstWorkshop = indexOfLastWorkshop - workshopsPerPage;
-  const currentWorkshops = filteredWorkshops.slice(indexOfFirstWorkshop, indexOfLastWorkshop);
+  const handleFilterChange = (key, value) => {
+    setFilters(prevFilters => ({
+      ...prevFilters,
+      [key]: value
+    }));
+    setCurrentPage(1);
+  };
 
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
-  const totalPages = Math.ceil(filteredWorkshops.length / workshopsPerPage);
-
-  const filterSection = (
-    <div className="mb-6">
-      <form className="flex flex-wrap justify-center space-x-4">
-        <div className="w-full sm:w-auto">
-          <label htmlFor="date" className="block text-sm font-medium text-charcoal">Date</label>
-          <select
-            id="date"
-            name="date"
-            value={filters.date}
-            onChange={handleFilterChange}
-            className="mt-1 block w-full p-2 border border-border-gray rounded-md text-black"
-          >
-            <option value="">Toutes les dates</option>
-            {[...new Set(workshops.map(workshop => workshop.date))].map((date, index) => (
-              <option key={index} value={date}>{date}</option>
-            ))}
-          </select>
-        </div>
-        <div className="w-full sm:w-auto">
-          <label htmlFor="heure" className="block text-sm font-medium text-charcoal">Heure</label>
-          <select
-            id="heure"
-            name="heure"
-            value={filters.heure}
-            onChange={handleFilterChange}
-            className="mt-1 block w-full p-2 border border-border-gray rounded-md text-black"
-          >
-            <option value="">Toutes les heures</option>
-            {[...new Set(workshops.map(workshop => workshop.time))].map((heure, index) => (
-              <option key={index} value={heure}>{heure}</option>
-            ))}
-          </select>
-        </div>
-        <div className="w-full sm:w-auto">
-          <label htmlFor="lieu" className="block text-sm font-medium text-charcoal">Lieu</label>
-          <select
-            id="lieu"
-            name="lieu"
-            value={filters.lieu}
-            onChange={handleFilterChange}
-            className="mt-1 block w-full p-2 border border-border-gray rounded-md text-black"
-          >
-            <option value="">Tous les lieux</option>
-            {[...new Set(workshops.map(workshop => workshop.lieu))].map((lieu, index) => (
-              <option key={index} value={lieu}>{lieu}</option>
-            ))}
-          </select>
-        </div>
-        <div className="w-full sm:w-auto">
-          <label htmlFor="type" className="block text-sm font-medium text-charcoal">Type</label>
-          <select
-            id="type"
-            name="type"
-            value={filters.type}
-            onChange={handleFilterChange}
-            className="mt-1 block w-full p-2 border border-border-gray rounded-md text-black"
-          >
-            <option value="">Tous les types</option>
-            {[...new Set(workshops.map(workshop => workshop.type))].map((type, index) => (
-              <option key={index} value={type}>{type}</option>
-            ))}
-          </select>
-        </div>
-      </form>
-    </div>
-  );
+  const resetFilters = () => {
+    setFilters({ date: '', heure: '', lieu: '', type: '' });
+    setCurrentPage(1);
+  };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -171,18 +86,24 @@ const Workshops = () => {
   const handleSubscribe = async (e) => {
     e.preventDefault();
     try {
-        const response = await axios.post(`/api/workshops/${formData.workshop}/participants`, {
-            first_name: formData.firstName,
-            last_name: formData.lastName,
-            email: formData.email,
-        });
-        setStatus('Inscription réussie!');
-        setFormData({ firstName: '', lastName: '', email: '', workshop: '' }); // Reset form fields
+      await axios.post(`/api/workshops/${formData.workshop}/participants`, {
+        first_name: formData.firstName,
+        last_name: formData.lastName,
+        email: formData.email,
+      });
+      setStatus('Inscription réussie!');
     } catch (error) {
-        setStatus('Erreur lors de l\'inscription.');
+      setStatus("Erreur lors de l'inscription.");
     }
-};
+  };
 
+  const indexOfLastWorkshop = currentPage * workshopsPerPage;
+  const indexOfFirstWorkshop = indexOfLastWorkshop - workshopsPerPage;
+  const currentWorkshops = filteredWorkshops.slice(indexOfFirstWorkshop, indexOfLastWorkshop);
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+  const totalPages = Math.ceil(filteredWorkshops.length / workshopsPerPage);
 
   const registrationForm = (
     <div className="my-4">
@@ -237,27 +158,10 @@ const Workshops = () => {
         <Button type="submit" label="S'inscrire" className="bg-custom-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded" />
       </form>
       {status && (
-       <p className={`text-center ${status === 'Inscription réussie!' ? 'text-light-blue' : 'text-error-red'}`}>
-       {status}
-     </p>
-     
+        <p className={`text-center ${status === 'Inscription réussie!' ? 'text-light-blue' : 'text-error-red'}`}>
+          {status}
+        </p>
       )}
-    </div>
-  );
-  
-
-  const paginationButtons = (
-    <div className="flex justify-center mt-6">
-      {Array.from({ length: totalPages }, (_, index) => (
-        <Button
-          key={index}
-          label={index + 1}
-          onClick={() => paginate(index + 1)}
-          className={`${
-            currentPage === index + 1 ? 'bg-blue-700' : 'bg-blue-500'
-          } text-white py-2 px-4 rounded mx-1 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50 transition-colors duration-300`}
-        />
-      ))}
     </div>
   );
 
@@ -268,7 +172,13 @@ const Workshops = () => {
       {error && <p className="text-error-red">{error}</p>}
       {!loading && !error && (
         <>
-          {filterSection}
+          <Filter
+            data={workshops}
+            filters={filters}
+            filterKeys={filterKeys}
+            handleFilterChange={handleFilterChange}
+            resetFilters={resetFilters}
+          />
           {registrationForm}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {currentWorkshops.map((workshop, index) => (
@@ -277,13 +187,24 @@ const Workshops = () => {
                 title={workshop.name}
                 description={workshop.description}
                 image={workshop.photo}
-                additionalInfo={`Date: ${workshop.date}, Heure: ${workshop.time}, Lieu: ${workshop.lieu}, Durée: ${workshop.duration || 'Durée non spécifiée'} heures`}
+                additionalInfo={`Date: ${workshop.date}, Heure: ${workshop.heure}, Lieu: ${workshop.lieu}, Durée: ${workshop.duration || 'Durée non spécifiée'} heures`}
                 type="workshop"
                 aria-label="Atelier"
               />
             ))}
           </div>
-          {paginationButtons}
+          <div className="flex justify-center mt-6">
+            {Array.from({ length: totalPages }, (_, index) => (
+              <Button
+                key={index}
+                label={index + 1}
+                onClick={() => paginate(index + 1)}
+                className={`${
+                  currentPage === index + 1 ? 'bg-blue-700' : 'bg-blue-500'
+                } text-white py-2 px-4 rounded mx-1 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50 transition-colors duration-300`}
+              />
+            ))}
+          </div>
         </>
       )}
     </section>

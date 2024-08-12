@@ -1,8 +1,9 @@
 import React from 'react';
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { render, screen, fireEvent, waitFor, act } from '@testing-library/react';
 import axios from '../../../config/axiosConfig';
 import NewsPage from '../../../components/pages/NewsPage';
 
+// Mock du module axios
 jest.mock('../../../config/axiosConfig');
 
 describe('NewsPage', () => {
@@ -23,17 +24,22 @@ describe('NewsPage', () => {
 
   beforeEach(() => {
     axios.get.mockResolvedValue({ data: mockNews });
+    jest.clearAllMocks();
   });
 
   test('fetches and displays news on load', async () => {
-    render(<NewsPage />);
+    await act(async () => {
+      render(<NewsPage />);
+    });
 
     expect(await screen.findByText('News 1')).toBeInTheDocument();
     expect(screen.getByText('News 2')).toBeInTheDocument();
   });
 
   test('filters news based on selected category', async () => {
-    render(<NewsPage />);
+    await act(async () => {
+      render(<NewsPage />);
+    });
 
     await waitFor(() => screen.findByText('News 1'));
 
@@ -44,9 +50,11 @@ describe('NewsPage', () => {
   });
 
   test('handles API errors gracefully', async () => {
-    axios.get.mockRejectedValue(new Error('Erreur lors de la récupération des actualités!'));
+    axios.get.mockRejectedValueOnce(new Error('Erreur lors de la récupération des actualités!'));
 
-    render(<NewsPage />);
+    await act(async () => {
+      render(<NewsPage />);
+    });
 
     await waitFor(() => {
       expect(screen.getByText('Erreur lors de la récupération des actualités!')).toBeInTheDocument();
@@ -63,7 +71,9 @@ describe('NewsPage', () => {
 
     axios.get.mockResolvedValue({ data: mockPaginatedNews });
 
-    render(<NewsPage />);
+    await act(async () => {
+      render(<NewsPage />);
+    });
 
     expect(await screen.findByText('News 1')).toBeInTheDocument();
     expect(screen.getByText('News 6')).toBeInTheDocument();

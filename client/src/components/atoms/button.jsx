@@ -26,7 +26,10 @@ const Button = ({ label, onClick, href, className = '', isSelected = false }) =>
 };
 
 Button.propTypes = {
-  label: PropTypes.string.isRequired,
+  label: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,  // Accepter à la fois string et number
+  ]).isRequired,
   onClick: PropTypes.func,
   href: PropTypes.string,
   className: PropTypes.string,

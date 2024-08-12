@@ -8,15 +8,18 @@ const NewsPage = () => {
   const [news, setNews] = useState([]);
   const [filter, setFilter] = useState('Tous');
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 6;
+  const [itemsPerPage] = useState(6);
+  const [error, setError] = useState(null);  // Nouvel état pour l'erreur
 
   useEffect(() => {
     axios.get('/api/news')
       .then(response => {
         setNews(response.data.sort((a, b) => a.importance - b.importance));
+        setError(null); // Réinitialiser l'erreur en cas de succès
       })
       .catch(error => {
         console.error("Erreur lors de la récupération des actualités!", error);
+        setError("Erreur lors de la récupération des actualités!"); // Mettre à jour l'état de l'erreur
       });
   }, []);
 
@@ -80,7 +83,7 @@ const NewsPage = () => {
     <NewsPageTemplate
       title="Actualités"
       filters={filterButtons}
-      newsItems={newsItems}
+      newsItems={error ? <p className="text-error-red">{error}</p> : newsItems}  // Afficher le message d'erreur
       pagination={paginationButtons}
     />
   );

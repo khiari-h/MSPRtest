@@ -2,6 +2,10 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import PartnersPageTemplate from '../../../components/templates/PartnersPageTemplate';
 
+// Mocking the Header and Footer components
+jest.mock('../../../components/organisms/Header', () => () => <div>Mocked Header</div>);
+jest.mock('../../../components/organisms/Footer', () => () => <div>Mocked Footer</div>);
+
 describe('PartnersPageTemplate', () => {
   test('renders the template with filters, message, partners, and cta sections', () => {
     const filters = <div data-testid="filters">Filters Section</div>;
@@ -18,14 +22,14 @@ describe('PartnersPageTemplate', () => {
       />
     );
 
-    // Vérifie la présence des différentes sections
+    // Verify the presence of different sections
     expect(screen.getByTestId('filters')).toBeInTheDocument();
     expect(screen.getByTestId('message')).toBeInTheDocument();
     expect(screen.getByTestId('partners')).toBeInTheDocument();
     expect(screen.getByTestId('cta')).toBeInTheDocument();
   });
 
-  test('renders the header and footer', () => {
+  test('renders the mocked header and footer', () => {
     render(
       <PartnersPageTemplate
         filters={<div />}
@@ -34,6 +38,7 @@ describe('PartnersPageTemplate', () => {
       />
     );
 
+    // Verify that the mocked Header and Footer are rendered
     expect(screen.getByText('Mocked Header')).toBeInTheDocument();
     expect(screen.getByText('Mocked Footer')).toBeInTheDocument();
   });

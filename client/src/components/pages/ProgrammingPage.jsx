@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, Suspense, lazy } from 'react';
 import ProgrammingPageTemplate from '../templates/ProgrammingPageTemplate';
-import ConcertsProgramming from '../organisms/ProgrammingOrganisms/ConcertProgramming';
-import ArtistMeeting from '../organisms/ProgrammingOrganisms/ArtistMeeting';
-import Workshops from '../organisms/ProgrammingOrganisms/Workshops';
+
+// Importer les composants dynamiquement
+const ConcertsProgramming = lazy(() => import('../organisms/ProgrammingOrganisms/ConcertProgramming'));
+const ArtistMeeting = lazy(() => import('../organisms/ProgrammingOrganisms/ArtistMeeting'));
+const Workshops = lazy(() => import('../organisms/ProgrammingOrganisms/Workshops'));
 
 const ProgrammingPage = () => {
   const [currentSection, setCurrentSection] = useState('concerts');
@@ -25,7 +27,9 @@ const ProgrammingPage = () => {
       currentSection={currentSection}
       onSectionChange={setCurrentSection}
     >
-      {renderSection()}
+      <Suspense fallback={<div>Loading...</div>}>
+        {renderSection()}
+      </Suspense>
     </ProgrammingPageTemplate>
   );
 };

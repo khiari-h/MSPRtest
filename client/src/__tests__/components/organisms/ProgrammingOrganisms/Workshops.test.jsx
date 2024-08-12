@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen, waitFor, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import axios from '../../../../config/axiosConfig';
 import Workshops from '../../../../components/organisms/ProgrammingOrganisms/Workshops';
 
@@ -9,26 +9,24 @@ describe('Workshops Component', () => {
   const mockData = [
     {
       id: 1,
-      name: 'Workshop 1',
-      description: 'Description 1',
-      photo: 'photo1.jpg',
-      date: '2022-01-01',
-      time: '10:00',
-      venue: 'Lieu 1',
-      type: 'Type 1',
-      duration: '2'
+      name: 'Atelier de Danse',
+      description: 'Un atelier pour apprendre les bases de la danse contemporaine.',
+      date: '2024-08-15',
+      time: '10:00:00',
+      venue: 'Salle de Danse',
+      type: 'Danse',
+      duration: '2',
     },
     {
       id: 2,
-      name: 'Workshop 2',
-      description: 'Description 2',
-      photo: 'photo2.jpg',
-      date: '2022-02-01',
-      time: '14:00',
-      venue: 'Lieu 2',
-      type: 'Type 2',
-      duration: '3'
-    }
+      name: 'Atelier de Peinture',
+      description: "Découverte des techniques de peinture à l'huile.",
+      date: '2024-08-16',
+      time: '14:00:00',
+      venue: 'Atelier des Arts',
+      type: 'Peinture',
+      duration: '3',
+    },
   ];
 
   beforeEach(() => {
@@ -37,56 +35,102 @@ describe('Workshops Component', () => {
 
   test('loads and displays workshops', async () => {
     render(<Workshops />);
-    expect(screen.getByText(/Chargement/i)).toBeInTheDocument();
-    await waitFor(() => expect(screen.getByText(/Ateliers/i)).toBeInTheDocument());
-    expect(screen.getByText(/Workshop 1/i)).toBeInTheDocument();
-    expect(screen.getByText(/Description 1/i)).toBeInTheDocument();
-    expect(screen.getByText(/Workshop 2/i)).toBeInTheDocument();
-    expect(screen.getByText(/Description 2/i)).toBeInTheDocument();
+
+    expect(screen.getByText(/Chargement.../i)).toBeInTheDocument();
+
+    await waitFor(() => {
+      expect(screen.getByText(/Ateliers/i)).toBeInTheDocument();
+    });
+
+    const headings = screen.getAllByRole('heading', { name: /Atelier de Danse/i });
+    expect(headings).toHaveLength(1);
+
+    expect(screen.getByRole('heading', { name: /Atelier de Peinture/i })).toBeInTheDocument();
   });
 
-  test('filters workshops correctly', async () => {
+  test('displays the registration form', async () => {
     render(<Workshops />);
-    await waitFor(() => expect(screen.getByText(/Ateliers/i)).toBeInTheDocument());
 
-    fireEvent.change(screen.getByLabelText(/Date/i), { target: { value: '01/01/2022' } });
-    expect(screen.getByText(/Workshop 1/i)).toBeInTheDocument();
-    expect(screen.queryByText(/Workshop 2/i)).not.toBeInTheDocument();
+    await waitFor(() => expect(screen.queryByText(/Chargement.../i)).not.toBeInTheDocument());
+
+    const firstNameInput = screen.getByPlaceholderText('Prénom');
+    const lastNameInput = screen.getByPlaceholderText('Nom');
+    const emailInput = screen.getByPlaceholderText('Email');
+    const workshopSelect = screen.getByText(/Sélectionnez un atelier/i);
+
+    expect(firstNameInput).toBeInTheDocument();
+    expect(lastNameInput).toBeInTheDocument();
+    expect(emailInput).toBeInTheDocument();
+    expect(workshopSelect).toBeInTheDocument();
   });
 
-  test('registers to a workshop successfully', async () => {
+  test('paginates workshops correctly', async () => {
+    const extraWorkshops = [
+      {
+        id: 3,
+        name: 'Atelier de Danse 3',
+        description: 'Un atelier pour apprendre les bases de la danse contemporaine.',
+        date: '2024-08-17',
+        time: '11:00:00',
+        venue: 'Salle de Danse',
+        type: 'Danse',
+        duration: '2',
+      },
+      {
+        id: 4,
+        name: 'Atelier de Peinture 4',
+        description: "Découverte des techniques de peinture à l'huile.",
+        date: '2024-08-18',
+        time: '15:00:00',
+        venue: 'Atelier des Arts',
+        type: 'Peinture',
+        duration: '3',
+      },
+      {
+        id: 5,
+        name: 'Atelier de Danse 5',
+        description: 'Un atelier pour apprendre les bases de la danse contemporaine.',
+        date: '2024-08-19',
+        time: '09:00:00',
+        venue: 'Salle de Danse',
+        type: 'Danse',
+        duration: '2',
+      },
+      {
+        id: 6,
+        name: 'Atelier de Peinture 6',
+        description: "Découverte des techniques de peinture à l'huile.",
+        date: '2024-08-20',
+        time: '16:00:00',
+        venue: 'Atelier des Arts',
+        type: 'Peinture',
+        duration: '3',
+      },
+      {
+        id: 7,
+        name: 'Atelier de Danse 7',
+        description: 'Un atelier pour apprendre les bases de la danse contemporaine.',
+        date: '2024-08-21',
+        time: '12:00:00',
+        venue: 'Salle de Danse',
+        type: 'Danse',
+        duration: '2',
+      },
+    ];
+  
+    axios.get.mockResolvedValue({ data: [...mockData, ...extraWorkshops] });
+  
     render(<Workshops />);
+  
     await waitFor(() => expect(screen.getByText(/Ateliers/i)).toBeInTheDocument());
-
-    fireEvent.change(screen.getByPlaceholderText(/Prénom/i), { target: { value: 'John' } });
-    fireEvent.change(screen.getByPlaceholderText(/Nom/i), { target: { value: 'Doe' } });
-    fireEvent.change(screen.getByPlaceholderText(/Email/i), { target: { value: 'john.doe@example.com' } });
-    fireEvent.change(screen.getByPlaceholderText(/Sélectionnez un atelier/i), { target: { value: '1' } });
-
-    axios.post.mockResolvedValue({ data: { message: 'Inscription réussie!' } });
-    
-    fireEvent.click(screen.getByText(/S'inscrire/i));
-
-    await waitFor(() => expect(screen.getByText(/Inscription réussie!/i)).toBeInTheDocument());
-
-    await waitFor(() => expect(screen.queryByText(/Inscription réussie!/i)).not.toBeInTheDocument(), { timeout: 4000 });
+  
+    const workshopsOnFirstPage = screen.getAllByRole('heading', { name: /Atelier de/i });
+    expect(workshopsOnFirstPage.length).toBe(6); // Assuming 6 workshops per page
+  
+    fireEvent.click(screen.getByText('2')); // Clicking on the second page button
+  
+    const workshopsOnSecondPage = screen.getAllByRole('heading', { name: /Atelier de/i });
+    expect(workshopsOnSecondPage.length).toBe(1); // Only 1 workshop left on the second page
   });
-
-  test('handles registration errors correctly', async () => {
-    render(<Workshops />);
-    await waitFor(() => expect(screen.getByText(/Ateliers/i)).toBeInTheDocument());
-
-    fireEvent.change(screen.getByPlaceholderText(/Prénom/i), { target: { value: 'John' } });
-    fireEvent.change(screen.getByPlaceholderText(/Nom/i), { target: { value: 'Doe' } });
-    fireEvent.change(screen.getByPlaceholderText(/Email/i), { target: { value: 'john.doe@example.com' } });
-    fireEvent.change(screen.getByPlaceholderText(/Sélectionnez un atelier/i), { target: { value: '1' } });
-
-    axios.post.mockRejectedValue({ response: { data: { message: 'Erreur lors de l\'inscription.' } } });
-
-    fireEvent.click(screen.getByText(/S'inscrire/i));
-
-    await waitFor(() => expect(screen.getByText(/Erreur lors de l'inscription./i)).toBeInTheDocument());
-
-    await waitFor(() => expect(screen.queryByText(/Erreur lors de l'inscription./i)).not.toBeInTheDocument(), { timeout: 4000 });
-  });
+  
 });

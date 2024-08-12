@@ -42,4 +42,11 @@ describe('InfoCard Component', () => {
     const { container } = render(<InfoCard {...props} />);
     expect(container.firstChild).toHaveClass('border-custom-blue-500');
   });
+
+  // Nouveau test pour vérifier le rendu sans image
+  test('renders correctly without an image', () => {
+    const { container } = render(<InfoCard {...props} image={null} />);
+    const imgElement = container.querySelector('img');
+    expect(imgElement).toBeNull(); // Vérifie qu'aucune balise img n'est rendue
+  });
 });
